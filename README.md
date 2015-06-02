@@ -3,6 +3,7 @@
 * **Download**: [Download](147-483-4-RV.doc)
 * **Status**: TDWG draft standard
 * **Category**: Technical specification
+* **Permanent URL**: http://www.tdwg.org/standards/147
 * **TDWG task group**: TDWG Infrastructure project
 * **Date submitted**: 2007-02-06
 * **Last modified**: 2008-08-07
