@@ -1,6 +1,6 @@
 # TDWG Standards Documentation Specification
 
-* **Download**: [Original download (Microsoft Word document)](147-483-4-RV.doc) / [PDF version](tdwg-stds-spec.pdf)
+* **Download**: [Download](147-483-4-RV.pdf)
 * **Status**: TDWG draft standard
 * **Category**: Technical specification
 * **Permanent URL**: http://www.tdwg.org/standards/147
