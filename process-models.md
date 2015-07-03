@@ -122,3 +122,115 @@ However, there are not two levels of maturity and once approved, the BCP is comp
 
 "As the technology changes and matures, it is possible for a new Standard specification to be so clearly superior technically that one or more existing standards track specifications for the same function should be retired.  In this case, or when it is felt for some other reason that an existing standards track specification should be retired, the IESG shall approve a change of status of the old specification(s) to Historic.  This recommendation shall be issued with the same Last-Call and notification procedures used for any other standards action."
 
+## Dublin Core Metadata Initiative (DCMI)
+
+### Criterion for acceptance of proposals
+
+Although public comment forms a part of the DCMI processes for adopting changes to metadata terms and Recommendations, achievement of consensus is not explicitly listed as a criterion for acceptance as it is in the W3C and IETF processes. 
+
+### DCMI Administrative Structure
+
+[DCMI Directorate](http://dublincore.org/about/directorate/) 
+
+"The Directorate consists of compensated directors who support the Executive Committee and DCMI's three Boards through the provision of specific services in areas such as financial management, required reporting, and the development and execution of DCMI activities."
+
+[DCMI Governing Board](http://dublincore.org/about/oversight/) 
+
+"The Governing Board manages the affairs of DCMI and performs the duties usually performed by the board of directors of a corporation."
+
+[DCMI Technical Board](http://wiki.dublincore.org/index.php/DCMI_Technical_Board)
+
+"The Technical Board is the organizational body that ensures the publication and maintenance of DCMI technical and semantic specifications in accordance with DCMI policy. These include specifications to which DCMI has made a long-term maintenance commitment, adaptations of DCMI specifications published by formal standards organizations, and specifications published as products of DCMI communities."
+
+The Technical Board has three committees:
+
+1. Usage Committee - makes technical decisions regarding semantic specifications (i.e. DCMI Metadata terms).
+2. Standards Committee - manages the process by which DCMI specs are recognized by standards organizations (ISO 15836).
+3. Community Specifications Committee - manages DCMI Communities and Task Groups and publication of DCMI Community Specifications
+
+[DCMI Advisory Board](http://dublincore.org/about/advisory/) 
+
+"The Advisory Board is the organizational body that advances DCMI's work through engagement with DCMI community members and liaising with other initiatives that have shared, metadata-related interests. The Board is responsible for overseeing the programmatic work of the Initiative"
+
+### DCMI Categories 
+Refer to the [approval procedure](http://dublincore.org/documents/approval/) and [documents](http://dublincore.org/documents/) pages for more information.
+
+1. DCMI metadata terms
+2. DCMI Recommendations.
+3. DCMI Recommended Resources (including Application Profiles).
+4. DCMI Process Documents.
+
+DCMI essentially has a single set of terms, so it doesn't really adopt "new" vocabularies - just changes to the terms in the **DCMI vocabulary**.
+
+**DCMI Recommendations** are "semantic or technical specifications that have been approved through DCMI's formal approval process. These specifications are stable and are supported for adoption by the Dublin Core community."
+
+**DCMI Recommended Resources** are "resources under the responsibility of the DCMI Executive that are recommended as material for use by the DCMI community in support of their use of Dublin Core metadata."
+
+**DCMI Process Documents** "describe process and procedures relevant for the operation of DCMI and its work structure."
+
+### DCMI Process
+Refer to the [Procedure for approval of proposals by DCMI](http://dublincore.org/documents/approval/)
+
+Proposals can come from the Directorate, Affiliates, Communities, Task Groups, other organizations, or any individual (basically anyone). 
+
+Documents are submitted to the DCMI Managing Director. "The Directorate acknowledges receipt and decides whether a document falls in one of the five categories, possibly in consultation with the Advisory Board. A first decision on whether DCMI will accept a proposal for consideration is communicated to the submitter no later than two months after submission with specification of the process and timeline foreseen."
+
+The subsequent procedure varies depending on the category of the proposed change
+
+### Proposed changes in DCMI metadata terms 
+From the [Procedure for approval of proposals by DCMI](http://dublincore.org/documents/approval/)
+
+> Proposals related to existing DCMI metadata terms (including editorial comments or updating obsolete references) are evaluated by the DCMI Usage Board within four weeks from submission. If the advice from the Usage Board is negative, the Directorate rejects the proposal and informs the submitter with reasons for rejection. If the advice is positive and the proposed change is substantial, the Directorate prepares for public comment. Minor editorial changes will be made immediately without a public comment period.
+> 
+> Any comments from the UB are communicated to submitters who have the opportunity to make modifications based upon those comments. If major changes are made, the proposal needs to be re-submitted.
+> 
+> Public comment is open for a minimum of four weeks, announced by the Directorate on DC-GENERAL and with a news item on the DCMI Web site and published on the Public Comment page. If serious objections are expressed by the public, the Directorate decides what to do, in consultation with the Usage Board: (a) reject the proposal and inform the submitter with reasons, giving the option to re-submit with changes, or (b) ask submitters to make minor changes to the proposal.
+> 
+> If no serious objections are received, the Usage Board incorporates the proposal in the documentation of Dublin Core terms, after which the Directorate publishes an updated version of the DCMI Metadata Terms on the DCMI Web site and announces to DC-GENERAL and with a news item on the DCMI Web site.
+
+The details of the policy regarding term changes are also spelled out in Section 3 of the [Namespace Policy for the Dublin Core Metadata Initiative (DCMI)](http://dublincore.org/documents/dcmi-namespace/). This policy has formed the basis for the term change policy of the Darwin Core Namespace Policy. 
+
+> Changes to DCMI terms or term declarations will occur from time to time for a variety of reasons. Such changes have varying implications for DCMI term URIs and DCMI namespaces. The following classes of changes are identified along with examples and associated implications.
+> 
+> In all cases, any changes to DCMI terms or term declarations will result in an update to the versioning information carried in the DCMI recommendation and/or DCMI term declaration associated with that term.
+> 
+> A. Minor editorial errata
+> 
+> Errors of spelling, punctuation, or other clerical mistakes discovered in DCMI recommendations and/or DCMI term declarations will be corrected without a comment period, following notification to the DCMI Usage Board [DCMI-USAGE], as long as, in the judgment of the DCMI Directorate, there are no implications for negative impact on users or applications that rely on those DCMI term declarations.
+> 
+> Correction of minor editorial errata will result in no changes to DCMI term URIs.
+> 
+> B. Substantive editorial errata
+> 
+> Errors of substance discovered in DCMI recommendations and/or DCMI term declarations will trigger public notification of the correction to the DC-General mailing list [DC-GENERAL]. Errors that, in the judgment of the DCMI Directorate, compromise the immediate usefulness or accuracy of DCMI metadata systems will be corrected immediately (for example, an incorrect URL to a resource external to DCMI). Others will be corrected following a 14-day public comment period to assure that changes do not adversely effect systems or applications which rely on the DCMI namespace infrastructure.
+> 
+> Correction of substantive editorial errata will result in no changes in DCMI term URIs.
+> 
+> C. Semantic changes in DCMI terms
+> 
+> Changes of definitions within DCMI recommendations and/or DCMI term declarations will be reflected in the affected DCMI recommendation and/or DCMI term declaration. If, in the judgment of the DCMI Directorate, such changes of meaning are likely to have substantial impact on either machine processing of DCMI terms or the functional semantics of the terms, then these changes will be reflected in a change of URI for the DCMI term or terms in question. The URIs for any new DCMI namespaces resulting from such changes will conform to the DCMI namespace URI pattern defined above.
+> 
+> D. Addition of DCMI term declarations to existing DCMI namespaces
+> New DCMI term URIs will occasionally be added to existing DCMI namespaces. Addition of DCMI term URIs to existing DCMI namespaces will not trigger changes in DCMI namespace URIs.
+
+### Proposals for DCMI Recommendations (non-term changes)
+From the [Procedure for approval of proposals by DCMI](http://dublincore.org/documents/approval/)
+
+> The DCMI Directorate assigns the status of Proposed Recommendation or (in cases where a Recommendation already exists) Proposed Revised Recommendation.
+> 
+> Proposals go through an initial review in the Advisory Board for at least four weeks. After negative review, the Directorate informs the submitter with reasons for rejection. Modified proposals can be re-submitted. If AB review is positive, the Directorate prepares for public comment. Any comments from the AB are communicated to submitters who get the opportunity to make modifications based upon those comments. If major changes are made, the proposal needs to be re-submitted.
+> 
+> Public comment is open for a minimum of four weeks, announced by the Directorate on DC-GENERAL and with a news item on the DCMI Web site and published on the Public Comment page. If serious objections are expressed by the public, the Directorate decides what to do, in consultation with the Advisory Board: (a) reject the proposal and inform the submitter with reasons, giving the option to re-submit with changes, or (b) ask submitters to make minor changes to the proposal.
+> 
+> After successful public comment, the Directorate publishes the Recommendation on the DCMI Web site and announces to DC-GENERAL and with a news item on the DCMI Web site.
+
+### Proposals for DCMI Recommended Resources
+From the [Procedure for approval of proposals by DCMI](http://dublincore.org/documents/approval/)
+
+The **Recommended Resources** process is simpler than that for Recommendations in that it does not require public comment:
+
+> In general, evaluation and subsequent acceptance or rejection of proposed DCMI Recommended Resources are at the discretion of the Directorate, in consultation with the Advisory Board. The procedure for Application Profiles is different and is described in Section 4 below.
+> 
+> The decision on acceptance or rejection is taken by the Directorate and communicated to the submitter no later than six months after the submission of the proposal. Rejections are communicated to the submitter with reasons for rejection. The Directorate announces the acceptance of proposals to DC-GENERAL and with a news item on the DCMI Web site. The Recommended Resource is published on the DCMI Web site (possibly as a link to the resource, for example as is the case with the question-and-answer service AskDCMI).
+
+If the Recommended Resource is an **Application Profile**, the process is similar, except that a review is conducted by the Usage Board rather than the Advisory Board or Directorate.
