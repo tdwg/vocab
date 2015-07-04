@@ -234,3 +234,24 @@ The **Recommended Resources** process is simpler than that for Recommendations i
 > The decision on acceptance or rejection is taken by the Directorate and communicated to the submitter no later than six months after the submission of the proposal. Rejections are communicated to the submitter with reasons for rejection. The Directorate announces the acceptance of proposals to DC-GENERAL and with a news item on the DCMI Web site. The Recommended Resource is published on the DCMI Web site (possibly as a link to the resource, for example as is the case with the question-and-answer service AskDCMI).
 
 If the Recommended Resource is an **Application Profile**, the process is similar, except that a review is conducted by the Usage Board rather than the Advisory Board or Directorate.
+
+##Global Biodiversity Information Facility (GBIF)
+
+Website: [http://www.gbif.org/](http://www.gbif.org/)
+
+###Organizational Structure
+
+The [Secretariat](http://www.gbif.org/governance/secretariat) "is charged with developing, executing and reporting on the GBIF work programme". 
+
+The [GBIF Governing Board](http://www.gbif.org/governance/governing-board) "is the means by which GBIF Participants make collective decisions. Currently meeting once a year, it consists of one representative from each Participant country and organization." 
+
+[Task Groups](http://www.gbif.org/governance/task-groups) are established by the GBIF Governing Board (for example, see http://www.gbif.org/newsroom/news/fitness-for-use-task-groups-announced).  In particular, the Science Committee may set up Task Groups to address specific issues (See [Rules of Procedure of the GBIF Governing Board](http://www.gbif.org/resource/80667)).
+
+###Products
+Controlled vocabularies at [http://rs.gbif.org/](http://rs.gbif.org/)
+e.g. [http://rs.gbif.org/vocabulary/gbif/establishment_means.xml](http://rs.gbif.org/vocabulary/gbif/establishment_means.xml).  See the [GBIF Vocabulary Server](http://terms.tdwg.org/wiki/GBIF_Vocabulary_Server) for more on this.
+
+Maintains a [resource library](http://www.gbif.org/resources) that includes Best Practice guides on a number of subjects, for example the [Best practice guide for compiling, maintaining, disseminating national species checklists](http://www.gbif.org/resource/80784).
+
+###Procedure for generation products
+(?)
