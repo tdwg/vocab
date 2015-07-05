@@ -239,6 +239,25 @@ If the Recommended Resource is an **Application Profile**, the process is simila
 
 Website: [http://www.gbif.org/](http://www.gbif.org/)
 
+###Background document:
+
+[Recommendations for the Use of Knowledge Organisation Systems by GBIF (2011)](http://www.gbif.org/resource/80656)
+
+A precursor to this paper was the GBIF Report on Vocabularies for Biodiversity (GRVB), but its URL http://imsgbif.gbif.org/CMS/DMS_.php?ID=1057 doesn't work.  There is another document called "[Vocabularies for Biodiversity Informatics](http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0CCUQFjAB&url=http%3A%2F%2Fimsgbif.gbif.org%2FFile%2Fretrieve.php%3FFILE_ID%3D2627%26PATH%3D5%26FILENAME%3Dvocabularies-for-biodiversity-informatics.pdf%26FILE%3D27a9ed79dfea07b4a7e2caeb5c59ef29%26TYPE%3Dapplication%2Fpdf&ei=pyGZVae7IJfUoASrl4iQAw&usg=AFQjCNG6_jthGk0w_CoXXlOrQpxPeky3VQ&sig2=NiC_-x3qtVJ-ioP3J20REQ&bvm=bv.96952980,d.cGU)" from April 2010 that may be an early draft.  It contains the recommendations cited in the KOS report.
+
+GRVB Recommendation 1 recommends promoting the practice of developing flat vocabularies (concepts and definitions) independently from modeling relationships between concepts. 
+
+GRVB Recommendation 3 recommends a three-layered approach:
+
+1. Well-defined human-readible terms without constraints.
+2. A logical layer (RDF/OWL)
+3. project documents including applicability statements.
+
+GRVB Recommendation 4 recommends using SKOS as a minimal mechanism for expressing and sharing multi-lingual vocabularies.
+
+Mentioned: [ISO 25964](http://www.niso.org/schemas/iso25964/) (standards for vocabulary development). ISO 25964 covers how thesari should be developed and is complementary to SKOS which addresses how thesari should be expressed on the Web.
+
+
 ###Organizational Structure
 
 The [Secretariat](http://www.gbif.org/governance/secretariat) "is charged with developing, executing and reporting on the GBIF work programme". 
@@ -253,5 +272,19 @@ e.g. [http://rs.gbif.org/vocabulary/gbif/establishment_means.xml](http://rs.gbif
 
 Maintains a [resource library](http://www.gbif.org/resources) that includes Best Practice guides on a number of subjects, for example the [Best practice guide for compiling, maintaining, disseminating national species checklists](http://www.gbif.org/resource/80784).
 
-###Procedure for generation products
+###Procedure for generating products
 (?)
+
+## Some other Standards-generating organizations
+
+### The Library of Congress
+See [http://www.loc.gov/standards/](http://www.loc.gov/standards/)
+
+### National Information Standards Organization (NISO)
+See [http://www.niso.org/home/](http://www.niso.org/home/)
+"Designated by ANSI [American National Standards Institute] to represent U.S. interests as the Technical Advisory Group (TAG) to the International Organization for Standardization's (ISO) Technical Committee 46 on Information and Documentation."
+
+### International Organization for Standardization (ISO)
+See [http://www.iso.org/iso/home.html](http://www.iso.org/iso/home.html)
+
+
