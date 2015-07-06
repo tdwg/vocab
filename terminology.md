@@ -1,5 +1,7 @@
 # Notes on terminology related to vocabularies
 
+This document contains some reference notes and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
+
 From the [W3C Semantic Web Vocabularies](http://www.w3.org/standards/semanticweb/ontology) page:
 
 > On the Semantic Web, vocabularies define the concepts and relationships (also referred to as “terms”) used to describe and represent an area of concern. Vocabularies are used to classify the terms that can be used in a particular application, characterize possible relationships, and define possible constraints on using those terms. ...
@@ -42,3 +44,6 @@ Current TDWG standards include examples of Technical Specification (including th
 4. A controlled vocabulary (concept scheme, KOS) can provide values for properties defined in an ontology. These value terms may be less formally defined using a model such as SKOS.
 5. In the context of TDWG, an ontology (vocabulary that defines classes and properties) would fall into the Standard Category of Technical Specification. A controlled vocabulary would fall into the Standard Category of Data Standard.
 
+## Terms related to the status of parts of standards documents
+
+TODO: Define "normative", "non-normative", "informative", etc. in the context of standards documents.

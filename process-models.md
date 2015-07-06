@@ -1,5 +1,7 @@
 # Processes used by other standards organizations
 
+This document contains some reference notes and has no official standing.  It is subject to change at any time and should not be considered to be stable nor citable.
+
 ## W3C
 
 From the [World Wide Web Consortium Process Document (1 August 2014)](http://www.w3.org/Consortium/Process/):

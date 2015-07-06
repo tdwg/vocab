@@ -1,5 +1,7 @@
 #Documentation models
 
+This document contains some reference notes and has no official standing.  It is subject to change at any time and should not be considered to be stable nor citable.
+
 ##RFC Style Guide
 See [http://tools.ietf.org/html/rfc7322](http://tools.ietf.org/html/rfc7322)
 
@@ -16,5 +18,6 @@ W3C Working Group Draft. See [http://www.w3.org/TR/tabular-data-model/](http://w
 ##Data on the Web Best Practices
 W3C Working Draft.  See [http://www.w3.org/TR/dwbp/](http://www.w3.org/TR/dwbp/) and the Working Group's wiki main page: [http://www.w3.org/2013/dwbp/wiki/Main_Page](http://www.w3.org/2013/dwbp/wiki/Main_Page)
 
-
+##Best practice in formalizing a SKOS vocabulary (CSIRO)
+From the SEE GRID community website [https://www.seegrid.csiro.au/wiki/Siss/VocabularyFormalizationInSKOS](https://www.seegrid.csiro.au/wiki/Siss/VocabularyFormalizationInSKOS)
 
