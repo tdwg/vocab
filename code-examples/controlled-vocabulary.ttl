@@ -1,0 +1,69 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
+@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix gts: <http://resource.geosciml.org/ontology/timescale/gts#>.
+@prefix rank: <http://resource.geosciml.org/ontology/timescale/rank/>.
+@prefix isc: <http://resource.geosciml.org/classifier/ics/ischart/>.
+
+isc:2014  a                    gts:GeologicTimescale , skos:ConceptScheme ;
+        rdfs:isDefinedBy       <http://resource.geosciml.org/vocabulary/timescale/isc2014> ;
+        rdfs:label             "International Chronostratigraphic Chart (2014)"@en ;
+        rdfs:seeAlso           <http://www.stratigraphy.org/GSSP/index.html> , <http://www.stratigraphy.org/ICSchart/ChronostratChart2014-02.pdf> ;
+        dcterms:contributor         "Chinese and Japanese preferred labels from SKOS by Xiaogang Ma, adopted from Asian Multilingual Thesaurus of Geosciences."@en , "International Commission on Stratigraphy"@en , "OneGeology Europe preferred labels merged in by S.M. Richard."@en ;
+        dcterms:creator             "Simon J D COX"@en ;
+        dcterms:description         "This is an RDF/OWL representation of the 2014 edition of the International Chronostratigraphic Chart from the International Commission on Stratigraphy."@en ;
+        dcterms:rights              "RDF version Copyright © 2013 CSIRO, Arizona Geological Survey, IUGS"@en , "Original version Copyright © 2013 International Commission on Stratigraphy"@en , "This Ontology is made available under the Open Data Commons Attribution License: http://opendatacommons.org/licenses/by/1.0"^^xsd:string ;
+        dcterms:rights              <http://opendatacommons.org/licenses/by/1.0> ;
+        dcterms:source              "International Chronostratigraphic Chart 2014"@en ;
+        dcterms:title               "International Chronostratigraphic Chart (2014)"@en ;
+        dcterms:created            "2014-05-08"^^xsd:date ;
+        dcterms:replaces           <http://resource.geosciml.org/classifierscheme/ics/2013/ischart> ;
+        owl:sameAs             <http://resource.geosciml.org/classifierscheme/ics/2014/ischart> ;
+        skos:hasTopConcept     isc:BaseUpperOrdovician , isc:BaseJurassic , isc:BasePiacenzian , isc:BaseMiddleDevonian , isc:BaseConiacian , isc:BasePridoli , isc:BaseGivetian , isc:BaseArchean , isc:BaseValanginian , isc:BaseKungurian , isc:BaseLudfordian , isc:BaseChanghsingian , isc:BaseCalabrian , isc:BaseDevonian , isc:BaseMississipian , isc:BasePaleoarchean , isc:BaseUpperPennsylvanian , isc:BaseBarremian , isc:BaseMesozoic , isc:BaseMiddleMississippian , isc:BaseThanetian , isc:BaseCallovian , isc:Precambrian , isc:BaseSerpukhovian , isc:BaseToarcian , isc:BaseKatian , isc:BaseUpperCretaceous , isc:BaseHauterivian , isc:BaseGuadalupian , isc:BaseWordian , isc:BaseTithonian , isc:Phanerozoic , isc:BaseLopingian , isc:BaseMiddleJurassic , isc:BaseEocene , isc:BaseFurongian , isc:BaseEctasian , isc:BaseCapitanian , isc:BaseFamennian , isc:BaseMiddleOrdovician , isc:BaseSantonian , isc:BaseHolocene , isc:BasePragian , isc:BaseOrdovician , isc:BaseCenozoic , isc:BaseBashkirian , isc:BaseMesoproterozoic , isc:BaseFloian , isc:BaseCisuralian , isc:BaseCarboniferous , isc:BaseCryogenian , isc:BasePhanerozoic , isc:BaseLutetian , isc:BaseNeogene , isc:BaseRhaetian , isc:BaseMiddleTriassic , isc:Present , isc:BaseMoscovian , isc:BasePliensbachian , isc:BaseTortonian , isc:BaseCretaceous , isc:BaseAptian , isc:BaseDrumian , isc:BaseUpperJurassic , isc:BaseHomerian , isc:BaseCambrianSeries2 , isc:BaseLudlow , isc:BaseCambrianStage2 , isc:BasePennsylvanian , isc:BaseSinemurian , isc:BaseAlbian , isc:BaseSelandian , isc:BaseUpperPleistocene , isc:BaseUpperMississippian , isc:BaseStatherian , isc:BaseOligocene , isc:BaseWenlock , isc:BaseLanghian , isc:BaseQuaternary , isc:BaseNeoproterozoic , isc:BasePermian , isc:BasePriabonian , isc:BaseTuronian , isc:BaseMiddlePennsylvanian , isc:BaseKasimovian , isc:BaseJiangshanian , isc:BaseLadinian , isc:BaseCambrianStage4 , isc:BaseBathonian , isc:BaseMiddlePleistocene , isc:BaseRhyacian , isc:BaseSerravallian , isc:BasePliocene , isc:BaseSakmarian , isc:BaseKimmeridgian , isc:BaseTelychian , isc:BaseAeronian , isc:BaseOlenekian , isc:BaseEmsian , isc:BaseGuzhangian , isc:BaseHirnantian , isc:BaseChattian , isc:BaseMaastrichtian , isc:BaseNorian , isc:BaseUpperDevonian , isc:FormationOfEarth , isc:BaseNeoarchean , isc:BaseBajocian , isc:BaseCambrianSeries3 , isc:BaseGzhelian , isc:BaseBartonian , isc:BaseBurdigalian , isc:BaseOrosirian , isc:BaseProterozoic , isc:BaseCambrianStage10 , isc:BaseTournaisian , isc:BaseMessinian , isc:BaseStenian , isc:BaseEdiacaran , isc:BaseArtinskian , isc:BaseDarriwilian , isc:BaseMesoarchean , isc:BaseCampanian , isc:BaseUpperTriassic , isc:BaseSilurian ;
+        skos:prefLabel         "International Chronostratigraphic Chart (2014)"@en.
+      
+<http://resource.geosciml.org/classifier/ics/ischart/> skos:member isc:Devonian;
+        a                      skos:Collection ;
+        rdfs:label             "Geologic Timescale Elements in the International Chronostratigraphic Chart"@en ;
+        skos:prefLabel         "Geologic Timescale Elements in the International Chronostratigraphic Chart"@en .
+
+isc:Devonian gts:rank rank:Period;
+             a gts:GeochronologicEra,
+               skos:Concept;
+             rdfs:comment "older bound-416 +/-2.8"@en,
+                          "younger bound-359.2 +/-2.5"@en;
+             rdfs:label "Devonian Period"@en;
+             owl:sameAs <http://dbpedia.org/resource/Devonian>;
+             skos:broader isc:Paleozoic;
+             skos:inScheme isc:2014;
+             skos:narrower isc:LowerDevonian,
+                           isc:MiddleDevonian,
+                           isc:UpperDevonian;
+             skos:notation "a1.1.3.3"^^gts:EraCode;
+             skos:prefLabel "Девон"@bg,
+                            "Devon"@cs,
+                            "Devon"@da,
+                            "Devon"@de,
+                            "Devonian"@en,
+                            "Devónico"@es,
+                            "Devon"@et,
+                            "Devoni"@fi,
+                            "Dévonien"@fr,
+                            "devon"@hu,
+                            "devoniano"@it,
+                            "デボン紀"@ja,
+                            "Devonas"@lt,
+                            "Devoon"@nl,
+                            "Devon"@no,
+                            "Dewon"@pl,
+                            "Devónico"@pt,
+                            "devón"@sk,
+                            "devon"@sl,
+                            "devon"@sv,
+                            "泥盆纪"@zh.
