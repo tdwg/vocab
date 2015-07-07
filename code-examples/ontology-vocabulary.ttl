@@ -6,6 +6,7 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 
+# Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
 <http://www.tdwg.org/standards/450/> a owl:Ontology;
                                      owl:imports <http://rs.tdwg.org/dwc/terms/>;
                                      owl:imports <http://rs.tdwg.org/dwc/terms/attributes>;

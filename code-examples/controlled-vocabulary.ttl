@@ -11,6 +11,8 @@
 @prefix rank: <http://resource.geosciml.org/ontology/timescale/rank/>.
 @prefix isc: <http://resource.geosciml.org/classifier/ics/ischart/>.
 
+# Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
+# I intend to eventually replace the geological timescale components with TDWG related components (e.g. controlled vocabulary for a DwC term)
 isc:2014  a                    gts:GeologicTimescale , skos:ConceptScheme ;
         rdfs:isDefinedBy       <http://resource.geosciml.org/vocabulary/timescale/isc2014> ;
         rdfs:label             "International Chronostratigraphic Chart (2014)"@en ;
