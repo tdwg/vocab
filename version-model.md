@@ -78,6 +78,10 @@ dwc:recordedBy-2014-10-23 dcterms:issued "2014-10-23"^^xsd:date;
 dwc:recordedBy-2009-04-24 dcterms:issued "2009-04-24"^^xsd:date.
 ```
 ## Competency questions
+The following SPARQL queries show how this model enables reconstruction of the state of a current resource at particular times in the past.
+
+----------
+
 
 Display the definitions of all versions of the term **dwc:recordedBy** and the date that each definition was adopted.
 
