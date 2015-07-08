@@ -12,7 +12,7 @@ Note: This document has no official standing. It is subject to change at any tim
 `dwc:recordedBy` (`http://rs.tdwg.org/dwc/terms/recordedBy`)
 
 
-**Versioned resource** - a version of a resource at some particular time.  The latest version of a resource will have the same properties as its corresponding current resource except for properties that relate it to the current resource and other related versioned resources.  The normal convention is to append the value of dcterms:issued (in form of the xsd:date datatype) to the local name of the IRI, although there may be circumstances where this is not possible nor desirable. Clients should not parse the IRI to discover the date of issue; rather they should retrieve the value of dcterms:issued.
+**Versioned resource** - a version of a resource at some particular time.  The latest version of a resource will have the same properties as its corresponding current resource except for properties that relate it to the current resource and other related versioned resources.  The normal convention is to append the value of **dcterms:issued** (in form of the **xsd:date** datatype) to the local name of the IRI, although there may be circumstances where this is not possible nor desirable. Clients should not parse the IRI to discover the date of issue; rather they should retrieve the value of dcterms:issued.
 
 *Example:* 
 ```turtle
@@ -62,7 +62,7 @@ A versioned resource may have multiple values if it is related to several versio
 
 ```turtle
 dwc:recordedBy-2014-10-23 rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms-2014-10-23>;
-     rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms-2014-10-23>.
+     rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms-2015-03-19>.
 ```
 
 ----------
@@ -129,7 +129,7 @@ WHERE {
   ?term dcterms:hasVersion ?termVersion.
 }
 ```
-Note: this query will fail for terms that are missing any of the specified properties.  For example, dwc:accordingTo does not have a dcterms:description property and would be missed.  One could replace the given dcterms:description triple pattern with 
+Note: this query will fail for terms that are missing any of the specified properties.  For example, **dwc:accordingTo** does not have a **dcterms:description** property and would be missed.  One could replace the given **dcterms:description** triple pattern with 
 ```sparql
     OPTIONAL { ?termVersion dcterms:description ?descriptionObject. }
 ```
