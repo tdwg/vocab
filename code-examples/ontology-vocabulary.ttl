@@ -1,32 +1,103 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
+@prefix dwciri: <http://rs.tdwg.org/dwc/iri/>.
 @prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix obi: <http://purl.obolibrary.org/obo/OBI_>.
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 
 # Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
-<http://www.tdwg.org/standards/450/> a owl:Ontology;
+
+# This is part of the description of the Darwin Core standard itself.
+# Currently the "permanent URL" of the standard only dereferences to a human-readable landing page for the standard.
+# Eventually, it should dereference for semantic clients that request RDF to some RDF/XML- or RDF/turtle-formatted document containing triples like these:
+<http://www.tdwg.org/standards/450/> dcterms:hasPart <http://rs.tdwg.org/dwc/basic-ontology>;
+                                     dcterms:hasPart <http://rs.tdwg.org/dwc/enhanced-ontology>;
+                                     dcterms:hasPart <http://rs.tdwg.org/dwc/terms/guides/rdf/>;
+                                     dcterms:title "Darwin Core Standard"@en.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# possible way to link components of the standard that are human-readable text
+# the subject IRI is the "permanent URL" of the guide
+<http://rs.tdwg.org/dwc/terms/guides/rdf/> dcterms:title "Darwin Core RDF Guide"@en;
+                                     # more descriptive properties here
+                                     # the abstract IRI for the guide dereferences by content negotiation to the following web page
+                                     foaf:homepage <http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm>.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# The subject IRI identifies one of several possible "Darwin Core Vocabularies" that are typed as owl:Ontology
+# This particular one corresponds approximately to the existing Darwin Core vocabulary as described by the 
+# Quick Reference Guide and the RDF Guide
+<http://rs.tdwg.org/dwc/basic-vocabulary>       a owl:Ontology;
                                      owl:imports <http://rs.tdwg.org/dwc/terms/>;
                                      owl:imports <http://rs.tdwg.org/dwc/terms/attributes>;
                                      owl:imports <http://rs.tdwg.org/dwc/iri/>;
-                                     dcterms:description "description";
-                                     dcterms:title "Darwin Core Standard"@en.
+                                     owl:imports <http://rs.tdwg.org/dwc/dcmi/>;
+                                     dcterms:description "This ontology includes human-readible term definitions with minimal entailments";
+                                     dcterms:title "Darwin Core Basic Vocabulary"@en.
+# ---------------------------------------------------------------------------------------------------------------------
 
+# This is another possible "Darwin Core Vocabulary" that adds a layer of semantics not included in the basic vocablary
+# Extending the basic vocabulary in this way does not require every potential user to be subjected to entailments that
+# are not helpful for the use cases they are trying to satisfy.
+<http://rs.tdwg.org/dwc/enhanced-vocabulary>       a owl:Ontology;
+                                     owl:imports <http://rs.tdwg.org/dwc/terms/>;
+                                     owl:imports <http://rs.tdwg.org/dwc/terms/attributes>;
+                                     owl:imports <http://rs.tdwg.org/dwc/iri/>;
+                                     owl:imports <http://rs.tdwg.org/dwc/dcmi/>;
+                                     owl:imports <http://rs.tdwg.org/dwc/semantics/>; #this is what the basic vocab doesn't include
+                                     dcterms:description "This ontology includes term definitions and relationships among terms intended to achieve some reasoning purpose.";
+                                     dcterms:title "Darwin Core Semantically Enhanced Vocabulary"@en.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# All that this ontology does is reference each of the DCMI terms that Darwin Core "imports".
+# A similar approach could be taken with Audubon Core, which imports terms from many non-TDWG namespaces.
+# In some cases, the imported AC terms do not dereference, so in those cases, some minimal descriptions could be made in this ontology.
+# e.g. rdfs:comment; and rdfs:label
+<http://rs.tdwg.org/dwc/dcmi/> dcterms:modified "2015-03-19";
+                                dcterms:references dcterms:Location;
+                                dcterms:references dcterms:license;
+                                dcterms:references dcterms:modified;
+                                dcterms:references dcterms:language;
+                                dcterms:references dcterms:license;
+                                dcterms:references dcterms:rightsHolder;
+                                dcterms:references dcterms:accessRights;
+                                dcterms:references dcterms:bibliographicCitation;
+                                dcterms:references dcterms:references;
+                                a dcat:Dataset, owl:Ontology.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# data in this block of triples could be included in a DwC Semantic Relationships ontology
+# There wouldn't have to necessarily be just one such ontology.  There could be several, particularly in a 
+# testing phase.  These ontologies would note necessarily have to be included in the standard itself unless
+# they achieved widespread acceptance.
+<http://rs.tdwg.org/dwc/semantics/> dcterms:modified "2015-03-19";
+                                dcterms:title "Darwin Core Semantic Relationships"@en;
+                                a dcat:Dataset, owl:Ontology.
+# these are implied relationships that are not explicitly expressed by DCMI
+dcterms:references owl:inverseOf dcterms:isReferencedBy.
+dcterms:hasPart owl:inverseOf dcterms:isPartOf.
+dcterms:hasVersion owl:inverseOf dcterms:isVersionOf.
+# examples follow; I'm not suggesting whether any of them are a good idea or not.
+dwciri:recordedBy a owl:ObjectProperty.
+dwc:PreservedSpecimen owl:disjointWith dwc:Occurrence.
+dwc:MaterialSample rdfs:subClassOf obi:0100051.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# Here is the existing primary Darwin Core vocabulary
 <http://rs.tdwg.org/dwc/terms/> dcterms:modified "2015-03-19";
-                                a dcat:Dataset;
-                                dcat:distribution <http://rs.tdwg.org/dwc/rdf/dwcterms.rdf>;
+                                a dcat:Dataset, owl:Ontology;
+                                dcat:distribution <http://rs.tdwg.org/dwc/terms-rdf-xml>;
                                 dcterms:hasVersion <http://rs.tdwg.org/dwc/2015-03-19/terms/>;
                                 dcterms:publisher "Biodiversity Information Standards (TDWG)"@en;
                                 dcterms:title "Darwin Core Recommended Terms"@en;
                                 rdfs:comment """This document contains a list of Darwin Core terms that have the dwcattributes:status equal to \"recommended\". For the full normative RDF document of all Darwin Core terms, see dwctermshistory.rdf. To comment on this schema, please create a new issue in https://github.com/tdwg/dwc/issues""".
-
-<http://rs.tdwg.org/dwc/2015-03-19/terms/> a dcat:Dataset.
-
-<http://rs.tdwg.org/dwc/rdf/dwcterms.rdf> a dcat:Distribution;
-                                          dcat:mediaType "application/rdf+xml".
-
+# The following description of dwc:recordedBy is included as an example.  There are many more terms.
+# It is mostly what is included in the current document.
 <http://rs.tdwg.org/dwc/terms/recordedBy> dcterms:description """The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: \"José E. Crespo\", \"Oliver P. Pearson | Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."""@en;
                                           dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>;
                                           dcterms:issued "2008-11-19";
@@ -38,9 +109,22 @@
                                           dwcattributes:status "recommended";
                                           a rdf:Property;
                                           rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
-                                          # It has always seemed to me that the term definition should be used with dcterms:description rather than rdfs:comment
                                           rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
-                                          rdfs:label "Recorded By"@en;
-                                          rdfs:subPropertyOf <http://rs.tdwg.org/dwc/terms/accordingTo>.
+                                          # The following triple is included in the existing definition.  Under the proposed model, it would be 
+                                          # moved into the DwC Semantic Relationships ontology
+#                                         rdfs:subPropertyOf <http://rs.tdwg.org/dwc/terms/accordingTo>.
+                                          rdfs:label "Recorded By"@en.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# I just made up this IRI to represent the RDF/XML distribution of the primary DwC vocabulary.
+# There can be multiple other distributions including RDF/Turtle, SPARQL endpoint, text/csv, etc.
+# See the DCAT W3C Recommendation for more on this.
+<http://rs.tdwg.org/dwc/terms-rdf-xml>        a dcat:Distribution, foaf:Document;
+                                          dcat:downloadURL <https://raw.githubusercontent.com/tdwg/dwc/master/rdf/dwcterms.rdf>;
+                                          dcat:mediaType "application/rdf+xml".
+# ---------------------------------------------------------------------------------------------------------------------
+
+# part past this line is under construction; haven't worked on including the versioning model
+<http://rs.tdwg.org/dwc/2015-03-19/terms/> a dcat:Dataset.
 
 <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> a rdf:Property.
