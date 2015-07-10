@@ -11,6 +11,8 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 
 # Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
+# Refer to https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fdrawings%2Fd%2F1xIa74GiLFQAhclO7baP1lNHKYk0Uvhs4bAdRytQUwmc%2Fedit%3Fusp%3Dsharing
+# for a diagram.
 
 # This is part of the description of the Darwin Core standard itself.
 # Currently the "permanent URL" of the standard only dereferences to a human-readable landing page for the standard.
