@@ -7,6 +7,7 @@ Versioned term URIs and dwcattributes:status values of versioned terms reflect c
 ##Definitions
 **Current resource** - a resource in its current state. A current resource is identified by the permanent IRI of the resource.
 
+<< Is there a better term than "current" for this? >>
 
 *Example:* 
 
