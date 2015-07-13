@@ -14,6 +14,12 @@
 # Refer to https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fdrawings%2Fd%2F1xIa74GiLFQAhclO7baP1lNHKYk0Uvhs4bAdRytQUwmc%2Fedit%3Fusp%3Dsharing
 # for a diagram.
 
+# Terms from the DCAT Vocabulary are used to link various components of vocabularies.  I'm not sure if this is 
+# appropriate (i.e. should an owl:Ontology also be typed as a dcat:Dataset ?
+# In some cases using terms from the VOAF (Vocabulary of a Friend) specification might be better, but it has no particular standing 
+# as far as I can tell.  For example typing a vocabulary as voaf:Vocabulary might be more descriptive than dcat:Dataset
+# See http://lov.okfn.org/vocommons/voaf/
+
 # This is part of the description of the Darwin Core standard itself.
 # Currently the "permanent URL" of the standard only dereferences to a human-readable landing page for the standard.
 # Eventually, it should dereference for semantic clients that request RDF to some RDF/XML- or RDF/turtle-formatted document containing triples like these:
@@ -60,16 +66,18 @@
 # A similar approach could be taken with Audubon Core, which imports terms from many non-TDWG namespaces.
 # In some cases, the imported AC terms do not dereference, so in those cases, some minimal descriptions could be made in this ontology.
 # e.g. rdfs:comment; and rdfs:label
-<http://rs.tdwg.org/dwc/dcmi/> dcterms:modified "2015-03-19";
-                                dcterms:references dcterms:Location;
-                                dcterms:references dcterms:license;
-                                dcterms:references dcterms:modified;
-                                dcterms:references dcterms:language;
-                                dcterms:references dcterms:license;
-                                dcterms:references dcterms:rightsHolder;
-                                dcterms:references dcterms:accessRights;
-                                dcterms:references dcterms:bibliographicCitation;
-                                dcterms:references dcterms:references;
+
+# dcterms:hasPart = "a related resource that is included either physically or logically in the described resource"
+<http://rs.tdwg.org/dwc/dcmi/> dcterms:modified "2015-03-19"^^xsd:date;
+                                dcterms:hasPart dcterms:Location;
+                                dcterms:hasPart dcterms:license;
+                                dcterms:hasPart dcterms:modified;
+                                dcterms:hasPart dcterms:language;
+                                dcterms:hasPart dcterms:license;
+                                dcterms:hasPart dcterms:rightsHolder;
+                                dcterms:hasPart dcterms:accessRights;
+                                dcterms:hasPart dcterms:bibliographicCitation;
+                                dcterms:hasPart dcterms:references;
                                 a dcat:Dataset, owl:Ontology.
 # ---------------------------------------------------------------------------------------------------------------------
 
@@ -77,7 +85,7 @@
 # There wouldn't have to necessarily be just one such ontology.  There could be several, particularly in a 
 # testing phase.  These ontologies would note necessarily have to be included in the standard itself unless
 # they achieved widespread acceptance.
-<http://rs.tdwg.org/dwc/semantics/> dcterms:modified "2015-03-19";
+<http://rs.tdwg.org/dwc/semantics/> dcterms:modified "2015-03-19"^^xsd:date;
                                 dcterms:title "Darwin Core Semantic Relationships"@en;
                                 a dcat:Dataset, owl:Ontology.
 # these are implied relationships that are not explicitly expressed by DCMI
@@ -91,9 +99,10 @@ dwc:MaterialSample rdfs:subClassOf obi:0100051.
 # ---------------------------------------------------------------------------------------------------------------------
 
 # Here is the existing primary Darwin Core vocabulary
-<http://rs.tdwg.org/dwc/terms/> dcterms:modified "2015-03-19";
+<http://rs.tdwg.org/dwc/terms/> dcterms:modified "2015-03-19"^^xsd:date;
                                 a dcat:Dataset, owl:Ontology;
                                 dcat:distribution <http://rs.tdwg.org/dwc/terms-rdf-xml>;
+                                dcat:landingPage <http://rs.tdwg.org/dwc/terms/index.htm>;
                                 dcterms:hasVersion <http://rs.tdwg.org/dwc/2015-03-19/terms/>;
                                 dcterms:publisher "Biodiversity Information Standards (TDWG)"@en;
                                 dcterms:title "Darwin Core Recommended Terms"@en;
@@ -102,8 +111,9 @@ dwc:MaterialSample rdfs:subClassOf obi:0100051.
 # It is mostly what is included in the current document.
 <http://rs.tdwg.org/dwc/terms/recordedBy> dcterms:description """The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: \"José E. Crespo\", \"Oliver P. Pearson | Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."""@en;
                                           dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>;
-                                          dcterms:issued "2008-11-19";
-                                          dcterms:modified "2014-10-23";
+                                          # dcterms:issued "2008-11-19"; # reserve use of this term for versions; use dcterms:created for the date of the first version
+                                          dcterms:created "2008-11-19"^^xsd:date;
+                                          dcterms:modified "2014-10-23"^^xsd:date; # date of most recent version
                                           dcterms:replaces <http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24>;
                                           dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/GatheringAgents/GatheringAgentsText";
                                           dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-30_16>;
@@ -112,6 +122,7 @@ dwc:MaterialSample rdfs:subClassOf obi:0100051.
                                           a rdf:Property;
                                           rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
                                           rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
+                                          dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>;
                                           # The following triple is included in the existing definition.  Under the proposed model, it would be 
                                           # moved into the DwC Semantic Relationships ontology
 #                                         rdfs:subPropertyOf <http://rs.tdwg.org/dwc/terms/accordingTo>.
@@ -126,7 +137,34 @@ dwc:MaterialSample rdfs:subClassOf obi:0100051.
                                           dcat:mediaType "application/rdf+xml".
 # ---------------------------------------------------------------------------------------------------------------------
 
-# part past this line is under construction; haven't worked on including the versioning model
-<http://rs.tdwg.org/dwc/2015-03-19/terms/> a dcat:Dataset.
+# Note that a particular version of a vocabulary includes terms that may have been carried forward unmodified
+# from a previous version.  
+<http://rs.tdwg.org/dwc/2015-03-19/terms/> a dcat:Dataset;
+                                           dcterms:issued "2015-03-19"^^xsd:date;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>.
 
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> a rdf:Property.
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> a rdf:Property;
+      dcterms:isVersionOf dwc:recordedBy;
+      dwcattributes:status "recommended"^^xsd:string;
+      dcterms:issued "2014-10-23"^^xsd:date;
+      dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
+      dcterms:description """The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: \"José E. Crespo\", \"Oliver P. Pearson | Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson. For discussion see http://terms.tdwg.org/wiki/dwc:recordedBy"""@en;
+      rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en.
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> a rdf:Property;
+      dcterms:isVersionOf dwc:recordedBy;
+      dwcattributes:status "superseded"^^xsd:string;
+      dcterms:issued "2009-04-24"^^xsd:date;
+      dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19>;
+      dcterms:description """The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: \"José E. Crespo\", \"Oliver P. Pearson | Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson. For discussion see http://terms.tdwg.org/wiki/dwc:recordedBy"""@en;
+      rdfs:comment """Example: \"Oliver P. Pearson; Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."""@en.
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19> a rdf:Property;
+      dcterms:isVersionOf dwc:recordedBy;
+      dwcattributes:status "superseded"^^xsd:string;
+      dcterms:issued "2008-11-19"^^xsd:date;
+      dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17>.
+<http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17> a rdf:Property;
+      dcterms:isVersionOf <http://rs.tdwg.org/dwc/dwcore/Collector>;
+      dwcattributes:status "superseded"^^xsd:string;
+      dcterms:issued "2007-04-17"^^xsd:date;
+      rdfs:comment """The name(s) (concatenated and separated) of collectors or observers. \"LIKE\" or \"contains\" substring query operations are meant to be used with this element to find matching collector names. The primary collector or observer, especially one whose CollectorNumber is also provided, should be listed first. Example: \"Oliver P. Pearson, Anita K. Pearson\" where the value in CollectorNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."""@en.
+      
