@@ -31,7 +31,7 @@ dwc:recordedBy-2014-10-23 dcterms:isVersionOf dwc:recordedBy.
 
 ----------
 
-A versioned resource is related to its previous version by the property **dcterms:replaces**.  A versioned resource is related to its subsequent version by the property **dcterms:isReplacedBy**. Note: DCMI does not explicitly declare that `dcterms:replaces owl:inverseOf dcterms:isReplacedBy` with the same implications as above.   
+A versioned resource is related to a previous version by the property **dcterms:replaces**.  A versioned resource is related to a subsequent version by the property **dcterms:isReplacedBy**. Note: DCMI does not explicitly declare that `dcterms:replaces owl:inverseOf dcterms:isReplacedBy` with the same implications as above.   
 
 *Examples:*
 
