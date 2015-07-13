@@ -19,6 +19,52 @@ Note: This document has no official standing. It is subject to change at any tim
 dwc:recordedBy-2014-10-23 (http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23)
 ```
 
+##Status of current terms and versioned terms
+
+Current terms are either in use or deprecated. A deprecated current term has an owl:deprecated property with a boolean value of "true". For example:
+```turtle
+dwc:individualID owl:deprecated "true"^^xsd:boolean.
+```
+Any current term without an owl:deprecated property can be assumed to be in use.  Current terms never "go away" - they should persist so that a client dereferencing an obsolete term IRI can "follow its nose" and discover that use of the term should be discontinued.
+
+Versioned terms are either recommended or superseded.  A recommended version of a term has a dwcattributes:staus value of "recommended", while a superseded version of a term has a dwcattributes:staus value of "superseded".  For example:
+```turtle
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> dwcattributes:staus "recommended"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> dwcattributes:staus "superseded"^^xsd:string.
+```
+Versioned terms are not deprecated, since they are a historical record of the state of a current term at some particular time.  A current term that is in use should have only one version that is recommended and one-to-many versions that are superseded.  A current term that is deprecated should have no versions that are recommended and one-to-many versions that are superseded.
+
+A versioned term may replace or be replaced by another versioned term. A current term that is in use may replace a deprecated current term, in which case the deprecated current term will be replaced by the current term that is in use.  However, a deprecated current term will not necessarily be replaced by any current term. 
+
+*Examples:*
+*A current term in use that replaces deprecated current terms.*
+```turtle
+dwc:recordedBy dcterms:replaces <http://rs.tdwg.org/dwc/dwcore/Collector>.
+dwc:recordedBy dcterms:replaces <http://digir.net/schema/conceptual/darwin/2003/1.0/Collector>
+```
+
+*Statuses of versioned terms.*
+Note that only one version of recordedBy is recommended and that no versions of Collector are recommended since the current term Collector is deprecated.
+```turtle
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> dwcattributes:status "recommended"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> dwcattributes:status "superseded"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19> dwcattributes:status "superseded"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17> dwcattributes:status "superseded"^^xsd:string.
+
+```
+
+*Versioned terms that replace or are replaced by other versions.*
+```turtle
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
+                                                              dcterms:isVersionOf dwc:recordedBy.
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19>;
+                                                              dcterms:isVersionOf dwc:recordedBy.
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19> dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17>;
+                                                              dcterms:isVersionOf dwc:recordedBy.
+<http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17> dcterms:isVersionOf <http://rs.tdwg.org/dwc/dwcore/Collector>.
+```
+
+
 ##Property relationships
 A current resource is linked to a versioned resource by the property **dcterms:hasVersion**.  A versioned resource is linked to its current resource by the property **dcterms:isVersionOf**.  Note: DCMI does not explicitly declare that `dcterms:hasVersion owl:inverseOf dcterms:isVersionOf`.  So unless this is declared and reasoning is performed, both of these relationships between current and versioned resources will exist only if both kinds of triples are explicitly declared.
 
