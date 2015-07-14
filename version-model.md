@@ -144,7 +144,7 @@ SELECT ?date ?definition WHERE {
 ```
 
 ----------
-List all properties that were in the 2014-10-30 release of the Darwin Core recommended dwc: terms list.
+List all properties that were in the 2014-10-30 release of the Darwin Core current dwc: terms list.
 
 ```sparql
 SELECT ?property WHERE {
@@ -157,8 +157,22 @@ SELECT ?property WHERE {
 ```
 
 ----------
+List Darwin Core current terms version release dates, the terms on each list, the type of term, and current deprecation status.
 
-Construct a graph that contains properties of all terms that were in the 2014-10-23 release of the Darwin Core recommended dwc: terms list.  
+```sparql
+SELECT ?releaseDate ?term ?kindOfTerm ?deprecationStatus WHERE {
+  <http://rs.tdwg.org/dwc/terms/> dcterms:hasVersion ?listVersion.
+  ?listVersion dcterms:issued ?releaseDate.
+  ?listVersion dcterms:hasPart ?termVersion.
+  ?term dcterms:hasVersion ?termVersion.
+  OPTIONAL { ?term owl:deprecated ?deprecationStatus. }
+  ?term a ?kindOfTerm.
+}
+```
+
+----------
+
+Construct a graph that contains properties of all terms that were in the 2014-10-30 release of the Darwin Core current dwc: terms list.  (note: sample data set doesn't have all of these properties, so I haven't tried this)
 
 ```sparql
 CONSTRUCT {
@@ -172,21 +186,21 @@ CONSTRUCT {
 }
 WHERE {
   <http://rs.tdwg.org/dwc/terms/> dcterms:hasVersion ?listVersion.
-  ?listVersion dcterms:issued "2014-10-23"^^xsd:date.
-  ?termVersion rdfs:isDefinedBy ?listVersion.
+  ?listVersion dcterms:issued "2014-10-30"^^xsd:date.
+  ?listVersion dcterms:hasPart ?termVersion.
   ?termVersion rdfs:label ?labelObject.
   ?termVersion rdfs:comment ?commentObject.
-  ?termVersion dcterms:description ?descriptionObject.
+  OPTIONAL { ?termVersion dcterms:description ?descriptionObject. }
   ?termVersion dcterms:issued ?modifiedObject.
   ?termVersion a ?typeObject.
   ... [continue with additional properties]
   ?term dcterms:hasVersion ?termVersion.
 }
 ```
-Note: this query will fail for terms that are missing any of the specified properties.  For example, **dwc:accordingTo** does not have a **dcterms:description** property and would be missed.  One could replace the given **dcterms:description** triple pattern with 
+Note: If the triple pattern for a particular property is not satisfied, this query will fail for that particular term.  For example, **dwc:accordingTo** does not have a **dcterms:description** property and would be missed.  The solution is to replace the simple **dcterms:description** triple pattern with 
 ```sparql
     OPTIONAL { ?termVersion dcterms:description ?descriptionObject. }
 ```
-to catch this case.  
+as shown in the example.  
 
 The point is that this system would allow a semantic client to reconstruct the state of a current resource (such as the Darwin Core term list) at any point in time by extracting saved data about its corresponding versioned resource at that time.
