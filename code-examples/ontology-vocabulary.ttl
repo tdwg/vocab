@@ -99,26 +99,39 @@ dwc:MaterialSample rdfs:subClassOf obi:0100051.
 # ---------------------------------------------------------------------------------------------------------------------
 
 # Here is the existing primary Darwin Core vocabulary
+# dcterms:hasVersion and other properties have been added to make this example work
 <http://rs.tdwg.org/dwc/terms/> dcterms:modified "2015-03-19"^^xsd:date;
                                 a dcat:Dataset, owl:Ontology;
                                 dcat:distribution <http://rs.tdwg.org/dwc/terms-rdf-xml>;
                                 dcat:landingPage <http://rs.tdwg.org/dwc/terms/index.htm>;
                                 dcterms:hasVersion <http://rs.tdwg.org/dwc/2015-03-19/terms/>;
+                                dcterms:hasVersion <http://rs.tdwg.org/dwc/2014-10-30/terms/>;
+                                dcterms:hasVersion <http://rs.tdwg.org/dwc/2013-10-09/terms/>;
+                                dcterms:hasPart dwc:recordedBy;
+                                dcterms:hasPart dwc:sampleSizeValue;
+                                dcterms:hasPart dwc:organismName;
+                                dcterms:hasPart dwc:MaterialSample;
+                                dcterms:hasPart dwc:individualID;
+                                dcterms:hasPart dwc:organismID;
                                 dcterms:publisher "Biodiversity Information Standards (TDWG)"@en;
-                                dcterms:title "Darwin Core Recommended Terms"@en;
-                                rdfs:comment """This document contains a list of Darwin Core terms that have the dwcattributes:status equal to \"recommended\". For the full normative RDF document of all Darwin Core terms, see dwctermshistory.rdf. To comment on this schema, please create a new issue in https://github.com/tdwg/dwc/issues""".
+                                # dcterms:title "Darwin Core Recommended Terms"@en;
+                                dcterms:title "Darwin Core Current Terms"@en; # This needs to included terms with owl:deprecated values of true so that their IRIs can be dereferenced by content negotiation
+                                # rdfs:comment """This document contains a list of Darwin Core terms that have the dwcattributes:status equal to \"recommended\". For the full normative RDF document of all Darwin Core terms, see dwctermshistory.rdf. To comment on this schema, please create a new issue in https://github.com/tdwg/dwc/issues""";
+                                rdfs:comment """This document contains a list of Darwin Core terms whose most recent versions have the dwcattributes:status equal to \"recommended\" or \"deprecated\". For the full history all Darwin Core terms, see dwctermshistory.rdf. To comment on this schema, please create a new issue in https://github.com/tdwg/dwc/issues""".
 # The following description of dwc:recordedBy is included as an example.  There are many more terms.
-# It is mostly what is included in the current document.
+# It is mostly what is included in the current document.  Some versioning properties have been changed to make this example work.
 <http://rs.tdwg.org/dwc/terms/recordedBy> dcterms:description """The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: \"José E. Crespo\", \"Oliver P. Pearson | Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."""@en;
-                                          dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>;
+                                          dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23>;
+                                          dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24>;
+                                          dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19>;
                                           # dcterms:issued "2008-11-19"; # reserve use of this term for versions; use dcterms:created for the date of the first version
                                           dcterms:created "2008-11-19"^^xsd:date;
-                                          dcterms:modified "2014-10-23"^^xsd:date; # date of most recent version
-                                          dcterms:replaces <http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24>;
+                                          dcterms:modified "2014-10-23"^^xsd:date; # date of issue of most recent version
+                                          #dcterms:replaces <http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24>;
                                           dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/GatheringAgents/GatheringAgentsText";
-                                          dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-30_16>;
+                                          #dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-30_16>; #I think this should be a property of a particular version
                                           dwcattributes:organizedInClass <http://rs.tdwg.org/dwc/terms/Occurrence>;
-                                          dwcattributes:status "recommended";
+                                          #dwcattributes:status "recommended";  #property of a particular version
                                           a rdf:Property;
                                           rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
                                           rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
@@ -127,6 +140,56 @@ dwc:MaterialSample rdfs:subClassOf obi:0100051.
                                           # moved into the DwC Semantic Relationships ontology
 #                                         rdfs:subPropertyOf <http://rs.tdwg.org/dwc/terms/accordingTo>.
                                           rdfs:label "Recorded By"@en.
+
+# The following current term descriptions are stripped down as illustrations.  In reality they would have more properties.
+dwc:sampleSizeValue rdfs:comment "A numeric value for a measurement of the size (time duration, length, area, or volume) of a sample in a sampling event."@en;
+                    dcterms:description """A sampleSizeValue must have a corresponding sampleSizeUnit. Example: \"5\" for sampleSizeValue with \"metre\" for sampleSizeUnit."""@en;
+                    dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/sampleSizeValue-2014-12-23>;
+                    a rdf:Property;
+                    dcterms:created "2015-03-19"^^xsd:date;
+                    dcterms:modified "2015-03-19"^^xsd:date; # date of issue of most recent version
+                    rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
+                    dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>.
+
+dwc:organismName    dcterms:description """Examples: \"Huberta\", \"Boab Prison Tree\", \"J pod\"."""@en;
+                    rdfs:comment "A textual name or label assigned to an Organism instance."@en;
+                    dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/organismName-2014-10-23>;
+                    a rdf:Property;
+                    dcterms:created "2014-10-23"^^xsd:date;
+                    dcterms:modified "2014-10-23"^^xsd:date; # date of issue of most recent version
+                    rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
+                    dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>.
+
+dwc:MaterialSample  dcterms:description "Examples: A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample."@en;
+                    rdfs:comment "A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en;
+                    dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>;
+                    dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>;
+                    a rdfs:Class;
+                    dcterms:created "2013-03-28"^^xsd:date;
+                    dcterms:modified "2014-10-23"^^xsd:date; # date of issue of most recent version
+                    rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
+                    dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>.
+
+dwc:individualID    dcterms:description """Examples: \"U.amer. 44\", \"Smedley\", \"Orca J 23\""""@en;
+                    rdfs:comment "An identifier for an individual or named group of individual organisms represented in the Occurrence. Meant to accommodate resampling of the same individual or group for monitoring purposes. May be a global unique identifier or an identifier specific to a data set."@en;
+                    dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>;
+                    a rdf:Property;
+                    dcterms:created "2009-04-24"^^xsd:date;
+                    dcterms:modified "2009-04-24"^^xsd:date; # date of issue of most recent version
+                    owl:deprecated "true"^^xsd:boolean;
+                    dcterms:isReplacedBy dwc:organismID;
+                    rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
+                    dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>.
+
+dwc:organismID      rdfs:comment "An identifier for the Organism instance (as opposed to a particular digital record of the Organism). May be a globally unique identifier or an identifier specific to the data set."@en;
+                    dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>;
+                    a rdf:Property;
+                    dcterms:created "2014-10-23"^^xsd:date;
+                    dcterms:modified "2014-10-23"^^xsd:date; # date of issue of most recent version
+                    dcterms:replaces dwc:individualID;
+                    rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
+                    dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>.
+
 # ---------------------------------------------------------------------------------------------------------------------
 
 # I just made up this IRI to represent the RDF/XML distribution of the primary DwC vocabulary.
@@ -137,34 +200,102 @@ dwc:MaterialSample rdfs:subClassOf obi:0100051.
                                           dcat:mediaType "application/rdf+xml".
 # ---------------------------------------------------------------------------------------------------------------------
 
-# Note that a particular version of a vocabulary includes terms that may have been carried forward unmodified
+# Note that a particular version of a vocabulary includes term versions that have been carried forward unmodified
 # from a previous version.  
 <http://rs.tdwg.org/dwc/2015-03-19/terms/> a dcat:Dataset;
-                                           dcterms:issued "2015-03-19"^^xsd:date;
-                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>.
+                                           dcterms:publisher "Biodiversity Information Standards (TDWG)"@en;
+                                           dcterms:title "Darwin Core Recommended Terms, version 2015-03-19"@en;
+                                           dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/>;
+                                           dcterms:issued "2015-03-19"^^xsd:date; #decision adding sampling event-related terms
+                                           dcterms:replaces <http://rs.tdwg.org/dwc/2014-10-30/terms/>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/sampleSizeValue-2014-12-23>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/organismName-2014-10-23>.
 
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> a rdf:Property;
+<http://rs.tdwg.org/dwc/2014-10-30/terms/> a dcat:Dataset;
+                                           dcterms:publisher "Biodiversity Information Standards (TDWG)"@en;
+                                           dcterms:title "Darwin Core Recommended Terms, version 2014-10-30"@en;
+                                           dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/>;
+                                           dcterms:issued "2014-10-30"^^xsd:date; #decision establishing Organism class, pipe for seperator
+                                           dcterms:replaces <http://rs.tdwg.org/dwc/2013-10-09/terms/>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/organismName-2014-10-23>.
+
+<http://rs.tdwg.org/dwc/2013-10-09/terms/> a dcat:Dataset;
+                                           dcterms:publisher "Biodiversity Information Standards (TDWG)"@en;
+                                           dcterms:title "Darwin Core Recommended Terms, version 2013-10-09"@en;
+                                           dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/>;
+                                           dcterms:issued "2013-10-09"^^xsd:date; #decision establishing MaterialSample class
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>;
+                                           dcterms:hasPart <http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24>.
+
+<http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23> a rdf:Property;
       dcterms:isVersionOf dwc:recordedBy;
       dwcattributes:status "recommended"^^xsd:string;
       dcterms:issued "2014-10-23"^^xsd:date;
-      dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
+      dcterms:replaces <http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24>;
       dcterms:description """The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: \"José E. Crespo\", \"Oliver P. Pearson | Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson. For discussion see http://terms.tdwg.org/wiki/dwc:recordedBy"""@en;
       rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en.
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> a rdf:Property;
+<http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24> a rdf:Property;
       dcterms:isVersionOf dwc:recordedBy;
       dwcattributes:status "superseded"^^xsd:string;
       dcterms:issued "2009-04-24"^^xsd:date;
-      dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19>;
-      dcterms:description """The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: \"José E. Crespo\", \"Oliver P. Pearson | Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson. For discussion see http://terms.tdwg.org/wiki/dwc:recordedBy"""@en;
-      rdfs:comment """Example: \"Oliver P. Pearson; Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."""@en.
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19> a rdf:Property;
+      dcterms:replaces <http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19>;
+      dcterms:description """Example: \"Oliver P. Pearson; Anita K. Pearson\" where the value in recordNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."""@en;
+      rdfs:comment """A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."""@en.
+<http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19> a rdf:Property;
       dcterms:isVersionOf dwc:recordedBy;
       dwcattributes:status "superseded"^^xsd:string;
       dcterms:issued "2008-11-19"^^xsd:date;
-      dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17>.
-<http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17> a rdf:Property;
+      dcterms:replaces <http://rs.tdwg.org/dwc/terms/Collector-2007-04-17>.
+<http://rs.tdwg.org/dwc/terms/Collector-2007-04-17> a rdf:Property;
       dcterms:isVersionOf <http://rs.tdwg.org/dwc/dwcore/Collector>;
       dwcattributes:status "superseded"^^xsd:string;
       dcterms:issued "2007-04-17"^^xsd:date;
       rdfs:comment """The name(s) (concatenated and separated) of collectors or observers. \"LIKE\" or \"contains\" substring query operations are meant to be used with this element to find matching collector names. The primary collector or observer, especially one whose CollectorNumber is also provided, should be listed first. Example: \"Oliver P. Pearson, Anita K. Pearson\" where the value in CollectorNumber \"OPP 7101\" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."""@en.
-      
+
+<http://rs.tdwg.org/dwc/terms/sampleSizeValue-2014-12-23> a rdf:Property;
+      dcterms:isVersionOf dwc:sampleSizeValue;
+      dwcattributes:status "recommended"^^xsd:string;
+      dcterms:issued "2015-03-19"^^xsd:date;
+      dcterms:description """A sampleSizeValue must have a corresponding sampleSizeUnit. Example: \"5\" for sampleSizeValue with \"metre\" for sampleSizeUnit."""@en;
+      rdfs:comment "A numeric value for a measurement of the size (time duration, length, area, or volume) of a sample in a sampling event."@en.
+
+<http://rs.tdwg.org/dwc/terms/organismName-2014-10-23> a rdf:Property;
+      dcterms:isVersionOf dwc:organismName;
+      dwcattributes:status "recommended"^^xsd:string;
+      dcterms:issued "2014-10-23"^^xsd:date;
+      dcterms:description """Examples: \"Huberta\", \"Boab Prison Tree\", \"J pod\"."""@en;
+      rdfs:comment "A textual name or label assigned to an Organism instance."@en.
+
+<http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28> a rdfs:Class;
+      dcterms:isVersionOf dwc:MaterialSample;
+      dwcattributes:status "superseded"^^xsd:string;
+      dcterms:issued "2013-03-28"^^xsd:date;
+      rdfs:comment "The category of information pertaining to the physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en.
+<http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23> a rdfs:Class;
+      dcterms:isVersionOf dwc:MaterialSample;
+      dwcattributes:status "recommended"^^xsd:string;
+      dcterms:issued "2014-10-23"^^xsd:date;
+      dcterms:description "Examples: A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample."@en;
+      rdfs:comment "A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en;
+      dcterms:replaces <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>.
+
+<http://rs.tdwg.org/dwc/terms/individualID-2009-04-24> a rdf:Property;
+      dcterms:isVersionOf dwc:individualID;
+      dwcattributes:status "deprecated"^^xsd:string;
+      dcterms:issued "2009-04-24"^^xsd:date;
+      dcterms:description """Examples: \"U.amer. 44\", \"Smedley\", \"Orca J 23\""""@en;
+      rdfs:comment "An identifier for an individual or named group of individual organisms represented in the Occurrence. Meant to accommodate resampling of the same individual or group for monitoring purposes. May be a global unique identifier or an identifier specific to a data set."@en.
+<http://rs.tdwg.org/dwc/terms/organismID-2014-10-23> a rdf:Property;
+      dcterms:isVersionOf dwc:organismID;
+      dwcattributes:status "recommended"^^xsd:string;
+      dcterms:issued "2014-10-23"^^xsd:date;
+      rdfs:comment "An identifier for the Organism instance (as opposed to a particular digital record of the Organism). May be a globally unique identifier or an identifier specific to the data set."@en;
+      dcterms:replaces <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>.
+

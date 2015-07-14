@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+	<!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+	<!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+	<!ENTITY dwc 'http://rs.tdwg.org/dwc/terms/'>
+	<!ENTITY dwciri 'http://rs.tdwg.org/dwc/iri/'>
+	<!ENTITY dwcattributes 'http://rs.tdwg.org/dwc/terms/attributes/'>
+	<!ENTITY dcterms 'http://purl.org/dc/terms/'>
+	<!ENTITY foaf 'http://xmlns.com/foaf/0.1/'>
+	<!ENTITY obi 'http://purl.obolibrary.org/obo/OBI_'>
+	<!ENTITY dcat 'http://www.w3.org/ns/dcat#'>
+	<!ENTITY owl 'http://www.w3.org/2002/07/owl#'>
+]>
+<rdf:RDF xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:dwc="http://rs.tdwg.org/dwc/terms/" xmlns:dwciri="http://rs.tdwg.org/dwc/iri/" xmlns:dwcattributes="http://rs.tdwg.org/dwc/terms/attributes/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:obi="http://purl.obolibrary.org/obo/OBI_" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/hasPart">
+    <owl:inverseOf rdf:resource="http://purl.org/dc/terms/isPartOf" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/hasVersion">
+    <owl:inverseOf rdf:resource="http://purl.org/dc/terms/isVersionOf" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/references">
+    <owl:inverseOf rdf:resource="http://purl.org/dc/terms/isReferencedBy" />
+  </rdf:Description>
+  <dcat:Dataset rdf:about="http://rs.tdwg.org/dwc/2013-10-09/terms/">
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/individualID-2009-04-24" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24" />
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-10-09</dcterms:issued>
+    <dcterms:publisher xml:lang="en">Biodiversity Information Standards (TDWG)</dcterms:publisher>
+    <dcterms:title xml:lang="en">Darwin Core Recommended Terms, version 2013-10-09</dcterms:title>
+  </dcat:Dataset>
+  <dcat:Dataset rdf:about="http://rs.tdwg.org/dwc/2014-10-30/terms/">
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/organismID-2014-10-23" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/organismName-2014-10-23" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23" />
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-30</dcterms:issued>
+    <dcterms:publisher xml:lang="en">Biodiversity Information Standards (TDWG)</dcterms:publisher>
+    <dcterms:replaces rdf:resource="http://rs.tdwg.org/dwc/2013-10-09/terms/" />
+    <dcterms:title xml:lang="en">Darwin Core Recommended Terms, version 2014-10-30</dcterms:title>
+  </dcat:Dataset>
+  <dcat:Dataset rdf:about="http://rs.tdwg.org/dwc/2015-03-19/terms/">
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/organismID-2014-10-23" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/organismName-2014-10-23" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/sampleSizeValue-2014-12-23" />
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-19</dcterms:issued>
+    <dcterms:publisher xml:lang="en">Biodiversity Information Standards (TDWG)</dcterms:publisher>
+    <dcterms:replaces rdf:resource="http://rs.tdwg.org/dwc/2014-10-30/terms/" />
+    <dcterms:title xml:lang="en">Darwin Core Recommended Terms, version 2015-03-19</dcterms:title>
+  </dcat:Dataset>
+  <owl:Ontology rdf:about="http://rs.tdwg.org/dwc/basic-vocabulary" dcterms:description="This ontology includes human-readible term definitions with minimal entailments">
+    <dcterms:title xml:lang="en">Darwin Core Basic Vocabulary</dcterms:title>
+    <owl:imports rdf:resource="http://rs.tdwg.org/dwc/dcmi/" />
+    <owl:imports rdf:resource="http://rs.tdwg.org/dwc/iri/" />
+    <owl:imports rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <owl:imports rdf:resource="http://rs.tdwg.org/dwc/terms/attributes" />
+  </owl:Ontology>
+  <owl:Ontology rdf:about="http://rs.tdwg.org/dwc/dcmi/">
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/Location" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/accessRights" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/bibliographicCitation" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/language" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/license" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/modified" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/references" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/rightsHolder" />
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-19</dcterms:modified>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset" />
+  </owl:Ontology>
+  <owl:Ontology rdf:about="http://rs.tdwg.org/dwc/enhanced-vocabulary" dcterms:description="This ontology includes term definitions and relationships among terms intended to achieve some reasoning purpose.">
+    <dcterms:title xml:lang="en">Darwin Core Semantically Enhanced Vocabulary</dcterms:title>
+    <owl:imports rdf:resource="http://rs.tdwg.org/dwc/dcmi/" />
+    <owl:imports rdf:resource="http://rs.tdwg.org/dwc/iri/" />
+    <owl:imports rdf:resource="http://rs.tdwg.org/dwc/semantics/" />
+    <owl:imports rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <owl:imports rdf:resource="http://rs.tdwg.org/dwc/terms/attributes" />
+  </owl:Ontology>
+  <owl:ObjectProperty rdf:about="http://rs.tdwg.org/dwc/iri/recordedBy" />
+  <owl:Ontology rdf:about="http://rs.tdwg.org/dwc/semantics/">
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-19</dcterms:modified>
+    <dcterms:title xml:lang="en">Darwin Core Semantic Relationships</dcterms:title>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset" />
+  </owl:Ontology>
+  <dcat:Distribution rdf:about="http://rs.tdwg.org/dwc/terms-rdf-xml" dcat:mediaType="application/rdf+xml">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document" />
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/tdwg/dwc/master/rdf/dwcterms.rdf" />
+  </dcat:Distribution>
+  <owl:Ontology rdf:about="http://rs.tdwg.org/dwc/terms/" rdfs:comment="This document contains a list of Darwin Core terms whose most recent versions have the dwcattributes:status equal to &quot;recommended&quot; or &quot;deprecated&quot;. For the full history all Darwin Core terms, see dwctermshistory.rdf. To comment on this schema, please create a new issue in https://github.com/tdwg/dwc/issues">
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/individualID" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/organismID" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/organismName" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/sampleSizeValue" />
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/2013-10-09/terms/" />
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/2014-10-30/terms/" />
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/2015-03-19/terms/" />
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-19</dcterms:modified>
+    <dcterms:publisher xml:lang="en">Biodiversity Information Standards (TDWG)</dcterms:publisher>
+    <dcterms:title xml:lang="en">Darwin Core Current Terms</dcterms:title>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset" />
+    <dcat:distribution rdf:resource="http://rs.tdwg.org/dwc/terms-rdf-xml" />
+    <dcat:landingPage rdf:resource="http://rs.tdwg.org/dwc/terms/index.htm" />
+  </owl:Ontology>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/Collector-2007-04-17">
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/dwcore/Collector" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2007-04-17</dcterms:issued>
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">superseded</dwcattributes:status>
+    <rdfs:comment xml:lang="en">The name(s) (concatenated and separated) of collectors or observers. "LIKE" or "contains" substring query operations are meant to be used with this element to find matching collector names. The primary collector or observer, especially one whose CollectorNumber is also provided, should be listed first. Example: "Oliver P. Pearson, Anita K. Pearson" where the value in CollectorNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson.</rdfs:comment>
+  </rdf:Property>
+  <rdfs:Class rdf:about="http://rs.tdwg.org/dwc/terms/MaterialSample">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-03-28</dcterms:created>
+    <dcterms:description xml:lang="en">Examples: A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample.</dcterms:description>
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28" />
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23" />
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:modified>
+    <rdfs:comment xml:lang="en">A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0100051" />
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28">
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-03-28</dcterms:issued>
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">superseded</dwcattributes:status>
+    <rdfs:comment xml:lang="en">The category of information pertaining to the physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed.</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23">
+    <dcterms:description xml:lang="en">Examples: A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample.</dcterms:description>
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:issued>
+    <dcterms:replaces rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28" />
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recommended</dwcattributes:status>
+    <rdfs:comment xml:lang="en">A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed.</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/PreservedSpecimen">
+    <owl:disjointWith rdf:resource="http://rs.tdwg.org/dwc/terms/Occurrence" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/guides/rdf/">
+    <dcterms:title xml:lang="en">Darwin Core RDF Guide</dcterms:title>
+    <foaf:homepage rdf:resource="http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm" />
+  </rdf:Description>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/individualID">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-04-24</dcterms:created>
+    <dcterms:description xml:lang="en">Examples: "U.amer. 44", "Smedley", "Orca J 23"</dcterms:description>
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/individualID-2009-04-24" />
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <dcterms:isReplacedBy rdf:resource="http://rs.tdwg.org/dwc/terms/organismID" />
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-04-24</dcterms:modified>
+    <rdfs:comment xml:lang="en">An identifier for an individual or named group of individual organisms represented in the Occurrence. Meant to accommodate resampling of the same individual or group for monitoring purposes. May be a global unique identifier or an identifier specific to a data set.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/individualID-2009-04-24">
+    <dcterms:description xml:lang="en">Examples: "U.amer. 44", "Smedley", "Orca J 23"</dcterms:description>
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/individualID" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-04-24</dcterms:issued>
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">deprecated</dwcattributes:status>
+    <rdfs:comment xml:lang="en">An identifier for an individual or named group of individual organisms represented in the Occurrence. Meant to accommodate resampling of the same individual or group for monitoring purposes. May be a global unique identifier or an identifier specific to a data set.</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/organismID">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:created>
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/organismID-2014-10-23" />
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:modified>
+    <dcterms:replaces rdf:resource="http://rs.tdwg.org/dwc/terms/individualID" />
+    <rdfs:comment xml:lang="en">An identifier for the Organism instance (as opposed to a particular digital record of the Organism). May be a globally unique identifier or an identifier specific to the data set.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/organismID-2014-10-23">
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/organismID" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:issued>
+    <dcterms:replaces rdf:resource="http://rs.tdwg.org/dwc/terms/individualID-2009-04-24" />
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recommended</dwcattributes:status>
+    <rdfs:comment xml:lang="en">An identifier for the Organism instance (as opposed to a particular digital record of the Organism). May be a globally unique identifier or an identifier specific to the data set.</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/organismName">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:created>
+    <dcterms:description xml:lang="en">Examples: "Huberta", "Boab Prison Tree", "J pod".</dcterms:description>
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/organismName-2014-10-23" />
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:modified>
+    <rdfs:comment xml:lang="en">A textual name or label assigned to an Organism instance.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/organismName-2014-10-23">
+    <dcterms:description xml:lang="en">Examples: "Huberta", "Boab Prison Tree", "J pod".</dcterms:description>
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/organismName" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:issued>
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recommended</dwcattributes:status>
+    <rdfs:comment xml:lang="en">A textual name or label assigned to an Organism instance.</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/recordedBy" dwcattributes:abcdEquivalence="DataSets/DataSet/Units/Unit/Gathering/GatheringAgents/GatheringAgentsText">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-11-19</dcterms:created>
+    <dcterms:description xml:lang="en">The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: "José E. Crespo", "Oliver P. Pearson | Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson.</dcterms:description>
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19" />
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24" />
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23" />
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:modified>
+    <dwcattributes:organizedInClass rdf:resource="http://rs.tdwg.org/dwc/terms/Occurrence" />
+    <rdfs:comment xml:lang="en">A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <rdfs:label xml:lang="en">Recorded By</rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19">
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-11-19</dcterms:issued>
+    <dcterms:replaces rdf:resource="http://rs.tdwg.org/dwc/terms/Collector-2007-04-17" />
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">superseded</dwcattributes:status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24">
+    <dcterms:description xml:lang="en">Example: "Oliver P. Pearson; Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson.</dcterms:description>
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2009-04-24</dcterms:issued>
+    <dcterms:replaces rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19" />
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">superseded</dwcattributes:status>
+    <rdfs:comment xml:lang="en">A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first.</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23">
+    <dcterms:description xml:lang="en">The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: "José E. Crespo", "Oliver P. Pearson | Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson. For discussion see http://terms.tdwg.org/wiki/dwc:recordedBy</dcterms:description>
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:issued>
+    <dcterms:replaces rdf:resource="http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24" />
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recommended</dwcattributes:status>
+    <rdfs:comment xml:lang="en">A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first.</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/sampleSizeValue">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-19</dcterms:created>
+    <dcterms:description xml:lang="en">A sampleSizeValue must have a corresponding sampleSizeUnit. Example: "5" for sampleSizeValue with "metre" for sampleSizeUnit.</dcterms:description>
+    <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/sampleSizeValue-2014-12-23" />
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-19</dcterms:modified>
+    <rdfs:comment xml:lang="en">A numeric value for a measurement of the size (time duration, length, area, or volume) of a sample in a sampling event.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/terms/sampleSizeValue-2014-12-23">
+    <dcterms:description xml:lang="en">A sampleSizeValue must have a corresponding sampleSizeUnit. Example: "5" for sampleSizeValue with "metre" for sampleSizeUnit.</dcterms:description>
+    <dcterms:isVersionOf rdf:resource="http://rs.tdwg.org/dwc/terms/sampleSizeValue" />
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-19</dcterms:issued>
+    <dwcattributes:status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recommended</dwcattributes:status>
+    <rdfs:comment xml:lang="en">A numeric value for a measurement of the size (time duration, length, area, or volume) of a sample in a sampling event.</rdfs:comment>
+  </rdf:Property>
+  <rdf:Description rdf:about="http://www.tdwg.org/standards/450/">
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/basic-ontology" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/enhanced-ontology" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/guides/rdf/" />
+    <dcterms:title xml:lang="en">Darwin Core Standard</dcterms:title>
+  </rdf:Description>
+</rdf:RDF>
