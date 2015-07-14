@@ -87,12 +87,13 @@ dwc:individualID owl:deprecated "true"^^xsd:boolean.
 ```
 Any current term without an owl:deprecated property can be assumed to be in use.  Current terms never "go away" - they should persist so that a client dereferencing an obsolete term IRI can "follow its nose" and discover that use of the term should be discontinued.
 
-Versioned terms are either recommended or superseded.  A recommended version of a term has a dwcattributes:staus value of "recommended", while a superseded version of a term has a dwcattributes:staus value of "superseded".  For example:
+Versioned terms have a status of recommended, superseded, or deprecated.  A recommended version of a term has a dwcattributes:staus value of "recommended". A superseded version of a term has a dwcattributes:staus value of "superseded".  A version of a term that is deprecated has a dwcattributes:staus value of "deprecated".  For example:
 ```turtle
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> dwcattributes:staus "recommended"^^xsd:string.
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> dwcattributes:staus "superseded"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23> dwcattributes:staus "recommended"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24> dwcattributes:staus "superseded"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/individualID-2009-04-24> dwcattributes:staus "deprecated"^^xsd:string.
 ```
-Versioned terms are not deprecated, since they are a historical record of the state of a current term at some particular time.  A current term that is in use should have only one version that is recommended and one-to-many versions that are superseded.  A current term that is deprecated should have no versions that are recommended and one-to-many versions that are superseded.
+A current term that is in use should have only one version with a recommended status (the most recent one) and one-to-many versions with superseded status.  A current term that is deprecated should have no versions with recommended status, zero-to-many versions with superseded status, and one version with deprecated status (the most recent one).
 
 A versioned term may replace or be replaced by another versioned term. A current term that is in use may replace a deprecated current term, in which case the deprecated current term will be replaced by the current term that is in use.  However, a deprecated current term will not necessarily be replaced by any current term. 
 
@@ -108,22 +109,22 @@ dwc:recordedBy dcterms:replaces <http://digir.net/schema/conceptual/darwin/2003/
 *Statuses of versioned terms.*
 Note that only one version of recordedBy is recommended and that no versions of Collector are recommended since the current term Collector is deprecated.
 ```turtle
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> dwcattributes:status "recommended"^^xsd:string.
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> dwcattributes:status "superseded"^^xsd:string.
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19> dwcattributes:status "superseded"^^xsd:string.
-<http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17> dwcattributes:status "superseded"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23> dwcattributes:status "recommended"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24> dwcattributes:status "superseded"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19> dwcattributes:status "superseded"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/Collector-2007-04-17> dwcattributes:status "superseded"^^xsd:string.
 
 ```
 
 *Versioned terms that replace or are replaced by other versions.*
 ```turtle
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
-                                                              dcterms:isVersionOf dwc:recordedBy.
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19>;
-                                                              dcterms:isVersionOf dwc:recordedBy.
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2008-11-19> dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17>;
-                                                              dcterms:isVersionOf dwc:recordedBy.
-<http://rs.tdwg.org/dwc/terms/history/#Collector-2007-04-17> dcterms:isVersionOf <http://rs.tdwg.org/dwc/dwcore/Collector>.
+<http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23> dcterms:replaces <http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24>;
+                                                    dcterms:isVersionOf dwc:recordedBy.
+<http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24> dcterms:replaces <http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19>;
+                                                    dcterms:isVersionOf dwc:recordedBy.
+<http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19> dcterms:replaces <http://rs.tdwg.org/dwc/terms/Collector-2007-04-17>;
+                                                    dcterms:isVersionOf dwc:recordedBy.
+<http://rs.tdwg.org/dwc/terms/Collector-2007-04-17> dcterms:isVersionOf <http://rs.tdwg.org/dwc/dwcore/Collector>.
 ```
 
 ## Competency questions
