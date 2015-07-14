@@ -152,7 +152,7 @@ SELECT ?property WHERE {
   ?listVersion dcterms:issued "2014-10-30"^^xsd:date.
   ?listVersion dcterms:hasPart ?termVersion.
   ?property dcterms:hasVersion ?termVersion.
-  ?property a rdfs:Property.
+  ?property a rdf:Property.
 }
 ```
 
