@@ -1,5 +1,5 @@
 #TDWG Version Model
-Preliminary Draft 2015-07-08 - Steve Baskauf - TDWG Vocabulary Management Task Group
+Preliminary Draft 2015-07-14 - Steve Baskauf - TDWG Vocabulary Management Task Group
 
 Note: This document has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
 Versioned term URIs and dwcattributes:status values of versioned terms reflect current Darwin Core practice and would be extended to all TDWG vocabularies.
