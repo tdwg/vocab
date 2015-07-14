@@ -117,6 +117,8 @@ SELECT DISTINCT ?term ?subvocab WHERE {
 }
 ```
 
+![](https://raw.githubusercontent.com/tdwg/vocab/master/code-examples/query4.png)
+
 Note: Since DCMI does not declare `dcterms:hasPart owl:inverseOf dcterms:isPartOf`, the query must allow either of the possible triple patterns involving those two terms.
 
 ----------
@@ -132,6 +134,9 @@ SELECT DISTINCT ?term ?subvocab WHERE {
   ?term a rdf:Property.
 }
 ```
+
+![](https://raw.githubusercontent.com/tdwg/vocab/master/code-examples/query5.png)
+
 ----------
 
 List all of the properties and values dwciri:recordedBy from any subvocabulary
@@ -141,4 +146,9 @@ SELECT DISTINCT ?property ?value WHERE {
   dwciri:recordedBy ?property ?value.
 }
 ```
+
+![](https://raw.githubusercontent.com/tdwg/vocab/master/code-examples/query6.png)
+
+Notice that the type declarations from both subvocabularies are included (primary and semantic relations).
+
 Note: the triplestore included all triples in the [Ontology Vocabulary sample file](https://github.com/tdwg/vocab/blob/master/code-examples/ontology-vocabulary.ttl).  To restrict queries to only the Basic Vocabulary or the Enhanced Vocabulary, the vocabulary definitions would need to be placed in different documents and the query performed on named graphs (or whatever that's called when you use the FROM keyword).
