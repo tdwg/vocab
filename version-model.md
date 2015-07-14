@@ -128,7 +128,7 @@ Note that only one version of recordedBy is recommended and that no versions of 
 ```
 
 ## Competency questions
-The following SPARQL queries show how this model enables reconstruction of the state of a current resource at particular times in the past.
+The following SPARQL queries show how this model enables reconstruction of the state of a current resource at particular times in the past.  The screenshots show what happens when the query is run on the [Ontology Vocabulary sample file](https://github.com/tdwg/vocab/blob/master/code-examples/ontology-vocabulary.ttl)
 
 ----------
 
@@ -142,7 +142,7 @@ SELECT ?date ?definition WHERE {
   ?version rdfs:comment ?definition.
 }
 ```
-
+![](https://raw.githubusercontent.com/tdwg/vocab/master/code-examples/query1.png)
 ----------
 List all properties that were in the 2014-10-30 release of the Darwin Core current dwc: terms list.
 
@@ -155,7 +155,7 @@ SELECT ?property WHERE {
   ?property a rdf:Property.
 }
 ```
-
+![](https://raw.githubusercontent.com/tdwg/vocab/master/code-examples/query2.png)
 ----------
 List Darwin Core current terms version release dates, the terms on each list, the type of term, and current deprecation status.
 
@@ -169,7 +169,7 @@ SELECT ?releaseDate ?term ?kindOfTerm ?deprecationStatus WHERE {
   ?term a ?kindOfTerm.
 }
 ```
-
+![](https://raw.githubusercontent.com/tdwg/vocab/master/code-examples/query3.png)
 ----------
 
 Construct a graph that contains properties of all terms that were in the 2014-10-30 release of the Darwin Core current dwc: terms list.  (note: sample data set doesn't have all of these properties, so I haven't tried this)
