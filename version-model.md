@@ -143,7 +143,9 @@ SELECT ?date ?definition WHERE {
 }
 ```
 ![](https://raw.githubusercontent.com/tdwg/vocab/master/code-examples/query1.png)
+
 ----------
+
 List all properties that were in the 2014-10-30 release of the Darwin Core current dwc: terms list.
 
 ```sparql
@@ -156,7 +158,9 @@ SELECT ?property WHERE {
 }
 ```
 ![](https://raw.githubusercontent.com/tdwg/vocab/master/code-examples/query2.png)
+
 ----------
+
 List Darwin Core current terms version release dates, the terms on each list, the type of term, and current deprecation status.
 
 ```sparql
@@ -170,6 +174,7 @@ SELECT ?releaseDate ?term ?kindOfTerm ?deprecationStatus WHERE {
 }
 ```
 ![](https://raw.githubusercontent.com/tdwg/vocab/master/code-examples/query3.png)
+
 ----------
 
 Construct a graph that contains properties of all terms that were in the 2014-10-30 release of the Darwin Core current dwc: terms list.  (note: sample data set doesn't have all of these properties, so I haven't tried this)
