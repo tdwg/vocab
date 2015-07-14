@@ -133,24 +133,24 @@ The following SPARQL queries show how this model enables reconstruction of the s
 ----------
 
 
-Display the definitions of all versions of the term **dwc:recordedBy** and the date that each definition was adopted.
+Display the definitions of all versions of the term **dwc:MaterialSample** and the date that each definition was adopted.
 
 ```sparql
 SELECT ?date ?definition WHERE {
-  dwc:recordedBy dcterms:hasVersion ?version.
+  dwc:MaterialSample dcterms:hasVersion ?version.
   ?version dcterms:issued ?date.
   ?version rdfs:comment ?definition.
 }
 ```
 
 ----------
-List all properties that were in the 2014-10-23 release of the Darwin Core recommended dwc: terms list.
+List all properties that were in the 2014-10-30 release of the Darwin Core recommended dwc: terms list.
 
 ```sparql
 SELECT ?property WHERE {
   <http://rs.tdwg.org/dwc/terms/> dcterms:hasVersion ?listVersion.
-  ?listVersion dcterms:issued "2014-10-23"^^xsd:date.
-  ?termVersion rdfs:isDefinedBy ?listVersion.
+  ?listVersion dcterms:issued "2014-10-30"^^xsd:date.
+  ?listVersion dcterms:hasPart ?termVersion.
   ?property dcterms:hasVersion ?termVersion.
   ?property a rdfs:Property.
 }
