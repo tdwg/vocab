@@ -112,7 +112,7 @@ Note that only one version of recordedBy is recommended and that no versions of 
 <http://rs.tdwg.org/dwc/terms/recordedBy-2014-10-23> dwcattributes:status "recommended"^^xsd:string.
 <http://rs.tdwg.org/dwc/terms/recordedBy-2009-04-24> dwcattributes:status "superseded"^^xsd:string.
 <http://rs.tdwg.org/dwc/terms/recordedBy-2008-11-19> dwcattributes:status "superseded"^^xsd:string.
-<http://rs.tdwg.org/dwc/terms/Collector-2007-04-17> dwcattributes:status "superseded"^^xsd:string.
+<http://rs.tdwg.org/dwc/terms/Collector-2007-04-17> dwcattributes:status "deprecated"^^xsd:string.
 
 ```
 
