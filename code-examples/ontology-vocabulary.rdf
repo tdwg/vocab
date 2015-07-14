@@ -13,12 +13,24 @@
 ]>
 <rdf:RDF xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:dwc="http://rs.tdwg.org/dwc/terms/" xmlns:dwciri="http://rs.tdwg.org/dwc/iri/" xmlns:dwcattributes="http://rs.tdwg.org/dwc/terms/attributes/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:obi="http://purl.obolibrary.org/obo/OBI_" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="http://purl.org/dc/terms/hasPart">
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/enhanced/" />
     <owl:inverseOf rdf:resource="http://purl.org/dc/terms/isPartOf" />
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/hasVersion">
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/enhanced/" />
     <owl:inverseOf rdf:resource="http://purl.org/dc/terms/isVersionOf" />
   </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isPartOf">
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/enhanced/" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isReferencedBy">
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/enhanced/" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isVersionOf">
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/enhanced/" />
+  </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/references">
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/enhanced/" />
     <owl:inverseOf rdf:resource="http://purl.org/dc/terms/isReferencedBy" />
   </rdf:Description>
   <dcat:Dataset rdf:about="http://rs.tdwg.org/dwc/2013-10-09/terms/">
@@ -80,8 +92,32 @@
     <owl:imports rdf:resource="http://rs.tdwg.org/dwc/terms/" />
     <owl:imports rdf:resource="http://rs.tdwg.org/dwc/terms/attributes" />
   </owl:Ontology>
-  <owl:ObjectProperty rdf:about="http://rs.tdwg.org/dwc/iri/recordedBy" />
+  <owl:Ontology rdf:about="http://rs.tdwg.org/dwc/iri/">
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/iri/inCollection" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/iri/recordedBy" />
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-19</dcterms:modified>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset" />
+  </owl:Ontology>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/iri/inCollection">
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/iri/" />
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/iri/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="http://rs.tdwg.org/dwc/iri/recordedBy">
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/enhanced/" />
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/iri/" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/iri/" />
+  </rdf:Property>
   <owl:Ontology rdf:about="http://rs.tdwg.org/dwc/semantics/">
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/hasPart" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/hasVersion" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/isPartOf" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/isReferencedBy" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/isVersionOf" />
+    <dcterms:hasPart rdf:resource="http://purl.org/dc/terms/references" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/iri/recordedBy" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/PreservedSpecimen" />
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-03-19</dcterms:modified>
     <dcterms:title xml:lang="en">Darwin Core Semantic Relationships</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset" />
@@ -118,6 +154,7 @@
     <dcterms:description xml:lang="en">Examples: A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample.</dcterms:description>
     <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28" />
     <dcterms:hasVersion rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23" />
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/enhanced/" />
     <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/terms/" />
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-10-23</dcterms:modified>
     <rdfs:comment xml:lang="en">A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed.</rdfs:comment>
@@ -139,6 +176,7 @@
     <rdfs:comment xml:lang="en">A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed.</rdfs:comment>
   </rdfs:Class>
   <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/PreservedSpecimen">
+    <dcterms:isPartOf rdf:resource="http://rs.tdwg.org/dwc/enhanced/" />
     <owl:disjointWith rdf:resource="http://rs.tdwg.org/dwc/terms/Occurrence" />
   </rdf:Description>
   <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/guides/rdf/">
@@ -247,8 +285,8 @@
     <rdfs:comment xml:lang="en">A numeric value for a measurement of the size (time duration, length, area, or volume) of a sample in a sampling event.</rdfs:comment>
   </rdf:Property>
   <rdf:Description rdf:about="http://www.tdwg.org/standards/450/">
-    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/basic-ontology" />
-    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/enhanced-ontology" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/basic-vocabulary" />
+    <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/enhanced-vocabulary" />
     <dcterms:hasPart rdf:resource="http://rs.tdwg.org/dwc/terms/guides/rdf/" />
     <dcterms:title xml:lang="en">Darwin Core Standard</dcterms:title>
   </rdf:Description>

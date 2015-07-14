@@ -23,8 +23,8 @@
 # This is part of the description of the Darwin Core standard itself.
 # Currently the "permanent URL" of the standard only dereferences to a human-readable landing page for the standard.
 # Eventually, it should dereference for semantic clients that request RDF to some RDF/XML- or RDF/turtle-formatted document containing triples like these:
-<http://www.tdwg.org/standards/450/> dcterms:hasPart <http://rs.tdwg.org/dwc/basic-ontology>;
-                                     dcterms:hasPart <http://rs.tdwg.org/dwc/enhanced-ontology>;
+<http://www.tdwg.org/standards/450/> dcterms:hasPart <http://rs.tdwg.org/dwc/basic-vocabulary>;
+                                     dcterms:hasPart <http://rs.tdwg.org/dwc/enhanced-vocabulary>;
                                      dcterms:hasPart <http://rs.tdwg.org/dwc/terms/guides/rdf/>;
                                      dcterms:title "Darwin Core Standard"@en.
 # ---------------------------------------------------------------------------------------------------------------------
@@ -87,15 +87,46 @@
 # they achieved widespread acceptance.
 <http://rs.tdwg.org/dwc/semantics/> dcterms:modified "2015-03-19"^^xsd:date;
                                 dcterms:title "Darwin Core Semantic Relationships"@en;
+                                dcterms:hasPart dcterms:references;
+                                dcterms:hasPart dcterms:isReferencedBy;
+                                dcterms:hasPart dcterms:hasPart;
+                                dcterms:hasPart dcterms:isPartOf;
+                                dcterms:hasPart dcterms:hasVersion;
+                                dcterms:hasPart dcterms:isVersionOf;
+                                dcterms:hasPart dwciri:recordedBy;
+                                dcterms:hasPart dwc:PreservedSpecimen;
+                                dcterms:hasPart dwc:MaterialSample;
                                 a dcat:Dataset, owl:Ontology.
 # these are implied relationships that are not explicitly expressed by DCMI
-dcterms:references owl:inverseOf dcterms:isReferencedBy.
-dcterms:hasPart owl:inverseOf dcterms:isPartOf.
-dcterms:hasVersion owl:inverseOf dcterms:isVersionOf.
+dcterms:references owl:inverseOf dcterms:isReferencedBy;
+                   dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+dcterms:isReferencedBy dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+dcterms:hasPart owl:inverseOf dcterms:isPartOf;
+                dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+dcterms:isPartOf dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+dcterms:hasVersion owl:inverseOf dcterms:isVersionOf;
+                   dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+dcterms:isVersionOf dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
 # examples follow; I'm not suggesting whether any of them are a good idea or not.
-dwciri:recordedBy a owl:ObjectProperty.
-dwc:PreservedSpecimen owl:disjointWith dwc:Occurrence.
-dwc:MaterialSample rdfs:subClassOf obi:0100051.
+dwciri:recordedBy a owl:ObjectProperty;
+                  dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+dwc:PreservedSpecimen owl:disjointWith dwc:Occurrence;
+                      dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+dwc:MaterialSample rdfs:subClassOf obi:0100051;
+                   dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# dwciri: namespace subvocabulary
+<http://rs.tdwg.org/dwc/iri/> dcterms:modified "2015-03-19"^^xsd:date;
+                                dcterms:hasPart dwciri:recordedBy;
+                                dcterms:hasPart dwciri:inCollection;
+                                a dcat:Dataset, owl:Ontology.
+dwciri:recordedBy a  rdf:Property;
+                  rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/>;
+                  dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/>.
+dwciri:inCollection a  rdf:Property;
+                  rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/>;
+                  dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/>.
 # ---------------------------------------------------------------------------------------------------------------------
 
 # Here is the existing primary Darwin Core vocabulary
