@@ -1,9 +1,10 @@
 #TDWG Hierarchy Model
-Preliminary Draft 2015-07-14 - Steve Baskauf - TDWG Vocabulary Management Task Group
+Preliminary Draft 2015-07-15 - Steve Baskauf - TDWG Vocabulary Management Task Group
 
 Note: This document has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
 
-Refer to [this diagram](https://docs.google.com/drawings/d/1xIa74GiLFQAhclO7baP1lNHKYk0Uvhs4bAdRytQUwmc/edit) for a graphical representation.
+![](https://raw.githubusercontent.com/tdwg/vocab/master/tdwg-standards-hierarchy-2015-07-15.png)
+
 
 Note: each kind of resource described here can exist as a current resource and as versioned resources as described in the [version model](version-model.md)
 
