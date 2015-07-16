@@ -6,6 +6,9 @@ To participate in the task group, go to the [Issues Tracker](https://github.com/
 
 To initiate discussion on an issue, open a new issue in the tracker. Opening or commenting on an existing issue will generate emails to others who are watching the tracker.
 
+## Meeting notes
+[2015-07-15 Google Hangout (attended by core members)](meeting-notes/hangout-2015-07-15.md)
+
 ## Background
 Here are some key documents that form crucial background for our discussions:
 
