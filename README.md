@@ -12,4 +12,6 @@
 
 This document defines how TDWG standards should be presented. Each standard is a logical directory or folder containing two or more files - a cover page outlining basic meta data for the standard and one or more normative files specifying the standard itself. Rules are specified for the naming of standards and files. Human readable files should be in English, follow basic layout principles and be marked up in XHTML. The legal statements that all documents must contain are defined.
 
-## Preferred citation
+Preferred citation
+
+> Vocabulary Maintenance Specification task group. 2015. Vocabulary Maintenance Specification (VOCAB), Version 0.1. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147
