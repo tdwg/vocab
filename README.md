@@ -14,4 +14,4 @@ This document defines how TDWG standards should be presented. Each standard is a
 
 Preferred citation
 
-> Vocabulary Maintenance Specification task group. 2015. Vocabulary Maintenance Specification (VOCAB), Version 0.1. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147
+> TDWG Infrastructure project. 2007. TDWG Standards Documentation Specification (SDS), Version 2007-02-06. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147
