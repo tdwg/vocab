@@ -237,6 +237,7 @@ Table 2: Fields for Cover Page documents.
 
 
 |**Name**      |           **Notes**|
+|---------------|----------------|
 | Title                   | **Required** The official TDWG title for the standard (see above)|
 | Description      |        **Required** A brief (&lt;=250 words) description of the standard|
 | Subject             |     **Required** Key words, key phrases and classification codes that describe the topic covered by the standard.|
