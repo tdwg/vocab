@@ -236,22 +236,22 @@ and terms.
 Table 2: Fields for Cover Page documents.
 
 
-  |**Name**      |           **Notes**|
- | Title                   | **Required** The official TDWG title for the standard (see above)|
- | Description      |        **Required** A brief (&lt;=250 words) description of the standard|
- | Subject             |     **Required** Key words, key phrases and classification codes that describe the topic covered by the standard.|
- | Creator           |       **Required** The primary author of the standard following the conventions outlined above. Should only occur once.|
- | Contributor      |        A contributor to the standard following the conventions outlined above. This assertion may be repeated.|
+|**Name**      |           **Notes**|
+| Title                   | **Required** The official TDWG title for the standard (see above)|
+| Description      |        **Required** A brief (&lt;=250 words) description of the standard|
+| Subject             |     **Required** Key words, key phrases and classification codes that describe the topic covered by the standard.|
+| Creator           |       **Required** The primary author of the standard following the conventions outlined above. Should only occur once.|
+| Contributor      |        A contributor to the standard following the conventions outlined above. This assertion may be repeated.|
 |  Date Modified    |        The date the standard was last modified. Will be prior to Date Accepted if that is present.|
 |  Date Accepted       |     **Required for accepted standards** The date the standard was officially ratified by TDWG and fixed. If a modified date is present it must be prior to this date.|
 |  Identifier      |         The GUID of the standard.|
 |  Publisher            |    **Required** Should always contain the text "Biodiversity Information Standards TDWG."|
 |  Rights          |         **Required** One or more URLs linking to documents describing the copyright, licensing provisions and disclaimers associated with the standard. Typically this will be contained within another TDWG standard. (see Legal Statements below)|
 |  Access Rights        |    **Required** Should always contain the single word 'public'. All TDWG standards should be freely accessible to all via the Internet.|
- | Bibliographic Citation  | **Required** How this standard should be cited.|
+| Bibliographic Citation  | **Required** How this standard should be cited.|
 |  Has Part           |      **Required** The full URL to a file within the standard. This assertion should be repeated for each file within the standard (other than cover.xml itself).|
- | Replaced By             | **Required if this standard has been replaced by another.** If the standard has been replaced then this assertion should be present and contain the full URL to the new standard.|
- | Replaces          |       **Required if this standard replaces another.** If this standard replaces a previous one then this assertion should be present and contain the full URI of the standard replaced.|
+| Replaced By             | **Required if this standard has been replaced by another.** If the standard has been replaced then this assertion should be present and contain the full URL to the new standard.|
+| Replaces          |       **Required if this standard replaces another.** If this standard replaces a previous one then this assertion should be present and contain the full URI of the standard replaced.|
 
 
 **14 Legal Statements**
