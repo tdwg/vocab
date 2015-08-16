@@ -21,19 +21,109 @@ Creator: TDWG Vocabulary Maintenance Specification Task Group
 
 [generate when complete]
 
-**1 Motivation**
+**1 Introduction**
 
-TDWG standards include definitive (normative) and informative (non-normative) components that are expressed in human- and machine-readable documents. This standard specifies how these documents should be presented.
+Standards adopted by Biodiversity Information Standards (TDWG) may include a number of components that are expressed in human- and machine-readable documents. It is important that users of a standard be able to locate all of these components. Users should be able to easily determine which parts of the standard are definitive (normative) and which are informative (non-normative). It should also be apparent which components are current and which are maintained for historical reasons or to support legacy applications. Machine-readable documents should be linked and described consistently to facilitate automated discovery and processing. This standard specifies how documents should be presented to achieve these requirements.
 
-**2 Rationale**
+**1.1 Definitions**
 
-[existing text - evaluate]
-Users see a standard as a single 'product'. It is therefore important
-that, although TDWG standards may contain multiple files, they are
-presented to the user as a single entity and can be downloaded as a
-single archive. File names need to be tightly constrained to be robust
-across multiple environments. A Cover Page is required for all standards
-to supply a uniform metadata interface. [requirements for machine processing]
+**resource** - Any kind of thing that can be identified. Resources can include documents, people, physical objects, and abstract concepts [RDF-PRIMER].
+
+**document** - In this context, a document is a unit of information that can be stored or retrieved electronically as a single file.
+
+**representation** - a view of a resource at a particular time. Representations can differ in language or format. [HTTP-1.1] 
+
+**IRI** - Internationalized Resource Identifier. A superset of Uniform Resource Identifier (URI) that uniquely identifies a resource using characters from any character set. [IRI]
+
+**HTTP IRI** - A subset of IRIs that enable retrieval of a representation using Hypertext Transfer Protocol (HTTP).  HTTP IRIs begin with "http://".
+
+**dereference** - to use an IRI to obtain a representation of a resource through an Internet protocol such as HTTP
+
+**content negotiation** - a mechanism by which a client and server determine the best representation to send to the client based on the client's expressed preferences [HTTP-1.1]
+
+**current resource** - a resource as it exists in its current state.  The current state reflects the most recent version of the resource. 
+
+**version** - a “snapshot” of a resource in time.  A version is created at a particular moment in time and documents the state of the resource until that version is replaced by a later version.  
+
+**normative** - the prescriptive part of a standard that specifies that which is necessary to comply with the standard
+
+**non-normative** - an informative part of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard. 
+
+**vocabulary** - a collection of standardized terms and their definitions.  Terms may include classes and properties.
+
+**2 The structure of TDWG standards**
+
+If a standard were composed of a single, human-readable document, then identifying and retrieving that document via the Internet would be relatively simple.  But TDWG standards may be composed of multiple documents that may change over time and that may be delivered in a variety of formats.  This section describes the structure of TDWG standards and the relationships among the structured components of the standard.
+
+![](graphics/representations.png)
+
+**2.1 Abstract resources and representations**
+
+A TDWG standard may be composed of several types of components.  For example, the standard may contain an explanatory document that describes how the standard should be applied in certain circumstances.  A standard may also include a vocabulary description that defines the terms included in that vocabulary.  We can consider each of these particular resources as an abstract entity that manifests itself in one or more than concrete representations.  For example, a document may exist in PDF format or as an HTML web page, or a document may exist as translations in several languages.  
+
+**2.1.1 IRIs**
+
+Particular resources are assigned globally unique identifiers (GUIDs) to distinguish them from all other resources.  TDWG identifies resources using HTTP IRIs, a type of GUID which makes it possible to retrieve a representation of a resource using HTTP (hypertext transfer protocol).  
+
+Both the abstract resource and specific representations of that resource are identified with HTTP IRIs.  
+The IRI for abstract resources should be generic.  That is, the abstract resource IRI should not specify a file extension nor should it be structured in a way that is dependent on a particular technology or query format [COOL-URIS].  In contrast, IRIs of particular resource representations may use an IRI structure or file extension that is useful for retrieving a copy of that resource. The IRIs of abstract resources should be stable, allowing them to be used in citations of the resource. 
+
+**2.1.2 Content negotiation**
+
+A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it should be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client.  A resource may be available as several content types, but all resources should be retrievable in a human-readable form when content-type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation should at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  Although there are a number of possible machine-readable formats, by default each resource should be described using RDF in a serialization recommended by the TDWG Technical Architecture Group (TAG).
+
+![](graphics/std-parts.png)
+
+**2.2 Standards components hierarchy**
+
+TDWG standards consist of several IRI-identified components.  This section describes these components and how they are related to each other.
+
+**2.2.1 Standards landing page**
+
+Each TDWG standard will be identified by an HTTP IRI (formerly known as the “permanent URL” of the standard) that represents the standard as an abstract entity.  When the standard's IRI is dereferenced by a client requesting content-type text/html (e.g. a Web browser), that IRI should redirect to a human-readable landing webpage that describes the status of the standard, contains an abstract of the standard, and which contains hyperlinks to the various components that comprise the standard.  When the standard's IRI is dereferenced by a client requesting RDF, the client should be redirected to a document that contains machine-readable RDF metadata about the standard.  That document should link the standard to its components using the property dcterms:hasPart as shown in Section 3.2.
+
+**2.2.2 Descriptive documents**
+
+Each TDWG standard will have at least one human-readable document that describes the purpose of the standard and which contains information about how the standard is to be used.  This document should follow the formatting guidelines of Section 2.  When the IRI of the descriptive document is dereferenced by machine clients, the client should retrieve an RDF description of the document's metadata.  
+
+![](graphics/vocabulary-documents.png)
+
+**2.2.3 Vocabulary documents**
+
+TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents.  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  Machine-readable representations of these documents will use the property dcterms:hasPart link to the machine-readable definitions of the external terms if those definitions exist.  
+
+![](graphics/version-model.png)
+
+**2.3 Versioning model**
+
+Resources associated with TDWG standards may change over time.  TDWG uses a versioning model that relates the current resource and versions of the resource that have changed over time.  The purpose of the versioning model is to enable a user to start with the current resource or any version of the resource and trace the changes that have occurred to that resource over time.
+
+**2.3.1 Current resources**
+
+Each resource (document, vocabulary, term, etc.) exists in a current state.  That current state reflects the most recent version of that resource.  The current resource is identified by an IRI that does not change over time.  The current resource IRI can be used by humans or machines to retrieve a representation of the resource as it exists at the present time.  Because the current resource IRI does not change, it is stable and should be the IRI that is cited and is linked to whenever one wishes to refer to the resource in general.  
+
+**2.3.2 Versions**
+
+Each resource also exists as versions that document “snapshots” of the resource over time.  A version is issued at a particular moment in time and documents the state of the resource until the version is replaced by a later version.  Each version of a resource is identified by an IRI that is distinct from the IRI of the current resource and from all other versions of that resource.  Typically, the IRI of a version is formed by appending the ISO 8601 creation date of the resource to the IRI if the abstract resource.  
+
+A current resource is related to one of its versions by the property dcterms:hasVersion.  A version is related to its current resource by the property dcterms:isVersionOf, to a version that it supersedes by dcterms:replaces, and to a version that supersedes it by dcterms:isReplacedBy.  The metadata for a current resource should specify the IRI of the current version, the IRI of the most recent version, and the IRI of any previous version that was superseded.  Metadata of a past version should specify that version's IRI and link to the previous and subsequent versions.  
+
+The versioning model is specific to neither humans nor machines, and either should be able to use the resource IRIs and properties to traverse the links from one version to another.  
+
+-----------------
+
+2 human readable documents
+2.1 cover page
+2.2 normative and non-normative parts
+2.3 vocabulary descriptions
+
+3 machine readable documents
+3.1 descriptive metadata
+3.2 links between documents
+3.3 vocabularies
+
+
+-----------------------
 
 **3 Parts of standards**
 
@@ -308,3 +398,16 @@ property rights and licensing must be described fully in the charter of
 that activity as well as the standard itself. [should this be here?]
 
 [Somewhere here we should specify the preferred citation  format for the document.]
+
+**X. References**
+
+[COOL-URIS] http://www.w3.org/TR/cooluris/#cooluris Cool URIs for the Semantic Web
+
+[HTTP-1.1] http://tools.ietf.org/html/rfc7231 Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content
+
+[IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs)
+
+[RDF-PRIMER] http://www.w3.org/TR/rdf11-primer/ RDF 1.1 Primer
+
+[REST] http://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm Representational State Transfer (REST) from Architectural Styles and
+the Design of Network-based Software Architectures
