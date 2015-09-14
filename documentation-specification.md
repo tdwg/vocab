@@ -301,6 +301,16 @@ Material below this point has not yet been revised.
 4.2 links between documents
 4.3 vocabularies
 
+Notes: Rec 10 of the GUID AS says the default response serialization should be RDF/XML.  Should this be changed to "format recommended by TAG"?
+
+GUID AS Rec 13 says that an object should be linked to its revisions.  Review this rec before writing.
+
+Properties:
+
+dcterms:replaces
+dcterms:isReplacedBy
+dcterms:hasVersion
+owl:versionInfo
 
 -----------------------
 
