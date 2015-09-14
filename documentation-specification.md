@@ -1,5 +1,12 @@
 # TDWG Standards Documentation Specification #
 
+TODO: 
+
+- examine use of "must", "should", etc. throughout document and use consistently.
+
+- decide on "human readable, machine readable" vs. "human-readable, machine-readable" and use consistently
+
+
 **Title:** TDWG Standards Documentation Specification
 
 **Date Issued:** 
@@ -21,11 +28,11 @@ Creator: TDWG Vocabulary Maintenance Specification Task Group
 
 [generate when complete]
 
-**1 Introduction**
+## **1 Introduction** ##
 
 Standards adopted by Biodiversity Information Standards (TDWG) may include a number of components that are expressed in human- and machine-readable documents. It is important that users of a standard be able to locate all of these components. Users should be able to easily determine which parts of the standard are definitive (normative) and which are informative (non-normative). It should also be apparent which components are current and which are maintained for historical reasons or to support legacy applications. Machine-readable documents should be linked and described consistently to facilitate automated discovery and processing. This standard specifies how documents should be presented to achieve these requirements.
 
-**1.1 Definitions**
+### **1.1 Definitions** ###
 
 **resource** - Any kind of thing that can be identified. Resources can include documents, people, physical objects, and abstract concepts [RDF-PRIMER].
 
@@ -53,14 +60,15 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 **controlled vocabulary** - prescribed list of terms, each representing a concept. Controlled vocabularies are designed for applications in which it is useful to identify each concept with one consistent label. [ISO-25964-2]
 
-**2 The structure of TDWG standards**
+## **2 The structure of TDWG standards** ##
 
 If a standard were composed of a single, human-readable document, then identifying and retrieving that document via the Internet would be relatively simple.  But TDWG standards may be composed of multiple documents that may change over time and that may be delivered in a variety of formats.  This section describes the structure of TDWG standards and the relationships among the structured components of a standard.
 
 ![](graphics/representations.png)
+
 Fig. 1. An abstract resource and its representations.
 
-**2.1 Abstract resources and representations**
+### **2.1 Abstract resources and representations** ###
 
 A TDWG standard may be composed of several types of components.  For example, the standard may contain an explanatory document that describes how the standard should be applied in certain circumstances.  A standard may also include a vocabulary description that defines the terms included in that vocabulary.  We can consider each of these particular resources as an abstract entity that manifests itself in one or more than concrete representations.  For example, a document may exist in PDF format or as an HTML web page (Fig. 1), or a document may exist as translations in several languages.  
 
@@ -77,9 +85,10 @@ The IRI for abstract resources should be generic.  That is, the abstract resourc
 A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it should be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client (Fig. 1).  A resource may be available as several content types, but all resources should be retrievable in a human-readable form when content-type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation should at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  Although there are a number of possible machine-readable formats, by default each resource should be described using RDF in a serialization recommended by the TDWG Technical Architecture Group (TAG).
 
 ![](graphics/std-parts.png)
+
 Fig. 2. A standard and its components.
 
-**2.2 Standards components hierarchy**
+### **2.2 Standards components hierarchy** ###
 
 TDWG standards consist of several IRI-identified components.  This section describes these components and how they are related to each other.
 
@@ -92,6 +101,7 @@ Each TDWG standard will be identified by an HTTP IRI (formerly known as the "per
 Each TDWG standard will have at least one human-readable document that describes the purpose of the standard and which contains information about how the standard is to be used.  This document should follow the formatting guidelines of Section 3.  When the IRI of the descriptive document is dereferenced by machine clients, the client should retrieve an RDF description of the document's metadata.  
 
 ![](graphics/vocabulary-documents.png)
+
 Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 **2.2.3 Vocabulary documents**
@@ -99,9 +109,10 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  Machine-readable representations of these documents will use the property dcterms:hasPart link to the machine-readable definitions of the external terms if those definitions exist.  
 
 ![](graphics/version-model.png)
+
 Fig. 4. Relationship of a resource to its versions over time.
 
-**2.3 Versioning model**
+### **2.3 Versioning model** ###
 
 Resources associated with TDWG standards may change over time.  TDWG uses a versioning model that relates the current resource and versions of the resource that have changed over time.  The purpose of the versioning model is to enable a user to start with the current resource or any version of the resource and trace the changes that have occurred to that resource over time.
 
@@ -118,11 +129,13 @@ A current resource is related to one of its versions by the property dcterms:has
 The versioning model is specific to neither humans nor machines, and either should be able to use the resource IRIs and properties to traverse the links from one version to another.  
 
 
-**3 Human readable documents**
+## **3 Human readable documents** ##
 
 In order for a standard to achieve its purpose, it must include documents that permit human users to understand what is necessary to comply with the requirements of the standard.  This section describes how human readable documents should be constructed to make this possible.
 
-**3.1 Landing page for the standard**
+Determining what is necessary to comply with a standard is necessarily a human activity.  Therefore, the normative content of the standard should be contained exclusively in human readable documents.
+
+### **3.1 Landing page for the standard** ###
 
 When the HTTP IRI of a standard is dereferenced by a client requesting text/html (for example, when a human uses a Web browser), the client should receive a human-readable document that describes basic information about the standard as described in the subparts of this section.  
 
@@ -152,7 +165,7 @@ The landing page should indicate a preferred citation for the standard that incl
 
 Each part of the standard should be listed, with a hyperlink that leads to that part (Section 2.2).  The parts must include at least one descriptive document, whose form is described in section 3.2.
 
-**3.2 Descriptive documents**
+### **3.2 Descriptive documents** ###
 
 A standard has one or more descriptive documents that describe the purpose of the standard and which contain information about how the standard is to be used. The choice of whether to place all of this material in a single document or to separate it into several documents should be made based on what will make the standard the most easy to understand and use.  
 
@@ -219,6 +232,8 @@ nothing else. The items in the list should be hypertext links to the headings in
 
 **3.2.3.3 Body Section**
 
+[TODO: do we need to specify some features of existing standards documents, such as "Introduction", "Motivation", "Rationale", or do we leave this up to the authors?]
+
 The body text should be divided by a hierarchy of subheadings. The subheadings must be numbered consecutively using simple decimal system.
 The final number must not be followed by a decimal point. An example:
 
@@ -234,30 +249,52 @@ The final number must not be followed by a decimal point. An example:
 
 The footer should contain a copyright statement and licensing information.  Typically, the copyright is held by TDWG and the license is [Creative Commons Attribution](http://creativecommons.org/licenses/by/4.0/) (CC BY).
 
-[A reference or link to a document containing the Copyright,
-Licensing and Disclaimer statements that govern this document. This will
-usually be the standard one supplied by TDWG.]
-
-
+[This used to say: "A reference or link to a document containing the Copyright, Licensing and Disclaimer statements that govern this document. This will usually be the standard one supplied by TDWG."  This has been included in some standards documents, but not consistently.]
 
 **3.2.4 Language**
 
+All normative content must be in English. Translations of normative documents may be included in the standard but the translations must be treated as informative documents. [This was copied from the earlier specification.  Do we really want to say that translations may be "included in the standard"?  That would imply that creating additional translations would require amending the standard.  Is that what we really want???]
 
-All normative content must be in English. Translations of
-normative documents may be included in the standard but the translations
-must be treated as informative documents. 
+**3.3 Archiving of documents**
 
-**3.2.4.1 Linguistic Style**
+In order for a standard to enable compliance with a consensus community practice, a version of a standards document must be immutable and easily viewable by the public. This has several implications for the way in which documents are archived.
 
-Text should be written with the assumption that it will be read from the
-screen rather than paper. [should more be said here about the style of normative sections vs. examples, diagrams, etc. that might be in non-normative sections?]
+In order to ensure the stability of a human readable document, it should be archived as a discrete file as opposed to being generated from a potentially changing database.  The archived document file must be in an open format for which parsers are commonly available. For this purpose an open format is defined as being one for which it would be possible to write a parser on the basis of a published specification without having to rely on code libraries for which the source code is not available or to pay a license fee. 
 
-**3.3 Vocabulary descriptions**
+In accordance with Section 2.1, the document may exist as files in a variety of formats that can be retrieved through content negotiation.  For example, a document may be available in any of HTML, PDF, and MarkDown formats.  However, when rendered by a parser, each differently formatted file must render to a form that is substantively the same to a human reader.  At least one available form must be easily viewable to a human reader in a browser that requests text/html, regardless of whether the source file is actually in HTML format.
 
+Documents should be maintained as part of a publicly accessible version control system that ensures document files will not be lost and that previous document versions can be located and accessed through their immutable IRIs.  
 
+### **3.3 Vocabulary descriptions** ###
+
+Vocabulary description is a special category of human-readable documents.  As such, vocabulary descriptions will comply with the previous parts of Section 3.  However, they will also contain additional information as described in the following sections.
+
+**3.3.1 Terms as versioned resources**
+
+A term is a resource that persists over time (Fig. 4) and complies with Section 2.3 of this standard. The current state of the term is represented by the term IRI, which does not change and which can be dereferenced to discover the current term definition.  
+
+The state of the term at particular times is recorded via versions of the term.  A new version of the term is issued on a particular date and the term version IRI should be dereferenceable to discover the definition of the term version when it was issued.  
+
+**3.3.2 Term list**
+
+The body section of a vocabulary description will contain a series of term entries that can be easily read and understood by humans.  Each term entry may include the following items.
+
+**Term name** - The term name is a human readable controlled value that represents the class, property, or concept described by the term definition.  The term name is usually related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.  If the term is imported from another vocabulary rather than defined by the parent standard, the term name should include a namespace abbreviation (QName) that is defined in the introduction of the vocabulary description.  
+
+**Term IRI** - The HTTP IRI that uniquely identifies the current term
+
+**Term version IRI** - The HTTP IRI that identifies the version of the term that is currently in force.
+
+**Modified** - The date in ISO 8601 Date format on which the most recent version of the term was issued. 
+
+**Definition** - The normative definition of the term, written in English.  The definition should include precisely the wording required to describe the class, property, or concept.  Additional informative content should be presented in comments or notes.
+
+The term list may contain other properties of the term that are deemed to be useful, including informative comments or notes that provide examples or clarification, but which do not form part of the normative definition of the term.
+
+[I have not yet described a term **version** list, i.e. the historical record of all versions of terms that corresponds to [http://rs.tdwg.org/dwc/terms/history/index.htm](http://rs.tdwg.org/dwc/terms/history/index.htm).  This still needs to be done.]
 
 -----------------
-
+Material below this point has not yet been revised.
 
 4 machine readable documents
 4.1 descriptive metadata
@@ -316,28 +353,15 @@ The file name must also be unique among TDWG standards.
 The following rules govern file names used in standards and for
 standards archives:
 
--   File names must start with ‘tdwg\_’ followed by a shortened version
-    of the full name of the standard.
--   File names must consist of only lowercase letters, numbers,
-    underscores and hyphens.
+-   File names must start with ‘tdwg\_’ followed by a shortened version of the full name of the standard.
+-   File names must consist of only lowercase letters, numbers, underscores and hyphens.
 -   File names must not contain spaces (replace with underscore).
 -   File names must not contain non ASCII characters.
--   File names must not contain periods other than the one used to
-    separate the suffix.
--   Suffix should be the commonly used suffix for file type and the
-    three letter version where possible; for example, jpg rather than
-    jpeg and xsl rather than xslt. [Does this really matter? I thought .html was actually preferred over .htm now.]
+-   File names must not contain periods other than the one used to separate the suffix.
+-   Suffix should be the commonly used suffix for file type and the three letter version where possible; for example, jpg rather than jpeg and xsl rather than xslt. [Does this really matter? I thought .html was actually preferred over .htm now.]
 
 
-**9 File Formats**
 
-
-For archival reasons all files in a standard must be in an open format
-for which parsers are commonly available. For this purpose an open
-format is defined as being one for which it would be possible to write a
-parser on the basis of a published specification without having to rely
-on code libraries for which the source code is not available or to pay a
-license fee. 
 
 
 
