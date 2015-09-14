@@ -49,30 +49,35 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 **non-normative** - an informative part of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard. 
 
-**vocabulary** - a collection of standardized terms and their definitions.  Terms may include classes and properties.
+**vocabulary** - a collection of standardized terms and their definitions.  Terms may represent classes, properties, or concepts.
+
+**controlled vocabulary** - prescribed list of terms, each representing a concept. Controlled vocabularies are designed for applications in which it is useful to identify each concept with one consistent label. [ISO-25964-2]
 
 **2 The structure of TDWG standards**
 
-If a standard were composed of a single, human-readable document, then identifying and retrieving that document via the Internet would be relatively simple.  But TDWG standards may be composed of multiple documents that may change over time and that may be delivered in a variety of formats.  This section describes the structure of TDWG standards and the relationships among the structured components of the standard.
+If a standard were composed of a single, human-readable document, then identifying and retrieving that document via the Internet would be relatively simple.  But TDWG standards may be composed of multiple documents that may change over time and that may be delivered in a variety of formats.  This section describes the structure of TDWG standards and the relationships among the structured components of a standard.
 
 ![](graphics/representations.png)
+Fig. 1. An abstract resource and its representations.
 
 **2.1 Abstract resources and representations**
 
-A TDWG standard may be composed of several types of components.  For example, the standard may contain an explanatory document that describes how the standard should be applied in certain circumstances.  A standard may also include a vocabulary description that defines the terms included in that vocabulary.  We can consider each of these particular resources as an abstract entity that manifests itself in one or more than concrete representations.  For example, a document may exist in PDF format or as an HTML web page, or a document may exist as translations in several languages.  
+A TDWG standard may be composed of several types of components.  For example, the standard may contain an explanatory document that describes how the standard should be applied in certain circumstances.  A standard may also include a vocabulary description that defines the terms included in that vocabulary.  We can consider each of these particular resources as an abstract entity that manifests itself in one or more than concrete representations.  For example, a document may exist in PDF format or as an HTML web page (Fig. 1), or a document may exist as translations in several languages.  
 
 **2.1.1 IRIs**
 
 Particular resources are assigned globally unique identifiers (GUIDs) to distinguish them from all other resources.  TDWG identifies resources using HTTP IRIs, a type of GUID which makes it possible to retrieve a representation of a resource using HTTP (hypertext transfer protocol).  
 
 Both the abstract resource and specific representations of that resource are identified with HTTP IRIs.  
+
 The IRI for abstract resources should be generic.  That is, the abstract resource IRI should not specify a file extension nor should it be structured in a way that is dependent on a particular technology or query format [COOL-URIS].  In contrast, IRIs of particular resource representations may use an IRI structure or file extension that is useful for retrieving a copy of that resource. The IRIs of abstract resources should be stable, allowing them to be used in citations of the resource. 
 
 **2.1.2 Content negotiation**
 
-A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it should be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client.  A resource may be available as several content types, but all resources should be retrievable in a human-readable form when content-type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation should at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  Although there are a number of possible machine-readable formats, by default each resource should be described using RDF in a serialization recommended by the TDWG Technical Architecture Group (TAG).
+A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it should be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client (Fig. 1).  A resource may be available as several content types, but all resources should be retrievable in a human-readable form when content-type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation should at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  Although there are a number of possible machine-readable formats, by default each resource should be described using RDF in a serialization recommended by the TDWG Technical Architecture Group (TAG).
 
 ![](graphics/std-parts.png)
+Fig. 2. A standard and its components.
 
 **2.2 Standards components hierarchy**
 
@@ -80,19 +85,21 @@ TDWG standards consist of several IRI-identified components.  This section descr
 
 **2.2.1 Standards landing page**
 
-Each TDWG standard will be identified by an HTTP IRI (formerly known as the “permanent URL” of the standard) that represents the standard as an abstract entity.  When the standard's IRI is dereferenced by a client requesting content-type text/html (e.g. a Web browser), that IRI should redirect to a human-readable landing webpage that describes the status of the standard, contains an abstract of the standard, and which contains hyperlinks to the various components that comprise the standard.  When the standard's IRI is dereferenced by a client requesting RDF, the client should be redirected to a document that contains machine-readable RDF metadata about the standard.  That document should link the standard to its components using the property dcterms:hasPart as shown in Section 3.2.
+Each TDWG standard will be identified by an HTTP IRI (formerly known as the "permanent URL" of the standard) that represents the standard as an abstract entity.  When the standard's IRI is dereferenced by a client requesting content-type text/html (e.g. a Web browser), that IRI should redirect to a human-readable landing webpage that describes the status of the standard, contains an abstract of the standard, and which contains hyperlinks to the various components that comprise the standard.  When the standard's IRI is dereferenced by a client requesting RDF, the client should be redirected to a document that contains machine-readable RDF metadata about the standard.  That document should link the standard to its components using the property dcterms:hasPart (Fig. 2) as described in Section 3.2.
 
 **2.2.2 Descriptive documents**
 
-Each TDWG standard will have at least one human-readable document that describes the purpose of the standard and which contains information about how the standard is to be used.  This document should follow the formatting guidelines of Section 2.  When the IRI of the descriptive document is dereferenced by machine clients, the client should retrieve an RDF description of the document's metadata.  
+Each TDWG standard will have at least one human-readable document that describes the purpose of the standard and which contains information about how the standard is to be used.  This document should follow the formatting guidelines of Section 3.  When the IRI of the descriptive document is dereferenced by machine clients, the client should retrieve an RDF description of the document's metadata.  
 
 ![](graphics/vocabulary-documents.png)
+Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 **2.2.3 Vocabulary documents**
 
-TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents.  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  Machine-readable representations of these documents will use the property dcterms:hasPart link to the machine-readable definitions of the external terms if those definitions exist.  
+TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  Machine-readable representations of these documents will use the property dcterms:hasPart link to the machine-readable definitions of the external terms if those definitions exist.  
 
 ![](graphics/version-model.png)
+Fig. 4. Relationship of a resource to its versions over time.
 
 **2.3 Versioning model**
 
@@ -104,30 +111,161 @@ Each resource (document, vocabulary, term, etc.) exists in a current state.  Tha
 
 **2.3.2 Versions**
 
-Each resource also exists as versions that document “snapshots” of the resource over time.  A version is issued at a particular moment in time and documents the state of the resource until the version is replaced by a later version.  Each version of a resource is identified by an IRI that is distinct from the IRI of the current resource and from all other versions of that resource.  Typically, the IRI of a version is formed by appending the ISO 8601 creation date of the resource to the IRI if the abstract resource.  
+Each resource also exists as versions that document “snapshots” of the resource over time (Fig. 4).  A version is issued at a particular moment in time and documents the state of the resource until the version is replaced by a later version.  Each version of a resource is identified by an IRI that is distinct from the IRI of the current resource and from all other versions of that resource.  Typically, the IRI of a version is formed by appending the ISO 8601 creation date of the resource to the IRI if the abstract resource.  
 
-A current resource is related to one of its versions by the property dcterms:hasVersion.  A version is related to its current resource by the property dcterms:isVersionOf, to a version that it supersedes by dcterms:replaces, and to a version that supersedes it by dcterms:isReplacedBy.  The metadata for a current resource should specify the IRI of the current version, the IRI of the most recent version, and the IRI of any previous version that was superseded.  Metadata of a past version should specify that version's IRI and link to the previous and subsequent versions.  
+A current resource is related to one of its versions by the property dcterms:hasVersion.  A version is related to its current resource by the property dcterms:isVersionOf, to a version that it supersedes by dcterms:replaces, and to a version that supersedes it by dcterms:isReplacedBy.  The metadata for a current resource should specify the IRI of the current resource, the IRI of the most recent version, and the IRI of any previous version that was superseded.  Metadata of a past version should specify that version's IRI, specify the IRI of the current resource, and link to any previous or subsequent versions.  
 
 The versioning model is specific to neither humans nor machines, and either should be able to use the resource IRIs and properties to traverse the links from one version to another.  
 
+
+**3 Human readable documents**
+
+In order for a standard to achieve its purpose, it must include documents that permit human users to understand what is necessary to comply with the requirements of the standard.  This section describes how human readable documents should be constructed to make this possible.
+
+**3.1 Landing page for the standard**
+
+When the HTTP IRI of a standard is dereferenced by a client requesting text/html (for example, when a human uses a Web browser), the client should receive a human-readable document that describes basic information about the standard as described in the subparts of this section.  
+
+**3.1.1 Name of the standard**
+
+The full name must be in English and
+must be unique within the scope of TDWG standards, but otherwise is not
+controlled and may contain any combination of characters.
+
+**3.1.2 IRI of the standard**
+
+The landing page should include the HTTP IRI that identifies the standard.  The text of the landing page should indicate that this is the IRI that should be cited and to which hyperlinks should be made.  This is important because content negotiation may redirect users to some other IRI that is specific to the delivery mechanism and which might be subject to change at some time in the future.
+
+**3.1.4 Link to TDWG**
+
+The landing page should make it clear that this is a TDWG standard and should provide a link to the TDWG home page.  
+
+**3.1.5 Abstract**
+
+An abstract should provide a brief description of the purpose of the standard.
+
+**3.1.6 Preferred citation**
+
+The landing page should indicate a preferred citation for the standard that includes at least the name of the standard and the IRI. The exact format and content of the citation is not specified by this standard.
+
+**3.1.7 Links to parts of the standard**
+
+Each part of the standard should be listed, with a hyperlink that leads to that part (Section 2.2).  The parts must include at least one descriptive document, whose form is described in section 3.2.
+
+**3.2 Descriptive documents**
+
+A standard has one or more descriptive documents that describe the purpose of the standard and which contain information about how the standard is to be used. The choice of whether to place all of this material in a single document or to separate it into several documents should be made based on what will make the standard the most easy to understand and use.  
+
+**3.2.1 Normative and non-normative sections of descriptive documents**
+
+The normative and non-normative parts of standards should be clearly labeled as such.  If all of the content of a document is normative, this should be stated in the introduction to the document.  If a single document contains both normative and non-normative content, material in a single section should be of a single type.  The introduction should state that content is normative unless otherwise noted and headings should indicate if material in that section is non-normative. 
+
+It is also permissible to indicate in the introduction that content of a particular type (e.g. examples or diagrams) is non-normative. 
+
+**3.2.2 Versioning**
+
+Descriptive documents are resources that follow the versioning model described in Section 2.3.  Thus each particular document version will represent the state of the generic document from the time it was issued until the time that version was superseded by a later version.  Thus, the date issued that is stated on a particular document version will reflect the date that particular version was issued (dcterms:issued).  Date created (dcterms:created) should be reserved to indicate the date that the first version of the document was issued.
+
+**3.2.3 Layout and style**
+
+Descriptive documents should be divided into three main sections:
+
+-   A header section
+-   Table of contents
+-   A body section
+-   A footer section
+
+**3.2.3.1 Header Section**
+
+The header section must contain the following parts:
+
+**Title:** The title of the document.
+
+**Date Issued:** The date of publication of this version in ISO 8601 Date format. 
+
+**Part of TDWG Standard:** The IRI of the standard of which this document is part. The IRI should dereference to the standard's landing page.
+
+**Latest version URI:** The current resource URI that will always return the latest version of the document.
+
+**Previous version:** The URI of the previous version (if any). [should this be "Supersedes"?]
+
+**Replaced by:** The URI of the next version (if any).  [should this be "Superseded by"?]
+
+**Abstract:** A single paragraph summary of the document.
+
+**Contributors:** A list of the people who are responsible for the
+document's creation. The first person in the list should be the
+principal contact.
+
+Contributors’ names must be quoted in the following format: "FirstName
+Initials LastName (Affiliation)" where:
+
+Either one or both of FirstName and Initials must be present.
+
+Affiliation is the organization or group the contributor is working with in relation to this document and is OPTIONAL.
+
+Examples:
+
+-   Roger D. Hyam (TDWG)
+-   Roger Hyam (TDWG Infrastructure Project) 
+-   R. Hyam 
+   
+**Document Status:** One of the status categories listed at [http://www.tdwg.org/standards/status-and-categories/](http://www.tdwg.org/standards/status-and-categories/).
+
+**3.2.3.2 Table of Contents Section**
+
+The table of contents section should contain an ordered list of all the headings (along with their numbers) that occur in the body section and
+nothing else. The items in the list should be hypertext links to the headings in the body.
+
+**3.2.3.3 Body Section**
+
+The body text should be divided by a hierarchy of subheadings. The subheadings must be numbered consecutively using simple decimal system.
+The final number must not be followed by a decimal point. An example:
+
+1 First Main Section
+
+1.1 First subsection within first main section.
+
+1.12.5 The fifth sub-subsection within the twelfth subsection of the first section.
+
+2 Second Main Section
+
+**3.2.3.4 Footer section**
+
+The footer should contain a copyright statement and licensing information.  Typically, the copyright is held by TDWG and the license is [Creative Commons Attribution](http://creativecommons.org/licenses/by/4.0/) (CC BY).
+
+[A reference or link to a document containing the Copyright,
+Licensing and Disclaimer statements that govern this document. This will
+usually be the standard one supplied by TDWG.]
+
+
+
+**3.2.4 Language**
+
+
+All normative content must be in English. Translations of
+normative documents may be included in the standard but the translations
+must be treated as informative documents. 
+
+**3.2.4.1 Linguistic Style**
+
+Text should be written with the assumption that it will be read from the
+screen rather than paper. [should more be said here about the style of normative sections vs. examples, diagrams, etc. that might be in non-normative sections?]
+
+**3.3 Vocabulary descriptions**
+
+
+
 -----------------
 
-2 human readable documents
-2.1 cover page
-2.2 normative and non-normative parts
-2.3 vocabulary descriptions
 
-3 machine readable documents
-3.1 descriptive metadata
-3.2 links between documents
-3.3 vocabularies
+4 machine readable documents
+4.1 descriptive metadata
+4.2 links between documents
+4.3 vocabularies
 
 
 -----------------------
-
-**3 Parts of standards**
-
-[work on wording of this] The normative and non-normative parts of standards should be clearly labeled as such.  If a single document contains both normative and non-normative content, material in a single section should be of a single type. 
 
 **4 Contents of Standards**
 
@@ -190,9 +328,6 @@ standards archives:
     three letter version where possible; for example, jpg rather than
     jpeg and xsl rather than xslt. [Does this really matter? I thought .html was actually preferred over .htm now.]
 
-**8 Versioning of Standards**
-
-[replace with a description of the version model]
 
 **9 File Formats**
 
@@ -230,84 +365,7 @@ with namespaces with the base namespace http://rs.tdwg.org/.  [what is the signi
 **11 Human Readable Documents**
 
 
-This section specifies the layout and style that should be followed for
-any human readable documents that make up part of a TDWG standard. Normative human readable documents should be in XHTML format. [do we still care about XHTML vs. other flavors of HTML?]
-Documents should be divided into three main sections:
 
--   A header section
--   Table of contents
--   A body section
-
-**11.1 Header Section**
-
-This section must contain the following parts:
-
-**Title:** The official title of the document.
-
-**Date Issued:** The date of initial publication in ISO 8601 Date format. 
-
-**Date Modified:** Date of this version.
-
-**Abstract:** A single paragraph summary of the document.
-
-**Contributors:** A list of the people who are responsible for the
-document's creation. The first person in the list should be the
-principal contact.
-
-**Legal:** A reference or link to a document containing the Copyright,
-Licensing and Disclaimer statements that govern this document. This will
-usually be the standard one supplied by TDWG.
-
-**Part of TDWG Standard:** The IRI of the standard this document belongs
-to. The IRI should dereference to the standard cover page.
-
-Contributors’ names must be quoted in the following format: "FirstName
-Initials LastName (Affiliation)" where:
-
-Either one or both of FirstName and Initials must be present.
-
-Affiliation is the organisation or group the contributor is working with
-in relation to this document and is OPTIONAL.
-
-Examples:
-
--   Roger D. Hyam (TDWG)
--   Roger Hyam (TDWG Infrastructure Project) 
--   R. Hyam 
-   
-**11.2 Table of Contents Section**
-
-The table of contents section should contain an ordered list of all the
-headings (along with their numbers) that occur in the body section and
-nothing else. The items in the list should be hypertext links to the
-headings in the body.
-
-**11.3 Body Section**
-
-The body text should be divided by a hierarchy of subheadings. The
-subheadings must be numbered consecutively using simple decimal system.
-The final number must not be followed by a decimal point. [What is the advantage of no final decimal point?  Is this practice followed elsewhere?] An example:
-
-1 First Main Section
-
-1.1 First subsection within first main section.
-
-1.12.5 The fifth sub-subsection within the twelfth subsection of the
-first section.
-
-2 Second Main Section
-
-**12 Language**
-
-
-All normative content must be in English. Translations of
-normative documents may be included in the standard but the translations
-must be treated as informative documents. 
-
-**12.1 Linguistic Style**
-
-Text should be written with the assumption that it will be read from the
-screen rather than paper. [should more be said here about the style of normative sections vs. examples, diagrams, etc. that might be in non-normative sections?]
 
 **12.2 Key Words Governing Compliance**
 
@@ -406,6 +464,8 @@ that activity as well as the standard itself. [should this be here?]
 [HTTP-1.1] http://tools.ietf.org/html/rfc7231 Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content
 
 [IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs)
+
+[ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularis. Part 2: Interoperability with other vocabularies. 2013-03-15.
 
 [RDF-PRIMER] http://www.w3.org/TR/rdf11-primer/ RDF 1.1 Primer
 
