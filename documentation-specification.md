@@ -302,7 +302,7 @@ Each term entry should include the following items.
 
 The term list may contain other properties of the term that are deemed to be useful, including informative comments or notes that provide examples or clarification, but which do not form part of the normative definition of the term.
 
-***3.3.4 Term version lists**
+**3.3.4 Term version lists**
 
 A term version list provides a historical record of all versions of terms that are defined as part of a standard.  It is similar to the term list described in section 3.3.3, except that the entries on the list are versions of terms rather than current terms.  
 
