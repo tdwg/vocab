@@ -1,3 +1,4 @@
+
 # TDWG Standards Documentation Specification #
 
 TODO: 
@@ -198,11 +199,11 @@ The header section must contain the following parts:
 
 **Part of TDWG Standard:** The IRI of the standard of which this document is part. The IRI should dereference to the standard's landing page.
 
-**Latest version URI:** The current resource URI that will always return the latest version of the document.
+**Latest version IRI:** The current resource IRI that will always return the latest version of the document.
 
-**Previous version:** The URI of the previous version (if any). [should this be "Supersedes"?]
+**Previous version:** The IRI of the previous version (if any). [should this be "Supersedes"?]
 
-**Replaced by:** The URI of the next version (if any).  [should this be "Superseded by"?]
+**Replaced by:** The IRI of the next version (if any).  [should this be "Superseded by"?]
 
 **Abstract:** A single paragraph summary of the document.
 
@@ -267,31 +268,73 @@ Documents should be maintained as part of a publicly accessible version control 
 
 ### **3.3 Vocabulary descriptions** ###
 
-Vocabulary description is a special category of human-readable documents.  As such, vocabulary descriptions will comply with the previous parts of Section 3.  However, they will also contain additional information as described in the following sections.
+Documents that describe vocabularies make up a special category of human-readable descriptive documents.  As such, vocabulary descriptions will comply with the requirements of Section 3.2.  However, they will also have particular characteristics as described in the following sections.
 
-**3.3.1 Terms as versioned resources**
+**3.3.1 Landing page for the vocabulary**
 
-A term is a resource that persists over time (Fig. 4) and complies with Section 2.3 of this standard. The current state of the term is represented by the term IRI, which does not change and which can be dereferenced to discover the current term definition.  
+Although a standard may define a vocabulary, the standard may also include other documents such as guides that describe how the vocabulary may be used in different contexts.  It is also possible for a standard to define several vocabularies that may share subsets of terms defined by the vocabulary.  Thus it is clear that a vocabulary is an entity that is distinct from the standard that defines it.  As such, the vocabulary will have an IRI that is distinct from the standard's IRI.  The vocabulary's landing page is the page that is presented to a human user when the vocabulary IRI is dereferenced and content-type text/html is requested. 
+
+In its header, the landing page will contain the metadata described in Section 3.2.3.1, with the release date serving as the Date Issued, and the vocabulary IRI serving as the Latest Version IRI. 
+
+As with other descriptive documents, the body of the landing page should contain an explanation of the purpose of the vocabulary.  However, it must also contain links to the term lists that indicate the terms that make up the vocabulary (Section 3.3.3).  
+
+**3.3.2 Terms as versioned resources**
+
+A term is a resource that persists over time (Fig. 4) and that complies with Section 2.3 of this standard. The current state of the term is represented by the term IRI, which does not change and which can be dereferenced to discover the current term definition.  
 
 The state of the term at particular times is recorded via versions of the term.  A new version of the term is issued on a particular date and the term version IRI should be dereferenceable to discover the definition of the term version when it was issued.  
 
-**3.3.2 Term list**
+**3.3.3 Term lists**
 
-The body section of a vocabulary description will contain a series of term entries that can be easily read and understood by humans.  Each term entry may include the following items.
+A term list is a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list is identified by the IRI of the namespace used by the terms on that list.  For lists of terms borrowed from other vocabularies, any IRI may be used.  It is permissible for the borrowed terms to be included in the same list as the terms defined by the standard.   
 
-**Term name** - The term name is a human readable controlled value that represents the class, property, or concept described by the term definition.  The term name is usually related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.  If the term is imported from another vocabulary rather than defined by the parent standard, the term name should include a namespace abbreviation (QName) that is defined in the introduction of the vocabulary description.  
+Each term entry should include the following items.
 
-**Term IRI** - The HTTP IRI that uniquely identifies the current term
+**Term name** (required) - The term name is a human readable controlled value that represents the class, property, or concept described by the term definition.  The term name is usually related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.  If the term is borrowed from another vocabulary rather than defined by the parent standard, the term name should include a namespace abbreviation (QName) that is defined in the introduction of the vocabulary description.  
 
-**Term version IRI** - The HTTP IRI that identifies the version of the term that is currently in force.
+**Term IRI** (required) - The HTTP IRI that uniquely identifies the current term
 
-**Modified** - The date in ISO 8601 Date format on which the most recent version of the term was issued. 
+**Term version IRI** (required if defined by the containing vocabulary) - The HTTP IRI that identifies the version of the term that is currently in force.
 
-**Definition** - The normative definition of the term, written in English.  The definition should include precisely the wording required to describe the class, property, or concept.  Additional informative content should be presented in comments or notes.
+**Modified** (required if defined by the containing vocabulary) - The date in ISO 8601 Date format on which the most recent version of the term was issued. 
+
+**Definition** (required) - The normative definition of the term, written in English.  The definition should include precisely the wording required to describe the class, property, or concept.  Additional informative content should be presented in comments or notes.
 
 The term list may contain other properties of the term that are deemed to be useful, including informative comments or notes that provide examples or clarification, but which do not form part of the normative definition of the term.
 
-[I have not yet described a term **version** list, i.e. the historical record of all versions of terms that corresponds to [http://rs.tdwg.org/dwc/terms/history/index.htm](http://rs.tdwg.org/dwc/terms/history/index.htm).  This still needs to be done.]
+***3.3.4 Term version lists**
+
+A term version list provides a historical record of all versions of terms that are defined as part of a standard.  It is similar to the term list described in section 3.3.3, except that the entries on the list are versions of terms rather than current terms.  
+
+The term version list should be identified by an IRI that facilitates discovery of the term versions that it lists when the term version IRIs are dereferenced.  
+
+Each term version entry must include the following items.
+
+**Term name** - The term name will be the same as the name used for the current term when the version was valid [or recommended, or non-superseded???].  Because there may be several versions of the term on the list, the term name will not necessarily be unique on the list.  
+
+**Term version IRI** - The HTTP IRI that identifies the particular version of the term.
+
+**Version of** - The HTTP IRI that uniquely identifies the current term associated with the version.
+
+**Issued** - The date in ISO 8601 Date format on which the version was issued. 
+
+**Definition** - The normative definition of the term as it stood in that version.
+
+**Replaces** - The IRI of the previous version (if any) that the subject version replaces.  
+
+**Is replaced by** - The IRI of the subsequent version (if any) that replaces the subject version.
+
+The term list may contain other properties of the term that are deemed to be useful.
+
+## **4 Machine readable documents** ##
+
+It is desirable for user agents (machines) to be able to discover and process metadata associated with standards documents and vocabularies without human intervention. This section describes how machine readable documents should be constructed to make this possible.
+
+The relationships described in this section may be expressed as Resource Description Framework (RDF) but that is not to the exclusion of other methods that may be available for expressing relationships in a manner that facilitates machine processing.
+
+### **4.1 Descriptive metadata** ###
+
+
 
 -----------------
 Material below this point has not yet been revised.
@@ -317,20 +360,13 @@ owl:versionInfo
 **4 Contents of Standards**
 
 [evaluate]
-At a minimum, each standard must contain:
-
--   the normative (prescriptive) form of the standard itself (e.g., an
-    XML Schema or human readable text); and
--   a 'Cover Page' document that summarizes the content of the standard [what does this mean in the current context of GitHub, the TDWG website, etc.?]
-    (see below).
 
 A standard should also contain information on:
 
 -   the 'Motivation' for the existence of the standard; and
 -   the 'Rationale' for why the standard takes the form it does.
 
-Standards may contain any number of files provided they are of an
-appropriate format (see below).
+
 
 **5 Packaging of Standards**
 
@@ -357,46 +393,9 @@ name and is used for the logical folder or directory and any
 distribution archive. Rules for constructing file names are given below.
 The file name must also be unique among TDWG standards.
 
-**7 File Naming**
-
-
-The following rules govern file names used in standards and for
-standards archives:
-
--   File names must start with ‘tdwg\_’ followed by a shortened version of the full name of the standard.
--   File names must consist of only lowercase letters, numbers, underscores and hyphens.
--   File names must not contain spaces (replace with underscore).
--   File names must not contain non ASCII characters.
--   File names must not contain periods other than the one used to separate the suffix.
--   Suffix should be the commonly used suffix for file type and the three letter version where possible; for example, jpg rather than jpeg and xsl rather than xslt. [Does this really matter? I thought .html was actually preferred over .htm now.]
 
 
 
-
-
-
-**10 Referencing of Standards**
-
-[This needs to be re-written in light of the hierarchy model. Replace use of URI with IRI.]
-Each standard must have the following URIs (Uniform Resource
-Identifiers)
-
--   A URI for the standard itself. This must resolve to human readable
-    rendering of the information in the standard's cover page.
--   A URI that resolves to an archive file containing all the files in
-    the standard. [I don't think this should be a requirement.  Let the cover page contain a link to the archive file, whose URL may change.]
--   A URI for each of the files within the standard. [Currently this is not followed - some files are only obtainable in the zip that's downloaded.]
-
-The URIs are issued as part of the standards process by the
-administrator of the standards repository and remain constant from the
-point at which they are issued.
-
-Some standards may involve technologies that make use of XML namespaces.
-The URIs of the standard and its constituent parts should not be used
-for this purpose. TDWG provides a facility for reserving URIs associated
-with namespaces with the base namespace http://rs.tdwg.org/.  [what is the significance of this in the current landscape?]
-
-**11 Human Readable Documents**
 
 
 
