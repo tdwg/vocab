@@ -369,6 +369,7 @@ The property dcterms:contributor should be used to link a resource to an object 
 
 **4.3.1 Example of expressing general metadata (non-normative)**
 
+```
 <http://rs.tdwg.org/dwc/terms/guides/text> 
      dcterms:title "Darwin Core Text Guide";
      dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
@@ -380,6 +381,7 @@ The property dcterms:contributor should be used to link a resource to an object 
      dcterms:contributor <http://orcid.org/0000-0001-6215-3617>,
      <http://orcid.org/0000-0001-7757-1889>,
      <http://orcid.org/0000-0002-6513-4996>.
+```
 
 ### **4.3 Metadata describing and linking versions** ###
 
