@@ -332,27 +332,99 @@ It is desirable for user agents (machines) to be able to discover and process me
 
 The relationships described in this section may be expressed as Resource Description Framework (RDF) but that is not to the exclusion of other methods that may be available for expressing relationships in a manner that facilitates machine processing.
 
-### **4.1 Descriptive metadata** ###
+### **4.1 Identifying the resource and the machine readable document that describes it** ###
+
+In the description of any resource, it is important to distinguish between the identifier for the resource and the identifier for the machine readable document that describes it.  When describing a resource, the resource IRI should be the subject of statements about the current resource.  The machine readable document that describes it must have a different IRI.  The resource should be linked to the document that describes it by the property dcterms:isReferencedBy, while the machine readable document should be linked to the resource it describes by the property dcterms:references.
+
+When a client dereferences the resource IRI, it is desirable that content negotiation result in return of a machine readable document that describes the resource in the format requested in the request header. 
+
+**4.1.1 Example of linking a resource to the machine readable document that describes it (non-normative)**
+
+The following example is expressed in RDF/Turtle:
+
+```
+<http://rs.tdwg.org/dwc/terms/guides/text> 
+     dcterms:title "Darwin Core Text Guide";
+     dcterms:isReferencedBy <https://github.com/tdwg/dwc/blob/master/terms/guides/text/index.rdf>.
+
+<https://github.com/tdwg/dwc/blob/master/terms/guides/text/index.rdf>
+     dcterms:references <http://rs.tdwg.org/dwc/terms/guides/text>;
+     dc:format "text/turtle".
+```
+
+When the resource IRI http://rs.tdwg.org/dwc/terms/guides/text is dereferenced requesting media type text/turtle, the server should redirect to the document https://github.com/tdwg/dwc/blob/master/terms/guides/text/index.rdf which contains the RDF description of the Darwin Core Text Guide in Turtle serialization.
+
+
+### **4.2 General metadata** ###
+
+The same metadata that is presented in the header section of the human-readable representations of [descriptive documents (Section 3.2.3.1)] should be provided in corresponding machine-readable documents.  The following properties along with appropriate literal values should be used to describe the [descriptive document]:
+
+```
+dcterms:title
+dcterms:isPartOf (where the value is the IRI that denotes the containing standard)
+dc:contributor (repeat for each contributor's name)
+```
+
+The property dcterms:contributor should be used to link a resource to an object that is an IRI that denotes the contributor. 
+
+**4.3.1 Example of expressing general metadata (non-normative)**
+
+<http://rs.tdwg.org/dwc/terms/guides/text> 
+     dcterms:title "Darwin Core Text Guide";
+     dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
+     dc:contributor "Tim Robertson (GBIF)",
+     "John Wieczorek (MVZ)",
+     "Markus Döring (GBIF)",
+     "Renato De Giovanni (CRIA)",
+     "Dave Vieglais (KUNHM)";
+     dcterms:contributor <http://orcid.org/0000-0001-6215-3617>,
+     <http://orcid.org/0000-0001-7757-1889>,
+     <http://orcid.org/0000-0002-6513-4996>.
+
+### **4.3 Metadata describing and linking versions** ###
+
+The property owl:versionInfo, which is expected to have a literal value, should be used to provide information about the version of a resource.  This standard does not specify a particular version identifying system; however, it should be understood that version information is intended for a human audience.  Therefore, a system should be used that makes it apparent to a human that a certain version precedes or follows another version. 
+
+A current resource is related to its versions by dcterms:hasVersion, while a version is related to its current resource by dcterms:hasVersion.  A version is related to a previous version by dcterms:replaces, while a version is related to a subsequent version by dcterms:isReplacedBy.
+
+The property dcterms:issued should be used to indicate the date on which a version was published.  The property dcterms:created should be used to indicate the date that the first version of a resource was issued.  The property dcterms:modified should be used to indicate the date that the most recent version was issued.
+
+**4.3.1 Example of linking a current resource to its versions (non-normative)**
+
+The following example is expressed in RDF/Turtle:
+
+```
+<http://rs.tdwg.org/dwc/terms/guides/text> 
+     dcterms:title "Darwin Core Text Guide";
+     dcterms:created "2009-12-07"^^xsd:date;
+     dcterms:modified "2014-11-08"^^xsd:date;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/2014-11-08/terms/guides/text>;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/2009-12-07/terms/guides/text>.
+
+<http://rs.tdwg.org/dwc/2014-11-08/terms/guides/text>
+     dcterms:title "Darwin Core Text Guide";
+     owl:versionInfo "2014-11-08 release";
+     dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/guides/text>;
+     dcterms:issued "2014-11-08"^^xsd:date;
+     dcterms:replaces <http://rs.tdwg.org/dwc/2009-12-07/terms/guides/text>.
+
+<http://rs.tdwg.org/dwc/2009-12-07/terms/guides/text>
+     dcterms:title "Darwin Core Text Guide";
+     owl:versionInfo "2009-12-07 release";
+     dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/guides/text>
+     dcterms:issued "2009-12-07"^^xsd:date;
+     dcterms:isReplacedBy <http://rs.tdwg.org/dwc/2014-11-08/terms/guides/text>.
+```
+
+### **4.4 Metadata describing vocabularies and terms** ###
 
 
 
 -----------------
-Material below this point has not yet been revised.
-
-4 machine readable documents
-4.1 descriptive metadata
-4.2 links between documents
-4.3 vocabularies
-
 Notes: Rec 10 of the GUID AS says the default response serialization should be RDF/XML.  Should this be changed to "format recommended by TAG"?
 
 GUID AS Rec 13 says that an object should be linked to its revisions.  Review this rec before writing.
 
-Properties:
-
-dcterms:replaces
-dcterms:isReplacedBy
-dcterms:hasVersion
 owl:versionInfo
 
 -----------------------
