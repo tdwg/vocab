@@ -7,6 +7,8 @@ TODO:
 
 - decide on "human readable, machine readable" vs. "human-readable, machine-readable" and use consistently
 
+- need examples of human-readable document header section
+
 
 **Title:** TDWG Standards Documentation Specification
 
@@ -430,7 +432,7 @@ All terms are related to the term list that contains them by the property dcterm
 
 Because terms are resources, they are versioned and the terms used for relating current resources to versions (Section 4.3) apply to them as well.
 
-**4.4.1 Example of relationships among standards, vocabularies, and term lists.**
+**4.4.1 Example of relationships among standards, vocabularies, and term lists. (non-normative)**
 
 The following example is expressed in RDF/Turtle:
 
@@ -460,7 +462,7 @@ The following example is expressed in RDF/Turtle:
 The following properties are required for current terms and term versions in addition to the properties listed in Section 4.3 and 4.4. Note that the term or term version IRI will be present as the subject of the property
 
 |**Human readable label**      |           **Machine readable property**|**Type of value**|
-|---------------|----------------|
+|---------------|----------------|----------------|
 | Term name                   | rdfs:label|Literal|
 | Definition                   | rdfs:comment|Literal|
 | Type                   | rdf:type|IRI|
@@ -473,7 +475,7 @@ Term versions should have the property dwcattributes:status with possible values
 
 The property dcterms:description may optionally be used to provide additional information that is not part of the normative definition of the term.
 
-**4.5.1 Examples related to terms**
+**4.5.1 Examples related to terms (non-normative)**
 
 The following example is expressed in RDF/Turtle:
 
@@ -530,7 +532,7 @@ The following example is expressed in RDF/Turtle:
 
 ```
 -----------------
-Information below this point is held over from previous work has not yet been dealt with.
+# Information below this point is held over from previous work has not yet been dealt with.#
 
 Notes: Rec 10 of the GUID AS says the default response serialization should be RDF/XML.  Should this be changed to "format recommended by TAG"?
 
