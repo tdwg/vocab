@@ -103,7 +103,7 @@ Each TDWG standard will have at least one human-readable document that describes
 
 ![](graphics/vocabulary-documents.png)
 
-Fig. 3. Relationship of a vocabulary to its component term list documents.
+Fig. 3. Relationship of a vocabulary to its component term list documents.  [TODO: the arrowheads point the wrong way in this diagram.]
 
 **2.2.3 Vocabulary documents**
 
@@ -290,7 +290,7 @@ A term list is a series of term entries that can be easily read and understood b
 
 Each term entry should include the following items.
 
-**Term name** (required) - The term name is a human readable controlled value that represents the class, property, or concept described by the term definition.  The term name is usually related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.  If the term is borrowed from another vocabulary rather than defined by the parent standard, the term name should include a namespace abbreviation (QName) that is defined in the introduction of the vocabulary description.  
+**Term name** (required) **[Note: Audubon Core uses "Label" rather than "Term name"]** - The term name is a human readable controlled value that represents the class, property, or concept described by the term definition.  The term name is usually related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.  If the term is borrowed from another vocabulary rather than defined by the parent standard, the term name should include a namespace abbreviation (QName) that is defined in the introduction of the vocabulary description.  
 
 **Term IRI** (required) - The HTTP IRI that uniquely identifies the current term
 
@@ -299,6 +299,8 @@ Each term entry should include the following items.
 **Modified** (required if defined by the containing vocabulary) - The date in ISO 8601 Date format on which the most recent version of the term was issued. 
 
 **Definition** (required) - The normative definition of the term, written in English.  The definition should include precisely the wording required to describe the class, property, or concept.  Additional informative content should be presented in comments or notes.
+
+**Type** (required) - Values include "Class", "Property", and "Concept".
 
 The term list may contain other properties of the term that are deemed to be useful, including informative comments or notes that provide examples or clarification, but which do not form part of the normative definition of the term.
 
@@ -357,15 +359,15 @@ When the resource IRI http://rs.tdwg.org/dwc/terms/guides/text is dereferenced r
 
 ### **4.2 General metadata** ###
 
-The same metadata that is presented in the header section of the human-readable representations of [descriptive documents (Section 3.2.3.1)] should be provided in corresponding machine-readable documents.  The following properties along with appropriate literal values should be used to describe the [descriptive document]:
+The same metadata that is presented in the header section of the human-readable representations of descriptive documents and vocabulary landing pages (Section 3.2.3.1) should be provided in corresponding machine-readable documents.  The following properties along with appropriate literal values should be used to describe the document or vocabulary:
 
-```
-dcterms:title
-dcterms:isPartOf (where the value is the IRI that denotes the containing standard)
-dc:contributor (repeat for each contributor's name)
-```
+|**Human readable label**      |           **Machine readable literal-value property**|
+|---------------|----------------|
+| Title                   | dcterms:title|
+| Part of TDWG Standard                   | dcterms:isPartOf (where the value is the IRI that denotes the containing standard)|
+| Contributors                   | dc:contributor (repeat for each contributor's name)|
 
-The property dcterms:contributor should be used to link a resource to an object that is an IRI that denotes the contributor. 
+The property dcterms:contributor should be used to link the document or vocabulary to an object that is an IRI that denotes the contributor. 
 
 **4.3.1 Example of expressing general metadata (non-normative)**
 
@@ -418,18 +420,122 @@ The following example is expressed in RDF/Turtle:
      dcterms:isReplacedBy <http://rs.tdwg.org/dwc/2014-11-08/terms/guides/text>.
 ```
 
-### **4.4 Metadata describing vocabularies and terms** ###
+### **4.4 Metadata terms describing relationship among vocabularies, term lists, and terms** ###
+
+A vocabulary is a resource that may form part of a standard.  A vocabulary is described by the general metadata specified in section 4.2.  A vocabulary also imports lists of terms that it contains.  The property owl:imports is used to link a vocabulary to its term lists (Section 3.3.3).  
+
+Each term list that is defined by the standard corresponds to a namespace used with a set of terms in the standard.  Thus, when the IRI of a term that is defined by the standard is dereferenced with a request for machine readable metadata, a document may be returned through content negotiation that contains the metadata for those terms.  Other terms that are borrowed from other vocabularies will be grouped in one or more term lists.
+
+All terms are related to the term list that contains them by the property dcterms:isPartOf.  Terms that are defined by the standard (as opposed to borrowed terms) are also related to the term list that contains them by rdfs:isDefinedBy.  
+
+Because terms are resources, they are versioned and the terms used for relating current resources to versions (Section 4.3) apply to them as well.
+
+**4.4.1 Example of relationships among standards, vocabularies, and term lists.**
+
+The following example is expressed in RDF/Turtle:
+
+```
+<http://rs.tdwg.org/dwc/basic> 
+     dcterms:title "Darwin Core Basic Vocabulary";
+     dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
+     owl:imports <http://rs.tdwg.org/dwc/terms/>;
+     owl:imports <http://rs.tdwg.org/dwc/dwcattributes/>;
+     owl:imports <http://rs.tdwg.org/dwc/dcmi-terms>.
+
+<http://rs.tdwg.org/dwc/terms/>
+     dcterms:title "Core terms defined by Darwin Core";
+     dcterms:modified "2014-11-08"^^xsd:date.
+
+<http://rs.tdwg.org/dwc/dwcattributes/>
+     dcterms:title "Attributes defined by Darwin Core";
+     dcterms:modified "2009-12-07"^^xsd:date.
+
+<http://rs.tdwg.org/dwc/dcmi-terms>
+     dcterms:title "Dublin Core terms borrowed by Darwin Core";
+     dcterms:modified "2009-12-07"^^xsd:date.
+```
+
+### **4.5 Metadata properties specifically for describing vocabulary terms** ###
+
+The following properties are required for current terms and term versions in addition to the properties listed in Section 4.3 and 4.4. Note that the term or term version IRI will be present as the subject of the property
+
+|**Human readable label**      |           **Machine readable property**|**Type of value**|
+|---------------|----------------|
+| Term name                   | rdfs:label|Literal|
+| Definition                   | rdfs:comment|Literal|
+| Type                   | rdf:type|IRI|
+
+Types should be rdfs:Property for properties, rdfs:Class for classes, and skos:Concept for controlled values.  
+
+Current terms that are no longer valid should have the property owl:deprecated with a literal value of "true" datatyped as boolean.  Note that in this context, a "current" term does not necessarily mean that it is recommended or valid for use.  Rather, it means that the term IRI can be dereferenced by a client that wants to obtain information about it.
+
+Term versions should have the property dwcattributes:status with possible values of "recommended" (for the most recent term version of a term that is currently valid), "superseded" (for term versions having more recent versions), or "deprecated" (for the most recent version of a term that is no longer valid).
+
+The property dcterms:description may optionally be used to provide additional information that is not part of the normative definition of the term.
+
+**4.5.1 Examples related to terms**
+
+The following example is expressed in RDF/Turtle:
+
+```
+<http://rs.tdwg.org/dwc/terms/>
+     dcterms:title "Core terms defined by Darwin Core".
+
+<http://rs.tdwg.org/dwc/terms/recordedBy> 
+     rdfs:label "Recorded By"@en;
+     rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
+     dcterms:description "The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: "José E. Crespo", "Oliver P. Pearson | Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
+     a rdfs:Property;
+     dcterms:modified "2014-10-23"^^xsd:date;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
+     rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
+     dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>.
+
+<http://rs.tdwg.org/dwc/dcmi-terms>
+     dcterms:title "Dublin Core terms borrowed by Darwin Core".
+
+<http://purl.org/dc/terms/Location> 
+     rdfs:label "Location"@en;
+     a rdfs:Class;
+     dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms>.
+# Note that additional properties may be discovered by dereferencing the term IRI.
+
+<http://rs.tdwg.org/dwc/terms/history/>
+     dcterms:title "Darwin Core Terms Complete History".
+
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> 
+     rdfs:label "Recorded By"@en;
+     rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
+     dcterms:description "The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: "José E. Crespo", "Oliver P. Pearson | Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
+     a rdfs:Property;
+     dcterms:issued "2014-10-23"^^xsd:date;
+     dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/recordedBy>;
+     dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
+     rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/history/>;
+     dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/history/>.
+
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> 
+     rdfs:label "Recorded By"@en;
+     rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
+     dcterms:description "Example: "Oliver P. Pearson; Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
+     a rdfs:Property;
+     dcterms:issued "2009-04-24"^^xsd:date;
+     dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/recordedBy>;
+     dcterms:isReplacedBy <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>;
+     rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/history/>;
+     dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/history/>.
 
 
 
+```
 -----------------
+Information below this point is held over from previous work has not yet been dealt with.
+
 Notes: Rec 10 of the GUID AS says the default response serialization should be RDF/XML.  Should this be changed to "format recommended by TAG"?
 
 GUID AS Rec 13 says that an object should be linked to its revisions.  Review this rec before writing.
 
-owl:versionInfo
-
------------------------
 
 **4 Contents of Standards**
 
