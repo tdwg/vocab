@@ -3,20 +3,20 @@ Preliminary Draft 2015-07-15 - Steve Baskauf - TDWG Vocabulary Management Task G
 
 Note: This document has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
 
-![](https://raw.githubusercontent.com/tdwg/vocab/master/tdwg-standards-hierarchy-2015-07-15.png)
+![](https://raw.githubusercontent.com/tdwg/vocab/master/tdwg-standards-hierarchy-2016-02-15.png)
 
 
 Note: each kind of resource described here can exist as a current resource and as versioned resources as described in the [version model](version-model.md)
 
 
 ##Definitions
-**TDWG Standard** - a TDWG standard as an abstract entity.  A TDWG standard will have a human-readable component.  It may or may not include vocabulary(s) that define terms. 
+**TDWG Standard** - a TDWG standard as an abstract entity.  A TDWG standard will have a human-readable component.  It may or may not include vocabulary(s) that define terms.
 
 The "permanent URL" (i.e. the IRI identifier) of the standard should dereference through content negotiation to a human-readable landing web page and to a machine-readable RDF description containing metadata about the standard.
 
-rdf:type [unknown]
+rdf:type dcterms:Standard
 
-*Example:* 
+*Example:*
 
 `http://www.tdwg.org/standards/450/`
 
@@ -37,7 +37,7 @@ rdf:type owl:Ontology, dcat:Dataset(?), voaf:Vocabulary(?)
 `http://rs.tdwg.org/dwc/terms/`
 `http://rs.tdwg.org/dwc/dcmi/`
 
-**representations/distributions** - 
+**representations/distributions** -
 
 *<< It is not clear to me whether it is appropriate to use the terms of the [DCAT W3C Recommendation](http://www.w3.org/TR/vocab-dcat/) with vocabularies. The property **dcat:distribution** would be convenient, but it entails that the subject is a dcat:Dataset.  Is that how we want to type vocabularies?  What about the [VOAF vocabulary](http://lov.okfn.org/vocommons/voaf/v2.3/) (not part of any standard)?>>*
 
@@ -55,11 +55,11 @@ rdf:type dcat:Distribution(?)
 
 ```
 
-## Kinds of subvocabularies 
+## Kinds of subvocabularies
 
 **root subvocabularies**
 
-Each standard that defines a vocabulary will have at least one subvocabulary that defines terms that are managed by TDWG. A root vocabulary (is "base vocabulary" a better term for this?) contains the human-readable text that comprises the normative definition for each of the terms. The subvocabulary IRI for a TDWG root vocabulary will probably be the namespace for the terms defined by that vocabulary so that a client dereferencing one of the terms will discover the root subvocabulary document through content negotiation. For example, the main Darwin Core namespace **dwc:** (http://rs.tdwg.org/dwc/terms/) should return the defining RDF/XML document **dwcterms.rdf** .  For convenience or historical reasons, there may be more than one root subvocabulary/namespace (e.g.  **dwc:**, **dwciri:**, **dwcattributes:**).  Terms included in a root subvocabulary are linked to their containing subvocabulary by the term **rdfs:isDefinedBy** in addition to the more generic **dcterms:isPartOf** property. A root vocabulary should NOT include properties that  directly establish semantic relationships with another vocabulary term (e.g. **rdfs:subPropertyOf**), that place restrictions on the term (e.g. **owl:minCardinality**), or that establish a range or domain for the term (e.g. **rdfs:range**).  A root vocabulary may include properties that entail unstated relationships if those entailments are caused by the definition of a well-known property (e.g. the defined range of **dcterms:creator**). 
+Each standard that defines a vocabulary will have at least one subvocabulary that defines terms that are managed by TDWG. A root vocabulary (is "base vocabulary" a better term for this?) contains the human-readable text that comprises the normative definition for each of the terms. The subvocabulary IRI for a TDWG root vocabulary will probably be the namespace for the terms defined by that vocabulary so that a client dereferencing one of the terms will discover the root subvocabulary document through content negotiation. For example, the main Darwin Core namespace **dwc:** (http://rs.tdwg.org/dwc/terms/) should return the defining RDF/XML document **dwcterms.rdf** .  For convenience or historical reasons, there may be more than one root subvocabulary/namespace (e.g.  **dwc:**, **dwciri:**, **dwcattributes:**).  Terms included in a root subvocabulary are linked to their containing subvocabulary by the term **rdfs:isDefinedBy** in addition to the more generic **dcterms:isPartOf** property. A root vocabulary should NOT include properties that  directly establish semantic relationships with another vocabulary term (e.g. **rdfs:subPropertyOf**), that place restrictions on the term (e.g. **owl:minCardinality**), or that establish a range or domain for the term (e.g. **rdfs:range**).  A root vocabulary may include properties that entail unstated relationships if those entailments are caused by the definition of a well-known property (e.g. the defined range of **dcterms:creator**).
 
 *Example:*
 

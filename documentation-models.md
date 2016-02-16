@@ -12,6 +12,10 @@ A vocabulary for describing datasets in a catalog. See [http://www.w3.org/TR/voc
 
 A Working Group Note. See [http://www.w3.org/TR/dwbp-ucr/](http://www.w3.org/TR/dwbp-ucr/)
 
+##Data Quality Vocabulary working Draft
+A product of the Data on the Web Best Practices Working Group
+[https://www.w3.org/TR/vocab-dqv/](https://www.w3.org/TR/vocab-dqv/)
+
 ##Model for Tabular Data and Metadata on the Web
 W3C Working Group Draft. See [http://www.w3.org/TR/tabular-data-model/](http://www.w3.org/TR/tabular-data-model/)
 
@@ -20,4 +24,3 @@ W3C Working Draft.  See [http://www.w3.org/TR/dwbp/](http://www.w3.org/TR/dwbp/)
 
 ##Best practice in formalizing a SKOS vocabulary (CSIRO)
 From the SEE GRID community website [https://www.seegrid.csiro.au/wiki/Siss/VocabularyFormalizationInSKOS](https://www.seegrid.csiro.au/wiki/Siss/VocabularyFormalizationInSKOS)
-
