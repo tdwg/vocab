@@ -7,19 +7,20 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix emv: <http://rs.gbif.org/vocabulary/gbif/establishment_means/>.
 @prefix gts: <http://resource.geosciml.org/ontology/timescale/gts#>.
 @prefix rank: <http://resource.geosciml.org/ontology/timescale/rank/>.
 @prefix isc: <http://resource.geosciml.org/classifier/ics/ischart/>.
 
 # Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
-# I intend to eventually replace the geological timescale components with TDWG related components (e.g. controlled vocabulary for a DwC term)
-isc:2014  a                    gts:GeologicTimescale , skos:ConceptScheme ;
+
+emv:  a                        skos:ConceptScheme ;
         rdfs:isDefinedBy       <http://resource.geosciml.org/vocabulary/timescale/isc2014> ;
-        rdfs:label             "International Chronostratigraphic Chart (2014)"@en ;
-        rdfs:seeAlso           <http://www.stratigraphy.org/GSSP/index.html> , <http://www.stratigraphy.org/ICSchart/ChronostratChart2014-02.pdf> ;
+        rdfs:label             "Establishment Means GBIF Vocabulary"@en ;
+        rdfs:seeAlso           <http://rs.gbif.org/vocabulary/gbif/establishment_means.xml>;
         dcterms:contributor         "Chinese and Japanese preferred labels from SKOS by Xiaogang Ma, adopted from Asian Multilingual Thesaurus of Geosciences."@en , "International Commission on Stratigraphy"@en , "OneGeology Europe preferred labels merged in by S.M. Richard."@en ;
         dcterms:creator             "Simon J D COX"@en ;
-        dcterms:description         "This is an RDF/OWL representation of the 2014 edition of the International Chronostratigraphic Chart from the International Commission on Stratigraphy."@en ;
+        dcterms:description         "This is a controlled vocabulary intended to be used as values for dwc:establishmentMeans."@en ;
         dcterms:rights              "RDF version Copyright © 2013 CSIRO, Arizona Geological Survey, IUGS"@en , "Original version Copyright © 2013 International Commission on Stratigraphy"@en , "This Ontology is made available under the Open Data Commons Attribution License: http://opendatacommons.org/licenses/by/1.0"^^xsd:string ;
         dcterms:rights              <http://opendatacommons.org/licenses/by/1.0> ;
         dcterms:source              "International Chronostratigraphic Chart 2014"@en ;
@@ -31,13 +32,23 @@ isc:2014  a                    gts:GeologicTimescale , skos:ConceptScheme ;
         skos:prefLabel         "International Chronostratigraphic Chart (2014)"@en.
       
 <http://resource.geosciml.org/classifier/ics/ischart/> skos:member isc:Devonian;
-        a                      skos:Collection ;
-        rdfs:label             "Geologic Timescale Elements in the International Chronostratigraphic Chart"@en ;
-        skos:prefLabel         "Geologic Timescale Elements in the International Chronostratigraphic Chart"@en .
+        a                      skos:Collection .
 
-isc:Devonian gts:rank rank:Period;
-             a gts:GeochronologicEra,
-               skos:Concept;
+emv:native skos:definition "A species that is a part of the balance of nature that has developed over hundreds or thousands of years in a particular region or ecosystem. The word native should always be used with a geographic qualifier (for example, native to New England)."@en;
+           skos:prefLabel "native";
+           skos:altLabel "indigenous"@en;
+           skos:altLabel "reintroduced"@en;
+           skos:inScheme emv:;
+           a skos:Concept.
+
+emv:introduced skos:definition "A species introduced with human help (intentionally or accidentally) to a new place or new type of habitat where it was not previously found. Not all non-native species are invasive. In fact, when many non-native species are introduced to new places, they cannot reproduce or spread readily without continued human help (for example, many ornamental plants)."@en;
+           skos:prefLabel "introduced";
+           skos:altLabel "exotic"@en;
+           skos:altLabel "alien"@en;
+           skos:inScheme emv:;
+           a skos:Concept.
+
+isc:Devonian a skos:Concept;
              rdfs:comment "older bound-416 +/-2.8"@en,
                           "younger bound-359.2 +/-2.5"@en;
              rdfs:label "Devonian Period"@en;
@@ -69,3 +80,20 @@ isc:Devonian gts:rank rank:Period;
                             "devon"@sl,
                             "devon"@sv,
                             "泥盆纪"@zh.
+<http://bioimages.vanderbilt.edu/rdf/stdview#00> a skos:ConceptScheme;
+     skos:note "Assigned to images for which a view has not been specified."@en;
+     skos:prefLabel "unspecified organism group"@en;
+     skos:hasTopConcept <http://bioimages.vanderbilt.edu/rdf/stdview#0000>,
+                        <http://bioimages.vanderbilt.edu/rdf/stdview#0001>;
+     rdfs:isDefinedBy <http://bioimages.vanderbilt.edu/rdf/stdview>.
+<http://bioimages.vanderbilt.edu/rdf/stdview#0000> a skos:Concept;
+       skos:definition "Unspecified part from unspecified organism group; placeholder for groups not yet specified"@en;
+       rdfs:isDefinedBy <http://bioimages.vanderbilt.edu/rdf/stdview>;
+       skos:prefLabel "unspecified part"@en;
+      skos:exactMatch <http://bioimages.vanderbilt.edu/rdf/stdview#0100>,
+                      <http://bioimages.vanderbilt.edu/rdf/stdview#0200>,
+                      <http://bioimages.vanderbilt.edu/rdf/stdview#0300>,
+                      <http://bioimages.vanderbilt.edu/rdf/stdview#0400>,
+                      <http://bioimages.vanderbilt.edu/rdf/stdview#0500>,
+                      <http://bioimages.vanderbilt.edu/rdf/stdview#0600>;
+       skos:inScheme <http://bioimages.vanderbilt.edu/rdf/stdview#00>.
