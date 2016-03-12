@@ -1,0 +1,15 @@
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+dwc:sampleSizeValue skos:prefLabel "sampling size value"@en;
+                    skos:altLabel "sample size value"@en.
+
+dwc:organismName    skos:prefLabel "organism name"@en,
+                                   "nombre del organismo"@es.
+
+dwc:MaterialSample  skos:prefLabel "material sample"@en,
+                                   "muestra de material"@es.
+
+dwc:individualID    skos:prefLabel "Individual ID"@en.
+
+dwc:organismID      skos:prefLabel "Organism ID"@en.
