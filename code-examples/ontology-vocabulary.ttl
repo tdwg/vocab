@@ -144,6 +144,7 @@ dwciri:inCollection a  rdf:Property;
                                 dcterms:hasPart dwc:MaterialSample;
                                 dcterms:hasPart dwc:individualID;
                                 dcterms:hasPart dwc:organismID;
+# should there be a dcterms:license property here?
                                 dcterms:publisher "Biodiversity Information Standards (TDWG)"@en;
                                 # dcterms:title "Darwin Core Recommended Terms"@en;
                                 dcterms:title "Darwin Core Current Terms"@en; # This needs to included terms with owl:deprecated values of true so that their IRIs can be dereferenced by content negotiation
@@ -175,6 +176,7 @@ dwciri:inCollection a  rdf:Property;
 # The following current term descriptions are stripped down as illustrations.  In reality they would have more properties.
 dwc:sampleSizeValue rdfs:comment "A numeric value for a measurement of the size (time duration, length, area, or volume) of a sample in a sampling event."@en;
                     dcterms:description """A sampleSizeValue must have a corresponding sampleSizeUnit. Example: \"5\" for sampleSizeValue with \"metre\" for sampleSizeUnit."""@en;
+                    rdfs:label "Sampling Size Value"@en;
                     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/sampleSizeValue-2014-12-23>;
                     a rdf:Property;
                     dcterms:created "2015-03-19"^^xsd:date;
@@ -184,6 +186,7 @@ dwc:sampleSizeValue rdfs:comment "A numeric value for a measurement of the size 
 
 dwc:organismName    dcterms:description """Examples: \"Huberta\", \"Boab Prison Tree\", \"J pod\"."""@en;
                     rdfs:comment "A textual name or label assigned to an Organism instance."@en;
+                    rdfs:label "Organism Name"@en;
                     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/organismName-2014-10-23>;
                     a rdf:Property;
                     dcterms:created "2014-10-23"^^xsd:date;
@@ -193,6 +196,7 @@ dwc:organismName    dcterms:description """Examples: \"Huberta\", \"Boab Prison 
 
 dwc:MaterialSample  dcterms:description "Examples: A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample."@en;
                     rdfs:comment "A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en;
+                    rdfs:label "Material Sample"@en;
                     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>;
                     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>;
                     a rdfs:Class;
@@ -203,6 +207,7 @@ dwc:MaterialSample  dcterms:description "Examples: A whole organism preserved in
 
 dwc:individualID    dcterms:description """Examples: \"U.amer. 44\", \"Smedley\", \"Orca J 23\""""@en;
                     rdfs:comment "An identifier for an individual or named group of individual organisms represented in the Occurrence. Meant to accommodate resampling of the same individual or group for monitoring purposes. May be a global unique identifier or an identifier specific to a data set."@en;
+                    rdfs:label "Individual ID"@en;
                     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>;
                     a rdf:Property;
                     dcterms:created "2009-04-24"^^xsd:date;
@@ -213,6 +218,7 @@ dwc:individualID    dcterms:description """Examples: \"U.amer. 44\", \"Smedley\"
                     dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>.
 
 dwc:organismID      rdfs:comment "An identifier for the Organism instance (as opposed to a particular digital record of the Organism). May be a globally unique identifier or an identifier specific to the data set."@en;
+                    rdfs:label "Organism ID"@en;
                     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>;
                     a rdf:Property;
                     dcterms:created "2014-10-23"^^xsd:date;
