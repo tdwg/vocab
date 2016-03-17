@@ -4,43 +4,66 @@
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
 @prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcam: <http://purl.org/dc/dcam/>.
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix emv: <http://rs.gbif.org/vocabulary/gbif/establishment_means/>.
-@prefix gts: <http://resource.geosciml.org/ontology/timescale/gts#>.
-@prefix rank: <http://resource.geosciml.org/ontology/timescale/rank/>.
-@prefix isc: <http://resource.geosciml.org/classifier/ics/ischart/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix tgn: <http://vocab.getty.edu/tgn/>.
 
 # Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
 
-<http://rs.tdwg.org/cvterms/establishment_means> a skos:ConceptScheme;
-     rdfs:label "Getty Thesaurus controlled vocab for countries"@en;
-     dcterms:title "TDWG Establishment Means Vocabulary"@en;
-     rdfs:comment "This is a controlled vocabulary intended to be used as values for dwciri:establishmentMeans."@en;
-     skos:note "This is a controlled vocabulary intended to be used as values for dwciri:establishmentMeans."@en;
-     dcterms:publisher "Global Biodiversity Information Facility and Biodiversity Information Standards"@en.
-      
 # Note: No SKOS labels are included in this standards document.  They are included in a separate document that is not part of the standard.
 
-emv: a dcat:Dataset;
-     rdfs:label "Establishment Means Term List"@en;
-     dcterms:title "GBIF Establishment Means Term List"@en;
-     rdfs:comment "This document contains definitions for controlled vocabulary terms to be used as values for dwciri:establishmentMeans."@en;
-     skos:note "This document contains definitions for controlled vocabulary terms to be used as values for dwciri:establishmentMeans."@en;
-     dcterms:modified "2015-02-13"^^xsd:date;
-     dcterms:license <https://creativecommons.org/licenses/by/4.0/>;
-     rdfs:seeAlso <http://rs.gbif.org/vocabulary/gbif/establishment_means.xml>,
-                  <http://terms.tdwg.org/wiki/>; # here is the link to the translations document
-     dcterms:publisher "Global Biodiversity Information Facility"@en.
+<http://rs.tdwg.org/cvterms/country> a dcat:Dataset, skos:Collection;
+     rdfs:label "Country Term List"@en;
+     dcterms:title "TDWG Country Term List"@en;
+     rdfs:comment "This document contains a list of controlled vocabulary terms whose rdf:value should to be used as literal values for dwc:country."@en;
+     skos:note "This document contains a list of controlled vocabulary terms whose rdf:value should to be used as literal values for dwc:country."@en;
+     dcterms:modified "2015-03-17"^^xsd:date;
+     rdfs:seeAlso <http://vocab.getty.edu/tgn/>; # here is the link to the Getty Thesaurus of Geographic Names
+     skos:member <http://vocab.getty.edu/tgn/1000155>;
+     skos:member <http://vocab.getty.edu/tgn/1000180>;
+     skos:member <http://vocab.getty.edu/tgn/7001725>;
+     skos:member <http://vocab.getty.edu/tgn/7002435>;
+     skos:member <http://vocab.getty.edu/tgn/1000111>;
+     skos:member <http://vocab.getty.edu/tgn/1000095>;
+     dcterms:publisher "Biodiversity Information Standards"@en.
 
-emv:native skos:definition "A species that is a part of the balance of nature that has developed over hundreds or thousands of years in a particular region or ecosystem. The word native should always be used with a geographic qualifier (for example, native to New England)."@en;
-           rdfs:comment "A species that is a part of the balance of nature that has developed over hundreds or thousands of years in a particular region or ecosystem. The word native should always be used with a geographic qualifier (for example, native to New England)."@en;
-           rdf:value "native";
-           rdfs:label "native"@en;
-           skos:inScheme <http://rs.tdwg.org/cvterms/establishment_means>;
-           rdfs:isDefinedBy emv:;
-           dcterms:isPartOf emv:;
+<http://vocab.getty.edu/tgn/1000155> rdf:value "République centrafricaine";
+           dcam:memberOf tgn:;
+           skos:inScheme tgn:;
+           foaf:focus <http://sws.geonames.org/239880/>;
+           a skos:Concept.
+
+<http://vocab.getty.edu/tgn/1000180> rdf:value "Moçambique";
+           dcam:memberOf tgn:;
+           skos:inScheme tgn:;
+           foaf:focus <http://sws.geonames.org/1036973/>;
+           a skos:Concept.
+
+<http://vocab.getty.edu/tgn/7001725> rdf:value "Swaziland";
+           dcam:memberOf tgn:;
+           skos:inScheme tgn:;
+           foaf:focus <http://sws.geonames.org/934841/>;
+           a skos:Concept.
+
+<http://vocab.getty.edu/tgn/7002435> rdf:value "Rossija";
+           dcam:memberOf tgn:;
+           skos:inScheme tgn:;
+           foaf:focus <http://sws.geonames.org/2017370/>;
+           a skos:Concept.
+
+<http://vocab.getty.edu/tgn/1000111> rdf:value "Zhongguo";
+           dcam:memberOf tgn:;
+           skos:inScheme tgn:;
+           foaf:focus <http://sws.geonames.org/1814991/>;
+           a skos:Concept.
+
+<http://vocab.getty.edu/tgn/1000095> rdf:value "España";
+           dcam:memberOf tgn:;
+           skos:inScheme tgn:;
+           foaf:focus <http://sws.geonames.org/2510769/>;
            a skos:Concept.
 
 
