@@ -10,12 +10,21 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix tgn: <http://vocab.getty.edu/tgn/>.
+@prefix voaf: <	http://purl.org/vocommons/voaf#>.
 
 # Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
 
-# Note: No SKOS labels are included in this standards document.  They are included in a separate document that is not part of the standard.
+<http://rs.tdwg.org/cvterms/country> a voaf:Vocabulary;
+     rdfs:label "Country Controlled Vocabulary"@en;
+     dcterms:title "TDWG Country Vocabulary"@en;
+     rdfs:comment "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
+     skos:note "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
+     dcterms:hasPart <http://rs.tdwg.org/cvterms/country/>;
+     dcterms:publisher "Biodiversity Information Standards"@en.
 
-<http://rs.tdwg.org/cvterms/country> a dcat:Dataset, skos:Collection;
+# Note: No SKOS labels are included in this standards document.  They are included in the Getty vocabulary definitions.
+
+<http://rs.tdwg.org/cvterms/country/> a dcat:Dataset, skos:Collection;
      rdfs:label "Country Term List"@en;
      dcterms:title "TDWG Country Term List"@en;
      rdfs:comment "This document contains a list of controlled vocabulary terms whose rdf:value should to be used as literal values for dwc:country."@en;
@@ -33,36 +42,42 @@
 <http://vocab.getty.edu/tgn/1000155> rdf:value "République centrafricaine";
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
+           dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
            foaf:focus <http://sws.geonames.org/239880/>;
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/1000180> rdf:value "Moçambique";
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
+           dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
            foaf:focus <http://sws.geonames.org/1036973/>;
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/7001725> rdf:value "Swaziland";
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
+           dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
            foaf:focus <http://sws.geonames.org/934841/>;
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/7002435> rdf:value "Rossija";
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
+           dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
            foaf:focus <http://sws.geonames.org/2017370/>;
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/1000111> rdf:value "Zhongguo";
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
+           dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
            foaf:focus <http://sws.geonames.org/1814991/>;
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/1000095> rdf:value "España";
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
+           dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
            foaf:focus <http://sws.geonames.org/2510769/>;
            a skos:Concept.
 

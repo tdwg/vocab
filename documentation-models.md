@@ -24,3 +24,11 @@ W3C Working Draft.  See [http://www.w3.org/TR/dwbp/](http://www.w3.org/TR/dwbp/)
 
 ##Best practice in formalizing a SKOS vocabulary (CSIRO)
 From the SEE GRID community website [https://www.seegrid.csiro.au/wiki/Siss/VocabularyFormalizationInSKOS](https://www.seegrid.csiro.au/wiki/Siss/VocabularyFormalizationInSKOS)
+
+#Metadata Recommendations For Linked Open Data Vocabularies
+From the Linked Open Vocabularies (LOV) initiative
+[http://lov.okfn.org/Recommendations_Vocabulary_Design.pdf](http://lov.okfn.org/Recommendations_Vocabulary_Design.pdf)
+
+#Vocabulary of a Friend (VOAF)
+Vocabulary terms for describing a vocabulary (published by the Open Knowledge Foundation)
+[http://lov.okfn.org/vocommons/voaf/v2.3/](http://lov.okfn.org/vocommons/voaf/v2.3/)
