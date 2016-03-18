@@ -4,6 +4,7 @@
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
 @prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
 @prefix dcam: <http://purl.org/dc/dcam/>.
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
@@ -11,15 +12,17 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix tgn: <http://vocab.getty.edu/tgn/>.
 @prefix voaf: <	http://purl.org/vocommons/voaf#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
 
 # Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
 
-<http://rs.tdwg.org/cvterms/country> a voaf:Vocabulary;
+<http://rs.tdwg.org/cvterms/country> a dcmitype:DataSet;
      rdfs:label "Country Controlled Vocabulary"@en;
-     dcterms:title "TDWG Country Vocabulary"@en;
+     dcterms:title "TDWG Country Controlled Vocabulary"@en;
      rdfs:comment "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
+     dcterms:description "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
      skos:note "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
-     dcterms:hasPart <http://rs.tdwg.org/cvterms/country/>;
+     vann:termGroup <http://rs.tdwg.org/cvterms/country/>;
      dcterms:publisher "Biodiversity Information Standards"@en.
 
 # Note: No SKOS labels are included in this standards document.  They are included in the Getty vocabulary definitions.
@@ -28,6 +31,7 @@
      rdfs:label "Country Term List"@en;
      dcterms:title "TDWG Country Term List"@en;
      rdfs:comment "This document contains a list of controlled vocabulary terms whose rdf:value should to be used as literal values for dwc:country."@en;
+     dcterms:description "This document contains a list of controlled vocabulary terms whose rdf:value should to be used as literal values for dwc:country."@en;
      skos:note "This document contains a list of controlled vocabulary terms whose rdf:value should to be used as literal values for dwc:country."@en;
      dcterms:modified "2015-03-17"^^xsd:date;
      rdfs:seeAlso <http://vocab.getty.edu/tgn/>; # here is the link to the Getty Thesaurus of Geographic Names
@@ -37,6 +41,7 @@
      skos:member <http://vocab.getty.edu/tgn/7002435>;
      skos:member <http://vocab.getty.edu/tgn/1000111>;
      skos:member <http://vocab.getty.edu/tgn/1000095>;
+     dcterms:isPartOf <http://rs.tdwg.org/cvterms/country>;
      dcterms:publisher "Biodiversity Information Standards"@en.
 
 <http://vocab.getty.edu/tgn/1000155> rdf:value "République centrafricaine";

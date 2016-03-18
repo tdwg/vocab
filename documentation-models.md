@@ -32,3 +32,7 @@ From the Linked Open Vocabularies (LOV) initiative
 #Vocabulary of a Friend (VOAF)
 Vocabulary terms for describing a vocabulary (published by the Open Knowledge Foundation)
 [http://lov.okfn.org/vocommons/voaf/v2.3/](http://lov.okfn.org/vocommons/voaf/v2.3/)
+
+#VANN: A vocabulary for annotating vocabulary descriptions
+A vocabulary for annotating descriptions of vocabularies with examples and usage notes.
+[http://vocab.org/vann/](http://vocab.org/vann/)
