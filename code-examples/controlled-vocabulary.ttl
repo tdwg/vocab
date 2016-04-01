@@ -18,8 +18,8 @@
                                                    dcmitype:Dataset;
      rdfs:label "TDWG Establishment Means Vocabulary"@en;
      dcterms:title "TDWG Establishment Means Vocabulary"@en;
-     rdfs:comment "This is a controlled vocabulary intended to be used as values for dwciri:establishmentMeans."@en;
-     dcterms:description "This is a controlled vocabulary intended to be used as values for dwciri:establishmentMeans."@en;
+     rdfs:comment "This is a controlled vocabulary whose IRIs are intended to be used as values for dwciri:establishmentMeans."@en;
+     dcterms:description "This is a controlled vocabulary whose IRIs are intended to be used as values for dwciri:establishmentMeans."@en;
      skos:note "This is a controlled vocabulary intended to be used as values for dwciri:establishmentMeans."@en;
      skos:hasTopConcept emv:native,
                         emv:introduced,
