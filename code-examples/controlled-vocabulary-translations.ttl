@@ -2,21 +2,27 @@
 @prefix emv: <http://rs.gbif.org/vocabulary/gbif/establishment_means/>.
 
 emv:native skos:prefLabel "native"@en;
+           skos:prefLabel "nativo"@es;
            skos:altLabel "indigenous"@en;
            skos:altLabel "reintroduced"@en.
 
 emv:introduced skos:prefLabel "introduced"@en;
+               skos:prefLabel "introducido"@es;
                skos:altLabel "exotic"@en;
                skos:altLabel "alien"@en.
 
 emv:naturalised skos:prefLabel "naturalised"@en;
+                skos:prefLabel "naturalizado"@es;
                 skos:altLabel "naturalized"@en-US.
 
-emv:invasive skos:prefLabel "invasive"@en.
+emv:invasive skos:prefLabel "invasive"@en;
+             skos:prefLabel "invasor"@es.
 
 emv:managed skos:prefLabel "managed"@en;
+            skos:prefLabel "gestionado"@es;
             skos:altLabel "cultivated"@en;
             skos:altLabel "captive"@en.
 
 emv:uncertain skos:prefLabel "uncertain"@en;
+              skos:prefLabel "incierto"@es;
               skos:altLabel "unknown"@en.

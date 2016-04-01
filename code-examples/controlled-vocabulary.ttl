@@ -4,19 +4,19 @@
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
 @prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dcam: <http://purl.org/dc/dcam/>.
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix emv: <http://rs.gbif.org/vocabulary/gbif/establishment_means/>.
-@prefix gts: <http://resource.geosciml.org/ontology/timescale/gts#>.
-@prefix rank: <http://resource.geosciml.org/ontology/timescale/rank/>.
-@prefix isc: <http://resource.geosciml.org/classifier/ics/ischart/>.
 @prefix vann: <http://purl.org/vocab/vann/>.
 
 # Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
 
-<http://rs.tdwg.org/cvterms/establishment_means> a skos:ConceptScheme;
-     rdfs:label "Establishment Means Vocabulary"@en;
+<http://rs.tdwg.org/cvterms/establishment_means> a skos:ConceptScheme,
+                                                   dcmitype:Dataset;
+     rdfs:label "TDWG Establishment Means Vocabulary"@en;
      dcterms:title "TDWG Establishment Means Vocabulary"@en;
      rdfs:comment "This is a controlled vocabulary intended to be used as values for dwciri:establishmentMeans."@en;
      dcterms:description "This is a controlled vocabulary intended to be used as values for dwciri:establishmentMeans."@en;
@@ -25,7 +25,7 @@
                         emv:introduced,
                         emv:uncertain;
      vann:termGroup emv:;
-     dcterms:publisher "Global Biodiversity Information Facility and Biodiversity Information Standards"@en.
+     dcterms:publisher "Biodiversity Information Standards"@en.
       
 # Note: No SKOS labels are included in this standards document.  They are included in a separate document that is not part of the standard.
 
@@ -51,6 +51,7 @@ emv:native skos:definition "A species that is a part of the balance of nature th
            skos:inScheme <http://rs.tdwg.org/cvterms/establishment_means>;
            rdfs:isDefinedBy emv:;
            dcterms:isPartOf emv:;
+           dcam:memberOf emv:;
            a skos:Concept.
 
 emv:introduced skos:definition "A species introduced with human help (intentionally or accidentally) to a new place or new type of habitat where it was not previously found. Not all non-native species are invasive. In fact, when many non-native species are introduced to new places, they cannot reproduce or spread readily without continued human help (for example, many ornamental plants)."@en;
@@ -60,6 +61,7 @@ emv:introduced skos:definition "A species introduced with human help (intentiona
            skos:inScheme <http://rs.tdwg.org/cvterms/establishment_means>;
            rdfs:isDefinedBy emv:;
            dcterms:isPartOf emv:;
+           dcam:memberOf emv:;
            a skos:Concept.
 
 emv:naturalised skos:definition "The organism reproduces naturally and forms part of the local ecology."@en;
@@ -70,6 +72,7 @@ emv:naturalised skos:definition "The organism reproduces naturally and forms par
            skos:inScheme <http://rs.tdwg.org/cvterms/establishment_means>;
            rdfs:isDefinedBy emv:;
            dcterms:isPartOf emv:;
+           dcam:memberOf emv:;
            a skos:Concept.
 
 emv:invasive skos:definition "The organism is having a deleterious impact on another organism, multiple organisms or the ecosystem as a whole."@en;
@@ -80,6 +83,7 @@ emv:invasive skos:definition "The organism is having a deleterious impact on ano
            skos:inScheme <http://rs.tdwg.org/cvterms/establishment_means>;
            rdfs:isDefinedBy emv:;
            dcterms:isPartOf emv:;
+           dcam:memberOf emv:;
            a skos:Concept.
 
 emv:managed skos:definition "The organism maintains its presence through intentional cultivation or husbandry."@en;
@@ -90,6 +94,7 @@ emv:managed skos:definition "The organism maintains its presence through intenti
            skos:inScheme <http://rs.tdwg.org/cvterms/establishment_means>;
            rdfs:isDefinedBy emv:;
            dcterms:isPartOf emv:;
+           dcam:memberOf emv:;
            a skos:Concept.
 
 emv:uncertain skos:definition "Origin of organism is uncertain."@en;
@@ -99,5 +104,6 @@ emv:uncertain skos:definition "Origin of organism is uncertain."@en;
            skos:inScheme <http://rs.tdwg.org/cvterms/establishment_means>;
            rdfs:isDefinedBy emv:;
            dcterms:isPartOf emv:;
+           dcam:memberOf emv:;
            a skos:Concept.
 
