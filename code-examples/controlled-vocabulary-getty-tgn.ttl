@@ -2,29 +2,26 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
-@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix dcmitype: <http://purl.org/dc/dcmitype/>.
 @prefix dcam: <http://purl.org/dc/dcam/>.
 @prefix dcat: <http://www.w3.org/ns/dcat#>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix tgn: <http://vocab.getty.edu/tgn/>.
-@prefix voaf: <	http://purl.org/vocommons/voaf#>.
 @prefix vann: <http://purl.org/vocab/vann/>.
 
 # Caveat: This document is a work in progress and has no official standing. It is subject to change at any time and should not be considered to be stable nor citable.
 
 <http://rs.tdwg.org/cvterms/country> a dcmitype:DataSet;
-     rdfs:label "Country Controlled Vocabulary"@en;
+     rdfs:label "TDWG Country Controlled Vocabulary"@en;
      dcterms:title "TDWG Country Controlled Vocabulary"@en;
      rdfs:comment "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
      dcterms:description "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
      skos:note "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
      vann:termGroup <http://rs.tdwg.org/cvterms/country/>;
-     dcterms:publisher "Biodiversity Information Standards"@en.
+     dc:publisher "Biodiversity Information Standards"@en.
 
 # Note: No SKOS labels are included in this standards document.  They are included in the Getty vocabulary definitions.
 
@@ -43,9 +40,13 @@
      skos:member <http://vocab.getty.edu/tgn/1000111>;
      skos:member <http://vocab.getty.edu/tgn/1000095>;
      dcterms:isPartOf <http://rs.tdwg.org/cvterms/country>;
+     dcterms:license <http://opendatacommons.org/licenses/by/1.0/>;
+     <http://ns.adobe.com/xap/1.0/rights/UsageTerms> "Contains information from Getty Thesaurus of Geographic Names (TGN) which is made available under the ODC Attribution License.";
+     dcterms:source <http://vocab.getty.edu/tgn/>;
      dc:publisher "Biodiversity Information Standards"@en.
 
 <http://vocab.getty.edu/tgn/1000155> rdf:value "République centrafricaine";
+           rdfs:label "Central African Republic"@en;
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
            dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
@@ -53,6 +54,7 @@
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/1000180> rdf:value "Moçambique";
+           rdfs:label "Mozambique"@en;
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
            dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
@@ -60,6 +62,7 @@
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/7001725> rdf:value "Swaziland";
+           rdfs:label "Swaziland"@en;
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
            dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
@@ -67,6 +70,7 @@
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/7002435> rdf:value "Rossija";
+           rdfs:label "Russia"@en;
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
            dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
@@ -74,6 +78,7 @@
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/1000111> rdf:value "Zhongguo";
+           rdfs:label "China"@en;
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
            dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
@@ -81,6 +86,7 @@
            a skos:Concept.
 
 <http://vocab.getty.edu/tgn/1000095> rdf:value "España";
+           rdfs:label "Spain"@en;
            dcam:memberOf tgn:;
            skos:inScheme tgn:;
            dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/>;
