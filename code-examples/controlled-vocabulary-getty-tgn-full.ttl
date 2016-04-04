@@ -1,0 +1,1581 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dcam: <http://purl.org/dc/dcam/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix tgn: <http://vocab.getty.edu/tgn/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+
+<http://rs.tdwg.org/cvterms/country> a dcmitype:DataSet;
+     rdfs:label "TDWG Country Controlled Vocabulary"@en;
+     dcterms:title "TDWG Country Controlled Vocabulary"@en;
+     rdfs:comment "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
+     dcterms:description "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
+     skos:note "This is a controlled vocabulary intended to be used as values for dwc:country."@en;
+     vann:termGroup <http://rs.tdwg.org/cvterms/country/>;
+     dc:publisher "Biodiversity Information Standards"@en.
+
+<http://rs.tdwg.org/cvterms/country/> a dcat:Dataset, skos:Collection;
+     rdfs:label "Country Term List"@en;
+     dcterms:title "TDWG Country Term List"@en;
+     rdfs:comment "This document contains a list of controlled vocabulary terms whose rdf:value should to be used as literal values for dwc:country."@en;
+     dcterms:description "This document contains a list of controlled vocabulary terms whose rdf:value should to be used as literal values for dwc:country."@en;
+     skos:note "This document contains a list of controlled vocabulary terms whose rdf:value should to be used as literal values for dwc:country."@en;
+     dcterms:modified "2015-03-17"^^xsd:date;
+     rdfs:seeAlso <http://vocab.getty.edu/tgn/>; # here is the link to the Getty Thesaurus of Geographic Names
+     skos:member <http://vocab.getty.edu/tgn/1000146> , <http://vocab.getty.edu/tgn/1000139> , <http://vocab.getty.edu/tgn/7016612> , <http://vocab.getty.edu/tgn/7006417> , <http://vocab.getty.edu/tgn/7016752> , <http://vocab.getty.edu/tgn/1000061> , <http://vocab.getty.edu/tgn/1000149> , <http://vocab.getty.edu/tgn/1000009> , <http://vocab.getty.edu/tgn/7006477> , <http://vocab.getty.edu/tgn/7004538> , <http://vocab.getty.edu/tgn/7006651> , <http://vocab.getty.edu/tgn/7000490> , <http://vocab.getty.edu/tgn/1000062> , <http://vocab.getty.edu/tgn/7006646> , <http://vocab.getty.edu/tgn/7005332> , <http://vocab.getty.edu/tgn/7016770> , <http://vocab.getty.edu/tgn/1000105> , <http://vocab.getty.edu/tgn/7004770> , <http://vocab.getty.edu/tgn/7006657> , <http://vocab.getty.edu/tgn/1000063> , <http://vocab.getty.edu/tgn/7005346> , <http://vocab.getty.edu/tgn/1000160> , <http://vocab.getty.edu/tgn/7014831> , <http://vocab.getty.edu/tgn/1000046> , <http://vocab.getty.edu/tgn/7006664> , <http://vocab.getty.edu/tgn/1000150> , <http://vocab.getty.edu/tgn/1000047> , <http://vocab.getty.edu/tgn/1000107> , <http://vocab.getty.edu/tgn/7006413> , <http://vocab.getty.edu/tgn/1000208> , <http://vocab.getty.edu/tgn/7001630> , <http://vocab.getty.edu/tgn/1000109> , <http://vocab.getty.edu/tgn/1000153> , <http://vocab.getty.edu/tgn/7005685> , <http://vocab.getty.edu/tgn/7001632> , <http://vocab.getty.edu/tgn/1000155> , <http://vocab.getty.edu/tgn/1000156> , <http://vocab.getty.edu/tgn/1000049> , <http://vocab.getty.edu/tgn/1000050> , <http://vocab.getty.edu/tgn/1000157> , <http://vocab.getty.edu/tgn/1000158> , <http://vocab.getty.edu/tgn/7005364> , <http://vocab.getty.edu/tgn/7006663> , <http://vocab.getty.edu/tgn/7004624> , <http://vocab.getty.edu/tgn/1006894> , <http://vocab.getty.edu/tgn/1001780> , <http://vocab.getty.edu/tgn/1000168> , <http://vocab.getty.edu/tgn/1000066> , <http://vocab.getty.edu/tgn/7001644> , <http://vocab.getty.edu/tgn/7004641> , <http://vocab.getty.edu/tgn/7005388> , <http://vocab.getty.edu/tgn/1000051> , <http://vocab.getty.edu/tgn/7016833> , <http://vocab.getty.edu/tgn/7005441> , <http://vocab.getty.edu/tgn/1000161> , <http://vocab.getty.edu/tgn/7001658> , <http://vocab.getty.edu/tgn/7006540> , <http://vocab.getty.edu/tgn/7000489> , <http://vocab.getty.edu/tgn/1000220> , <http://vocab.getty.edu/tgn/7000493> , <http://vocab.getty.edu/tgn/1000069> , <http://vocab.getty.edu/tgn/1000070> , <http://vocab.getty.edu/tgn/1000164> , <http://vocab.getty.edu/tgn/7006653> , <http://vocab.getty.edu/tgn/7000084> , <http://vocab.getty.edu/tgn/1000166> , <http://vocab.getty.edu/tgn/1000074> , <http://vocab.getty.edu/tgn/7004771> , <http://vocab.getty.edu/tgn/7005493> , <http://vocab.getty.edu/tgn/1000167> , <http://vocab.getty.edu/tgn/1000183> , <http://vocab.getty.edu/tgn/1000054> , <http://vocab.getty.edu/tgn/7005502> , <http://vocab.getty.edu/tgn/7001168> , <http://vocab.getty.edu/tgn/7005554> , <http://vocab.getty.edu/tgn/7006278> , <http://vocab.getty.edu/tgn/1000077> , <http://vocab.getty.edu/tgn/7000198> , <http://vocab.getty.edu/tgn/1000116> , <http://vocab.getty.edu/tgn/7000231> , <http://vocab.getty.edu/tgn/1000118> , <http://vocab.getty.edu/tgn/1000078> , <http://vocab.getty.edu/tgn/1000119> , <http://vocab.getty.edu/tgn/1000080> , <http://vocab.getty.edu/tgn/7005556> , <http://vocab.getty.edu/tgn/1000120> , <http://vocab.getty.edu/tgn/1000121> , <http://vocab.getty.edu/tgn/7014786> , <http://vocab.getty.edu/tgn/1000169> , <http://vocab.getty.edu/tgn/1000217> , <http://vocab.getty.edu/tgn/1000124> , <http://vocab.getty.edu/tgn/7006655> , <http://vocab.getty.edu/tgn/1000125> , <http://vocab.getty.edu/tgn/7006541> , <http://vocab.getty.edu/tgn/1000126> , <http://vocab.getty.edu/tgn/7001660> , <http://vocab.getty.edu/tgn/1000171> , <http://vocab.getty.edu/tgn/1000172> , <http://vocab.getty.edu/tgn/7003515> , <http://vocab.getty.edu/tgn/7006542> , <http://vocab.getty.edu/tgn/7003514> , <http://vocab.getty.edu/tgn/1000173> , <http://vocab.getty.edu/tgn/7000726> , <http://vocab.getty.edu/tgn/1000128> , <http://vocab.getty.edu/tgn/7000331> , <http://vocab.getty.edu/tgn/1000175> , <http://vocab.getty.edu/tgn/7005729> , <http://vocab.getty.edu/tgn/7016730> , <http://vocab.getty.edu/tgn/1000176> , <http://vocab.getty.edu/tgn/1000177> , <http://vocab.getty.edu/tgn/7005560> , <http://vocab.getty.edu/tgn/7006656> , <http://vocab.getty.edu/tgn/7005758> , <http://vocab.getty.edu/tgn/7029379> , <http://vocab.getty.edu/tgn/7015657> , <http://vocab.getty.edu/tgn/7004786> , <http://vocab.getty.edu/tgn/1000179> , <http://vocab.getty.edu/tgn/1000180> , <http://vocab.getty.edu/tgn/1000108> , <http://vocab.getty.edu/tgn/1000198> , <http://vocab.getty.edu/tgn/7006158> , <http://vocab.getty.edu/tgn/1000132> , <http://vocab.getty.edu/tgn/7016845> , <http://vocab.getty.edu/tgn/1000226> , <http://vocab.getty.edu/tgn/7005562> , <http://vocab.getty.edu/tgn/1000181> , <http://vocab.getty.edu/tgn/1000182> , <http://vocab.getty.edu/tgn/1000122> , <http://vocab.getty.edu/tgn/1000088> , <http://vocab.getty.edu/tgn/1000131> , <http://vocab.getty.edu/tgn/1000133> , <http://vocab.getty.edu/tgn/7005668> , <http://vocab.getty.edu/tgn/7004540> , <http://vocab.getty.edu/tgn/7005565> , <http://vocab.getty.edu/tgn/7006160> , <http://vocab.getty.edu/tgn/1000055> , <http://vocab.getty.edu/tgn/1000056> , <http://vocab.getty.edu/tgn/1000135> , <http://vocab.getty.edu/tgn/7006366> , <http://vocab.getty.edu/tgn/1000090> , <http://vocab.getty.edu/tgn/1000136> , <http://vocab.getty.edu/tgn/1000091> , <http://vocab.getty.edu/tgn/7002435> , <http://vocab.getty.edu/tgn/7001682> , <http://vocab.getty.edu/tgn/7005605> , <http://vocab.getty.edu/tgn/7004772> , <http://vocab.getty.edu/tgn/7004773> , <http://vocab.getty.edu/tgn/1000239> , <http://vocab.getty.edu/tgn/7005699> , <http://vocab.getty.edu/tgn/1000188> , <http://vocab.getty.edu/tgn/1000137> , <http://vocab.getty.edu/tgn/1000189> , <http://vocab.getty.edu/tgn/7006669> , <http://vocab.getty.edu/tgn/1000102> , <http://vocab.getty.edu/tgn/1000190> , <http://vocab.getty.edu/tgn/1000191> , <http://vocab.getty.edu/tgn/7000381> , <http://vocab.getty.edu/tgn/7011765> , <http://vocab.getty.edu/tgn/7006670> , <http://vocab.getty.edu/tgn/1000233> , <http://vocab.getty.edu/tgn/1000192> , <http://vocab.getty.edu/tgn/1000193> , <http://vocab.getty.edu/tgn/7000299> , <http://vocab.getty.edu/tgn/7441551> , <http://vocab.getty.edu/tgn/1000095> , <http://vocab.getty.edu/tgn/1000110> , <http://vocab.getty.edu/tgn/1000201> , <http://vocab.getty.edu/tgn/7015386> , <http://vocab.getty.edu/tgn/7001725> , <http://vocab.getty.edu/tgn/1000097> , <http://vocab.getty.edu/tgn/7011731> , <http://vocab.getty.edu/tgn/1000140> , <http://vocab.getty.edu/tgn/1000141> , <http://vocab.getty.edu/tgn/7014835> , <http://vocab.getty.edu/tgn/1000203> , <http://vocab.getty.edu/tgn/1000142> , <http://vocab.getty.edu/tgn/7003703> , <http://vocab.getty.edu/tgn/7016577> , <http://vocab.getty.edu/tgn/7000529> , <http://vocab.getty.edu/tgn/7004787> , <http://vocab.getty.edu/tgn/1000205> , <http://vocab.getty.edu/tgn/1000144> , <http://vocab.getty.edu/tgn/1000236> , <http://vocab.getty.edu/tgn/1000206> , <http://vocab.getty.edu/tgn/7006660> , <http://vocab.getty.edu/tgn/1000143> , <http://vocab.getty.edu/tgn/7008591> , <http://vocab.getty.edu/tgn/7012149> , <http://vocab.getty.edu/tgn/1000058> , <http://vocab.getty.edu/tgn/7006661> , <http://vocab.getty.edu/tgn/1000225> , <http://vocab.getty.edu/tgn/1000059> , <http://vocab.getty.edu/tgn/1000145> , <http://vocab.getty.edu/tgn/7000261> , <http://vocab.getty.edu/tgn/1000209> , <http://vocab.getty.edu/tgn/1000185> ;
+     dcterms:isPartOf <http://rs.tdwg.org/cvterms/country>;
+     dcterms:license <http://opendatacommons.org/licenses/by/1.0/>;
+     <http://ns.adobe.com/xap/1.0/rights/UsageTerms> "Contains information from Getty Thesaurus of Geographic Names (TGN) which is made available under the ODC Attribution License.";
+     dcterms:source <http://vocab.getty.edu/tgn/>;
+     dc:publisher "Biodiversity Information Standards"@en.
+
+<http://vocab.getty.edu/tgn/7016612> rdf:value "Afghānestān" ;
+	rdfs:label "Afghanistan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1149361/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006417> rdf:value "Shqipëria" ;
+	rdfs:label "Albania"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/783754/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7016752> rdf:value "Al-Jazā'ir" ;
+	rdfs:label "Algeria"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2589581/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000061> rdf:value "Andorra" ;
+	rdfs:label "Andorra"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3041565/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000149> rdf:value "Angola" ;
+	rdfs:label "Angola"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3351879/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000009> rdf:value "Antigua and Barbuda" ;
+	rdfs:label "Antigua and Barbuda"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3576396/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006477> rdf:value "Argentina" ;
+	rdfs:label "Argentina"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3865483/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006651> rdf:value "Hayastan" ;
+	rdfs:label "Armenia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/174982/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004538> rdf:value "Armenia" ;
+	rdfs:label "Armenia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/174982/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000490> rdf:value "Australia" ;
+	rdfs:label "Australia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2077456/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000062> rdf:value "Österreich" ;
+	rdfs:label "Austria"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2782113/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006646> rdf:value "Azǝrbaycan" ;
+	rdfs:label "Azerbaijan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/587116/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7016770> rdf:value "Al Baḥrayn" ;
+	rdfs:label "Bahrain"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/290291/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000105> rdf:value "Bāṁlādesh" ;
+	rdfs:label "Bangladesh"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1210997/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004770> rdf:value "Barbados" ;
+	rdfs:label "Barbados"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3374084/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006657> rdf:value "Bieloruś" ;
+	rdfs:label "Belarus"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/630336/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000063> rdf:value "België" ;
+	rdfs:label "Belgium"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2802361/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005346> rdf:value "Belize" ;
+	rdfs:label "Belize"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3582678/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000160> rdf:value "Bénin" ;
+	rdfs:label "Benin"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2395170/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7014831> rdf:value "Druk Yul" ;
+	rdfs:label "Bhutan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1252634/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000046> rdf:value "Bolivia" ;
+	rdfs:label "Bolivia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3923057/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006664> rdf:value "Bosna i Hercegovina" ;
+	rdfs:label "Bosnia and Herzegovina"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3277605/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000150> rdf:value "Botswana" ;
+	rdfs:label "Botswana"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/933860/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000047> rdf:value "Brasil" ;
+	rdfs:label "Brazil"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3469034/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006413> rdf:value "Bǎlgarija" ;
+	rdfs:label "Bulgaria"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/732800/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000208> rdf:value "Burkina" ;
+	rdfs:label "Burkina Faso"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2361809/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7001630> rdf:value "Burundi" ;
+	rdfs:label "Burundi"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/433561/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000109> rdf:value "Kâmpŭchéa" ;
+	rdfs:label "Cambodia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1831722/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000153> rdf:value "Cameroun" ;
+	rdfs:label "Cameroon"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2233387/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005685> rdf:value "Canada" ;
+	rdfs:label "Canada"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/6251999/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7001632> rdf:value "Cabo Verde" ;
+	rdfs:label "Cape Verde"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3374766/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000155> rdf:value "République centrafricaine" ;
+	rdfs:label "Central African Republic"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/239880/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000156> rdf:value "Tchād" ;
+	rdfs:label "Chad"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2434508/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000049> rdf:value "Chile" ;
+	rdfs:label "Chile"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3895114/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000050> rdf:value "Colombia" ;
+	rdfs:label "Colombia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3686110/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000157> rdf:value "Comores" ;
+	rdfs:label "Comoros"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/921929/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005364> rdf:value "Costa Rica" ;
+	rdfs:label "Costa Rica"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3624060/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006663> rdf:value "Hrvatska" ;
+	rdfs:label "Croatia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3202326/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004624> rdf:value "Cuba" ;
+	rdfs:label "Cuba"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3562981/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1006894> rdf:value "Cyprus" ;
+	rdfs:label "Cyprus"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/146669/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1001780> rdf:value "Česko" ;
+	rdfs:label "Czech Republic"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3077311/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000066> rdf:value "Danmark" ;
+	rdfs:label "Denmark"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2623032/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7001644> rdf:value "Jībūtī" ;
+	rdfs:label "Djibouti"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/223816/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004641> rdf:value "Dominica" ;
+	rdfs:label "Dominica"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3575830/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005388> rdf:value "República Dominicana" ;
+	rdfs:label "Dominican Republic"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3508796/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000051> rdf:value "Ecuador" ;
+	rdfs:label "Ecuador"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3658394/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7016833> rdf:value "Miṣr" ;
+	rdfs:label "Egypt"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/357994/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005441> rdf:value "El Salvador" ;
+	rdfs:label "El Salvador"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3585968/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000161> rdf:value "Guinea Ecuatorial" ;
+	rdfs:label "Equatorial Guinea"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2309096/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7001658> rdf:value "Iritriyā" ;
+	rdfs:label "Eritrea"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/338010/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006540> rdf:value "Eesti" ;
+	rdfs:label "Estonia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/453733/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000489> rdf:value "Ityop'iya" ;
+	rdfs:label "Ethiopia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/337996/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000493> rdf:value "Fiji" ;
+	rdfs:label "Fiji"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2205218/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000069> rdf:value "Suomi" ;
+	rdfs:label "Finland"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/660013/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000070> rdf:value "France" ;
+	rdfs:label "France"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3017382/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000164> rdf:value "Gabon" ;
+	rdfs:label "Gabon"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2400553/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000084> rdf:value "Deutschland" ;
+	rdfs:label "Germany"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2921044/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000166> rdf:value "Ghana" ;
+	rdfs:label "Ghana"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2300660/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000074> rdf:value "Ellás" ;
+	rdfs:label "Greece"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/390903/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004771> rdf:value "Grenada" ;
+	rdfs:label "Grenada"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3580239/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005493> rdf:value "Guatemala" ;
+	rdfs:label "Guatemala"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3595528/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000167> rdf:value "Guinée" ;
+	rdfs:label "Guinea"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2420477/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000183> rdf:value "Guiné-Bissau" ;
+	rdfs:label "Guinea-Bissau"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2372248/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000054> rdf:value "Guyana" ;
+	rdfs:label "Guyana"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3378535/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005502> rdf:value "Haïti" ;
+	rdfs:label "Haiti"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3723988/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005554> rdf:value "Honduras" ;
+	rdfs:label "Honduras"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3608932/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006278> rdf:value "Magyarország" ;
+	rdfs:label "Hungary"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/719819/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000077> rdf:value "Ísland" ;
+	rdfs:label "Iceland"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2629691/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000198> rdf:value "Bhārat" ;
+	rdfs:label "India"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1269750/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000116> rdf:value "Indonesia" ;
+	rdfs:label "Indonesia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1643084/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000231> rdf:value "Īrān" ;
+	rdfs:label "Iran"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/130758/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000118> rdf:value "Al-ʻIrāq" ;
+	rdfs:label "Iraq"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/99237/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000078> rdf:value "Ireland" ;
+	rdfs:label "Ireland"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2963597/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000119> rdf:value "Yisra'el" ;
+	rdfs:label "Israel"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/294640/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000080> rdf:value "Italia" ;
+	rdfs:label "Italy"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3175395/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000120> rdf:value "Nihon" ;
+	rdfs:label "Japan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1861060/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000121> rdf:value "Al Urdun" ;
+	rdfs:label "Jordan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/248816/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7014786> rdf:value "Qazaqstan" ;
+	rdfs:label "Kazakhstan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1522867/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000169> rdf:value "Kenya" ;
+	rdfs:label "Kenya"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/192950/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000217> rdf:value "Kiribati" ;
+	rdfs:label "Kiribati"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/4030945/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000124> rdf:value "Al Kuwayt" ;
+	rdfs:label "Kuwait"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/285570/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006655> rdf:value "Kyrgyzstan" ;
+	rdfs:label "Kyrgyzstan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1527747/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000125> rdf:value "Sathalanalat Paxathipatai Paxaxôn Lao" ;
+	rdfs:label "Laos"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1655842/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006541> rdf:value "Latvija" ;
+	rdfs:label "Latvia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/458258/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000126> rdf:value "Lubnān" ;
+	rdfs:label "Lebanon"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/272103/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7001660> rdf:value "Lesotho" ;
+	rdfs:label "Lesotho"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/932692/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000171> rdf:value "Liberia" ;
+	rdfs:label "Liberia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2275384/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000172> rdf:value "Lībiyā" ;
+	rdfs:label "Libya"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2215636/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7003515> rdf:value "Liechtenstein" ;
+	rdfs:label "Liechtenstein"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3042058/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006542> rdf:value "Lietuva" ;
+	rdfs:label "Lithuania"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/597427/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7003514> rdf:value "Luxembourg" ;
+	rdfs:label "Luxembourg"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2960313/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000173> rdf:value "Madagasikara" ;
+	rdfs:label "Madagascar"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1062947/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000726> rdf:value "Malaŵi" ;
+	rdfs:label "Malawi"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/927384/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000128> rdf:value "Malaysia" ;
+	rdfs:label "Malaysia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1733045/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000331> rdf:value "Dhivehi Raajje" ;
+	rdfs:label "Maldives"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1282028/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000175> rdf:value "Mali" ;
+	rdfs:label "Mali"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2453866/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005729> rdf:value "Malta" ;
+	rdfs:label "Malta"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2562770/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000176> rdf:value "Mūrītānīyā" ;
+	rdfs:label "Mauritania"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2378080/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000177> rdf:value "Mauritius" ;
+	rdfs:label "Mauritius"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/934292/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005560> rdf:value "México" ;
+	rdfs:label "Mexico"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3996063/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006656> rdf:value "Moldova" ;
+	rdfs:label "Moldova"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/617790/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005758> rdf:value "Monaco" ;
+	rdfs:label "Monaco"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2993457/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7029379> rdf:value "Mongol" ;
+	rdfs:label "Mongolia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2029969/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7015657> rdf:value "Crna Gora" ;
+	rdfs:label "Montenegro"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3194884/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000179> rdf:value "Al Maghrib" ;
+	rdfs:label "Morocco"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2542007/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000180> rdf:value "Moçambique" ;
+	rdfs:label "Mozambique"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1036973/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000108> rdf:value "Myanma" ;
+	rdfs:label "Myanmar"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1327865/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000198> rdf:value "Namibia" ;
+	rdfs:label "Namibia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3355338/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006158> rdf:value "Naoero" ;
+	rdfs:label "Nauru"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2110425/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000132> rdf:value "Nepāl" ;
+	rdfs:label "Nepal"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1282988/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7016845> rdf:value "Nederland" ;
+	rdfs:label "Netherlands"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2750405/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000226> rdf:value "New Zealand" ;
+	rdfs:label "New Zealand"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2186224/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005562> rdf:value "Nicaragua" ;
+	rdfs:label "Nicaragua"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3617476/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000181> rdf:value "Niger" ;
+	rdfs:label "Niger"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2440476/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000182> rdf:value "Nigeria" ;
+	rdfs:label "Nigeria"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2328926/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000122> rdf:value "Chosŏn" ;
+	rdfs:label "North Korea"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1873107/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000088> rdf:value "Norge" ;
+	rdfs:label "Norway"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3144096/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000131> rdf:value "ʻUmān" ;
+	rdfs:label "Oman"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/286963/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000133> rdf:value "Pākistān" ;
+	rdfs:label "Pakistan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1168579/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005565> rdf:value "Panamá" ;
+	rdfs:label "Panama"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3703430/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006160> rdf:value "Papua New Guinea" ;
+	rdfs:label "Papua New Guinea"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2088628/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000055> rdf:value "Paraguay" ;
+	rdfs:label "Paraguay"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3437598/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000056> rdf:value "Perú" ;
+	rdfs:label "Peru"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3932488/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000135> rdf:value "Pilipinas" ;
+	rdfs:label "Philippines"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1694008/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006366> rdf:value "Polska" ;
+	rdfs:label "Poland"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/798544/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000090> rdf:value "Portugal" ;
+	rdfs:label "Portugal"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2264397/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000136> rdf:value "Qaṭar" ;
+	rdfs:label "Qatar"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/289688/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000091> rdf:value "România" ;
+	rdfs:label "Romania"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/798549/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7002435> rdf:value "Rossija" ;
+	rdfs:label "Russia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2017370/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7001682> rdf:value "Rwanda" ;
+	rdfs:label "Rwanda"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/49518/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000239> rdf:value "Samoa" ;
+	rdfs:label "Samoa"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/4034894/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000137> rdf:value "As Suʻūdīyyah" ;
+	rdfs:label "Saudi Arabia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/102358/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000189> rdf:value "Sénégal" ;
+	rdfs:label "Senegal"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2245662/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006669> rdf:value "Srbija" ;
+	rdfs:label "Serbia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/6290252/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000191> rdf:value "Sierra Leone" ;
+	rdfs:label "Sierra Leone"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2403846/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000381> rdf:value "Singapore" ;
+	rdfs:label "Singapore"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1880251/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7011765> rdf:value "Slovensko" ;
+	rdfs:label "Slovakia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3057568/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006670> rdf:value "Slovenija" ;
+	rdfs:label "Slovenia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3190538/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000233> rdf:value "Solomon Islands" ;
+	rdfs:label "Solomon Islands"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2103350/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000192> rdf:value "Soomaaliya" ;
+	rdfs:label "Somalia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/51537/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000193> rdf:value "South Africa" ;
+	rdfs:label "South Africa"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/953987/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000299> rdf:value "Han'guk" ;
+	rdfs:label "South Korea"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1835841/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000095> rdf:value "España" ;
+	rdfs:label "Spain"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2510769/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000110> rdf:value "Shrī Laṁkā" ;
+	rdfs:label "Sri Lanka"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1227603/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000201> rdf:value "As Sūdān" ;
+	rdfs:label "Sudan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/366755/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7015386> rdf:value "Suriname" ;
+	rdfs:label "Suriname"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3382998/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7001725> rdf:value "Swaziland" ;
+	rdfs:label "Swaziland"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/934841/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000097> rdf:value "Sverige" ;
+	rdfs:label "Sweden"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2661886/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7011731> rdf:value "Schweiz" ;
+	rdfs:label "Switzerland"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2658434/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000140> rdf:value "Sūrīyah" ;
+	rdfs:label "Syria"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/163843/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000141> rdf:value "Chung-hua Min-kuo" ;
+	rdfs:label "Taiwan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1668284/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7014835> rdf:value "Tojikiston" ;
+	rdfs:label "Tajikistan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1220409/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000203> rdf:value "Tanzania" ;
+	rdfs:label "Tanzania"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/149590/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000142> rdf:value "Prathet Thai" ;
+	rdfs:label "Thailand"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1605651/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7016577> rdf:value "Togo" ;
+	rdfs:label "Togo"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2363686/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000529> rdf:value "Tonga" ;
+	rdfs:label "Tonga"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/4032283/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004787> rdf:value "Trinidad and Tobago" ;
+	rdfs:label "Trinidad and Tobago"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3573591/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000205> rdf:value "Tūnis" ;
+	rdfs:label "Tunisia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2464461/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000144> rdf:value "Türkiye" ;
+	rdfs:label "Turkey"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/298795/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000236> rdf:value "Tuvalu" ;
+	rdfs:label "Tuvalu"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2110297/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000206> rdf:value "Uganda" ;
+	rdfs:label "Uganda"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/226074/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006660> rdf:value "Ukraina" ;
+	rdfs:label "Ukraine"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/690791/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000143> rdf:value "Al Imārāt" ;
+	rdfs:label "United Arab Emirates"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/290557/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7012149> rdf:value "United States" ;
+	rdfs:label "United States"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/6252001/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000058> rdf:value "Uruguay" ;
+	rdfs:label "Uruguay"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3439705/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006661> rdf:value "O'zbekiston" ;
+	rdfs:label "Uzbekistan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/1512440/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000225> rdf:value "Vanuatu" ;
+	rdfs:label "Vanuatu"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/2134431/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000059> rdf:value "Venezuela" ;
+	rdfs:label "Venezuela"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/3625428/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7000261> rdf:value "Al Yaman" ;
+	rdfs:label "Yemen"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/69543/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000209> rdf:value "Zambia" ;
+	rdfs:label "Zambia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/895949/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000185> rdf:value "Zimbabwe" ;
+	rdfs:label "Zimbabwe"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	foaf:focus <http://sws.geonames.org/878675/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000146> rdf:value "North Yemen" ;
+	rdfs:label "North Yemen"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000139> rdf:value "South Yemen" ;
+	rdfs:label "South Yemen"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005332> rdf:value "Bahamas" ;
+	rdfs:label "Bahamas"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000107> rdf:value "Brunei" ;
+	rdfs:label "Brunei Darussalam"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000158> rdf:value "Congo" ;
+	rdfs:label "Congo (Republic of)"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept ;
+	rdf:value "Congo (Republic of)" .
+
+<http://vocab.getty.edu/tgn/1000168> rdf:value "Côte d'Ivoire" ;
+	rdfs:label "Côte d'Ivoire"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000220> rdf:value "Federated States of Micronesia" ;
+	rdfs:label "Federated States of Micronesia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7006653> rdf:value "Sakartvelo" ;
+	rdfs:label "Georgia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7001168> rdf:value "Santa Sede" ;
+	rdfs:label "Holy See"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005556> rdf:value "Jamaica" ;
+	rdfs:label "Jamaica"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7016730> rdf:value "Marshall Islands" ;
+	rdfs:label "Marshall Islands"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004786> rdf:value "Montserrat" ;
+	rdfs:label "Montserrat"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005668> rdf:value "Belau" ;
+	rdfs:label "Palau"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004540> rdf:value "Palestine" ;
+	rdfs:label "Palestine"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005605> rdf:value "Saint Kitts and Nevis" ;
+	rdfs:label "Saint Kitts and Nevis"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004772> rdf:value "Saint Lucia" ;
+	rdfs:label "Saint Lucia"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7004773> rdf:value "Saint Vincent and the Grenadines" ;
+	rdfs:label "Saint Vincent and the Grenadines"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7005699> rdf:value "San Marino" ;
+	rdfs:label "San Marino"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000188> rdf:value "São Tomé e Príncipe" ;
+	rdfs:label "Sao Tome and Principe"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000102> rdf:value "Srbija-Crna Gora" ;
+	rdfs:label "Serbia and Montenegro"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000190> rdf:value "Sesel" ;
+	rdfs:label "Seychelles"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7441551> rdf:value "South Sudan" ;
+	rdfs:label "South Sudan"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7003703> rdf:value "Timor-Leste" ;
+	rdfs:label "Timor-Leste"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/7008591> rdf:value "United Kingdom" ;
+	rdfs:label "United Kingdom"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
+
+<http://vocab.getty.edu/tgn/1000145> rdf:value "Việt Nam" ;
+	rdfs:label "Viet Nam"@en ;
+	dcam:memberOf <http://vocab.getty.edu/tgn/> ;
+	skos:inScheme <http://vocab.getty.edu/tgn/> ;
+	dcterms:isPartOf <http://rs.tdwg.org/cvterms/country/> ;
+	a skos:Concept .
