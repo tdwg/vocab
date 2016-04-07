@@ -1,7 +1,7 @@
 
 # TDWG Standards Documentation Specification #
 
-TODO: 
+TODO:
 
 - examine use of "must", "should", etc. throughout document and use consistently.
 
@@ -9,17 +9,19 @@ TODO:
 
 - need examples of human-readable document header section
 
+- avoid inconsistent use of dcterms:hasPart and dcterms:isPartOf. Consistently use dcterms:isPartOf
+
 
 **Title:** TDWG Standards Documentation Specification
 
-**Date Issued:** 
+**Date Issued:**
 
-**Date Modified:** 
+**Date Modified:**
 
 **Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Task Group), Roger Hyam (TDWG Infrastructure Project)
 
 
-**Abstract:** This document defines how TDWG standards should be presented. 
+**Abstract:** This document defines how TDWG standards should be presented.
 
 **Legal:** This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by the Taxonomic Databases Working Group.
 
@@ -41,7 +43,7 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 **document** - In this context, a document is a unit of information that can be stored or retrieved electronically as a single file.
 
-**representation** - a view of a resource at a particular time. Representations can differ in language or format. [HTTP-1.1] 
+**representation** - a view of a resource at a particular time. Representations can differ in language or format. [HTTP-1.1]
 
 **IRI** - Internationalized Resource Identifier. A superset of Uniform Resource Identifier (URI) that uniquely identifies a resource using characters from any character set. [IRI]
 
@@ -51,17 +53,19 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 **content negotiation** - a mechanism by which a client and server determine the best representation to send to the client based on the client's expressed preferences [HTTP-1.1]
 
-**current resource** - a resource as it exists in its current state.  The current state reflects the most recent version of the resource. 
+**current resource** - a resource as it exists in its current state.  The current state reflects the most recent version of the resource.
 
 **version** - a “snapshot” of a resource in time.  A version is created at a particular moment in time and documents the state of the resource until that version is replaced by a later version.  
 
 **normative** - the prescriptive part of a standard that specifies that which is necessary to comply with the standard
 
-**non-normative** - an informative part of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard. 
+**non-normative** - an informative part of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
 
 **vocabulary** - a collection of standardized terms and their definitions.  Terms may represent classes, properties, or concepts.
 
-**controlled vocabulary** - prescribed list of terms, each representing a concept. Controlled vocabularies are designed for applications in which it is useful to identify each concept with one consistent label. [ISO-25964-2]
+**metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL). Terms (or "elements") in the scheme may represent classes or properties. Axioms may describe term properties to form an ontology. [NISO] [ISO-25964-2]
+
+**controlled vocabulary** - prescribed list of terms, each representing a concept. Controlled vocabularies are designed for applications in which it is useful to identify each concept with one consistent label. Metadata properties can interact with controlled vocabularies when the value of a property is constrained to be a term from a controlled vocabulary. [ISO-25964-2]
 
 ## **2 The structure of TDWG standards** ##
 
@@ -81,7 +85,7 @@ Particular resources are assigned globally unique identifiers (GUIDs) to disting
 
 Both the abstract resource and specific representations of that resource are identified with HTTP IRIs.  
 
-The IRI for abstract resources should be generic.  That is, the abstract resource IRI should not specify a file extension nor should it be structured in a way that is dependent on a particular technology or query format [COOL-URIS].  In contrast, IRIs of particular resource representations may use an IRI structure or file extension that is useful for retrieving a copy of that resource. The IRIs of abstract resources should be stable, allowing them to be used in citations of the resource. 
+The IRI for abstract resources should be generic.  That is, the abstract resource IRI should not specify a file extension nor should it be structured in a way that is dependent on a particular technology or query format [COOL-URIS].  In contrast, IRIs of particular resource representations may use an IRI structure or file extension that is useful for retrieving a copy of that resource. The IRIs of abstract resources should be stable, allowing them to be used in citations of the resource.
 
 **2.1.2 Content negotiation**
 
@@ -109,7 +113,7 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.  [TOD
 
 **2.2.3 Vocabulary documents**
 
-TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  Machine-readable representations of these documents will use the property dcterms:hasPart link to the machine-readable definitions of the external terms if those definitions exist.  
+TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  Machine-readable representations of these documents will use the property dcterms:isPartOf to link to the machine-readable definitions of the external terms if those definitions exist.  
 
 ![](graphics/version-model.png)
 
@@ -174,9 +178,9 @@ A standard has one or more descriptive documents that describe the purpose of th
 
 **3.2.1 Normative and non-normative sections of descriptive documents**
 
-The normative and non-normative parts of standards should be clearly labeled as such.  If all of the content of a document is normative, this should be stated in the introduction to the document.  If a single document contains both normative and non-normative content, material in a single section should be of a single type.  The introduction should state that content is normative unless otherwise noted and headings should indicate if material in that section is non-normative. 
+The normative and non-normative parts of standards should be clearly labeled as such.  If all of the content of a document is normative, this should be stated in the introduction to the document.  If a single document contains both normative and non-normative content, material in a single section should be of a single type.  The introduction should state that content is normative unless otherwise noted and headings should indicate if material in that section is non-normative.
 
-It is also permissible to indicate in the introduction that content of a particular type (e.g. examples or diagrams) is non-normative. 
+It is also permissible to indicate in the introduction that content of a particular type (e.g. examples or diagrams) is non-normative.
 
 **3.2.2 Versioning**
 
@@ -197,7 +201,7 @@ The header section must contain the following parts:
 
 **Title:** The title of the document.
 
-**Date Issued:** The date of publication of this version in ISO 8601 Date format. 
+**Date Issued:** The date of publication of this version in ISO 8601 Date format.
 
 **Part of TDWG Standard:** The IRI of the standard of which this document is part. The IRI should dereference to the standard's landing page.
 
@@ -223,9 +227,9 @@ Affiliation is the organization or group the contributor is working with in rela
 Examples:
 
 -   Roger D. Hyam (TDWG)
--   Roger Hyam (TDWG Infrastructure Project) 
--   R. Hyam 
-   
+-   Roger Hyam (TDWG Infrastructure Project)
+-   R. Hyam
+
 **Document Status:** One of the status categories listed at [http://www.tdwg.org/standards/status-and-categories/](http://www.tdwg.org/standards/status-and-categories/).
 
 **3.2.3.2 Table of Contents Section**
@@ -262,7 +266,7 @@ All normative content must be in English. Translations of normative documents ma
 
 In order for a standard to enable compliance with a consensus community practice, a version of a standards document must be immutable and easily viewable by the public. This has several implications for the way in which documents are archived.
 
-In order to ensure the stability of a human readable document, it should be archived as a discrete file as opposed to being generated from a potentially changing database.  The archived document file must be in an open format for which parsers are commonly available. For this purpose an open format is defined as being one for which it would be possible to write a parser on the basis of a published specification without having to rely on code libraries for which the source code is not available or to pay a license fee. 
+In order to ensure the stability of a human readable document, it should be archived as a discrete file as opposed to being generated from a potentially changing database.  The archived document file must be in an open format for which parsers are commonly available. For this purpose an open format is defined as being one for which it would be possible to write a parser on the basis of a published specification without having to rely on code libraries for which the source code is not available or to pay a license fee.
 
 In accordance with Section 2.1, the document may exist as files in a variety of formats that can be retrieved through content negotiation.  For example, a document may be available in any of HTML, PDF, and MarkDown formats.  However, when rendered by a parser, each differently formatted file must render to a form that is substantively the same to a human reader.  At least one available form must be easily viewable to a human reader in a browser that requests text/html, regardless of whether the source file is actually in HTML format.
 
@@ -274,9 +278,9 @@ Documents that describe vocabularies make up a special category of human-readabl
 
 **3.3.1 Landing page for the vocabulary**
 
-Although a standard may define a vocabulary, the standard may also include other documents such as guides that describe how the vocabulary may be used in different contexts.  It is also possible for a standard to define several vocabularies that may share subsets of terms defined by the vocabulary.  Thus it is clear that a vocabulary is an entity that is distinct from the standard that defines it.  As such, the vocabulary will have an IRI that is distinct from the standard's IRI.  The vocabulary's landing page is the page that is presented to a human user when the vocabulary IRI is dereferenced and content-type text/html is requested. 
+Although a standard may define a vocabulary, the standard may also include other documents such as guides that describe how the vocabulary may be used in different contexts.  It is also possible for a standard to define several vocabularies that may share subsets of terms defined by the vocabulary.  Thus it is clear that a vocabulary is an entity that is distinct from the standard that defines it.  As such, the vocabulary will have an IRI that is distinct from the standard's IRI.  The vocabulary's landing page is the page that is presented to a human user when the vocabulary IRI is dereferenced and content-type text/html is requested.
 
-In its header, the landing page will contain the metadata described in Section 3.2.3.1, with the release date serving as the Date Issued, and the vocabulary IRI serving as the Latest Version IRI. 
+In its header, the landing page will contain the metadata described in Section 3.2.3.1, with the release date serving as the Date Issued, and the vocabulary IRI serving as the Latest Version IRI.
 
 As with other descriptive documents, the body of the landing page should contain an explanation of the purpose of the vocabulary.  However, it must also contain links to the term lists that indicate the terms that make up the vocabulary (Section 3.3.3).  
 
@@ -290,15 +294,21 @@ The state of the term at particular times is recorded via versions of the term. 
 
 A term list is a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list is identified by the IRI of the namespace used by the terms on that list.  For lists of terms borrowed from other vocabularies, any IRI may be used.  It is permissible for the borrowed terms to be included in the same list as the terms defined by the standard.   
 
+Term lists of terms defined by TDWG must include the following items:
+
+**Namespace URI** (vann:preferredNamespaceUri) - the IRI that identifies the term list. [Do we specify that term URIs should follow the slash URI pattern?  In that case the term list URI would be the same as the namespace vs. the trailing # on hash URIs.]
+
+**Preferred namespace abbreviation** (vann:preferredNamespacePrefix) - the preferred abbreviation for the term list namespace.
+
 Each term entry should include the following items.
 
-**Term name** (required) **[Note: Audubon Core uses "Label" rather than "Term name"]** - The term name is a human readable controlled value that represents the class, property, or concept described by the term definition.  The term name is usually related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.  If the term is borrowed from another vocabulary rather than defined by the parent standard, the term name should include a namespace abbreviation (QName) that is defined in the introduction of the vocabulary description.  
+**Term name** (required) **[Note: Audubon Core uses "Label" rather than "Term name" This seems to a more broadly understood term, although Dublin Core uses "Term name".]** - The term name is a human readable controlled value that represents the class, property, or concept described by the term definition.  The term name is usually related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.  If the term is borrowed from another vocabulary rather than defined by the parent standard, the term name should include a namespace abbreviation (QName) that is defined in the introduction of the vocabulary description.  
 
 **Term IRI** (required) - The HTTP IRI that uniquely identifies the current term
 
 **Term version IRI** (required if defined by the containing vocabulary) - The HTTP IRI that identifies the version of the term that is currently in force.
 
-**Modified** (required if defined by the containing vocabulary) - The date in ISO 8601 Date format on which the most recent version of the term was issued. 
+**Modified** (required if defined by the containing vocabulary) - The date in ISO 8601 Date format on which the most recent version of the term was issued.
 
 **Definition** (required) - The normative definition of the term, written in English.  The definition should include precisely the wording required to describe the class, property, or concept.  Additional informative content should be presented in comments or notes.
 
@@ -320,7 +330,7 @@ Each term version entry must include the following items.
 
 **Version of** - The HTTP IRI that uniquely identifies the current term associated with the version.
 
-**Issued** - The date in ISO 8601 Date format on which the version was issued. 
+**Issued** - The date in ISO 8601 Date format on which the version was issued.
 
 **Definition** - The normative definition of the term as it stood in that version.
 
@@ -340,14 +350,14 @@ The relationships described in this section may be expressed as Resource Descrip
 
 In the description of any resource, it is important to distinguish between the identifier for the resource and the identifier for the machine readable document that describes it.  When describing a resource, the resource IRI should be the subject of statements about the current resource.  The machine readable document that describes it must have a different IRI.  The resource should be linked to the document that describes it by the property dcterms:isReferencedBy, while the machine readable document should be linked to the resource it describes by the property dcterms:references.
 
-When a client dereferences the resource IRI, it is desirable that content negotiation result in return of a machine readable document that describes the resource in the format requested in the request header. 
+When a client dereferences the resource IRI, it is desirable that content negotiation result in return of a machine readable document that describes the resource in the format requested in the request header.
 
 **4.1.1 Example of linking a resource to the machine readable document that describes it (non-normative)**
 
 The following example is expressed in RDF/Turtle:
 
 ```
-<http://rs.tdwg.org/dwc/terms/guides/text> 
+<http://rs.tdwg.org/dwc/terms/guides/text>
      dcterms:title "Darwin Core Text Guide";
      dcterms:isReferencedBy <https://github.com/tdwg/dwc/blob/master/terms/guides/text/index.rdf>.
 
@@ -369,12 +379,12 @@ The same metadata that is presented in the header section of the human-readable 
 | Part of TDWG Standard                   | dcterms:isPartOf (where the value is the IRI that denotes the containing standard)|
 | Contributors                   | dc:contributor (repeat for each contributor's name)|
 
-The property dcterms:contributor should be used to link the document or vocabulary to an object that is an IRI that denotes the contributor. 
+The property dcterms:contributor should be used to link the document or vocabulary to an object that is an IRI that denotes the contributor.
 
 **4.3.1 Example of expressing general metadata (non-normative)**
 
 ```
-<http://rs.tdwg.org/dwc/terms/guides/text> 
+<http://rs.tdwg.org/dwc/terms/guides/text>
      dcterms:title "Darwin Core Text Guide";
      dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
      dc:contributor "Tim Robertson (GBIF)",
@@ -389,7 +399,7 @@ The property dcterms:contributor should be used to link the document or vocabula
 
 ### **4.3 Metadata describing and linking versions** ###
 
-The property owl:versionInfo, which is expected to have a literal value, should be used to provide information about the version of a resource.  This standard does not specify a particular version identifying system; however, it should be understood that version information is intended for a human audience.  Therefore, a system should be used that makes it apparent to a human that a certain version precedes or follows another version. 
+The property owl:versionInfo, which is expected to have a literal value, should be used to provide information about the version of a resource.  This standard does not specify a particular version identifying system; however, it should be understood that version information is intended for a human audience.  Therefore, a system should be used that makes it apparent to a human that a certain version precedes or follows another version.
 
 A current resource is related to its versions by dcterms:hasVersion, while a version is related to its current resource by dcterms:hasVersion.  A version is related to a previous version by dcterms:replaces, while a version is related to a subsequent version by dcterms:isReplacedBy.
 
@@ -400,7 +410,7 @@ The property dcterms:issued should be used to indicate the date on which a versi
 The following example is expressed in RDF/Turtle:
 
 ```
-<http://rs.tdwg.org/dwc/terms/guides/text> 
+<http://rs.tdwg.org/dwc/terms/guides/text>
      dcterms:title "Darwin Core Text Guide";
      dcterms:created "2009-12-07"^^xsd:date;
      dcterms:modified "2014-11-08"^^xsd:date;
@@ -437,7 +447,7 @@ Because terms are resources, they are versioned and the terms used for relating 
 The following example is expressed in RDF/Turtle:
 
 ```
-<http://rs.tdwg.org/dwc/basic> 
+<http://rs.tdwg.org/dwc/basic>
      dcterms:title "Darwin Core Basic Vocabulary";
      dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
      owl:imports <http://rs.tdwg.org/dwc/terms/>;
@@ -483,7 +493,7 @@ The following example is expressed in RDF/Turtle:
 <http://rs.tdwg.org/dwc/terms/>
      dcterms:title "Core terms defined by Darwin Core".
 
-<http://rs.tdwg.org/dwc/terms/recordedBy> 
+<http://rs.tdwg.org/dwc/terms/recordedBy>
      rdfs:label "Recorded By"@en;
      rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
      dcterms:description "The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: "José E. Crespo", "Oliver P. Pearson | Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
@@ -497,7 +507,7 @@ The following example is expressed in RDF/Turtle:
 <http://rs.tdwg.org/dwc/dcmi-terms>
      dcterms:title "Dublin Core terms borrowed by Darwin Core".
 
-<http://purl.org/dc/terms/Location> 
+<http://purl.org/dc/terms/Location>
      rdfs:label "Location"@en;
      a rdfs:Class;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms>.
@@ -506,7 +516,7 @@ The following example is expressed in RDF/Turtle:
 <http://rs.tdwg.org/dwc/terms/history/>
      dcterms:title "Darwin Core Terms Complete History".
 
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23> 
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>
      rdfs:label "Recorded By"@en;
      rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
      dcterms:description "The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: "José E. Crespo", "Oliver P. Pearson | Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
@@ -517,7 +527,7 @@ The following example is expressed in RDF/Turtle:
      rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/history/>;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/history/>.
 
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24> 
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>
      rdfs:label "Recorded By"@en;
      rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
      dcterms:description "Example: "Oliver P. Pearson; Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
@@ -681,6 +691,8 @@ that activity as well as the standard itself. [should this be here?]
 [IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs)
 
 [ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularis. Part 2: Interoperability with other vocabularies. 2013-03-15.
+
+[NISO] Understanding Metadata. 2004. NISO Press.  http://www.niso.org/publications/press/UnderstandingMetadata.pd
 
 [RDF-PRIMER] http://www.w3.org/TR/rdf11-primer/ RDF 1.1 Primer
 
