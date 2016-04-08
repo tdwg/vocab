@@ -109,7 +109,7 @@ Each TDWG standard will have at least one human-readable document that describes
 
 ![](graphics/vocabulary-documents.png)
 
-Fig. 3. Relationship of a vocabulary to its component term list documents.  [TODO: the arrowheads point the wrong way in this diagram.]
+Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 **2.2.3 Vocabulary documents**
 
@@ -260,7 +260,7 @@ The footer should contain a copyright statement and licensing information.  Typi
 
 **3.2.4 Language**
 
-All normative content must be in English. Translations of normative documents may be included in the standard but the translations must be treated as informative documents. [This was copied from the earlier specification.  Do we really want to say that translations may be "included in the standard"?  That would imply that creating additional translations would require amending the standard.  Is that what we really want???]
+All normative content must be in English. ~~Translations of normative documents may be included in the standard but the translations must be treated as informative documents.~~ [This was copied from the earlier specification.  Do we really want to say that translations may be "included in the standard"?  That would imply that creating additional translations would require amending the standard.  Is that what we really want???] Translations of normative documents are encouraged but will be treated as ancillary documents that are not included in the standard.
 
 **3.3 Archiving of documents**
 
@@ -296,13 +296,17 @@ A term list is a series of term entries that can be easily read and understood b
 
 Term lists of terms defined by TDWG must include the following items:
 
-**Namespace URI** (vann:preferredNamespaceUri) - the IRI that identifies the term list. [Do we specify that term URIs should follow the slash URI pattern?  In that case the term list URI would be the same as the namespace vs. the trailing # on hash URIs.]
+**Namespace URI** (vann:preferredNamespaceUri) - the IRI that identifies the term list. [Do we specify that term URIs should follow the slash URI pattern?  In that case the term list URI would be the same as the namespace vs. a possible discrepancy caused by the trailing # on hash URIs - namespace with, vocabulary IRI without??? see https://www.w3.org/TR/swbp-vocab-pub/#naming; SKOS example]
 
 **Preferred namespace abbreviation** (vann:preferredNamespacePrefix) - the preferred abbreviation for the term list namespace.
 
 Each term entry should include the following items.
 
-**Term name** (required) **[Note: Audubon Core uses "Label" rather than "Term name" This seems to a more broadly understood term, although Dublin Core uses "Term name".]** - The term name is a human readable controlled value that represents the class, property, or concept described by the term definition.  The term name is usually related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.  If the term is borrowed from another vocabulary rather than defined by the parent standard, the term name should include a namespace abbreviation (QName) that is defined in the introduction of the vocabulary description.  
+**Term name** (required) - The term name is a controlled value that represents the class, property, or concept described by the term definition.  The term name is composed of the local name part of the term IRI, with a prepended namespace abbreviation (QName) that is defined in the introduction to the vocabulary list. [RECIPES] The term name is often related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.    [Should it be required that the QName be included for terms defined by the standard? AC does, DwC doesn't.]
+
+**Label** (optional? DwC doesn't list it in the human-readable representation) - The label is a word or short phrase that serves as a human-readable name for the term.
+
+**Value** (required for controlled vocabularies, not applicable to metadata schemes) - A string that is unique within a controlled vocabulary that identifies the concept in the context of a text-based metadata transfer system.  The value should consist of [unicode characters?].
 
 **Term IRI** (required) - The HTTP IRI that uniquely identifies the current term
 
@@ -692,7 +696,9 @@ that activity as well as the standard itself. [should this be here?]
 
 [ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularis. Part 2: Interoperability with other vocabularies. 2013-03-15.
 
-[NISO] Understanding Metadata. 2004. NISO Press.  http://www.niso.org/publications/press/UnderstandingMetadata.pd
+[NISO] Understanding Metadata. 2004. NISO Press.  http://www.niso.org/publications/press/UnderstandingMetadata.pdf
+
+[RECIPES] Best Practice Recipes for Publishing RDF Vocabularies. 2008.  W3C Working Group Note. https://www.w3.org/TR/swbp-vocab-pub/
 
 [RDF-PRIMER] http://www.w3.org/TR/rdf11-primer/ RDF 1.1 Primer
 
