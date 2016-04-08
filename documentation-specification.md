@@ -372,6 +372,22 @@ The following example is expressed in RDF/Turtle:
 
 When the resource IRI http://rs.tdwg.org/dwc/terms/guides/text is dereferenced requesting media type text/turtle, the server should redirect to the document https://github.com/tdwg/dwc/blob/master/terms/guides/text/index.rdf which contains the RDF description of the Darwin Core Text Guide in Turtle serialization.
 
+### **4.1.2 Types of resources** ###
+
+The class of which a resource is an instance should be indicated using rdf:type.  The following classes should be used:
+
+|**Class**                          | **Machine readable value**|
+|-----------------------------------|---------------------------|
+| Standard                          | dcterms:Standard          |
+| Vocabulary                        | dcterms:Dataset           |
+| Term List                         | dcat:Dataset *            |
+| Property                          | rdf:Property              |
+| Class                             | rdfs:Class                |
+| Term from a controlled vocabulary | skos:Concept              |         
+
+* The semantics of the DCAT Recommendation entail that an instance of dcat:Dataset is also an instance of dcterms:Dataset.
+
+Documents should be typed according to a well-known vocabulary.  Suggestions of appropriate classes can be fount in an ancillary document related to this standard. [put this here since I don't know the future of FOAF, schema.org, bibo, etc.]
 
 ### **4.2 General metadata** ###
 
