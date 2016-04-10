@@ -28,35 +28,35 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 ### **1.1 Definitions** ###
 
-**resource** - Any kind of thing that can be identified. Resources can include documents, people, physical objects, and abstract concepts [RDF-PRIMER].
-
-**document** - In this context, a document is a unit of information that can be stored or retrieved electronically as a single file.
-
-**representation** - a view of a resource at a particular time. Representations can differ in language or format. [HTTP-1.1]
-
-**IRI** - Internationalized Resource Identifier. A superset of Uniform Resource Identifier (URI) that uniquely identifies a resource using characters from any character set. [IRI]
-
-**HTTP IRI** - A subset of IRIs that enable retrieval of a representation using Hypertext Transfer Protocol (HTTP).  HTTP IRIs begin with "http://".
-
-**dereference** - to use an IRI to obtain a representation of a resource through an Internet protocol such as HTTP
-
 **content negotiation** - a mechanism by which a client and server determine the best representation to send to the client based on the client's expressed preferences [HTTP-1.1]
+
+**controlled vocabulary** - prescribed list of terms, each representing a concept. Controlled vocabularies are designed for applications in which it is useful to identify each concept with one consistent label. Metadata properties can interact with controlled vocabularies when the value of a property is constrained to be a term from a controlled vocabulary. [ISO-25964-2]
 
 **current resource** - a resource as it exists in its current state.  The current state reflects the most recent version of the resource.
 
-**version** - a “snapshot” of a resource in time.  A version is created at a particular moment in time and documents the state of the resource until that version is replaced by a later version.  
+**dereference** - to use an IRI to obtain a representation of a resource through an Internet protocol such as HTTP
+
+**distribution** - a specific available form of a dataset.  In the context of this standard, distributions are available forms of vocabulary term lists, such as downloadable files in RDF/XML or RDF/Turtle. [DCAT]
+
+**document** - In this context, a document is a unit of information that can be stored or retrieved electronically as a single file.
+
+**HTTP IRI** - A subset of IRIs that enable retrieval of a representation using Hypertext Transfer Protocol (HTTP).  HTTP IRIs begin with "http://".
+
+**IRI** - Internationalized Resource Identifier. A superset of Uniform Resource Identifier (URI) that uniquely identifies a resource using characters from any character set. [IRI]
+
+**metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL). Terms (or "elements") in the scheme may represent classes or properties. Axioms may describe term properties to form an ontology. [NISO] [ISO-25964-2]
 
 **normative** - the prescriptive part of a standard that specifies that which is necessary to comply with the standard
 
 **non-normative** - an informative part of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
 
+**representation** - a view of a resource at a particular time. Representations can differ in language or format. [HTTP-1.1]
+
+**resource** - Any kind of thing that can be identified. Resources can include documents, people, physical objects, and abstract concepts [RDF-PRIMER].
+
+**version** - a “snapshot” of a resource in time.  A version is created at a particular moment in time and documents the state of the resource until that version is replaced by a later version.  
+
 **vocabulary** - a collection of standardized terms and their definitions.  Terms may represent classes, properties, or concepts.
-
-**metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL). Terms (or "elements") in the scheme may represent classes or properties. Axioms may describe term properties to form an ontology. [NISO] [ISO-25964-2]
-
-**controlled vocabulary** - prescribed list of terms, each representing a concept. Controlled vocabularies are designed for applications in which it is useful to identify each concept with one consistent label. Metadata properties can interact with controlled vocabularies when the value of a property is constrained to be a term from a controlled vocabulary. [ISO-25964-2]
-
-**distribution** - a specific available form of a dataset.  In the context of this standard, distributions are available forms of vocabulary term lists, such as downloadable files in RDF/XML or RDF/Turtle. [DCAT]
 
 ### **1.2 Namespaces** ###
 
@@ -250,6 +250,8 @@ Examples:
 
 **Document Status:** One of the status categories listed at [http://www.tdwg.org/standards/status-and-categories/](http://www.tdwg.org/standards/status-and-categories/).
 
+**Bibliographic Citation:** How the document should be cited.
+
 **3.2.3.2 Table of Contents Section**
 
 The table of contents section should contain an ordered list of all the headings (along with their numbers) that occur in the body section and nothing else. The items in the list should be hypertext links to the headings in the body. [Do we really need to specify the details of this??? Currently DwC and AC use whatever capabilities are built into the delivery system (e.g. sidebars) to enable hyperlinking to sections.]
@@ -419,6 +421,7 @@ The same metadata that is presented in the header section of the human-readable 
 | License                 | dcterms:license               | IRI for a license; use CC BY for descriptive documents and CC0 for vocabularies |
 | Legal                   | xmpRights:UsageTerms          | literal containing this text "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG)."|
 | Abstract                | dcterms:description           | literal containing the human-readable abstract of the document minus any references or hyperlinks |
+| Bibliographic Citation  | dcterms:bibliographicCitation | literal           |
 
 * Both of these terms are well-known properties used to indicate a human-readable label for a resource.  Including both increases the likelihood that a consuming application will be able to present that label to human users.
 
@@ -444,7 +447,8 @@ The property dcterms:contributor should be used to link the document or vocabula
      dc:creator "TDWG Darwin Core Task Group";
      dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
      xmpRights:UsageTerms "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG).";
-     dcterms:description "Guidelines for implementing Darwin Core in Text files.".
+     dcterms:description "Guidelines for implementing Darwin Core in Text files.";
+     dcterms:bibliographicCitation "Darwin Core Task Group, Biodiversity Information Standards (TDWG). 2009. Darwin Core Text Guide. http://rs.tdwg.org/dwc/terms/guides/text/ (accessed on [date]).".
 ```
 
 ### **4.3 Metadata describing and linking versions** ###
@@ -869,7 +873,7 @@ This policy is specified in RFC 2119 (http://www.ietf.org/rfc/rfc2119.txt).  Exa
 
 **13 Cover Page Contents**
 
-[Most of this stuff is included in the header section metadata for standards landing pages and other documents.  If we are dumping the whole cover page/packaging thing, then this is obsolete.  We should go through these fields to decide if any of them that are missing should be put into the header section.  In particular: Subject, Bibliographic Citation, and Access Rights?? Also, what about all of the legal mumbo-jumbo in sections 14 through 14.5?  Is there some standard page of this stuff that could just be hyperlinked from the "Legal" section of the header.]
+[Most of this stuff is included in the header section metadata for standards landing pages and other documents.  If we are dumping the whole cover page/packaging thing, then this is obsolete.  We should go through these fields to decide if any of them that are missing should be put into the header section.  In particular: Subject and Access Rights?? Also, what about all of the legal mumbo-jumbo in sections 14 through 14.5?  Is there some standard page of this stuff that could just be hyperlinked from the "Legal" section of the header.]
 
 This section specifies content for the Cover Page documents that must be
 contained in all TDWG standards. The table below shows the components
