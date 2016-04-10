@@ -28,16 +28,16 @@
 # Currently the "permanent URL" of the standard only dereferences to a human-readable landing page for the standard.
 # Eventually, it should dereference for semantic clients that request RDF to some RDF/XML- or RDF/turtle-formatted document containing triples like these:
 <http://www.tdwg.org/standards/450/> a dcterms:Standard;
-                                     dcterms:hasPart <http://rs.tdwg.org/dwc/basic-vocabulary>,
-                                                     <http://rs.tdwg.org/dwc/enhanced-vocabulary>,
-                                                     <http://rs.tdwg.org/dwc/terms/guides/rdf/>;
-                                     dcterms:title "Darwin Core Standard"@en.
+                                     dcterms:title "Darwin Core Standard"@en;
+                                     rdfs:label "Darwin Core Standard"@en.
 # ---------------------------------------------------------------------------------------------------------------------
 
 # possible way to link components of the standard that are human-readable text
 # the subject IRI is the "permanent URL" of the guide
 <http://rs.tdwg.org/dwc/terms/guides/rdf/> # How do we want to type this? Is it a document or something more abstract?  I think it's a document.
                                      dcterms:title "Darwin Core RDF Guide"@en;
+                                     rdfs:label "Darwin Core RDF Guide"@en;
+                                     dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
                                      # more descriptive properties here
                                      # the abstract IRI for the guide dereferences by content negotiation to the following web page
                                      foaf:homepage <http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm>.
@@ -47,6 +47,7 @@
 # This particular one corresponds approximately to the existing Darwin Core vocabulary as described by the 
 # Quick Reference Guide and the RDF Guide
 <http://rs.tdwg.org/dwc/basic-vocabulary>       a owl:Ontology, dcmitype:DataSet;
+                                     dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
                                      owl:imports <http://rs.tdwg.org/dwc/terms/>,
                                                  <http://rs.tdwg.org/dwc/terms/attributes>,
                                                  <http://rs.tdwg.org/dwc/iri/>,
@@ -66,6 +67,7 @@
 # Extending the basic vocabulary in this way does not require every potential user to be subjected to entailments that
 # are not helpful for the use cases they are trying to satisfy.
 <http://rs.tdwg.org/dwc/enhanced-vocabulary>       a owl:Ontology, dcmitype:DataSet;
+                                     dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
                                      owl:imports <http://rs.tdwg.org/dwc/terms/>,
                                                  <http://rs.tdwg.org/dwc/terms/attributes>,
                                                  <http://rs.tdwg.org/dwc/iri/>,
@@ -86,24 +88,21 @@
 # A similar approach could be taken with Audubon Core, which imports terms from many non-TDWG namespaces.
 # In some cases, the imported AC terms do not dereference, so in those cases, some minimal descriptions could be made in this ontology.
 # e.g. rdfs:comment; and rdfs:label
-
-# dcterms:hasPart = "a related resource that is included either physically or logically in the described resource"
-# Is it better to express this using the inverse relationship dcterms:isPartOf ?
 <http://rs.tdwg.org/dwc/dcmi/> dcterms:modified "2015-03-19"^^xsd:date;
                                 dcterms:title "Darwin Core Imported Dublin Core terms"@en;
                                 rdfs:label "Darwin Core Imported Dublin Core terms"@en;
                                 rdfs:comment "This is the list of Dublin Core terms that are imported into the Darwin Core vocabulary.";
                                 dcterms:description "This is the list of Dublin Core terms that are imported into the Darwin Core vocabulary.";
-                                dcterms:hasPart dcterms:Location,
-                                                dcterms:license,
-                                                dcterms:modified,
-                                                dcterms:language,
-                                                dcterms:license,
-                                                dcterms:rightsHolder,
-                                                dcterms:accessRights,
-                                                dcterms:bibliographicCitation,
-                                                dcterms:references;
-                                a dcat:Dataset, owl:Ontology.
+                               a dcat:Dataset, owl:Ontology.
+dcterms:Location dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi/>.
+dcterms:license dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi/>.
+dcterms:modified dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi/>.
+dcterms:language dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi/>.
+dcterms:license dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi/>.
+dcterms:rightsHolder dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi/>.
+dcterms:accessRights dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi/>.
+dcterms:bibliographicCitation dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi/>.
+dcterms:references dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi/>.
 # ---------------------------------------------------------------------------------------------------------------------
 
 # data in this block of triples could be included in a DwC Semantic Relationships ontology
@@ -115,7 +114,7 @@
                                 dcterms:title "Darwin Core Semantic Relationships"@en;
                                 rdfs:comment "This is a layer that extends the semantics of the Darwin Core vocabulary.";
                                 dcterms:description "This is a layer that extends the semantics of the Darwin Core vocabulary.";
-                                dcterms:hasPart dcterms:references,
+                                dcterms:references dcterms:references,  #need some property to indicate that this entity makes assertions about particular terms. Maybe rdfs:seeAlso instead?
                                                 dcterms:isReferencedBy,
                                                 dcterms:hasPart,
                                                 dcterms:isPartOf,
@@ -126,22 +125,13 @@
                                                 dwc:MaterialSample;
                                 a dcat:Dataset, owl:Ontology.
 # these are implied relationships that are not explicitly expressed by DCMI
-dcterms:references owl:inverseOf dcterms:isReferencedBy;
-                   dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
-dcterms:isReferencedBy dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
-dcterms:hasPart owl:inverseOf dcterms:isPartOf;
-                dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
-dcterms:isPartOf dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
-dcterms:hasVersion owl:inverseOf dcterms:isVersionOf;
-                   dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
-dcterms:isVersionOf dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+dcterms:references owl:inverseOf dcterms:isReferencedBy.
+dcterms:hasPart owl:inverseOf dcterms:isPartOf.
+dcterms:hasVersion owl:inverseOf dcterms:isVersionOf.
 # examples follow; I'm not suggesting whether any of them are a good idea or not.
-dwciri:recordedBy a owl:ObjectProperty;
-                  dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
-dwc:PreservedSpecimen owl:disjointWith dwc:Occurrence;
-                      dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
-dwc:MaterialSample rdfs:subClassOf <http://purl.obolibrary.org/obo/OBI_0100051>;
-                   dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced/>.
+dwciri:recordedBy a owl:ObjectProperty.
+dwc:PreservedSpecimen owl:disjointWith dwc:Occurrence.
+dwc:MaterialSample rdfs:subClassOf <http://purl.obolibrary.org/obo/OBI_0100051>.
 # ---------------------------------------------------------------------------------------------------------------------
 
 # dwciri: namespace term list
@@ -156,8 +146,6 @@ dwc:MaterialSample rdfs:subClassOf <http://purl.obolibrary.org/obo/OBI_0100051>;
                                 dcterms:description "This is the set of Darwin Core properties that are intended to be used with IRI or blank node objects."@en;
                                 vann:preferredNamespacePrefix "dwciri";
                                 vann:preferredNamespaceUri "http://rs.tdwg.org/dwc/iri/";
-                                dcterms:hasPart dwciri:recordedBy,
-                                                dwciri:inCollection;
                                 a dcat:Dataset, owl:Ontology.
 dwciri:recordedBy a  rdf:Property;
                   rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/>;
@@ -194,12 +182,6 @@ dwciri:inCollection a  rdf:Property;
                                                    <http://rs.tdwg.org/dwc/2013-10-09/terms/>;
                                 vann:preferredNamespacePrefix "dwc";
                                 vann:preferredNamespaceUri "http://rs.tdwg.org/dwc/terms/";
-                                dcterms:hasPart dwc:recordedBy,
-                                                dwc:sampleSizeValue,
-                                                dwc:organismName,
-                                                dwc:MaterialSample,
-                                                dwc:individualID,
-                                                dwc:organismID;
 
                                 # dcterms:publisher "Biodiversity Information Standards (TDWG)"@en;
                                 dc:publisher "Biodiversity Information Standards (TDWG)"@en;
@@ -300,6 +282,8 @@ dwc:organismID      rdfs:comment "An identifier for the Organism instance (as op
 
 # Note that a particular version of a vocabulary includes term versions that have been carried forward unmodified
 # from a previous version.  
+
+# I have not replaced dcterms:hasPart relationships with dcterms:isPartOf.  Is there some other term that should be used? dcterms:references? dcterms:relation?
 <http://rs.tdwg.org/dwc/2015-03-19/terms/> a dcat:Dataset;
                                            dcterms:publisher "Biodiversity Information Standards (TDWG)"@en;
                                            dcterms:title "Darwin Core Recommended Terms, version 2015-03-19"@en;
