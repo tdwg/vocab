@@ -813,9 +813,9 @@ the Design of Network-based Software Architectures
 Reference
 
 -----------------
-This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png)
 
-![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png) Copyright 201x - Biodiversity Information Standards - TDWG - Contact Us
+Copyright 201x - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
 -----------------
 # Items below this point are from the unratified documentation standard and should probably be discussed by the task group.#
 
