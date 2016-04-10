@@ -60,7 +60,7 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
  In the text and examples, IRIs are frequently abbreviated using namespace abbreviations.  The abbreviations used in this document are shown in the following table.
 
-| ** Prefix ** | ** Namespace **                             |
+| **Prefix**   | **Namespace**                               |
 |--------------|---------------------------------------------|
 | rdf          | http://www.w3.org/1999/02/22-rdf-syntax-ns# |
 | rdfs         | http://www.w3.org/2000/01/rdf-schema#       |
