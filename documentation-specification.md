@@ -1,5 +1,7 @@
 # TDWG Standards Documentation Specification #
 
+This document is an early draft and should be considered neither stable nor citable.
+
 **Title:** TDWG Standards Documentation Specification
 
 **Date Issued:**
@@ -75,9 +77,11 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 | owl          | http://www.w3.org/2002/07/owl#              |
 | xmpRights    | http://ns.adobe.com/xap/1.0/rights/         |
 
-## **1.3 Style of this document** ##
+### **1.3 About the examples in this document** ###
 
+RDF examples in this document are included to clarify the normative text, although they are not themselves normative.  In some cases, IRIs represent actual standards, documents, or terms, but in many cases they are fictitious.  Additionally, in cases where the IRIs represent real resources, the properties and values shown in the examples may not represent real metadata about those resources.  The triples included in the examples do not represent a complete graph containing all of the triples necessary to comply with this standard.  Rather, they show triples that illustrate the relationships described in the sections that precede the example.  
 
+RDF/Turtle is used in all of the examples because it is generally the easiest RDF serialization for humans to comprehend.  Use of Turtle does not imply that it is a preferred serialization for representing the metadata and relationships among resources in machine-readable form.  Other serializations such as RDF/XML, RDFa, and JSON-LD might also be used to represent the same information.  Best-practices with respect to serialization should be established by community consensus in an effort outside of this standard.
 
 ## **2 The structure of TDWG standards** ##
 
@@ -811,7 +815,7 @@ Reference
 -----------------
 This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
-![https://licensebuttons.net/l/by/4.0/88x31.png](http://creativecommons.org/licenses/by/4.0/) Copyright 201x - Biodiversity Information Standards - TDWG - Contact Us
+![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png) Copyright 201x - Biodiversity Information Standards - TDWG - Contact Us
 -----------------
 # Items below this point are from the unratified documentation standard and should probably be discussed by the task group.#
 
