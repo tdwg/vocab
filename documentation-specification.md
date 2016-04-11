@@ -131,7 +131,9 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 **2.2.3 Vocabulary documents**
 
-TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  [Is it really necessary to do what follows if a client can just dereference the term URI?] ~~Machine-readable representations of these documents will use the property dcterms:isPartOf to link to the machine-readable definitions of the external terms if those definitions exist.~~  
+TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  
+
+Term lists may include terms that are defined elsewhere, but assert additional properties for those terms that are not included in their definitions.  Such lists can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  
 
 ![](graphics/distributions.png)
 
@@ -398,7 +400,7 @@ The relationships described in this section may be expressed as Resource Descrip
 
 ### **4.1 Identifying a resource and the machine-readable document that describes it** ###
 
-In the description of any resource, it is important to distinguish between the identifier for the resource and the identifier for the machine-readable document that describes it.  When describing a resource, the resource IRI should be the subject of statements about the current resource.  The machine-readable document that describes it must have a different IRI.  The resource should be linked to the document that describes it by the property dcterms:isReferencedBy, while the machine-readable document should be linked to the resource it describes by the property dcterms:references.
+In the description of any resource, it is important to distinguish between the identifier for the resource and the identifier for the machine-readable document that describes it.  When describing a resource, the resource IRI should be the subject of statements about the current resource.  The machine-readable document that describes it must have a different IRI.  The resource should be linked to the document that describes it by the property dcterms:isReferencedBy, while the machine-readable document should be linked to the resource it describes by the property dcterms:references.  In the case of vocabulary term lists, the machine-readable document that describes the list may be one of the term list distributions.
 
 When a client dereferences the resource IRI, it is desirable that content negotiation result in return of a machine-readable document that describes the resource in the format requested in the request header.
 
@@ -656,6 +658,7 @@ The guidelines expressed in the Data Catalog Vocabulary [DCAT] should be followe
 
 **4.4.3.1 Example (non-normative)**
 
+```
 <http://rs.tdwg.org/dwc/terms/>
      dcterms:title "Core terms defined by Darwin Core"@en;
      rdfs:label "Core terms defined by Darwin Core"@en;
@@ -678,6 +681,7 @@ The guidelines expressed in the Data Catalog Vocabulary [DCAT] should be followe
      dcat:mediaType "application/rdf+xml";
      dcat:downloadURL <https://raw.githubusercontent.com/tdwg/dwc/master/rdf/dwcterms.rdf>;
      a dcat:Distribution.
+```
 
 ### **4.5 Metadata properties for describing vocabulary terms** ###
 
@@ -875,7 +879,7 @@ the Design of Network-based Software Architectures
 Reference
 
 -----------------
-This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png)
+This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).
 
 Copyright 201x - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
 -----------------
