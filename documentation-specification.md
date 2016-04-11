@@ -131,6 +131,12 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  Machine-readable representations of these documents will use the property dcterms:isPartOf to link to the machine-readable definitions of the external terms if those definitions exist.  
 
+**2.2.4 Distributions**
+
+Vocabulary term lists as abstract resources also exist as more concrete entities that can be stored and delivered.  A human user or machine user-agent may discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user will not know that the abstract resource is available in forms that were not requested.  In addition, the term list may be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting content-type text/html, yet that availability may not be apparent to machine user-agents.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions", should be made known to both human users and machine user-agents.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] should be used to indicate the links from a vocabulary's term list to its available distributions.
+
+All distributions of a term list should contain substantively the same information about the terms on the list.  Thus a user retrieving any of the distributions should be able to learn the same properties and values for all of the terms.
+
 ![](graphics/version-model.png)
 
 Fig. 4. Relationship of a resource to its versions over time.
@@ -287,7 +293,7 @@ In order for a standard to enable compliance with a consensus community practice
 
 In order to ensure the stability of a human-readable document, it should be archived as a discrete file as opposed to being generated from a potentially changing database.  The archived document file must be in an open format for which parsers are commonly available. For this purpose an open format is defined as being one for which it would be possible to write a parser on the basis of a published specification without having to rely on code libraries for which the source code is not available or to pay a license fee.
 
-In accordance with Section 2.1, the document may exist as files in a variety of formats that can be retrieved through content negotiation.  For example, a document may be available in any of HTML, PDF, and MarkDown formats.  However, when rendered by a parser, each differently formatted file must render to a form that is substantively the same to a human reader.  At least one available form must be easily viewable to a human reader in a browser that requests text/html, regardless of whether the source file is actually in HTML format.
+In accordance with Section 2.1, the document may exist as files in a variety of formats that can be retrieved through content negotiation.  For example, a document may be available in any of HTML, PDF, and Markdown formats.  However, when rendered by a parser, each differently formatted file must render to a form that is substantively the same to a human reader.  At least one available form must be easily viewable to a human reader in a browser that requests text/html, regardless of whether the source file is actually in HTML format.
 
 Documents should be maintained as part of a publicly accessible version control system that ensures document files will not be lost and that previous document versions can be located and accessed through their immutable IRIs.  
 
@@ -313,7 +319,9 @@ The state of the term at particular times is recorded via versions of the term. 
 
 A term list is a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list is identified by the IRI of the namespace used by the terms on that list.  For lists of terms borrowed from other vocabularies, any IRI may be used.  It is permissible for the borrowed terms to be included in the same list as the terms defined by the standard.   
 
-Term lists of terms defined by TDWG must include the following items:
+**3.3.3.1 Term list metadata**
+
+Term lists containing terms defined by TDWG must include the following items:
 
 **Namespace URI** - the IRI that identifies the term list. [Do we specify that term URIs should follow the slash URI pattern?  In that case the term list URI would be the same as the namespace vs. a possible discrepancy caused by the trailing # on hash URIs - namespace with, vocabulary IRI without??? see https://www.w3.org/TR/swbp-vocab-pub/#naming; SKOS example]
 
@@ -338,6 +346,19 @@ Each term entry should include the following items.
 **Type** (required) - Values include "Class", "Property", and "Concept".
 
 The term list may contain other properties of the term that are deemed to be useful, including informative comments or notes that provide examples or clarification, but which do not form part of the normative definition of the term.
+
+**3.3.3.2 Term list distributions**
+
+The term list document should contain a section listing the available distributions for the term list.  Each item on the list should contain a description of the form of the distribution, the IRI of the distribution, and the download or access URL for the distribution.  If the distribution is a file, the format should be described.  If the distribution is an endpoint, the type of endpoint (for example, SPARQL or an API delivering JSON) should be described. If the distribution is viewable in a human-friendly web page, the distribution IRI may be hyperlinked to that page.  The download or access URL should be listed and hyperlinked to the raw file or access URL for the endpoint.  A user-agent should be able to retrieve the raw file in the described format directly from the download URL.  A user-agent should be able to make calls directly to the access URL of the endpoint.
+
+**3.3.3.2.1 Example distributions record (non-normative)**
+
+Distributions for the term list of core terms that are defined in the Darwin Core dwc: namespace
+
+| Description | IRI | Download URL |
+|-------------|-----|--------------|
+| HTML file   | [http://rs.tdwg.org/dwc/terms/index.htm](https://github.com/tdwg/dwc/blob/master/terms/index.htm) | https://raw.githubusercontent.com/tdwg/dwc/master/terms/index.htm |
+| RDF/XML file | [http://tdwg.github.io/dwc/rdf/dwcterms.rdf](https://github.com/tdwg/dwc/blob/master/rdf/dwcterms.rdf) | https://raw.githubusercontent.com/tdwg/dwc/master/rdf/dwcterms.rdf |
 
 **3.3.4 Term version lists**
 
@@ -400,6 +421,7 @@ Indicate the class of a resource using rdf:type.  The following classes should b
 | Standard                          | dcterms:Standard          |
 | Vocabulary                        | dcterms:Dataset           |
 | Term List                         | dcat:Dataset *            |
+| Distribution                      | dcat:Distribution         |
 | Property                          | rdf:Property              |
 | Class                             | rdfs:Class                |
 | Term from a controlled vocabulary | skos:Concept              |         
@@ -496,8 +518,8 @@ See also the example in section 4.5.3, which illustrates versioning of terms.
 A vocabulary is a resource that may form part of a standard.  A vocabulary is described by the general metadata specified in section 4.2.  A vocabulary also includes lists of terms that the vocabulary contains.  Term lists are also described by metadata specified in section 4.2 as well as additional properties described in section 4.4.2.  Terms, term lists, and vocabularies have hierarchical relationships that are expressed using the property dcterms:isPartOf:
 
 ```
-<term> dcterms:isPartOf <termList>.
-<termList> dcterms:isPartOf <vocabulary>.
+<:term> dcterms:isPartOf <:termList>.
+<:termList> dcterms:isPartOf <:vocabulary>.
 ```
 
 **4.4.1 Relationships between vocabularies and term lists**
@@ -599,7 +621,7 @@ An example of metadata about an authoritative term list:
      a rdf:Property.
 ```
 
-An example of metadata about a non=authoritative term list:
+An example of metadata about a non-authoritative term list:
 
 ```
 <http://rs.tdwg.org/ac/borrowed/>
@@ -622,6 +644,34 @@ An example of metadata about a non=authoritative term list:
      vann:preferredNamespaceUri "http://iptc.org/std/Iptc4xmpExt/2008-02-29/";
 
 ```
+**4.4.3 Linking to and describing distributions**
+
+The guidelines expressed in the Data Catalog Vocabulary [DCAT] should be followed for linking to and describing distributions of term lists.  Since term lists are typed as dcat:Dataset, they may be assigned any of the properties that are appropriate for instances of dcat:Dataset.  Term lists are linked to their distributions using the property dcat:distribution. Distributions may be assigned any properties that are appropriate for dcat:Distribution instances; however, at a minimum, they should have the properties dcterms:modified, dcat:accessURL or dcat:downloadURL (whichever is appropriate), and dcat:mediaType or dcterms:format.  If an IANA media type exists for the format of the distribution, dcat:mediaType should be used in preference over dcterms:format. [IANA]
+
+**4.4.3.1 Example (non-normative)**
+
+<http://rs.tdwg.org/dwc/terms/>
+     dcterms:title "Core terms defined by Darwin Core"@en;
+     rdfs:label "Core terms defined by Darwin Core"@en;
+     dcterms:modified "2014-11-08"^^xsd:date;
+     dcat:landingPage <http://rs.tdwg.org/dwc/terms/index.htm>;
+     dcat:distribution <http://rs.tdwg.org/dwc/terms/index.htm>,
+                       <http://tdwg.github.io/dwc/rdf/dwcterms.rdf>;
+     a dcat:Dataset.
+<http://rs.tdwg.org/dwc/terms/index.htm>
+     dcterms:title "HTML distribution of the term list of core terms defined by Darwin Core"@en;
+     rdfs:label "HTML distribution of the term list of core terms defined by Darwin Core"@en;
+     dcterms:modified "2016-01-12"^^xsd:date;
+     dcat:mediaType "text/html";
+     dcat:downloadURL <https://raw.githubusercontent.com/tdwg/dwc/master/terms/index.htm>;
+     a dcat:Distribution.
+<http://tdwg.github.io/dwc/rdf/dwcterms.rdf>
+     dcterms:title "RDF/XML distribution of the term list of core terms defined by Darwin Core"@en;
+     rdfs:label "RDF/XML distribution of the term list of core terms defined by Darwin Core"@en;
+     dcterms:modified "2015-07-03"^^xsd:date;
+     dcat:mediaType "application/rdf+xml";
+     dcat:downloadURL <https://raw.githubusercontent.com/tdwg/dwc/master/rdf/dwcterms.rdf>;
+     a dcat:Distribution.
 
 ### **4.5 Metadata properties for describing vocabulary terms** ###
 
@@ -799,6 +849,8 @@ The following example illustrates the use of the controlled vocabulary terms fro
 [DCAT] https://www.w3.org/TR/vocab-dcat/ Data Catalog Vocabulary (DCAT)
 
 [HTTP-1.1] http://tools.ietf.org/html/rfc7231 Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content
+
+[IANA] http://www.iana.org/assignments/media-types/media-types.xhtml Internet Assigned Numbers Authority (IANA) Media Types
 
 [IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs)
 
