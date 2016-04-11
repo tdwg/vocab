@@ -129,17 +129,21 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 **2.2.3 Vocabulary documents**
 
-TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  Machine-readable representations of these documents will use the property dcterms:isPartOf to link to the machine-readable definitions of the external terms if those definitions exist.  
+TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to a namespace that contains a set of terms.  There will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of this document will contain the normative definition of each term.  The machine-readable representation of this document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  [Is it really necessary to do what follows if a client can just dereference the term URI?] ~~Machine-readable representations of these documents will use the property dcterms:isPartOf to link to the machine-readable definitions of the external terms if those definitions exist.~~  
+
+![](graphics/distributions.png)
+
+Fig. 4. Relationship of a term list document to its distributions.
 
 **2.2.4 Distributions**
 
-Vocabulary term lists as abstract resources also exist as more concrete entities that can be stored and delivered.  A human user or machine user-agent may discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user will not know that the abstract resource is available in forms that were not requested.  In addition, the term list may be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting content-type text/html, yet that availability may not be apparent to machine user-agents.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions", should be made known to both human users and machine user-agents.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] should be used to indicate the links from a vocabulary's term list to its available distributions.
+Vocabulary term lists as abstract resources also exist as more concrete entities that can be stored and delivered.  A human user or machine user-agent may discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user will not know that the abstract resource is available in forms that were not requested.  In addition, the term list may be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting content-type text/html, yet that availability may not be apparent to machine user-agents.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), should be made known to both human users and machine user-agents.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] should be used to indicate the links from a vocabulary's term list to its available distributions.
 
 All distributions of a term list should contain substantively the same information about the terms on the list.  Thus a user retrieving any of the distributions should be able to learn the same properties and values for all of the terms.
 
 ![](graphics/version-model.png)
 
-Fig. 4. Relationship of a resource to its versions over time.
+Fig. 5. Relationship of a resource to its versions over time.
 
 ### **2.3 Versioning model** ###
 
@@ -151,7 +155,7 @@ Each resource (document, vocabulary, term, etc.) exists in a current state.  Tha
 
 **2.3.2 Versions**
 
-Each resource also exists as versions that document “snapshots” of the resource over time (Fig. 4).  A version is issued at a particular moment in time and documents the state of the resource until the version is replaced by a later version.  Each version of a resource is identified by an IRI that is distinct from the IRI of the current resource and from all other versions of that resource.  Typically, the IRI of a version is formed by appending the ISO 8601 creation date of the resource to the IRI if the abstract resource.  
+Each resource also exists as versions that document “snapshots” of the resource over time (Fig. 5).  A version is issued at a particular moment in time and documents the state of the resource until the version is replaced by a later version.  Each version of a resource is identified by an IRI that is distinct from the IRI of the current resource and from all other versions of that resource.  Typically, the IRI of a version is formed by appending the ISO 8601 creation date of the resource to the IRI if the abstract resource.  
 
 A current resource is related to one of its versions by the property dcterms:hasVersion.  A version is related to its current resource by the property dcterms:isVersionOf, to a version that it supersedes by dcterms:replaces, and to a version that supersedes it by dcterms:isReplacedBy.  The metadata for a current resource should specify the IRI of the current resource, the IRI of the most recent version, and the IRI of any previous version that was superseded.  Metadata of a past version should specify that version's IRI, specify the IRI of the current resource, and link to any previous or subsequent versions.  
 
@@ -311,7 +315,7 @@ As with other descriptive documents, the body of the landing page should contain
 
 **3.3.2 Terms as versioned resources**
 
-A term is a resource that persists over time (Fig. 4) and that complies with Section 2.3 of this standard. The current state of the term is represented by the term IRI, which does not change and which can be dereferenced to discover the current term definition.  
+A term is a resource that persists over time (Fig. 5) and that complies with Section 2.3 of this standard. The current state of the term is represented by the term IRI, which does not change and which can be dereferenced to discover the current term definition.  
 
 The state of the term at particular times is recorded via versions of the term.  A new version of the term is issued on a particular date and the term version IRI should be dereferenceable to discover the definition of the term version when it was issued.  
 
