@@ -54,6 +54,8 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 **resource** - Any kind of thing that can be identified. Resources can include documents, people, physical objects, and abstract concepts [RDF-PRIMER].
 
+**term list** - A document that is part of a vocabulary and that lists the terms within the vocabulary that are defined as part of a particular namespace.  
+
 **version** - a “snapshot” of a resource in time.  A version is created at a particular moment in time and documents the state of the resource until that version is replaced by a later version.  
 
 **vocabulary** - a collection of standardized terms and their definitions.  Terms may represent classes, properties, or concepts.
@@ -64,17 +66,17 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 | **Prefix**   | **Namespace**                               |
 |--------------|---------------------------------------------|
-| rdf          | http://www.w3.org/1999/02/22-rdf-syntax-ns# |
-| rdfs         | http://www.w3.org/2000/01/rdf-schema#       |
 | dc           | http://purl.org/dc/elements/1.1/            |
+| dcat         | http://www.w3.org/ns/dcat#                  |
 | dcterms      | http://purl.org/dc/terms/                   |
 | dwc          | http://rs.tdwg.org/dwc/terms/               |
-| dwciri       | http://rs.tdwg.org/dwc/iri/                 |
 | dwcattributes| http://rs.tdwg.org/dwc/terms/attributes/    |
+| dwciri       | http://rs.tdwg.org/dwc/iri/                 |
+| owl          | http://www.w3.org/2002/07/owl#              |
+| rdf          | http://www.w3.org/1999/02/22-rdf-syntax-ns# |
+| rdfs         | http://www.w3.org/2000/01/rdf-schema#       |
 | skos         | http://www.w3.org/2004/02/skos/core#        |
 | vann         | http://purl.org/vocab/vann/                 |
-| dcat         | http://www.w3.org/ns/dcat#                  |
-| owl          | http://www.w3.org/2002/07/owl#              |
 | xmpRights    | http://ns.adobe.com/xap/1.0/rights/         |
 
 ### **1.3 About the examples in this document** ###
@@ -319,19 +321,19 @@ A term is a resource that persists over time (Fig. 5) and that complies with Sec
 
 The state of the term at particular times is recorded via versions of the term.  A new version of the term is issued on a particular date and the term version IRI should be dereferenceable to discover the definition of the term version when it was issued.  
 
-**3.3.3 Term lists**
+**3.3.3 Term list documents**
 
-A term list is a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list is identified by the IRI of the namespace used by the terms on that list.  For lists of terms borrowed from other vocabularies, any IRI may be used.  It is permissible for the borrowed terms to be included in the same list as the terms defined by the standard.   
+A term list is a document that contains a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list is identified by the IRI of the namespace used by the terms on that list.  For lists of terms borrowed from other vocabularies, any IRI may be used.  It is permissible for the borrowed terms to be included in the same list as the terms defined by the standard.   
 
 **3.3.3.1 Term list metadata**
 
-Term lists containing terms defined by TDWG must include the following items:
+Term lists containing terms defined by TDWG must include the following items in their header in addition to those required for documents in general:
 
 **Namespace URI** - the IRI that identifies the term list. [Do we specify that term URIs should follow the slash URI pattern?  In that case the term list URI would be the same as the namespace vs. a possible discrepancy caused by the trailing # on hash URIs - namespace with, vocabulary IRI without??? see https://www.w3.org/TR/swbp-vocab-pub/#naming; SKOS example]
 
 **Preferred namespace abbreviation** - the preferred abbreviation for the term list namespace.
 
-Each term entry should include the following items.
+Each term entry on the list should include the following items.
 
 **Term name** (required) - The term name is a controlled value that represents the class, property, or concept described by the term definition.  The term name is composed of the local name part of the term IRI, with a prepended namespace abbreviation (QName) that is defined in the introduction to the vocabulary list. [RECIPES] The term name is often related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.    [Should it be required that the QName be included for terms defined by the standard? AC does, DwC doesn't.]
 
