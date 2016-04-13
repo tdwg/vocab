@@ -26,7 +26,21 @@ This document is an early draft and should be considered neither stable nor cita
 
 Standards adopted by Biodiversity Information Standards (TDWG) may include a number of components that are expressed in human- and machine-readable documents. It is important that users of a standard be able to locate all of these components. Users should be able to easily determine which parts of the standard are definitive (normative) and which are informative (non-normative). It should also be apparent which components are current and which are maintained for historical reasons or to support legacy applications. Machine-readable documents should be linked and described consistently to facilitate automated discovery and processing. This standard specifies how documents should be presented to achieve these requirements.
 
-### **1.1 Definitions** ###
+### **1.1 Audience** ###
+
+This document is intended primarily for those who are writing TDWG standards and vocabularies.  It may also be useful for those who are developing applications that use TDWG vocabularies, since it defines the structure of terms and term lists in those vocabularies, and kinds of available metadata about those terms.
+
+### **1.2 Content** ###
+
+This is the only document associated with the Standards Documentation Specification.  Unless otherwise designated, all sections of it are normative.  It first describes the overall structure of a TDWG standard, then details how standards documents should be written so that they contain the necessary information to be understood by humans and by machines.
+
+### **1.3 About the examples in this document** ###
+
+RDF examples in this document are included to clarify the normative text, although they are not themselves normative.  In some cases, IRIs represent actual standards, documents, or terms, but in many cases they are fictitious.  Additionally, in cases where the IRIs represent real resources, the properties and values shown in the examples may not represent real metadata about those resources.  The triples included in the examples do not represent a complete graph containing all of the triples necessary to comply with this standard.  Rather, they show triples that illustrate the relationships described in the sections that precede the example.  
+
+RDF/Turtle is used in all of the examples because it is generally the easiest RDF serialization for humans to comprehend.  Use of Turtle does not imply that it is a preferred serialization for representing the metadata and relationships among resources in machine-readable form.  Other serializations such as RDF/XML, RDFa, and JSON-LD might also be used to represent the same information.  Best-practices with respect to serialization should be established by community consensus in an effort outside of this standard.
+
+### **1.4 Definitions** ###
 
 **content negotiation** - a mechanism by which a client and server determine the best representation to send to the client based on the client's expressed preferences [HTTP-1.1]
 
@@ -62,7 +76,7 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 **vocabulary** - a collection of standardized terms and their definitions.  Terms may represent classes, properties, or concepts.
 
-### **1.2 Namespaces** ###
+### **1.5 Namespaces used in this document** ###
 
  In the text and examples, IRIs are frequently abbreviated using namespace abbreviations.  The abbreviations used in this document are shown in the following table.
 
@@ -80,12 +94,6 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 | skos         | http://www.w3.org/2004/02/skos/core#        |
 | vann         | http://purl.org/vocab/vann/                 |
 | xmpRights    | http://ns.adobe.com/xap/1.0/rights/         |
-
-### **1.3 About the examples in this document** ###
-
-RDF examples in this document are included to clarify the normative text, although they are not themselves normative.  In some cases, IRIs represent actual standards, documents, or terms, but in many cases they are fictitious.  Additionally, in cases where the IRIs represent real resources, the properties and values shown in the examples may not represent real metadata about those resources.  The triples included in the examples do not represent a complete graph containing all of the triples necessary to comply with this standard.  Rather, they show triples that illustrate the relationships described in the sections that precede the example.  
-
-RDF/Turtle is used in all of the examples because it is generally the easiest RDF serialization for humans to comprehend.  Use of Turtle does not imply that it is a preferred serialization for representing the metadata and relationships among resources in machine-readable form.  Other serializations such as RDF/XML, RDFa, and JSON-LD might also be used to represent the same information.  Best-practices with respect to serialization should be established by community consensus in an effort outside of this standard.
 
 ## **2 The structure of TDWG standards** ##
 
@@ -186,7 +194,7 @@ controlled and may contain any combination of characters.
 
 **3.1.2 IRI of the standard**
 
-The landing page should include the HTTP IRI that identifies the standard.  The text of the landing page should indicate that this is the IRI that should be cited and to which hyperlinks should be made.  This is important because content negotiation may redirect users to some other IRI that is specific to the delivery mechanism and which might be subject to change at some time in the future.
+The landing page should include the HTTP IRI that identifies the standard.  The text of the landing page should indicate that this is the IRI that should be cited and is the IRI to which hyperlinks should be made.  Providing this information is important because content negotiation may redirect users to some other IRI that is specific to the delivery mechanism and which might be subject to change at some time in the future.
 
 **3.1.4 Link to TDWG**
 
@@ -206,7 +214,7 @@ Each part of the standard should be listed, with a hyperlink that leads to that 
 
 ### **3.2 Descriptive documents** ###
 
-A standard has one or more descriptive documents that describe the purpose of the standard and which contain information about how the standard is to be used. The choice of whether to place all of this material in a single document or to separate it into several documents should be made based on what will make the standard the most easy to understand and use.  
+A standard has one or more descriptive documents that describe the purpose of the standard, and that contain information about how the standard is to be used. The choice of whether to place all of this material in a single document or to separate it into several documents should be made based on what will make the standard the most easy to understand and use.  
 
 **3.2.1 Normative and non-normative sections of descriptive documents**
 
