@@ -34,7 +34,7 @@ This document is intended primarily for those who are writing TDWG standards and
 
 This is the only document associated with the Standards Documentation Specification.  Unless otherwise designated, all sections of it are normative.  It first describes the overall structure of a TDWG standard, then details how standards documents should be written so that they contain the necessary information to be understood by humans and by machines.
 
-### **1.3 About the examples in this document** ###
+### **1.3 Examples in this document** ###
 
 RDF examples in this document are included to clarify the normative text, although they are not themselves normative.  In some cases, IRIs represent actual standards, documents, or terms, but in many cases they are fictitious.  Additionally, in cases where the IRIs represent real resources, the properties and values shown in the examples may not represent real metadata about those resources.  The triples included in the examples do not represent a complete graph containing all of the triples necessary to comply with this standard.  Rather, they show triples that illustrate the relationships described in the sections that precede the example.  
 
@@ -194,7 +194,7 @@ controlled and may contain any combination of characters.
 
 **3.1.2 IRI of the standard**
 
-The landing page should include the HTTP IRI that identifies the standard.  The text of the landing page should indicate that this is the IRI that should be cited and is the IRI to which hyperlinks should be made.  Providing this information is important because content negotiation may redirect users to some other IRI that is specific to the delivery mechanism and which might be subject to change at some time in the future.
+The landing page should include the HTTP IRI that identifies the standard.  The text of the landing page should indicate that the identifying HTTP IRI is the IRI that should be cited and is the IRI to which hyperlinks should be made.  Providing this information is important because content negotiation may redirect users to some other IRI that is specific to the delivery mechanism and that might be subject to change at some time in the future.
 
 **3.1.4 Link to TDWG**
 
@@ -224,11 +224,11 @@ It is also permissible to indicate in the introduction that content of a particu
 
 **3.2.2 Versioning**
 
-Descriptive documents are resources that follow the versioning model described in Section 2.3.  Thus each particular document version will represent the state of the generic document from the time it was issued until the time that version was superseded by a later version.  Thus, the date issued that is stated on a particular document version will reflect the date that particular version was issued (dcterms:issued).  Date created (dcterms:created) should be reserved to indicate the date that the first version of the document was issued.
+Descriptive documents are resources that follow the versioning model described in Section 2.3.  Each particular document version will represent the state of the generic document from the time it was issued until the time that version was superseded by a later version.  Thus, the date issued that is stated on a particular document version will reflect the date that particular version was issued (dcterms:issued).  Date created (dcterms:created) should be reserved to indicate the date that the first version of the document was issued.
 
 **3.2.3 Layout and style**
 
-Descriptive documents should be divided into three main sections:
+Descriptive documents should be divided into four main sections:
 
 -   A header section
 -   Table of contents
@@ -260,7 +260,7 @@ principal contact.
 Contributors’ names must be quoted in the following format: "FirstName
 Initials LastName (Affiliation)" where:
 
-Either one or both of FirstName and Initials must be present.
+Either one or both of FirstName and Initials must be present. [What about names from cultures where names do not typically follow this pattern?]
 
 Affiliation is the organization or group the contributor is working with in relation to this document and is OPTIONAL.
 
@@ -285,7 +285,7 @@ The table of contents section should contain an ordered list of all the headings
 [TODO: do we need to specify some features of existing standards documents, such as "Introduction", "Motivation", "Rationale", or do we leave this up to the authors?]
 
 The body text should be divided by a hierarchy of subheadings. The subheadings must be numbered consecutively using simple decimal system.
-The final number must not be followed by a decimal point. An example:
+The final number must not be followed by a decimal point. [The practice of not ending in a decimal point annoys me.  TDWG has been following it, but others don't. Is there some consensus on this practice?] An example:
 
 1 First Main Section
 
@@ -303,7 +303,7 @@ The footer should contain a copyright statement and licensing information.  Typi
 
 **3.2.4 Language**
 
-All normative content must be in English. ~~Translations of normative documents may be included in the standard but the translations must be treated as informative documents.~~ [This was copied from the earlier specification.  Do we really want to say that translations may be "included in the standard"?  That would imply that creating additional translations would require amending the standard.  Is that what we really want???] Translations of normative documents are encouraged but will be treated as ancillary documents that are not included in the standard.
+All normative content must be in English. ~~Translations of normative documents may be included in the standard but the translations must be treated as informative documents.~~ [This was copied from the earlier specification.  Do we really want to say that translations may be "included in the standard"?  That would imply that creating additional translations would require amending the standard.  Is that what we really want???  I think not.] Translations of normative documents are encouraged but will be treated as ancillary documents that are not included in the standard.
 
 **3.3 Archiving of documents**
 
@@ -317,13 +317,13 @@ Documents should be maintained as part of a publicly accessible version control 
 
 ### **3.3 Vocabulary descriptions** ###
 
-Documents that describe vocabularies make up a special category of human-readable descriptive documents.  As such, vocabulary descriptions will comply with the requirements of Section 3.2.  However, they will also have particular characteristics as described in the following sections.
+Documents that describe vocabularies make up a special category of human-readable descriptive documents.  As such, vocabulary descriptions will comply with the requirements of Section 3.2.  However, they will also have additional characteristics as described in the following sections.
 
 **3.3.1 Landing page for the vocabulary**
 
 Although a standard may define a vocabulary, the standard may also include other documents such as guides that describe how the vocabulary may be used in different contexts.  It is also possible for a standard to define several vocabularies that may share subsets of terms defined by the vocabulary.  Thus it is clear that a vocabulary is an entity that is distinct from the standard that defines it.  As such, the vocabulary will have an IRI that is distinct from the standard's IRI.  The vocabulary's landing page is the page that is presented to a human user when the vocabulary IRI is dereferenced and content-type text/html is requested.
 
-In its header, the landing page will contain the metadata described in Section 3.2.3.1, with the release date serving as the Date Issued, and the vocabulary IRI serving as the Latest Version IRI.
+In its header, the landing page will contain the metadata described in Section 3.2.3.1, with the most recent release date serving as the Date Issued, and the vocabulary IRI serving as the Latest Version IRI.
 
 As with other descriptive documents, the body of the landing page should contain an explanation of the purpose of the vocabulary.  However, it must also contain links to the term lists that indicate the terms that make up the vocabulary (Section 3.3.3).  
 
@@ -335,19 +335,19 @@ The state of the term at particular times is recorded via versions of the term. 
 
 **3.3.3 Term list documents**
 
-A term list is a document that contains a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list is identified by the IRI of the namespace used by the terms on that list.  For lists of terms borrowed from other vocabularies, any IRI may be used.  It is permissible for the borrowed terms to be included in the same list as the terms defined by the standard.   
+A term list is a document that contains a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list is identified by the IRI of the namespace used by the terms on that list, and that namespace IRI must dereference to the term list document that contains the terms from that namespace.  For lists of terms borrowed from other vocabularies, any IRI may be used.  Although the lists of borrowed terms will be identified by a different IRI, it is permissible for the borrowed terms to be included in the same human-readable term list document as the terms defined by the standard.  In that case, the borrowed term IRI should be designed so that it will dereference to the page on which the borrowed terms are listed (e.g. through use of a hash appended to the namespace IRI).
 
 **3.3.3.1 Term list metadata**
 
 Term lists containing terms defined by TDWG must include the following items in their header in addition to those required for documents in general:
 
-**Namespace URI** - the IRI that identifies the term list. [Do we specify that term URIs should follow the slash URI pattern?  In that case the term list URI would be the same as the namespace vs. a possible discrepancy caused by the trailing # on hash URIs - namespace with, vocabulary IRI without??? see https://www.w3.org/TR/swbp-vocab-pub/#naming; SKOS example]
+**Namespace URI** - the IRI that identifies the term list. [Do we specify that term URIs should follow the slash URI pattern?  That's been the case for DwC and AC, but not the TDWG ontology. In the case of slash URI, the term list URI would be the same as the namespace vs. a possible discrepancy caused by the trailing # on hash URIs - namespace with, vocabulary IRI without??? see https://www.w3.org/TR/swbp-vocab-pub/#naming; SKOS example]
 
 **Preferred namespace abbreviation** - the preferred abbreviation for the term list namespace.
 
 Each term entry on the list should include the following items.
 
-**Term name** (required) - The term name is a controlled value that represents the class, property, or concept described by the term definition.  The term name is composed of the local name part of the term IRI, with a prepended namespace abbreviation (QName) that is defined in the introduction to the vocabulary list. [RECIPES] The term name is often related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.    [Should it be required that the QName be included for terms defined by the standard? AC does, DwC doesn't.]
+**Term name** (required) - The term name is a controlled value that represents the class, property, or concept described by the term definition.  The term name is composed of the local name part of the term IRI, with a prepended namespace abbreviation (QName) that is defined in the header section of the vocabulary list document. [RECIPES] The term name is often related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.    [Should it be required that the QName be included for terms defined by the standard? AC does, DwC doesn't. Example: "ac:caption" vs. "caption", or "dwc:recordedBy" vs. "recordedBy"]
 
 **Label** (optional? DwC doesn't list it in the human-readable representation) - The label is a word or short phrase that serves as a human-readable name for the term.
 
@@ -363,11 +363,11 @@ Each term entry on the list should include the following items.
 
 **Type** (required) - Values include "Class", "Property", and "Concept".
 
-The term list may contain other properties of the term that are deemed to be useful, including informative comments or notes that provide examples or clarification, but which do not form part of the normative definition of the term.
+The term list may contain other properties of the term that are deemed to be useful, including informative comments or notes that provide examples or clarification, but which do not form part of the normative definition of the term.  [Here I'm explicitly saying that part of the metadata, e.g. comments are NOT normative with respect to the terms. Is that a good thing? Or should we specify that the vocabulary writers must indicate what metadata properties they consider normative?]
 
 **3.3.3.2 Term list distributions**
 
-The term list document should contain a section listing the available distributions for the term list.  Each item on the list should contain a description of the form of the distribution, the IRI of the distribution, and the download or access URL for the distribution.  If the distribution is a file, the format should be described.  If the distribution is an endpoint, the type of endpoint (for example, SPARQL or an API delivering JSON) should be described. If the distribution is viewable in a human-friendly web page, the distribution IRI may be hyperlinked to that page.  The download or access URL should be listed and hyperlinked to the raw file or access URL for the endpoint.  A client should be able to retrieve the raw file in the described format directly from the download URL.  A client should be able to make calls directly to the access URL of the endpoint.
+The term list document should contain a section listing the available distributions for the term list.  Each item on the list should contain a description of the form of the distribution, the IRI of the distribution, and the download or access URL for the distribution.  If the distribution is a file, the format should be described.  If the distribution is an endpoint, the type of endpoint (for example, SPARQL or an API delivering JSON) should be described. If the distribution is viewable in a human-friendly web page, the distribution IRI may be hyperlinked to that page.  The download or access URL should be listed and hyperlinked to the raw file or access URL for the endpoint.  A client should be able to retrieve the raw file in the described format directly from the download URL.  A client should be able to make calls directly to the access URL of the endpoint. [OK, here's a potential problem.  What if the download or endpoint URL changes?  We don't really want to have to make a change to the standard to change that!  Maybe the term list should just contain a link to an ancillary page that's outside the standard and lists the distributions.  In that case, do we have any business specifying here how that page should be structured???]
 
 **3.3.3.2.1 Example distributions record (non-normative)**
 
@@ -404,9 +404,11 @@ The term list may contain other properties of the term that are deemed to be use
 
 ## **4 Machine-readable documents** ##
 
-It is desirable for user agents (machines) to be able to discover and process metadata associated with standards documents and vocabularies without human intervention. This section describes how machine-readable documents should be constructed to make this possible.
+It is desirable for semantic clients (machines) to be able to discover and process metadata associated with standards documents and vocabularies without human intervention. This section describes how machine-readable documents should be constructed to make this possible.
 
-The relationships described in this section may be expressed as Resource Description Framework (RDF) but that is not to the exclusion of other methods that may be available for expressing relationships in a manner that facilitates machine processing.
+The relationships described in this section may be expressed as Resource Description Framework (RDF), but that is not to the exclusion of other methods that may be available for expressing the same relationships in a manner that also facilitates machine processing.
+
+In the same way that immutability of human-readable documents is important for the stability of a standard, the content of machine-readable documents must also be immutable. Thus, the set of machine-readable relationships (a graph in RDF) must be unchanged within a version of a document or vocabulary. Regardless of the serialization in which the machine-readable metadata are provided, that serialization should parse to the same set of relationships (i.e. the same RDF graph).
 
 ### **4.1 Identifying a resource and the machine-readable document that describes it** ###
 
@@ -432,7 +434,7 @@ When the resource IRI http://rs.tdwg.org/dwc/terms/guides/text is dereferenced r
 
 ### **4.1.2 Types of resources** ###
 
-Indicate the class of a resource using rdf:type.  The following classes should be used:
+Indicate the class of which a resource is an instance by using rdf:type.  The following classes should be used:
 
 |**Class**                          | **Machine-readable value**|
 |-----------------------------------|---------------------------|
@@ -444,9 +446,9 @@ Indicate the class of a resource using rdf:type.  The following classes should b
 | Class                             | rdfs:Class                |
 | Term from a controlled vocabulary | skos:Concept              |         
 
-* The semantics of the DCAT Recommendation entail that an instance of dcat:Dataset is also an instance of dcterms:Dataset.
+\* The semantics of the DCAT Recommendation entail that an instance of dcat:Dataset is also an instance of dcterms:Dataset.
 
-Documents should be typed according to a well-known vocabulary.  Suggestions of appropriate classes can be fount in an ancillary document related to this standard. [put this here since I don't know the future of FOAF, schema.org, bibo, etc.]
+Documents should be typed according to a well-known vocabulary.  Suggestions of appropriate classes can be found in an ancillary document related to this standard. [put this here since I don't know the future of FOAF, schema.org, bibo, etc.]
 
 ### **4.2 General metadata** ###
 
@@ -463,7 +465,7 @@ The same metadata that is presented in the header section of the human-readable 
 | Abstract                | dcterms:description           | literal containing the human-readable abstract of the document minus any references or hyperlinks |
 | Bibliographic Citation  | dcterms:bibliographicCitation | literal           |
 
-* Both of these terms are well-known properties used to indicate a human-readable label for a resource.  Including both increases the likelihood that a consuming application will be able to present that label to human users.
+\* Both of these terms are well-known properties used to indicate a human-readable label for a resource.  Including both increases the likelihood that a consuming application will be able to present that label to human users.
 
 The property dcterms:contributor should be used to link the document or vocabulary to an IRI that denotes the contributor.
 
@@ -595,7 +597,7 @@ The following example is expressed in RDF/Turtle:
 
 **4.4.2 Metadata terms describing term lists**
 
-Each set of terms defined by a TDWG standard that share a namespace will be included in a term list that corresponds to that namespace.  Thus, when the IRI of a term that is defined by the standard is dereferenced with a request for machine-readable metadata, a document may be returned through content negotiation that contains the metadata for those terms.  Other terms that are borrowed from other vocabularies will be grouped in one or more term lists.  
+Each set of terms defined by a TDWG standard that share a namespace will be included in a term list that corresponds to that namespace.  Thus, when the IRI of a term that is defined by the standard is dereferenced with a request for machine-readable metadata, a document may be returned through content negotiation that contains the metadata for those terms.  Other terms that are borrowed from other vocabularies will be grouped in one or more additional term lists.  
 
 All terms are related to the term list that contains them by the property dcterms:isPartOf.    
 
@@ -664,7 +666,7 @@ An example of metadata about a non-authoritative term list:
 ```
 **4.4.3 Linking to and describing distributions**
 
-The guidelines expressed in the Data Catalog Vocabulary [DCAT] should be followed for linking to and describing distributions of term lists.  Since term lists are typed as dcat:Dataset, they may be assigned any of the properties that are appropriate for instances of dcat:Dataset.  Term lists are linked to their distributions using the property dcat:distribution. Distributions may be assigned any properties that are appropriate for dcat:Distribution instances; however, at a minimum, they should have the properties dcterms:modified, dcat:accessURL or dcat:downloadURL (whichever is appropriate), and dcat:mediaType or dcterms:format.  If an IANA media type exists for the format of the distribution, dcat:mediaType should be used in preference over dcterms:format. [IANA]
+The guidelines expressed in the W3C Data Catalog Vocabulary [DCAT] should be followed for linking to and describing distributions of term lists.  Since term lists are typed as dcat:Dataset, they may be assigned any of the properties that are appropriate for instances of dcat:Dataset.  Term lists are linked to their distributions using the property dcat:distribution. Distributions may be assigned any properties that are appropriate for dcat:Distribution instances; however, at a minimum, they should have the properties dcterms:modified, dcat:accessURL or dcat:downloadURL (whichever is appropriate), and dcat:mediaType or dcterms:format.  If an IANA media type exists for the format of the distribution, dcat:mediaType should be used in preference over dcterms:format. [IANA]
 
 **4.4.3.1 Example (non-normative)**
 
@@ -697,7 +699,7 @@ The guidelines expressed in the Data Catalog Vocabulary [DCAT] should be followe
 
 Because terms are resources, they are versioned and the terms used for relating current resources to versions (Section 4.3) apply to them as well.
 
-The following properties are required for current terms and term versions in addition to the properties listed in Section 4.3 and 4.4. Note that the term or term version IRI will be present as the subject of the property
+The following properties are required for current terms and term versions. Note that the term or term version IRI will be present as the subject of the property
 
 | **Human-readable label** | **Machine-readable property** | **Type of value** |
 |--------------------------|-------------------------------|-------------------|
@@ -721,11 +723,11 @@ In addition to following the generic practice of using rdfs:label to assign a na
 
 **4.5.2 Metadata properties for describing controlled vocabulary terms**
 
-Controlled vocabulary terms are instances of the class skos:Concept.  As such, it is appropriate to assign to such terms properties from the SKOS Simple Knowledge Organization System W3C Recommendation [SKOS] as necessary to define the relationships between that term and other resources.  It is not generally appropriate to use the SKOS vocabulary with vocabulary terms that are instances of the classes rdf:Property and rdfs:Class.  Since it is a general practice to assign SKOS concepts to a concept scheme, controlled vocabulary terms should be linked to that scheme by skos:inScheme.  However, the structuring of such schemes is beyond the scope of this document.
+Controlled vocabulary terms are instances of the class skos:Concept.  As such, it is appropriate to assign to such terms properties from the SKOS Simple Knowledge Organization System W3C Recommendation [SKOS] as necessary to define the relationships between that term and other resources.  (With the exception of skos:prefLabel and skos:altLabel, it is not generally appropriate to use SKOS vocabulary properties with terms from metadata schemes that are instances of the classes rdf:Property and rdfs:Class.)  Since it is a general practice to assign SKOS concepts to a concept scheme, controlled vocabulary terms should be linked to that scheme by skos:inScheme.  However, the structuring of such schemes is beyond the scope of this document.
 
 To facilitate use by applications programmed to make use of SKOS properties, it is recommended that controlled vocabulary term descriptions include a skos:definition property that has the same value as the rdfs:comment property routinely used to indicate the human-readable definition for every TDWG vocabulary term.
 
-As with all other TDWG vocabulary terms, controlled value terms will be assigned a term IRI.  That IRI may be used as the subject or object when expressing relationships with other resources.  However, in the context of information transfer, there may be cases where it is more desirable to represent the controlled vocabulary term by means of a unique text string.  To facilitate such use, each controlled vocabulary term should be assigned a string that is unique within the controlled vocabulary.  That string should be designated by making it a plan literal value (without language tag) of an rdf:value property of the term.  
+As with all other TDWG vocabulary terms, controlled value terms will be assigned a term IRI.  That IRI may be used as the subject or object when expressing relationships with other resources.  However, in the context of information transfer, there may be cases where it is more desirable to represent the controlled vocabulary term by means of a unique text string.  To facilitate such use, each controlled vocabulary term should be assigned a string that is unique within that controlled vocabulary.  That string should be designated by making it a plan literal value (without language tag) of an rdf:value property of the term.  
 
 **4.5.3 Examples related to terms (non-normative)**
 
