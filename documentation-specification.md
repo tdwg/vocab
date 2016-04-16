@@ -507,7 +507,7 @@ At the standard level, deprecation occurs when a standard is assigned to the [Re
 
 For information about deprecation of terms within vocabularies, see section 4.5.3.  
 
-**4.2.2.1 Exapmle of deprecation of a resource (non-normative)**
+**4.2.2.1 Example of deprecation of a resource (non-normative)**
 
 ```
 <http://rs.tdwg.org/ontology/Core>
