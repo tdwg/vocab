@@ -48,6 +48,8 @@ RDF/Turtle is used in all of the examples because it is generally the easiest RD
 
 **current resource** - a resource as it exists in its current state.  The current state reflects the most recent version of the resource.
 
+**deprecated** - a resource is no longer valid for use.  To avoid breaking existing applications, the resource is not deleted, but rather is marked as deprecated in its metadata.  If the resource has been replaced by an alternative, the resource's metadata should specify the recommended replacement.
+
 **dereference** - to use an IRI to obtain a representation of a resource through an Internet protocol such as HTTP
 
 **distribution** - a specific available form of a dataset.  In the context of this standard, distributions are available forms of vocabulary term lists, such as downloadable files in RDF/XML or RDF/Turtle. [DCAT]
@@ -204,11 +206,15 @@ The landing page should make it clear that this is a TDWG standard and should pr
 
 An abstract should provide a brief description of the purpose of the standard.
 
-**3.1.6 Preferred citation**
+**3.1.6 Status of the standard:**
+
+One of the status categories listed at [http://www.tdwg.org/standards/status-and-categories/](http://www.tdwg.org/standards/status-and-categories/).
+
+**3.1.7 Preferred citation**
 
 The landing page should indicate a preferred citation for the standard that includes at least the name of the standard and the IRI. The exact format and content of the citation is not specified by this standard.
 
-**3.1.7 Links to parts of the standard**
+**3.1.8 Links to parts of the standard**
 
 Each part of the standard should be listed, with a hyperlink that leads to that part (Section 2.2).  The parts must include at least one descriptive document, whose form is described in section 3.2.
 
@@ -272,9 +278,9 @@ Examples:
 
 **Creator:** The Task Group that created the document.
 
-**Document Status:** One of the status categories listed at [http://www.tdwg.org/standards/status-and-categories/](http://www.tdwg.org/standards/status-and-categories/).
-
 **Bibliographic Citation:** How the document should be cited.
+
+If the document is no longer recommended for use (i.e. deprecated), this should be noted in a **Status Note**, with a description of the reason, and links to recommended alternatives.  This deprecation is distinct from replacement by a newer version of the same document, which should be indicated in the "Replaced by" field.  This applies to documents that are vocabulary descriptions (section 3.3), although usually particular vocabulary terms are deprecated rather than the entire vocabulary.  
 
 **3.2.3.2 Table of Contents Section**
 
@@ -491,6 +497,24 @@ The property dcterms:contributor should be used to link the document or vocabula
      xmpRights:UsageTerms "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG).";
      dcterms:description "Guidelines for implementing Darwin Core in Text files.";
      dcterms:bibliographicCitation "Darwin Core Task Group, Biodiversity Information Standards (TDWG). 2009. Darwin Core Text Guide. http://rs.tdwg.org/dwc/terms/guides/text/ (accessed on [date]).".
+```
+
+**4.2.2 Deprecating resources**
+
+Deprecation of a resource is an indication that the resource is invalid or no longer recommended for use.  This is different from the situation where a resource is replaced by a newer version that is a modification of a previous version (section 4.3).  In all cases, deprecation of a resource is indicated by assigning the property owl:deprecated with a value of "true" datatyped as xsd:boolean.  An rdfs:comment property should provide a human-readable description of the circumstances of the deprecation.  If another resource provides additional information or a possible replacement, a link should be made from the deprecated resource to the other resource using rdfs:seeAlso.
+
+At the standard level, deprecation occurs when a standard is assigned to the [Retired Standard](http://www.tdwg.org/standards/status-and-categories/) category.
+
+For information about deprecation of terms within vocabularies, see section 4.5.3.  
+
+**4.2.2.1 Exapmle of deprecation of a resource (non-normative)**
+
+```
+<http://rs.tdwg.org/ontology/Core>
+     dcterms:title "TDWG Ontology - Core";
+     owl:deprecated "true"^^xsd:boolean;
+     rdfs:comment "This ontology is no longer under development and is no longer recommended for use.  See https://github.com/tdwg/ontology for information about recommended replacements.";
+     rdfs:seeAlso <https://raw.githubusercontent.com/tdwg/ontology/master/replacements.rdf>.
 ```
 
 ### **4.3 Metadata describing and linking versions** ###
@@ -711,25 +735,9 @@ Values for rdfs:label and rdfs:comment should be English language-tagged plain l
 
 Types should be rdf:Property for properties, rdfs:Class for classes, and skos:Concept for controlled values.
 
-Current terms that are no longer valid should have the property owl:deprecated with a literal value of "true" datatyped as boolean.  Note that in this context, a "current" term does not necessarily mean that it is recommended or valid for use.  Rather, it means that the term IRI can be dereferenced by a client that wants to obtain information about it.
-
-Term versions should have the property dwcattributes:status with possible values of "recommended" (for the most recent term version of a term that is currently valid), "superseded" (for term versions having more recent versions), or "deprecated" (for the most recent version of a term that is no longer valid).
-
 The property dcterms:description may optionally be used to provide additional information that is not part of the normative definition of the term.
 
-**4.5.1. Labels in other languages**
-
-In addition to following the generic practice of using rdfs:label to assign a name to the term (section 4.5), it may also desirable to use the specific SKOS properties skos:prefLabel and skos:altLabel to indicate the preferred and alternative labels for vocabulary terms in other languages.  However, assignment of such labels falls outside the TDWG Standards process, so these preferred and alternate labels should be include in ancillary documents associated with, but not included within the standard itself.
-
-**4.5.2 Metadata properties for describing controlled vocabulary terms**
-
-Controlled vocabulary terms are instances of the class skos:Concept.  As such, it is appropriate to assign to such terms properties from the SKOS Simple Knowledge Organization System W3C Recommendation [SKOS] as necessary to define the relationships between that term and other resources.  (With the exception of skos:prefLabel and skos:altLabel, it is not generally appropriate to use SKOS vocabulary properties with terms from metadata schemes that are instances of the classes rdf:Property and rdfs:Class.)  Since it is a general practice to assign SKOS concepts to a concept scheme, controlled vocabulary terms should be linked to that scheme by skos:inScheme.  However, the structuring of such schemes is beyond the scope of this document.
-
-To facilitate use by applications programmed to make use of SKOS properties, it is recommended that controlled vocabulary term descriptions include a skos:definition property that has the same value as the rdfs:comment property routinely used to indicate the human-readable definition for every TDWG vocabulary term.
-
-As with all other TDWG vocabulary terms, controlled value terms will be assigned a term IRI.  That IRI may be used as the subject or object when expressing relationships with other resources.  However, in the context of information transfer, there may be cases where it is more desirable to represent the controlled vocabulary term by means of a unique text string.  To facilitate such use, each controlled vocabulary term should be assigned a string that is unique within that controlled vocabulary.  That string should be designated by making it a plan literal value (without language tag) of an rdf:value property of the term.  
-
-**4.5.3 Examples related to terms (non-normative)**
+**4.5.1 Example metadata for terms (non-normative)**
 
 The following example of terms in a metadata scheme is expressed in RDF/Turtle.  Note that it follows the pattern where the term list URI would dereference to a different document than the vocabulary URI.
 
@@ -783,8 +791,99 @@ The following example of terms in a metadata scheme is expressed in RDF/Turtle. 
      dcterms:isReplacedBy <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>;
      rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/history/>;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/history/>.
+```
+
+**4.5.2. Labels in other languages**
+
+In addition to following the generic practice of using rdfs:label to assign a name to the term (section 4.5), it may also desirable to use the specific SKOS properties skos:prefLabel and skos:altLabel to indicate the preferred and alternative labels for vocabulary terms in other languages.  However, assignment of such labels falls outside the TDWG Standards process, so these preferred and alternate labels should be include in ancillary documents associated with, but not included within the standard itself.
+
+**4.5.3 Status of terms**
+
+Current terms that are no longer valid should have the property owl:deprecated with a literal value of "true" datatyped as boolean.  Note that in this context, a "current" term does not necessarily mean that it is recommended or valid for use.  Rather, it means that the term IRI can be dereferenced by a client that wants to obtain information about it.  If a deprecated term has been replaced by another term, the property dcterms:isReplacedBy must be used to link the deprecated term to its replacement, and the term dcterms:replaces must be used to link the replacement to the deprecated term.
+
+Term versions should have the property dwcattributes:status with possible values of "recommended" (for the most recent term version of a term that is currently valid), "superseded" (for term versions having more recent versions), or "deprecated" (for the most recent version of a term that is no longer valid).  As is the case for all described resources, previous and subsequent versions should be linked using dcterms:replaces and dcterms:isReplacedBy. This includes cases where the replacement for a version of a deprecated current term is a version of a current term with a different URI.
+
+**4.5.3.1 Example metadata showing the status of terms (non-normative)**
+
+This example illustrates the case where a term is replaced by another term with a different IRI.
 
 ```
+dwc:individualID
+     a rdf:Property;
+     dcterms:description """Examples: \"U.amer. 44\", \"Smedley\", \"Orca J 23\""""@en;
+     rdfs:comment "An identifier for an individual or named group of individual organisms represented in the Occurrence. Meant to accommodate resampling of the same individual or group for monitoring purposes. May be a global unique identifier or an identifier specific to a data set."@en;
+     rdfs:label "Individual ID"@en;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>;
+     dcterms:created "2009-04-24"^^xsd:date;
+     dcterms:modified "2009-04-24"^^xsd:date;
+     owl:deprecated "true"^^xsd:boolean;
+     dcterms:isReplacedBy dwc:organismID.
+
+dwc:organismID
+     a rdf:Property;
+     rdfs:comment "An identifier for the Organism instance (as opposed to a particular digital record of the Organism). May be a globally unique identifier or an identifier specific to the data set."@en;
+     rdfs:label "Organism ID"@en;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>;
+     dcterms:created "2014-10-23"^^xsd:date;
+     dcterms:modified "2014-10-23"^^xsd:date;
+     dcterms:replaces dwc:individualID.
+
+<http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>
+     a rdf:Property;
+     dcterms:isVersionOf dwc:individualID;
+     dwcattributes:status "deprecated"^^xsd:string;
+     dcterms:issued "2009-04-24"^^xsd:date;
+     dcterms:description """Examples: \"U.amer. 44\", \"Smedley\", \"Orca J 23\""""@en;
+     rdfs:comment "An identifier for an individual or named group of individual organisms represented in the Occurrence. Meant to accommodate resampling of the same individual or group for monitoring purposes. May be a global unique identifier or an identifier specific to a data set."@en;
+     dcterms:isReplacedBy <http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>.
+<http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>
+     a rdf:Property;
+     dcterms:isVersionOf dwc:organismID;
+     dwcattributes:status "recommended"^^xsd:string;
+     dcterms:issued "2014-10-23"^^xsd:date;
+     rdfs:comment "An identifier for the Organism instance (as opposed to a particular digital record of the Organism). May be a globally unique identifier or an identifier specific to the data set."@en;
+     dcterms:replaces <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>.
+```
+
+This example illustrates the case where a term version is superseded by a newer version of the term.
+
+```
+dwc:MaterialSample
+     a rdfs:Class;
+     rdfs:comment "A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en;
+     dcterms:description "Examples: A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample."@en;
+     rdfs:label "Material Sample"@en;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>;
+     dcterms:created "2013-03-28"^^xsd:date;
+     dcterms:modified "2014-10-23"^^xsd:date. # date of issue of most recent version
+
+<http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>
+     a rdfs:Class;
+     dcterms:isVersionOf dwc:MaterialSample;
+     dwcattributes:status "superseded"^^xsd:string;
+     dcterms:issued "2013-03-28"^^xsd:date;
+     rdfs:comment "The category of information pertaining to the physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en;
+     dcterms:isReplacedBy <http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>.
+<http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>
+     a rdfs:Class;
+     dcterms:isVersionOf dwc:MaterialSample;
+     dwcattributes:status "recommended"^^xsd:string;
+     dcterms:issued "2014-10-23"^^xsd:date;
+     rdfs:comment "A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en;
+     dcterms:description "Examples: A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample."@en;
+     dcterms:replaces <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>.
+```
+
+**4.5.4 Metadata properties for describing controlled vocabulary terms**
+
+Controlled vocabulary terms are instances of the class skos:Concept.  As such, it is appropriate to assign to such terms properties from the SKOS Simple Knowledge Organization System W3C Recommendation [SKOS] as necessary to define the relationships between that term and other resources.  (With the exception of skos:prefLabel and skos:altLabel, it is not generally appropriate to use SKOS vocabulary properties with terms from metadata schemes that are instances of the classes rdf:Property and rdfs:Class.)  Since it is a general practice to assign SKOS concepts to a concept scheme, controlled vocabulary terms should be linked to that scheme by skos:inScheme.  However, the structuring of such schemes is beyond the scope of this document.
+
+To facilitate use by applications programmed to make use of SKOS properties, it is recommended that controlled vocabulary term descriptions include a skos:definition property that has the same value as the rdfs:comment property routinely used to indicate the human-readable definition for every TDWG vocabulary term.
+
+As with all other TDWG vocabulary terms, controlled value terms will be assigned a term IRI.  That IRI may be used as the subject or object when expressing relationships with other resources.  However, in the context of information transfer, there may be cases where it is more desirable to represent the controlled vocabulary term by means of a unique text string.  To facilitate such use, each controlled vocabulary term should be assigned a string that is unique within that controlled vocabulary.  That string should be designated by making it a plan literal value (without language tag) of an rdf:value property of the term.  
+
+**4.5.4.1 Example metadata for controlled vocabulary terms (non-normative)**
 
 The following example of terms in a controlled vocabulary is expressed in RDF/Turtle.  Note that it follows the pattern where the term list URI dereferences to the same document as the vocabulary URI.  Also note that this example models the vocabulary as a skos:ConceptScheme.
 
