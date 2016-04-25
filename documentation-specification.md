@@ -87,6 +87,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest RD
 | dc           | http://purl.org/dc/elements/1.1/            |
 | dcat         | http://www.w3.org/ns/dcat#                  |
 | dcterms      | http://purl.org/dc/terms/                   |
+| dcmitype     | http://purl.org/dc/dcmitype/                |
 | dwc          | http://rs.tdwg.org/dwc/terms/               |
 | dwcattributes| http://rs.tdwg.org/dwc/terms/attributes/    |
 | dwciri       | http://rs.tdwg.org/dwc/iri/                 |
@@ -445,14 +446,14 @@ Indicate the class of which a resource is an instance by using rdf:type.  The fo
 |**Class**                          | **Machine-readable value**|
 |-----------------------------------|---------------------------|
 | Standard                          | dcterms:Standard          |
-| Vocabulary                        | dcterms:Dataset           |
+| Vocabulary                        | dcmitype:Dataset           |
 | Term List                         | dcat:Dataset *            |
 | Distribution                      | dcat:Distribution         |
 | Property                          | rdf:Property              |
 | Class                             | rdfs:Class                |
 | Term from a controlled vocabulary | skos:Concept              |         
 
-\* The semantics of the DCAT Recommendation entail that an instance of dcat:Dataset is also an instance of dcterms:Dataset.
+\* The semantics of the DCAT Recommendation entail that an instance of dcat:Dataset is also an instance of dcmitype:Dataset.
 
 Documents should be typed according to a well-known vocabulary.  Suggestions of appropriate classes can be found in an ancillary document related to this standard. [put this here since I don't know the future of FOAF, schema.org, bibo, etc.]
 
@@ -579,13 +580,13 @@ The following example is expressed in RDF/Turtle:
      dcterms:title "Darwin Core Basic Vocabulary"@en;
      rdfs:label "Darwin Core Basic Vocabulary"@en;
      dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
-     a dcterms:Dataset.
+     a dcmitype:Dataset.
 
 <http://rs.tdwg.org/dwc/enhanced-vocabulary>
      dcterms:title "Darwin Core Semantically Enhanced Vocabulary"@en;
      rdfs:label "Darwin Core Semantically Enhanced Vocabulary"@en;
      dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
-     a dcterms:Dataset.
+     a dcmitype:Dataset.
 
 <http://rs.tdwg.org/dwc/terms/>
      dcterms:title "Core terms defined by Darwin Core"@en;
@@ -644,7 +645,7 @@ An example of metadata about an authoritative term list:
 <http://rs.tdwg.org/ac/>  # *** made up IRI ***
      dcterms:title "Basic Audubon Core Vocabulary"@en;
      rdfs:label "Basic Audubon Core Vocabulary"@en;
-     a dcterms:Dataset.
+     a dcmitype:Dataset.
 
 <http://rs.tdwg.org/ac/terms/>
      dcterms:title "Audubon Core Term List"@en;
@@ -745,7 +746,7 @@ The following example of terms in a metadata scheme is expressed in RDF/Turtle. 
 <http://rs.tdwg.org/dwc/>
      dcterms:title "Basic Darwin Core Vocabulary"@en;
      rdfs:label "Basic Darwin Core Vocabulary"@en;
-     a dcterms:Dataset.
+     a dcmitype:Dataset.
 
 <http://rs.tdwg.org/dwc/terms/>
      dcterms:title "Core terms defined by Darwin Core"@en;
@@ -891,7 +892,7 @@ The following example of terms in a controlled vocabulary is expressed in RDF/Tu
 <http://rs.tdwg.org/cvterms/disposition>
      dcterms:title "Controlled vocabulary for dwc:disposition"@en;
      rdfs:label "Controlled vocabulary for dwc:disposition"@en;
-     a dcterms:Dataset,
+     a dcmitype:Dataset,
        skos:ConceptScheme.
 
 <http://rs.tdwg.org/cvterms/disposition/>
