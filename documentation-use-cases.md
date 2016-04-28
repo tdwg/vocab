@@ -1,8 +1,10 @@
 # Use cases for machine-readable metadata as specified by the Documentation Specification #
 
+Steve Baskauf - 2016-04-28
+
 This document should be considered neither stable nor citable.
 
-**Purpose:** Machine-readable metadata should facilitated the discovery of useful information by a semantic client, or a human interacting with the server via software designed to translate a human-friendly interface into SPARQL queries.  The purpose of this document is to specify goals (use cases) and the means to achieve them (generally in the form of a template for SPARQL queries).
+**Purpose:** Machine-readable metadata should facilitate the discovery of useful information by a semantic client, or a human interacting with the server via software designed to translate a human-friendly interface into SPARQL queries.  The purpose of this document is to specify goals (use cases) and the means to achieve them (generally in the form of a template for SPARQL queries).
 
 **Data:**
 
@@ -10,7 +12,7 @@ The examples below use metadata about the Darwin Core standard in the form of RD
 
 In the metadata, I followed the convention that each release of Darwin Core on GitHub was a "version" with respect to the vocabularies. The exception is the current version, which has never actually been released in full.  In particular, the dwciri: namespace terms defined in the RDF Guide have never been described as RDF.  I have described them in https://github.com/tdwg/vocab/blob/master/code-examples/darwin-core/dwciri.ttl and added their versions to dwctermshistory.ttl .  
 
-Those triples are currently (2016-04-28) loaded in the Vanderbilt Heard Library triplestore where they can be queried using the form at http://rdf.library.vanderbilt.edu/sparql?view or interactively via HTTP at
+Those triples are currently (2016-04-28) loaded in the Vanderbilt Heard Library triplestore where they can be queried using the form at http://rdf.library.vanderbilt.edu/sparql?view or interactively via HTTP GET at
 ```
 <http://rdf.library.vanderbilt.edu/sparql?query= + [encodedQuery]'>
 ```
@@ -58,7 +60,7 @@ SELECT DISTINCT ?version ?issued ?dfn ?status WHERE {
   }
 ORDER BY desc(?issued)
 ```
-Note that ?previousVersion includes replaced versions that are not necessarily versions of the term itself, e.g. dwc:genus-2009-08-24 is an eventual replacement for <http://digir.net/schema/conceptual/darwin/2003/1.0/Genus-2003-06-13>, but <http://digir.net/schema/conceptual/darwin/2003/1.0/Genus-2003-06-13> is not a version of dwc:genus.
+Note that ?previousVersion includes replaced versions that are not necessarily versions of the term itself, e.g. dwc:genus-2009-08-24 is an eventual replacement for <http://digir.net/schema/conceptual/darwin/2003/1.0/Genus-2003-06-13>, but <http://digir.net/schema/conceptual/darwin/2003/1.0/Genus-2003-06-13> is not a version of dwc:genus because of the difference in namespace and capitalization of the local name.
 
 **4. Display all terms that were part of a Darwin Core vocabulary in a particular version of that vocabulary**
 
@@ -82,7 +84,7 @@ ORDER BY ?termList
 ```
 The Dublin Core terms show up only as term versions and not as terms.  That's the reason for the first OPTIONAL clause.  I'm not sure this is right, so we probably should discuss how to better model "borrowed" terms.  
 
-Terms such as dwc:occurrenceDetails do not have ?termList values because they are deprecated and not part of any current term list. That's the reason for the second optional clause.  If dcterms:isPartOf were replaced with rdfs:isDefinedBy, those terms would have ?termList values.
+Terms such as dwc:occurrenceDetails do not have ?termList values because they are deprecated and not part of any current term list. That's the reason for the second optional clause.  If dcterms:isPartOf were replaced with rdfs:isDefinedBy in the second OPTIONAL clause, those terms would have ?termList values.
 
 **5. Find differences between vocabulary versions with respect to the terms present in those versions**
 
@@ -102,7 +104,7 @@ Terms such as dwc:occurrenceDetails do not have ?termList values because they ar
 2009-02-20
 
 ```
-
+by substituting them in the appropriate place in the query.
 ```
 SELECT DISTINCT ?term ?termVersion  WHERE {
   # Version2 is the vocabulary version whose terms are shown that are not in Version1
