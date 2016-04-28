@@ -1,0 +1,70 @@
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix dwctype: <http://rs.tdwg.org/dwc/dwctype/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/>.
+
+<http://rs.tdwg.org/dwc/terms/attributes/> dcterms:title "Attribute terms defined by Darwin Core"@en-us ;
+    rdfs:label "Attribute terms defined by Darwin Core"@en-us ;
+    dcterms:description "The attributes here are those not found in dcterms, rdf, or rdfs, but that are required to fully describe the terms in the dwcterms namespace."@en-us ;
+	rdfs:comment "The attributes here are those not found in dcterms, rdf, or rdfs, but that are required to fully describe the terms in the dwcterms namespace."@en-us ;
+	dcterms:modified "2009-08-24"^^xsd:date ;
+	owl:versionInfo "2009-08-24" ;
+	dcterms:created "2009-01-25"^^xsd:date ;
+	dc:publisher "Biodiversity Information Standards (TDWG)"@en-us ;
+	vann:preferredNamespacePrefix "dwcattributes";
+	vann:preferredNamespaceUri "http://rs.tdwg.org/dwc/terms/attributes/";
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/basic>, <http://rs.tdwg.org/dwc/rdf>;
+	dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/attributes/2009-01-25>, <http://rs.tdwg.org/dwc/terms/attributes/2009-08-24>;
+	a dcat:Dataset;
+	dcterms:hasPart dwcattributes:status , dwcattributes:abcdEquivalence , dwcattributes:organizedInClass , dwcattributes:decision .
+
+dwcattributes:abcdEquivalence rdfs:comment "Used to show the xpath(s) to the equivalent term(s) in the current version of the Access to Biological Collections Data (ABCD) schema."@en-us ;
+	dcterms:modified "2009-01-25"^^xsd:date ;
+	rdfs:label "ABCD Equivalence"@en-us ;
+	dcterms:description "Currently mapped to ABCD 2.06b"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/attributes/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwcattributes:abcdEquivalence-2009-01-25 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/attributes/> ;
+	dcterms:created "2009-01-25"^^xsd:date .
+
+dwcattributes:decision rdfs:comment "Used to reference the formal decision that resulted in this version of the term."@en-us ;
+	dcterms:modified "2009-01-25"^^xsd:date ;
+	rdfs:label "Decision"@en-us ;
+	dcterms:description "Example: \"http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2009-01-20_1\""@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/attributes/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwcattributes:decision-2009-01-25 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/attributes/> ;
+	dcterms:created "2009-01-25"^^xsd:date .
+
+dwcattributes:organizedInClass rdfs:comment "Used to organize properties within classes for easier human understanding."@en-us ;
+	dcterms:modified "2009-08-24"^^xsd:date ;
+	rdfs:label "Organized in Class"@en-us ;
+	dcterms:description "Does not imply domain or range membership in the class."@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/attributes/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwcattributes:organizedInClass-2009-08-24 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/attributes/> ;
+	dcterms:created "2009-08-24"^^xsd:date .
+
+dwcattributes:status rdfs:comment "Used to indicate if the term is recommended for use or if it is only of historical significance."@en-us ;
+	dcterms:modified "2009-01-25"^^xsd:date ;
+	rdfs:label "Status"@en-us ;
+	dcterms:description "Values for this term should be either \"recommended\" or \"historical\"."@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/attributes/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwcattributes:status-2009-01-25 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/attributes/> ;
+	dcterms:created "2009-01-25"^^xsd:date .

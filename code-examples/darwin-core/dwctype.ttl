@@ -1,0 +1,164 @@
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix dwctype: <http://rs.tdwg.org/dwc/dwctype/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/>.
+
+<http://rs.tdwg.org/dwc/dwctype/> dcterms:title "Darwin Core Type Vocabulary Terms"@en-us ;
+    rdfs:label "Darwin Core Type Vocabulary Terms"@en-us ;
+	dcterms:description "This entire term list was deprecated and the terms were replaced with analogs in the dwc; (http://rs.tdwg.org/dwc/terms/) namespace"@en ;
+	rdfs:comment "This entire term list was deprecated and the terms were replaced with analogs in the dwc; (http://rs.tdwg.org/dwc/terms/) namespace"@en ;
+	rdfs:seeAlso  <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15>;
+	dcterms:publisher "Biodiversity Information Standards (TDWG)"@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	owl:versionInfo "2014-10-26" ;
+	dcterms:created "2008-11-19"^^xsd:date ;
+	vann:preferredNamespacePrefix "dwctype";
+	vann:preferredNamespaceUri "http://rs.tdwg.org/dwc/dwctype/";
+	a dcat:Dataset;
+	owl:deprecated true ;
+	dcterms:hasPart dwctype:Occurrence , dwctype:Location , dwctype:Taxon , dwctype:PreservedSpecimen , dwctype:FossilSpecimen , dwctype:LivingSpecimen , dwctype:HumanObservation , dwctype:MachineObservation , dwctype:NomenclaturalChecklist , dwctype:MaterialSample .
+
+dwctype:FossilSpecimen rdfs:comment "A resource describing a fossilized specimen."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "FossilSpecimen"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:FossilSpecimen-2011-10-16 , dwctype:FossilSpecimen-2008-11-19 ;
+	dwcattributes:abcdEquivalence "RecordBasisEnum/FossileSpecimen" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2011-10-16_6> , <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:date "2011-10-16"^^xsd:date ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2008-11-19"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType .
+
+dwctype:HumanObservation rdfs:comment "A resource describing an observation made by one or more people."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "HumanObservation"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:HumanObservation-2011-10-16 , dwctype:HumanObservation-2008-11-19 ;
+	dwcattributes:abcdEquivalence "RecordBasisEnum/HumanObservation" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2008-11-19"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType .
+
+dwctype:LivingSpecimen rdfs:comment "A resource describing a living specimen."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "LivingSpecimen"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:LivingSpecimen-2011-10-16 , dwctype:LivingSpecimen-2008-11-19 ;
+	dwcattributes:abcdEquivalence "RecordBasisEnum/LivingSpecimen" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2011-10-16_6> , <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:date "2011-10-16"^^xsd:date ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2008-11-19"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType .
+
+dwctype:Location rdfs:comment "A resource describing an instance of the Location class."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "Location"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:Location-2009-04-24 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:date "2009-04-24"^^xsd:date ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2009-04-24"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType .
+
+dwctype:MachineObservation rdfs:comment "A resource describing an observation made by a machine."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "MachineObservation"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:MachineObservation-2011-10-16 , dwctype:MachineObservation-2008-11-19 ;
+	dwcattributes:abcdEquivalence "RecordBasisEnum/MachineObservation" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2008-11-19"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType .
+
+dwctype:MaterialSample rdfs:comment "A resource describing the physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "MaterialSample"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:MaterialSample-2013-06-24 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision_2013-10-09_12> , <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:date "2013-09-26"^^xsd:date ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2013-06-24"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType ;
+	rdfs:subClassOf <http://purl.obolibrary.org/obo/OBI_0100051> .
+
+dwctype:NomenclaturalChecklist rdfs:comment "A resource describing a nomenclatural checklist."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "NomenclaturalChecklist"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:NomenclaturalChecklist-2009-01-23 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2009-01-23"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType .
+
+dwctype:Occurrence rdfs:comment "A resource describing an instance of the Occurrence class."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "Occurrence"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:Occurrence-2009-04-24 , dwctype:Occurrence-2011-10-16 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2011-10-16_6> , <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:date "2011-10-16"^^xsd:date ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2009-04-24"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType .
+
+dwctype:PreservedSpecimen rdfs:comment "A resource describing a preserved specimen."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "PreservedSpecimen"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:PreservedSpecimen-2011-10-16 , dwctype:PreservedSpecimen-2008-11-19 ;
+	dwcattributes:abcdEquivalence "RecordBasisEnum/PreservedSpecimen" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2011-10-16_6> , <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:date "2011-10-16"^^xsd:date ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2008-11-19"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType .
+
+dwctype:Taxon rdfs:comment "A resource describing an instance of the Taxon class."@en-us ;
+	dcterms:modified "2014-10-26"^^xsd:date ;
+	rdfs:label "Taxon"@en-us ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/dwctype/> ;
+	a rdfs:Class ;
+	dcterms:hasVersion dwctype:Taxon-2009-01-23 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15> ;
+	dcterms:date "2009-04-24"^^xsd:date ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/dwctype/> ;
+	dcterms:created "2009-01-23"^^xsd:date ;
+	owl:deprecated true ;
+	<http://purl.org/dc/dcam/memberOf> dwc:DwCType .

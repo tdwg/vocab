@@ -1,0 +1,106 @@
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix dwctype: <http://rs.tdwg.org/dwc/dwctype/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<http://rs.tdwg.org/dwc/dcmi-terms> dcterms:hasVersion <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> , <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> , <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> , <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> dcterms:title "Dublin Core terms borrowed by Darwin Core List of 2009-10-08"@en ;
+	rdfs:comment "This list includes terms defined in the Dublin Core dcterms: namespace that are borrowed for inclusion in the Darwin Core vocabulary."@en ;
+	dcterms:issued "2009-10-08"^^xsd:date ;
+	rdfs:label "Dublin Core terms borrowed by Darwin Core List of 2009-10-08"@en ;
+	dcterms:description "This list includes terms defined in the Dublin Core dcterms: namespace that are borrowed for inclusion in the Darwin Core vocabulary."@en ;
+	a dcat:Dataset ;
+ 	dcterms:isReplacedBy <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> ;
+	dcterms:isVersionOf <http://rs.tdwg.org/dwc/dcmi-terms>;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en-us ;
+	owl:versionInfo "2009-10-08" ;
+	dcterms:hasPart dcterms:Location , dcterms:type , dcterms:modified , dcterms:language , dcterms:rights , dcterms:rightsHolder , dcterms:accessRights , dcterms:bibliographicCitation .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> dcterms:title "Dublin Core terms borrowed by Darwin Core List of 2011-10-26"@en ;
+	rdfs:comment "This list includes terms defined in the Dublin Core dcterms: namespace that are borrowed for inclusion in the Darwin Core vocabulary."@en ;
+	dcterms:issued "2011-10-26"^^xsd:date ;
+	rdfs:label "Dublin Core terms borrowed by Darwin Core List of 2011-10-26"@en ;
+	dcterms:description "This list includes terms defined in the Dublin Core dcterms: namespace that are borrowed for inclusion in the Darwin Core vocabulary."@en ;
+	a dcat:Dataset ;
+	dcterms:replaces <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> ;
+ 	dcterms:isReplacedBy <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> ;
+	dcterms:isVersionOf <http://rs.tdwg.org/dwc/dcmi-terms>;
+ 	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2011-10-16_7> ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en-us ;
+	owl:versionInfo "2011-10-26" ;
+	dcterms:hasPart dcterms:Location , dcterms:type , dcterms:modified , dcterms:language , dcterms:rights , dcterms:rightsHolder , dcterms:accessRights , dcterms:bibliographicCitation , dcterms:references .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> dcterms:title "Dublin Core terms borrowed by Darwin Core List of 2014-11-08"@en ;
+	rdfs:comment "This list includes terms defined in the Dublin Core dcterms: namespace that are borrowed for inclusion in the Darwin Core vocabulary."@en  ;
+	dcterms:issued "2014-11-08"^^xsd:date ;
+	rdfs:label "Dublin Core terms borrowed by Darwin Core List of 2014-11-08"@en ;
+	dcterms:description "This list includes terms defined in the Dublin Core dcterms: namespace that are borrowed for inclusion in the Darwin Core vocabulary."@en ;
+	a dcat:Dataset ;
+	dcterms:replaces <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> ;
+ 	dcterms:isReplacedBy <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> ;
+	dcterms:isVersionOf <http://rs.tdwg.org/dwc/dcmi-terms>;
+ 	dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-11-06_17> ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en-us ;
+	owl:versionInfo "2014-11-08" ;
+	dcterms:hasPart dcterms:Location , dcterms:type , dcterms:modified , dcterms:language , dcterms:license , dcterms:rightsHolder , dcterms:accessRights , dcterms:bibliographicCitation , dcterms:references .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> dcterms:title "Dublin Core terms borrowed by Darwin Core List of 2015-03-27"@en ;
+	rdfs:comment "This list includes terms defined in the Dublin Core dc: and dcterms: namespaces that are borrowed for inclusion in the Darwin Core vocabulary."@en , "The Darwin Core RDF guide recommends the use of xmpRights:UsageTerms from Audubon Core as a literal analog for dcterms:license, and xmpRights:Owner from Audubon Core as a literal analog for dcterms:rightsHolder." ;
+	dcterms:issued "2015-03-27"^^xsd:date ;
+	rdfs:label "Dublin Core terms borrowed by Darwin Core List of 2015-03-27"@en ;
+	dcterms:description "This list includes terms defined in the Dublin Core dc: and dcterms: namespaces that are borrowed for inclusion in the Darwin Core vocabulary."@en ;
+	a dcat:Dataset ;
+	dcterms:replaces <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> ;
+	dcterms:isVersionOf <http://rs.tdwg.org/dwc/dcmi-terms>;
+	rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/guides/rdf/>;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en-us ;
+	owl:versionInfo "2015-03-27" ;
+	dcterms:hasPart dcterms:Location , dc:type , dcterms:type , dcterms:modified , dc:language , dcterms:language , dcterms:license , dcterms:rightsHolder , dcterms:accessRights , dcterms:bibliographicCitation , dcterms:references .
+
+dcterms:modified dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> .
+dcterms:Location dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> .
+dcterms:bibliographicCitation dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> .
+dcterms:type dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> .
+dcterms:language dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> .
+dcterms:rightsHolder dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> .
+dcterms:accessRights dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> .
+dcterms:rights dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> .
+
+dcterms:modified dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> .
+dcterms:Location dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> .
+dcterms:bibliographicCitation dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> .
+dcterms:type dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> .
+dcterms:language dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> .
+dcterms:rightsHolder dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> .
+dcterms:accessRights dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> .
+dcterms:references dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> .
+dcterms:rights dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> .
+
+dcterms:modified dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> .
+dcterms:Location dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> .
+dcterms:bibliographicCitation dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> .
+dcterms:type dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> .
+dcterms:language dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> .
+dcterms:license dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> .
+dcterms:rightsHolder dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> .
+dcterms:accessRights dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> .
+dcterms:references dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> .
+
+dcterms:modified dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dcterms:Location dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dcterms:bibliographicCitation dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dcterms:type dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dc:type dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dc:language dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dcterms:language dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dcterms:license dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dcterms:rightsHolder dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dcterms:accessRights dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .
+dcterms:references dcterms:isPartOf <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> .

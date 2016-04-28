@@ -1,0 +1,551 @@
+@prefix dwciri: <http://rs.tdwg.org/dwc/iri/> .
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix dwctype: <http://rs.tdwg.org/dwc/dwctype/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<http://rs.tdwg.org/dwc/iri/> dcterms:title "IRI-value term analogs defined by Darwin Core"@en ;
+	rdfs:comment "If a term in the dwciri: namespace has a corresponding term with the same local name in the Darwin Core dwc: namespace, the dwciri: namespace term is defined to have the same meaning as its dwc: namespace term analogue. In defining a dwciri: term that has a dwc: analogue, the definition of the dwc: term is understood to be modified in the following ways: when a dwciri: term is used as an RDF predicate, its non-literal object will be identified by an IRI reference rather than a string literal, and the object of the dwciri: term predicate will be a single resource. If the dwc: term definition specifies that multiple values should be a concatenated list, the resource described by a dwciri: property should be the subject of a triple for each value on the list. Alternatively, a single triple can be used to describe the subject if the object is a single resource composed of component resources described using additional RDF triples. Several terms in the dwciri: namespace do not have dwc: namespace analogues (dwciri:inCollection, dwciri:toTaxon, dwciri:inDescribedPlace, dwciri:earliestGeochronologicalEra, dwciri:latestGeochronologicalEra, dwciri:fromLithostratigraphicUnit, and dwciri:inDataset)."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "IRI-value term analogs defined by Darwin Core"@en ;
+	dcterms:description "If a term in the dwciri: namespace has a corresponding term with the same local name in the Darwin Core dwc: namespace, the dwciri: namespace term is defined to have the same meaning as its dwc: namespace term analogue. In defining a dwciri: term that has a dwc: analogue, the definition of the dwc: term is understood to be modified in the following ways: when a dwciri: term is used as an RDF predicate, its non-literal object will be identified by an IRI reference rather than a string literal, and the object of the dwciri: term predicate will be a single resource. If the dwc: term definition specifies that multiple values should be a concatenated list, the resource described by a dwciri: property should be the subject of a triple for each value on the list. Alternatively, a single triple can be used to describe the subject if the object is a single resource composed of component resources described using additional RDF triples. Several terms in the dwciri: namespace do not have dwc: namespace analogues (dwciri:inCollection, dwciri:toTaxon, dwciri:inDescribedPlace, dwciri:earliestGeochronologicalEra, dwciri:latestGeochronologicalEra, dwciri:fromLithostratigraphicUnit, and dwciri:inDataset)."@en ;
+	a dcat:Dataset ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/rdf> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dc:publisher "Biodiversity Information Standards (TDWG)"@en ;
+	owl:versionInfo "2015-03-27" ;
+	dcterms:hasPart dwciri:behavior , dwciri:dataGeneralizations , dwciri:disposition , dwciri:establishmentMeans , dwciri:fieldNotes , dwciri:fieldNumber , dwciri:footprintSRS , dwciri:footprintWKT , dwciri:geodeticDatum , dwciri:georeferencedBy , dwciri:georeferenceProtocol , dwciri:georeferenceSources , dwciri:georeferenceVerificationStatus , dwciri:habitat , dwciri:identificationQualifier , dwciri:identificationVerificationStatus , dwciri:identifiedBy , dwciri:informationWithheld , dwciri:lifeStage , dwciri:locationAccordingTo , dwciri:measurementDeterminedBy , dwciri:measurementMethod , dwciri:measurementType , dwciri:measurementUnit , dwciri:occurrenceStatus , dwciri:organismQuantityType , dwciri:preparations , dwciri:recordedBy , dwciri:recordNumber , dwciri:reproductiveCondition , dwciri:samplingProtocol , dwciri:sampleSizeUnit , dwciri:sex , dwciri:typeStatus , dwciri:verbatimCoordinateSystem , dwciri:verbatimSRS , dwciri:inCollection , dwciri:toTaxon , dwciri:inDescribedPlace , dwciri:earliestGeochronologicalEra , dwciri:latestGeochronologicalEra , dwciri:fromLithostratigraphicUnit , dwciri:inDataset ;
+	<http://purl.org/vocab/vann/preferredNamespacePrefix> "dwciri" ;
+	<http://purl.org/vocab/vann/preferredNamespaceUri> "http://rs.tdwg.org/dwc/iri/" ;
+	rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/guides/rdf/> .
+
+dwciri:behavior rdfs:comment "A description of the behavior shown by the subject at the time the Occurrence was recorded.  Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Behavior (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:behavior-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:behavior .
+
+dwciri:dataGeneralizations rdfs:comment "Actions taken to make the shared data less specific or complete than in its original form. Suggests that alternative data of higher quality may be available on request."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Data Generalizations (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:dataGeneralizations-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:dataGeneralizations .
+
+dwciri:disposition rdfs:comment "The current state of a specimen with respect to the collection identified in collectionCode or collectionID. Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Disposition (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:disposition-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/SpecimenUnit/Disposition" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:disposition .
+
+dwciri:earliestGeochronologicalEra rdfs:comment "Use to link a dwc:GeologicalContext instance to chronostratigraphic time periods at the lowest possible level in a standardized hierarchy.   Use this property to point to the earliest possible geological time period from which the cataloged item was collected. Recommended best practice is to use an IRI from a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Earliest Geochronological Era"@en ;
+	dcterms:description "A \"convenience property\" that replaces Darwin Core literal-value terms related to geological context. See Section 2.7.6 of the Darwin Core RDF Guide for details." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:earliestGeochronologicalEra-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:GeologicalContext ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/guides/rdf/> .
+
+dwciri:establishmentMeans rdfs:comment "The process by which the biological individual(s) represented in the Occurrence became established at the location. Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Establishment Means (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:establishmentMeans-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/EstablishmentMeans" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:establishmentMeans .
+
+dwciri:fieldNotes rdfs:comment "One of a) an indicator of the existence of, b) a reference to (publication, URI), or c) the text of notes taken in the field about the Event."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Field Notes (IRI)"@en ;
+	dcterms:description "The subject is a dwc:Event instance and the object is a (possibly IRI-identified) resource that is the field notes." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:fieldNotes-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/FieldNotes" ;
+	dwcattributes:organizedInClass dwc:Event ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:fieldNotes .
+
+dwciri:fieldNumber rdfs:comment "An identifier given to the event in the field. Often serves as a link between field notes and the Event."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Field Number (IRI)"@en ;
+	dcterms:description "The subject is a (possibly IRI-identified) resource that is the field notes and the object is a dwc:Event instance." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:fieldNumber-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/Code" ;
+	dwcattributes:organizedInClass dwc:Event ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:fieldNumber .
+
+dwciri:footprintSRS rdfs:comment "A Well-Known Text (WKT) representation of the Spatial Reference System (SRS) for the footprintWKT of the Location. Do not use this term to describe the SRS of the decimalLatitude and decimalLongitude, even if it is the same as for the footprintWKT - use the geodeticDatum instead."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Footprint SRS (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:footprintSRS-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:footprintSRS .
+
+dwciri:footprintWKT rdfs:comment "A Well-Known Text (WKT) representation of the shape (footprint, geometry) that defines the Location. A Location may have both a point-radius representation (see decimalLatitude) and a footprint representation, and they may differ from each other."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Footprint WKT (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:footprintWKT-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/FootprintWKT (ABCD v2.06b)" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:footprintWKT .
+
+dwciri:fromLithostratigraphicUnit rdfs:comment "Use to link a dwc:GeologicalContext instance to an IRI-identified lithostratigraphic unit at the lowest possible level in a hierarchy. Recommended best practice is to use an IRI from a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "From Lithostratigraphic Unit"@en ;
+	dcterms:description "A \"convenience property\" that replaces Darwin Core literal-value terms related to geological context. See Section 2.7.7 of the Darwin Core RDF Guide for details." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:fromLithostratigraphicUnit-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:GeologicalContext ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/guides/rdf/> .
+
+dwciri:geodeticDatum rdfs:comment "The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which the geographic coordinates given in decimalLatitude and decimalLongitude as based. Recommended best practice is use the EPSG code as a controlled vocabulary to provide an SRS, if known. Otherwise use a controlled vocabulary for the name or code of the geodetic datum, if known. Otherwise use a controlled vocabulary for the name or code of the ellipsoid, if known. If none of these is known, use the value \"unknown\"."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Geodetic Datum (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:geodeticDatum-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/SiteCoordinateSets/SiteCoordinates/CoordinatesLatLon/SpatialDatum" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:geodeticDatum .
+
+dwciri:georeferencedBy rdfs:comment "A person, group, or organization who determined the georeference (spatial representation) for the Location."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Georeferenced By (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:georeferencedBy-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:georeferencedBy .
+
+dwciri:georeferenceProtocol rdfs:comment "A description or reference to the methods used to determine the spatial footprint, coordinates, and uncertainties."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Georeference Protocol (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:georeferenceProtocol-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/SiteCoordinateSets/SiteCoordinates/CoordinateMethod" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:georeferenceProtocol .
+
+dwciri:georeferenceSources rdfs:comment "A map, gazetteer, or other resource used to georeference the Location."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Georeference Sources (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:georeferenceSources-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/SiteCoordinateSets/SiteCoordinates/GeoreferenceSources" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:georeferenceSources .
+
+dwciri:georeferenceVerificationStatus rdfs:comment "A categorical description of the extent to which the georeference has been verified to represent the best possible spatial description. Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Georeference Verification Status (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:georeferenceVerificationStatus-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/SiteCoordinateSets/SiteCoordinates/GeoreferenceVerificationStatus" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:georeferenceVerificationStatus .
+
+dwciri:habitat rdfs:comment "A category or description of the habitat in which the Event occurred."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Habitat (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:habitat-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/Biotope/Text" ;
+	dwcattributes:organizedInClass dwc:Event ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:habitat .
+
+dwciri:identificationQualifier rdfs:comment "A controlled value to express the determiner's doubts about the Identification."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Identification Qualifier (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:identificationQualifier-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Identifications/Identification/TaxonIdentified/IdentificationQualifier" ;
+	dwcattributes:organizedInClass dwc:Identification ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:identificationQualifier .
+
+dwciri:identificationVerificationStatus rdfs:comment "A categorical indicator of the extent to which the taxonomic identification has been verified to be correct. Recommended best practice is to use a controlled vocabulary such as that used in HISPID/ABCD."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Identification Verification Status (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:identificationVerificationStatus-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:Identification ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:identificationVerificationStatus .
+
+dwciri:identifiedBy rdfs:comment "A person, group, or organization who assigned the Taxon to the subject."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Identified By (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:identifiedBy-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Identifications/Identification/Identifiers/IdentifiersText" ;
+	dwcattributes:organizedInClass dwc:Identification ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:identifiedBy .
+
+dwciri:inCollection rdfs:comment "Use to link any subject resource that is part of a collection to the collection containing the resource. Recommended best practice is to use an IRI from a controlled registry."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "In Collection"@en ;
+	dcterms:description "A \"convenience property\" that replaces literal-value terms related to collections and institutions. See Section 2.7.3 of the Darwin Core RDF Guide for details." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:inCollection-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/guides/rdf/> .
+
+dwciri:inDataset rdfs:comment "Use to link a subject dataset record to the dataset which contains it."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "In Dataset"@en ;
+	dcterms:description "A string literal name of the dataset can be provided using the term dwc:datasetName. See the Darwin Core RDF Guide for details." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:inDataset-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/guides/rdf/> .
+
+dwciri:inDescribedPlace rdfs:comment "Use to link a dcterms:Location instance subject to the lowest level standardized hierarchically-described resource. Recommended best practice is to use an IRI from a controlled registry."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "In Described Place"@en ;
+	dcterms:description "A \"convenience property\" that replaces Darwin Core literal-value terms related to locations. See Section 2.7.5 of the Darwin Core RDF Guide for details." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:inDescribedPlace-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/guides/rdf/> .
+
+dwciri:informationWithheld rdfs:comment "Additional information that exists, but that has not been shared in the given record."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Information Withheld (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:informationWithheld-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/InformationWithheld" ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:informationWithheld .
+
+dwciri:latestGeochronologicalEra rdfs:comment "Use to link a dwc:GeologicalContext instance to chronostratigraphic time periods at the lowest possible level in a standardized hierarchy.   Use this property to point to the latest possible geological time period from which the cataloged item was collected. Recommended best practice is to use an IRI from a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Latest Geochronological Era"@en ;
+	dcterms:description "A \"convenience property\" that replaces Darwin Core literal-value terms related to geological context. See Section 2.7.6 of the Darwin Core RDF Guide for details." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:latestGeochronologicalEra-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:GeologicalContext ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/guides/rdf/> .
+
+dwciri:lifeStage rdfs:comment "The age class or life stage of the biological individual(s) at the time the Occurrence was recorded. Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Life Stage (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:lifeStage-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/MycologicalUnit/MycologicalSexualStage or DataSets/DataSet/Units/Unit/MycologicalUnit/MycologicalLiveStages/MycologicalLiveStage (Note DwC spec uses \"MycologicalLifeStage\" or DataSets/DataSet/Units/Unit/ZoologicalUnit/PhasesOrStages/PhaseOrStage" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:lifeStage .
+
+dwciri:locationAccordingTo rdfs:comment "Information about the source of this Location information. Could be a publication (gazetteer), institution, or team of individuals."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Location According To (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:locationAccordingTo-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:locationAccordingTo .
+
+dwciri:measurementDeterminedBy rdfs:comment "A person, group, or organization who determined the value of the MeasurementOrFact."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Measurement Determined By (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:measurementDeterminedBy-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/MeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/MeasuredBy or DataSets/DataSet/Units/Unit/Gathering/Altitude/MeasurementOrFactAtomised/MeasuredBy or DataSets/DataSet/Units/Unit/Gathering/Depth/MeasurementOrFactAtomised/MeasuredBy or DataSets/DataSet/Units/Unit/Gathering/Height/MeasurementOrFactAtomised/MeasuredBy or DataSets/DataSet/Units/Unit/Gathering/SiteMeasurementsOrFacts/SiteMeasurementOrFact/MeasurementOrFactAtomised/MeasuredBy or DataSets/DataSet/Units/Unit/Gathering/Biotope/MeasurementsOrFacts/MeasurementOrFactAtomised/MeasuredBy" ;
+	dwcattributes:organizedInClass dwc:MeasurementOrFact ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:measurementDeterminedBy .
+
+dwciri:measurementMethod rdfs:comment "The method or protocol used to determine the measurement, fact, characteristic, or assertion."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Measurement Method (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:measurementMethod-2015-03-27 ;
+	dwcattributes:abcdEquivalence "/DataSets/DataSet/Units/Unit/MeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/Method or /DataSets/DataSet/Units/Unit/Gathering/Biotope/MeasurementsOrFacts/MeasurementOrFactAtomised/Method or /DataSets/DataSet/Units/Unit/Gathering/SiteMeasurementsOrFacts/SiteMeasurementOrFact/MeasurementOrFactAtomised/Method" ;
+	dwcattributes:organizedInClass dwc:MeasurementOrFact ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:measurementMethod .
+
+dwciri:measurementType rdfs:comment "The nature of the measurement, fact, characteristic, or assertion. Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Measurement Type (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:measurementType-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/MeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/Parameter or DataSets/DataSet/Units/Unit/Gathering/SiteMeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/Parameter" ;
+	dwcattributes:organizedInClass dwc:MeasurementOrFact ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:measurementType .
+
+dwciri:measurementUnit rdfs:comment "The units associated with the measurementValue. Recommended best practice is to use the International System of Units (SI)."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Measurement Unit (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:measurementUnit-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/SiteMeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/UnitOfMeasurement or DataSets/DataSet/Units/Unit/Gathering/SiteMeasurementsOrFacts/MeasurementOrFact/MeasurementOrFactAtomised/UnitOfMeasurement" ;
+	dwcattributes:organizedInClass dwc:MeasurementOrFact ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:measurementUnit .
+
+dwciri:occurrenceStatus rdfs:comment "A statement about the presence or absence of a Taxon at a Location. Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Occurrence Status (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:occurrenceStatus-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:occurrenceStatus .
+
+dwciri:organismQuantityType rdfs:comment "The type of quantification system used for the quantity of organisms."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Organism Quantity Type (IRI)"@en ;
+	dcterms:description "An organismQuantityType must have a corresponding organismQuantity."@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:organismQuantityType-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:organismQuantityType .
+
+dwciri:preparations rdfs:comment "A preparation or preservation method for a specimen."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Preparations (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:preparations-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/SpecimenUnit/Preparations/PreparationsText" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:preparations .
+
+dwciri:recordedBy rdfs:comment "A person, group, or organization responsible for recording the original Occurrence."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Recorded By (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:recordedBy-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/GatheringAgents/GatheringAgentsText" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:recordedBy .
+
+dwciri:recordNumber rdfs:comment "An identifier given to the Occurrence at the time it was recorded. Often serves as a link between field notes and an Occurrence record, such as a specimen collector's number."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Record Number (IRI)"@en ;
+	dcterms:description "The subject is an occurrence and and the object is a (possibly IRI-identified) resource that is the field notes." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:recordNumber-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/CollectorsFieldNumber" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:recordNumber .
+
+dwciri:reproductiveCondition rdfs:comment "The reproductive condition of the biological individual(s) represented in the Occurrence. Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Reproductive Condition (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:reproductiveCondition-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:reproductiveCondition .
+
+dwciri:sampleSizeUnit rdfs:comment "The unit of measurement of the size (time duration, length, area, or volume) of a sample in a sampling event."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Sampling Size Unit (IRI)"@en ;
+	dcterms:description "A sampleSizeUnit must have a corresponding sampleSizeValue. Recommended best practice is to use a controlled vocabulary such as the Ontology of Units of Measure http://www.wurvoc.org/vocabularies/om-1.8/ of SI units, derived units, or other non-SI units accepted for use within the SI (e.g., minute, hour, day, litre)."@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:sampleSizeUnit-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:Event ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:sampleSizeUnit .
+
+dwciri:samplingProtocol rdfs:comment "The method or protocol used during an Event."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Sampling Protocol (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:samplingProtocol-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Gathering/Method" ;
+	dwcattributes:organizedInClass dwc:Event ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:samplingProtocol .
+
+dwciri:sex rdfs:comment "The sex of the biological individual(s) represented in the Occurrence. Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Sex (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:sex-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/Sex" ;
+	dwcattributes:organizedInClass dwc:Occurrence ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:sex .
+
+dwciri:toTaxon rdfs:comment "Use to link a dwc:Identification instance subject to a taxonomic entity such as a taxon, taxon concept, or taxon name use."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "To Taxon"@en ;
+	dcterms:description "A \"convenience property\" that replaces Darwin Core literal-value terms related to taxonomic entities. See Section 2.7.4 of the Darwin Core RDF Guide for details." ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:toTaxon-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dwc:Identification ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/guides/rdf/> .
+
+dwciri:typeStatus rdfs:comment "A nomenclatural type (type status, typified scientific name, publication) applied to the subject."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Type Status (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:typeStatus-2015-03-27 ;
+	dwcattributes:abcdEquivalence "DataSets/DataSet/Units/Unit/SpecimenUnit/NomenclaturalTypeDesignations/NomenclaturalTypeText" ;
+	dwcattributes:organizedInClass dwc:Identification ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:typeStatus .
+
+dwciri:verbatimCoordinateSystem rdfs:comment "The spatial coordinate system for the verbatimLatitude and verbatimLongitude or the verbatimCoordinates of the Location. Recommended best practice is to use a controlled vocabulary."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Verbatim Coordinate System (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:verbatimCoordinateSystem-2015-03-27 ;
+	dwcattributes:abcdEquivalence "(partly) DataSets/DataSet/Units/Unit/Gathering/SiteCoordinateSets/SiteCoordinates/CoordinatesGrid/GridCellSystem" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:verbatimCoordinateSystem .
+
+dwciri:verbatimSRS rdfs:comment "The ellipsoid, geodetic datum, or spatial reference system (SRS) upon which coordinates given in verbatimLatitude and verbatimLongitude, or verbatimCoordinates are based. Recommended best practice is use the EPSG code as a controlled vocabulary to provide an SRS, if known. Otherwise use a controlled vocabulary for the name or code of the geodetic datum, if known. Otherwise use a controlled vocabulary for the name or code of the ellipsoid, if known. If none of these is known, use the value \"unknown\"."@en ;
+	dcterms:modified "2015-03-27"^^xsd:date ;
+	rdfs:label "Verbatim SRS (IRI)"@en ;
+	rdfs:isDefinedBy <http://rs.tdwg.org/dwc/iri/> ;
+	a rdf:Property ;
+	dcterms:hasVersion dwciri:verbatimSRS-2015-03-27 ;
+	dwcattributes:abcdEquivalence "not in ABCD" ;
+	dwcattributes:organizedInClass dcterms:Location ;
+	dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/> ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dcterms:relation dwc:verbatimSRS .

@@ -1,0 +1,363 @@
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix dwctype: <http://rs.tdwg.org/dwc/dwctype/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix xmpRights: <http://ns.adobe.com/xap/1.0/rights/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<http://www.tdwg.org/standards/450/> a dcterms:Standard;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/basic>, 
+	                <http://rs.tdwg.org/dwc/rdf>,
+	                <http://rs.tdwg.org/dwc/terms/guides/text/>,
+	                <http://rs.tdwg.org/dwc/terms/guides/xml/>,
+	                <http://rs.tdwg.org/dwc/terms/guides/rdf/>;
+    dcterms:title "Darwin Core Standard"@en;
+    rdfs:label "Darwin Core Standard"@en;
+    dcterms:created "2009-10-09"^^xsd:date;
+    dcterms:modified "2015-03-27"^^xsd:date ;
+    dc:publisher "Biodiversity Information Standards (TDWG)";
+    dcterms:description "The Darwin Core includes a glossary of terms (in other contexts these might be called properties, elements, fields, columns, attributes, or concepts) intended to facilitate the sharing of information about biological diversity by providing reference definitions, examples, and commentaries."@en;
+    rdfs:comment "The Darwin Core includes a glossary of terms (in other contexts these might be called properties, elements, fields, columns, attributes, or concepts) intended to facilitate the sharing of information about biological diversity by providing reference definitions, examples, and commentaries."@en;
+    dcterms:hasPart <http://rs.tdwg.org/dwc/basic> , <http://rs.tdwg.org/dwc/rdf> , <http://rs.tdwg.org/dwc/terms/guides/rdf/> , <http://rs.tdwg.org/dwc/terms/guides/text/> , <http://rs.tdwg.org/dwc/terms/guides/xml/> ;
+    foaf:homepage <http://rs.tdwg.org/dwc/>.
+    
+<http://rs.tdwg.org/dwc/terms/guides/text/> a foaf:Document;
+     dcterms:title "Darwin Core Text Guide"@en;
+     rdfs:label "Darwin Core Text Guide"@en;
+     dcterms:description "Guidelines for implementing Darwin Core in Text files.";
+     rdfs:comment "Guidelines for implementing Darwin Core in Text files.";
+     dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
+     dc:contributor "Tim Robertson (GBIF)",
+                    "John Wieczorek (MVZ)",
+                    "Markus Döring (GBIF)",
+                    "Renato De Giovanni (CRIA)",
+                    "Dave Vieglais (KUNHM)";
+     dcterms:contributor <http://orcid.org/0000-0001-6215-3617>,
+                         <http://orcid.org/0000-0001-7757-1889>,
+                         <http://orcid.org/0000-0002-6513-4996>;
+     dc:creator "TDWG Darwin Core Task Group";
+     dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
+     xmpRights:UsageTerms "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG).";
+     dcterms:bibliographicCitation "Darwin Core Task Group, Biodiversity Information Standards (TDWG). 2009. Darwin Core Text Guide. http://rs.tdwg.org/dwc/terms/guides/text/ (accessed on [date]).".
+
+<http://rs.tdwg.org/dwc/terms/guides/xml/> a foaf:Document;
+     dcterms:title "Darwin Core XML Guide"@en;
+     rdfs:label "Darwin Core XML Guide"@en;
+     dcterms:description "Guidelines for implementing Darwin Core in XML format."@en;
+     rdfs:comment "Guidelines for implementing Darwin Core in XML format."@en;
+     dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
+     dc:contributor "John Wieczorek (MVZ)",
+                    "Markus Döring (GBIF)",
+                    "Renato De Giovanni (CRIA)",
+                    "Tim Robertson (GBIF)",
+                    "Dave Vieglais (KUNHM)";
+     dcterms:contributor <http://orcid.org/0000-0001-6215-3617>,
+                         <http://orcid.org/0000-0001-7757-1889>,
+                         <http://orcid.org/0000-0002-6513-4996>;
+     dc:creator "TDWG Darwin Core Task Group";
+     dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
+     xmpRights:UsageTerms "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG)."@en;
+     dcterms:bibliographicCitation "Darwin Core Task Group, Biodiversity Information Standards (TDWG). 2009. Darwin Core XML Guide. http://rs.tdwg.org/dwc/terms/guides/xml/ (accessed on [date])."@en.
+
+<http://rs.tdwg.org/dwc/terms/guides/rdf/> a foaf:Document;
+     dcterms:title "Darwin Core RDF Guide"@en;
+     rdfs:label "Darwin Core RDF Guide"@en;
+     dcterms:description "This guide is intended to facilitate the use of Darwin Core terms in the Resource Description Framework (RDF). It explains basic features of RDF and provides details of how to expose data in the form of RDF using Darwin Core terms and terms from other key vocabularies. It defines terms in the namespace http://rs.tdwg.org/dwc/iri/ which are intended for use excusively with non-literal objects."@en;
+     rdfs:comment "This guide is intended to facilitate the use of Darwin Core terms in the Resource Description Framework (RDF). It explains basic features of RDF and provides details of how to expose data in the form of RDF using Darwin Core terms and terms from other key vocabularies. It defines terms in the namespace http://rs.tdwg.org/dwc/iri/ which are intended for use excusively with non-literal objects."@en;
+     dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
+     dc:contributor "Steve Baskauf (TDWG RDF/OWL Task Group)",
+                    "John Wieczorek (TDWG Darwin Core Task Group)",
+                    "John Deck (Genomic Biodiversity Working Group)",
+                    "Campbell Webb (TDWG RDF/OWL Task Group)",
+                    "Paul J. Morris (Harvard University Herbaria/Museum of Comparative Zoölogy)",
+                    "Mark Schildhauer (National Center for Ecological Analysis and Synthesis)";
+     dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
+                         <http://orcid.org/0000-0003-1031-3249>,
+                         <http://orcid.org/0000-0003-0632-7576>;
+     dc:creator "Darwin Core and RDF/OWL Task Groups";
+     dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
+     xmpRights:UsageTerms "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG)."@en;
+     dcterms:bibliographicCitation "Darwin Core and RDF/OWL Task Groups, Biodiversity Information Standards (TDWG). 2015. Darwin Core RDF Guide. http://rs.tdwg.org/dwc/terms/guides/rdf/ (accessed on [date])."@en.
+
+
+
+<http://rs.tdwg.org/dwc/rdf> dcterms:title "Darwin Core RDF Vocabulary"@en ;
+    rdfs:label "Darwin Core RDF Vocabulary"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for expressing Darwin Core as RDF."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for expressing Darwin Core as RDF."@en ;
+    dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
+    dcterms:hasVersion <http://rs.tdwg.org/dwc/rdf#2015-03-27>;
+    dcterms:modified "2015-03-27"^^xsd:date ;
+	owl:versionInfo "2015-03-27" ;
+	dcterms:created "2015-03-27"^^xsd:date ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/>, 
+	                <http://rs.tdwg.org/dwc/terms/>,
+	                <http://rs.tdwg.org/dwc/iri/>,
+	                <http://rs.tdwg.org/dwc/dcmi-terms>;
+	a dcmitype:Dataset.
+	
+<http://rs.tdwg.org/dwc/rdf#2015-03-27> dcterms:title "Darwin Core RDF Vocabulary Release 2015-03-27"@en ;
+    rdfs:label "Darwin Core RDF Vocabulary Release 2015-03-27"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for expressing Darwin Core as RDF."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for expressing Darwin Core as RDF."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/rdf>;
+    dcterms:issued "2015-03-27"^^xsd:date ;
+	owl:versionInfo "2015-03-27" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-08-24>, 
+	                <http://rs.tdwg.org/dwc/terms/2014-12-23>,
+	                <http://rs.tdwg.org/dwc/iri/2015-03-27>,
+	                <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic> dcterms:title "Darwin Core Basic Vocabulary"@en ;
+    rdfs:label "Darwin Core Basic Vocabulary"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:hasVersion <http://rs.tdwg.org/dwc/basic#2015-03-27> , <http://rs.tdwg.org/dwc/basic#2014-11-08> , <http://rs.tdwg.org/dwc/basic#2013-10-23> , <http://rs.tdwg.org/dwc/basic#2011-10-26> , <http://rs.tdwg.org/dwc/basic#2009-12-07> , <http://rs.tdwg.org/dwc/basic#2009-10-08> , <http://rs.tdwg.org/dwc/basic#2009-09-23> , <http://rs.tdwg.org/dwc/basic#2009-07-06> , <http://rs.tdwg.org/dwc/basic#2009-05-25> , <http://rs.tdwg.org/dwc/basic#2009-04-29> , <http://rs.tdwg.org/dwc/basic#2009-02-20>;
+    dcterms:modified "2015-03-27"^^xsd:date ;
+	owl:versionInfo "2015-03-27" ;
+	dcterms:created "2003-06-13"^^xsd:date ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/>, 
+	                <http://rs.tdwg.org/dwc/terms/>,
+	                <http://rs.tdwg.org/dwc/dcmi-terms>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2015-03-27> dcterms:title "Darwin Core Basic Vocabulary Release 2015-03-27"@en ;
+    rdfs:label "Darwin Core Basic Vocabulary Release 2015-03-27"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2015-03-27"^^xsd:date ;
+	owl:versionInfo "2015-03-27" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-08-24>, 
+	                <http://rs.tdwg.org/dwc/terms/2014-12-23>,
+	                <http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2014-11-08> dcterms:title "Darwin Core Basic Vocabulary Release 2014-11-08"@en ;
+    rdfs:label "Darwin Core Basic Vocabulary Release 2014-11-08"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2014-11-08"^^xsd:date ;
+	owl:versionInfo "2014-11-08" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-08-24>, 
+	                <http://rs.tdwg.org/dwc/terms/2014-10-23>,
+	                <http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2013-10-23> dcterms:title "Darwin Core Basic Vocabulary Release 2013-10-23"@en ;
+    rdfs:label "Darwin Core Basic Vocabulary Release 2013-10-23"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2013-10-23"^^xsd:date ;
+	owl:versionInfo "2013-10-23" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-08-24>, 
+	                <http://rs.tdwg.org/dwc/terms/2013-05-25>,
+	                <http://rs.tdwg.org/dwc/dwctype/2013-06-24>,
+	                <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2011-10-26> dcterms:title "Darwin Core Basic Vocabulary Release 2011-10-26"@en ;
+    rdfs:label "Darwin Core Basic Vocabulary Release 2011-10-26"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2011-10-26"^^xsd:date ;
+	owl:versionInfo "2011-10-26" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-08-24>, 
+	                <http://rs.tdwg.org/dwc/terms/2011-10-16>,
+	                <http://rs.tdwg.org/dwc/dwctype/2011-10-16>,
+	                <http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2009-12-07> dcterms:title "Darwin Core Basic Vocabulary Release 2009-12-07"@en ;
+    rdfs:label "Darwin Core Basic Vocabulary Release 2009-12-07"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2009-12-07"^^xsd:date ;
+	owl:versionInfo "2009-12-07" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-08-24>, 
+	                <http://rs.tdwg.org/dwc/terms/2009-12-07>,
+	                <http://rs.tdwg.org/dwc/dwctype/2009-04-24>,
+	                <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2009-10-08> dcterms:title "Darwin Core Basic Vocabulary Release 2009-10-08"@en ;
+    rdfs:label "Darwin Core Basic Vocabulary Release 2009-10-08"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2009-10-08"^^xsd:date ;
+	owl:versionInfo "2009-10-08" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-08-24>, 
+	                <http://rs.tdwg.org/dwc/terms/2009-09-21>,
+	                <http://rs.tdwg.org/dwc/dwctype/2009-04-24>,
+	                <http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2009-09-23> dcterms:title "Darwin Core Pre-standard Basic Vocabulary Release 2009-09-23"@en ;
+    rdfs:label "Darwin Core Pre-standard Basic Vocabulary Release 2009-09-23"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2009-09-23"^^xsd:date ;
+	owl:versionInfo "2009-09-23" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-08-24>, 
+	                <http://rs.tdwg.org/dwc/terms/2009-09-21>,
+	                <http://rs.tdwg.org/dwc/dwctype/2009-04-24>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2009-07-06> dcterms:title "Darwin Core Pre-standard Basic Vocabulary Release 2009-07-06"@en ;
+    rdfs:label "Darwin Core Pre-standard Basic Vocabulary Release 2009-07-06"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2009-07-06"^^xsd:date ;
+	owl:versionInfo "2009-07-06" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-01-25>, 
+	                <http://rs.tdwg.org/dwc/terms/2009-07-06>,
+	                <http://rs.tdwg.org/dwc/dwctype/2009-04-24>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2009-05-25> dcterms:title "Darwin Core Pre-standard Basic Vocabulary Release 2009-05-25"@en ;
+    rdfs:label "Darwin Core Pre-standard Basic Vocabulary Release 2009-05-25"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2009-05-25"^^xsd:date ;
+	owl:versionInfo "2009-05-25" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-01-25>, 
+	                <http://rs.tdwg.org/dwc/terms/2009-05-18>,
+	                <http://rs.tdwg.org/dwc/dwctype/2009-04-24>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2009-04-29> dcterms:title "Darwin Core Pre-standard Basic Vocabulary Release 2009-04-29"@en ;
+    rdfs:label "Darwin Core Pre-standard Basic Vocabulary Release 2009-04-29"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2009-04-29"^^xsd:date ;
+	owl:versionInfo "2009-04-29" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-01-25>, 
+	                <http://rs.tdwg.org/dwc/terms/2009-04-29>,
+	                <http://rs.tdwg.org/dwc/dwctype/2009-04-24>;
+	a dcmitype:Dataset.
+
+<http://rs.tdwg.org/dwc/basic#2009-02-20> dcterms:title "Darwin Core Pre-standard Basic Vocabulary Release 2009-02-20"@en ;
+    rdfs:label "Darwin Core Pre-standard Basic Vocabulary Release 2009-02-20"@en ;
+    dcterms:description "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+	rdfs:comment "This vocabulary includes the Darwin Core terms that are necessary for text-based systems."@en ;
+    dcterms:isVersionOf <http://rs.tdwg.org/dwc/basic>;
+    dcterms:issued "2009-02-20"^^xsd:date ;
+	owl:versionInfo "2009-02-20" ;
+	dc:publisher "BiodiversityInformation Standards (TDWG)"@en ;
+	dcterms:hasPart <http://rs.tdwg.org/dwc/terms/attributes/2009-01-25>, 
+	                <http://rs.tdwg.org/dwc/terms/2009-01-23>,
+	                <http://rs.tdwg.org/dwc/dwctype/2009-01-23>;
+	a dcmitype:Dataset.
+
+dwc:2014-12-23 dcterms:isPartOf <http://rs.tdwg.org/dwc/rdf#2015-03-27> .
+
+dwcattributes:2009-08-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/rdf#2015-03-27> .
+
+dwciri:2015-03-27 dcterms:isPartOf <http://rs.tdwg.org/dwc/rdf#2015-03-27> .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> dcterms:isPartOf <http://rs.tdwg.org/dwc/rdf#2015-03-27> .
+
+dwc:2014-12-23 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2015-03-27> .
+
+dwcattributes:2009-08-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2015-03-27> .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27> dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2015-03-27> .
+
+dwc:2014-10-23 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2014-11-08> .
+
+dwcattributes:2009-08-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2014-11-08> .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08> dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2014-11-08> .
+
+dwc:2013-05-25 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2013-10-23> .
+
+dwctype:2013-06-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2013-10-23> .
+
+dwcattributes:2009-08-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2013-10-23> .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2013-10-23> .
+
+dwc:2011-10-16 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2011-10-26> .
+
+dwctype:2011-10-16 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2011-10-26> .
+
+dwcattributes:2009-08-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2011-10-26> .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26> dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2011-10-26> .
+
+dwc:2009-12-07 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-12-07> .
+
+dwctype:2009-04-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-12-07> .
+
+dwcattributes:2009-08-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-12-07> .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-12-07> .
+
+dwc:2009-09-21 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-10-08> .
+
+dwctype:2009-04-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-10-08> .
+
+dwcattributes:2009-08-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-10-08> .
+
+<http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08> dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-10-08> .
+
+dwc:2009-09-21 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-09-23> .
+
+dwctype:2009-04-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-09-23> .
+
+dwcattributes:2009-08-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-09-23> .
+
+dwc:2009-07-06 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-07-06> .
+
+dwctype:2009-04-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-07-06> .
+
+dwcattributes:2009-01-25 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-07-06> .
+
+dwc:2009-05-18 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-05-25> .
+
+dwctype:2009-04-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-05-25> .
+
+dwcattributes:2009-01-25 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-05-25> .
+
+dwc:2009-04-29 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-04-29> .
+
+dwctype:2009-04-24 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-04-29> .
+
+dwcattributes:2009-01-25 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-04-29> .
+
+dwc:2009-01-23 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-02-20> .
+
+dwctype:2009-01-23 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-02-20> .
+
+dwcattributes:2009-01-25 dcterms:isPartOf <http://rs.tdwg.org/dwc/basic#2009-02-20> .
