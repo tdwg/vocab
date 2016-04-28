@@ -1,0 +1,1756 @@
+# Log of actions taken and SPARQL queries used to convert existing DwC RDF files to triples consistent
+# with the proposed version and hierarchy model
+# Steve Baskauf 2016-04-27
+
+# step 0
+# Pull the date from the end of the version URIs and create dcterms:issued properties for the resource
+CONSTRUCT {?version dcterms:issued ?date} WHERE {
+  ?version dwcattributes:status ?status.
+  BIND(STRDT(SUBSTR(str(?version),STRLEN(str(?version))-9,10),xsd:date) AS ?date)
+  }
+
+# Clean out all of the existing dcterms:issued and dcterms:modified triples from dwctermshistory:
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+MINUS {
+  ?s1 dcterms:issued|dcterms:modified ?o.
+      }
+  }
+
+# Output all triples from the two graphs created above into a single graph (sorted by LCASE of local name):
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# then put the modified date for the history back in: "dcterms:modified "2015-03-19"^^xsd:date"
+
+# test
+SELECT DISTINCT ?version ?issued ?status WHERE {
+  dwc:recordedBy dcterms:hasVersion ?curVersion.
+  ?curVersion dcterms:replaces* ?version.
+  OPTIONAL {?version dcterms:issued ?issued.}
+  ?version dwcattributes:status ?status.
+  }
+ORDER BY DESC(?issued)
+
+# Clean out all of the existing dcterms:issued triples from dwcterms.rdf:
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+MINUS {
+  ?s1 dcterms:issued ?o.
+      }
+  }
+
+# Output all triples from the dwcterms graph created above (sorted by LCASE of local name):
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+# check for issued dates:
+SELECT DISTINCT ?issued WHERE {
+  ?version dcterms:issued ?issued.
+  }
+ORDER BY DESC(?issued)
+
+Here they are (they are datatyped xsd:date):
+2014-12-23
+2014-10-23
+2013-06-24
+2013-05-25
+2013-03-28
+2011-10-16
+2011-01-26
+2009-12-07
+2009-09-21
+2009-09-17
+2009-09-11
+2009-08-24
+2009-07-06
+2009-05-18
+2009-04-29
+2009-04-24
+2009-01-23
+2009-01-21
+2009-01-18
+2008-11-19
+2007-04-17
+2005-07-10
+2005-07-03
+2003-06-17
+2003-06-13
+
+------------------
+# step 1
+
+# Construct inverse dcterms:isReplacedBy triples:
+CONSTRUCT {?oldVersion dcterms:isReplacedBy ?newVersion} WHERE {
+  ?newVersion dcterms:replaces ?oldVersion.
+  }
+# Then merge them back in with the triples and output again.
+
+# Find matches between current DwC terms and versions:
+SELECT DISTINCT ?term ?versionBaseURI WHERE {
+  ?term dcterms:hasVersion ?someVersion.
+  ?version dwcattributes:status ?status.
+  BIND(SUBSTR(str(?version),1,STRLEN(str(?version))-11) AS ?versionBaseURI)
+  FILTER (!(str(?term)=?versionBaseURI))
+  }
+
+---------------
+# step 2
+
+# Get rid of single dcterms:hasVersion triples from dwcterms so that they can be replaced with all: 
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+MINUS {
+  ?s1 dcterms:hasVersion ?o.
+      }
+  }
+
+#construct every dcterms:hasVersion relationship between current terms and versions:
+CONSTRUCT {?term dcterms:hasVersion ?version} WHERE {
+  ?term dcterms:hasVersion ?someVersion.
+  ?version dwcattributes:status ?status.
+  BIND(SUBSTR(str(?version),1,STRLEN(str(?version))-11) AS ?versionBaseURI)
+  FILTER (str(?term)=?versionBaseURI)
+  }
+
+# Construct inverse dcterms:isVersionOf triples from dcterms:hasVersion triples:
+CONSTRUCT {?version dcterms:isVersionOf ?term} WHERE {
+  ?term dcterms:hasVersion ?version.
+  }
+# Then merge them back in with the triples and output again.
+
+# Output all triples from the dwcterms graph including all hasVersion triples created above (sorted by LCASE of local name):
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# Do the same with dwctermshistory and all isVersionOf triples
+
+# test by finding all versions, or just recommended ones.
+SELECT DISTINCT ?version ?issued WHERE {
+  dwc:recordedBy dcterms:hasVersion ?version.
+  OPTIONAL {?version dcterms:issued ?issued.}
+#  ?version dwcattributes:status "recommended".
+  }
+ORDER BY DESC(?issued)
+
+----------
+# Step 3. Clean up dwcattributes:status of term versions in the dwc: namespace
+
+# Find dwc: namespace versions:
+SELECT DISTINCT ?version WHERE {
+  ?version dcterms:issued ?date. #Note: all dwc: versions have a dcterms:issued date. Current terms don't.
+  ?version rdfs:isDefinedBy dwc:.
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# There are 332
+
+# Categorize dwc: namespace versions:
+SELECT DISTINCT ?status WHERE {
+  ?version dcterms:issued ?date.
+  ?version dwcattributes:status ?status.
+  ?version rdfs:isDefinedBy dwc:.
+  }
+
+Results:
+superseded
+deprecated
+recommended
+
+# Find deprecated term versions
+SELECT DISTINCT ?version WHERE {
+  OPTIONAL {?version dcterms:issued ?issued.}
+  ?version dwcattributes:status "deprecated".
+  ?version rdfs:isDefinedBy dwc:.
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+Results (there are 36):
+ dwc:accuracy-2009-01-21
+ dwc:binomial-2008-11-19
+ dwc:CatalogNumberNumeric-2008-11-19
+ dwc:Dataset-2008-11-19
+ dwc:DwCType-2008-11-19
+ dwc:EarliestDateCollected-2008-11-19
+ dwc:EndTimeOfDay-2008-11-19
+ dwc:eventAttributes-2009-04-24
+ dwc:eventMeasurementAccuracy-2009-04-24
+ dwc:eventMeasurementDeterminedBy-2009-04-24
+ dwc:eventMeasurementDeterminedDate-2009-04-24
+ dwc:eventMeasurementID-2009-04-24
+ dwc:eventMeasurementRemarks-2009-04-24
+ dwc:eventMeasurementType-2009-04-24
+ dwc:eventMeasurementUnit-2009-04-24
+ dwc:eventMeasurementValue-2009-04-24
+ dwc:higherTaxonconceptID-2009-04-24
+ dwc:identificationAttributes-2009-04-24
+ dwc:individualID-2009-04-24
+ dwc:LatestDateCollected-2008-11-19
+ dwc:locationAttributes-2009-04-24
+ dwc:occurrenceAttributes-2009-04-24
+ dwc:occurrenceDetails-2009-04-24
+ dwc:occurrenceMeasurementAccuracy-2009-04-24
+ dwc:occurrenceMeasurementDeterminedBy-2009-04-24
+ dwc:occurrenceMeasurementDeterminedDate-2009-04-24
+ dwc:occurrenceMeasurementID-2009-04-24
+ dwc:occurrenceMeasurementRemarks-2009-04-24
+ dwc:occurrenceMeasurementType-2009-04-24
+ dwc:occurrenceMeasurementUnit-2009-04-24
+ dwc:occurrenceMeasurementValue-2009-04-24
+ dwc:RelatedBasisOfRecord-2008-11-19
+ dwc:relatedResourceType-2009-04-24
+ dwc:StartTimeOfDay-2008-11-19
+ dwc:taxonAttributes-2009-04-24
+ dwc:taxonConceptID-2009-04-24
+
+# Find recommneded term versions
+SELECT DISTINCT ?version WHERE {
+  ?version dcterms:issued ?date.
+  ?version dwcattributes:status "recommended".
+  ?version rdfs:isDefinedBy dwc:.
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+Results (there are 192):
+ dwc:acceptedNameUsage-2009-09-21
+ dwc:acceptedNameUsageID-2009-09-21
+ dwc:accordingTo-2009-01-21
+ dwc:associatedMedia-2014-10-23
+ dwc:associatedOccurrences-2014-10-23
+ dwc:associatedOrganisms-2014-10-23
+ dwc:associatedReferences-2014-10-23
+ dwc:associatedSequences-2014-10-23
+ dwc:associatedTaxa-2014-10-23
+ dwc:basisOfRecord-2014-10-23
+ dwc:bed-2009-04-24
+ dwc:behavior-2009-04-24
+ dwc:catalogNumber-2009-04-24
+ dwc:class-2009-08-24
+ dwc:collectionCode-2009-09-11
+ dwc:collectionID-2009-09-11
+ dwc:continent-2009-04-24
+ dwc:coordinatePrecision-2009-04-24
+ dwc:coordinateUncertaintyInMeters-2009-04-24
+ dwc:country-2009-04-24
+ dwc:countryCode-2009-04-24
+ dwc:county-2009-04-24
+ dwc:dataGeneralizations-2009-04-24
+ dwc:datasetID-2009-09-11
+ dwc:datasetName-2009-09-11
+ dwc:dateIdentified-2009-08-24
+ dwc:day-2009-04-24
+ dwc:decimalLatitude-2009-04-24
+ dwc:decimalLongitude-2009-04-24
+ dwc:disposition-2009-04-24
+ dwc:dynamicProperties-2014-10-23
+ dwc:earliestAgeOrLowestStage-2009-04-24
+ dwc:earliestEonOrLowestEonothem-2009-04-24
+ dwc:earliestEpochOrLowestSeries-2009-04-24
+ dwc:earliestEraOrLowestErathem-2009-04-24
+ dwc:earliestPeriodOrLowestSystem-2009-04-24
+ dwc:endDayOfYear-2009-04-24
+ dwc:establishmentMeans-2009-04-24
+ dwc:Event-2014-10-23
+ dwc:eventDate-2009-04-24
+ dwc:eventID-2009-04-24
+ dwc:eventRemarks-2009-04-24
+ dwc:eventTime-2009-04-24
+ dwc:family-2009-08-24
+ dwc:fieldNotes-2009-04-24
+ dwc:fieldNumber-2009-04-24
+ dwc:footprintSpatialFit-2009-04-24
+ dwc:footprintSRS-2009-07-06
+ dwc:footprintWKT-2009-04-24
+ dwc:formation-2009-04-24
+ dwc:FossilSpecimen-2014-10-23
+ dwc:genus-2009-08-24
+ dwc:geodeticDatum-2009-04-24
+ dwc:GeologicalContext-2014-10-23
+ dwc:geologicalContextID-2009-07-06
+ dwc:georeferencedBy-2014-10-23
+ dwc:georeferencedDate-2011-10-16
+ dwc:georeferenceProtocol-2009-04-24
+ dwc:georeferenceRemarks-2009-04-24
+ dwc:georeferenceSources-2014-10-23
+ dwc:georeferenceVerificationStatus-2009-04-24
+ dwc:group-2009-04-24
+ dwc:habitat-2009-04-24
+ dwc:higherClassification-2014-10-23
+ dwc:higherGeography-2014-10-23
+ dwc:higherGeographyID-2009-04-24
+ dwc:highestBiostratigraphicZone-2009-04-24
+ dwc:HumanObservation-2014-10-23
+ dwc:Identification-2014-10-23
+ dwc:identificationID-2009-04-24
+ dwc:identificationQualifier-2009-04-24
+ dwc:identificationReferences-2014-10-23
+ dwc:identificationRemarks-2009-04-24
+ dwc:identificationVerificationStatus-2011-10-16
+ dwc:identifiedBy-2014-10-23
+ dwc:individualCount-2009-04-24
+ dwc:informationWithheld-2009-04-24
+ dwc:infraspecificEpithet-2009-08-24
+ dwc:institutionCode-2009-09-11
+ dwc:institutionID-2009-09-11
+ dwc:island-2009-04-24
+ dwc:islandGroup-2009-04-24
+ dwc:kingdom-2009-08-24
+ dwc:latestAgeOrHighestStage-2009-04-24
+ dwc:latestEonOrHighestEonothem-2009-04-24
+ dwc:latestEpochOrHighestSeries-2009-04-24
+ dwc:latestEraOrHighestErathem-2009-04-24
+ dwc:latestPeriodOrHighestSystem-2009-04-24
+ dwc:lifeStage-2009-04-24
+ dwc:lithostratigraphicTerms-2009-04-24
+ dwc:LivingSpecimen-2014-10-23
+ dwc:locality-2009-04-24
+ dwc:locationAccordingTo-2009-08-24
+ dwc:locationID-2009-04-24
+ dwc:locationRemarks-2009-04-24
+ dwc:lowestBiostratigraphicZone-2009-04-24
+ dwc:MachineObservation-2014-10-23
+ dwc:MaterialSample-2014-10-23
+ dwc:materialSampleID-2013-05-25
+ dwc:maximumDepthInMeters-2009-04-24
+ dwc:maximumDistanceAboveSurfaceInMeters-2009-04-24
+ dwc:maximumElevationInMeters-2009-04-24
+ dwc:measurementAccuracy-2009-04-24
+ dwc:measurementDeterminedBy-2014-10-23
+ dwc:measurementDeterminedDate-2009-04-24
+ dwc:measurementID-2009-04-24
+ dwc:measurementMethod-2009-04-24
+ dwc:MeasurementOrFact-2014-10-23
+ dwc:measurementRemarks-2009-04-24
+ dwc:measurementType-2009-04-24
+ dwc:measurementUnit-2009-04-24
+ dwc:measurementValue-2009-04-24
+ dwc:member-2009-04-24
+ dwc:minimumDepthInMeters-2009-04-24
+ dwc:minimumDistanceAboveSurfaceInMeters-2009-04-24
+ dwc:minimumElevationInMeters-2009-04-24
+ dwc:month-2009-04-24
+ dwc:municipality-2009-08-24
+ dwc:nameAccordingTo-2009-09-21
+ dwc:nameAccordingToID-2009-09-21
+ dwc:namePublishedIn-2009-09-21
+ dwc:namePublishedInID-2009-09-21
+ dwc:namePublishedInYear-2011-10-16
+ dwc:nomenclaturalCode-2009-09-21
+ dwc:nomenclaturalStatus-2009-04-24
+ dwc:Occurrence-2014-10-23
+ dwc:occurrenceID-2009-04-24
+ dwc:occurrenceRemarks-2009-04-24
+ dwc:occurrenceStatus-2009-09-17
+ dwc:order-2009-08-24
+ dwc:Organism-2014-10-23
+ dwc:organismID-2014-10-23
+ dwc:organismName-2014-10-23
+ dwc:organismQuantity-2014-12-23
+ dwc:organismQuantityType-2014-12-23
+ dwc:organismRemarks-2014-10-23
+ dwc:organismScope-2014-10-23
+ dwc:originalNameUsage-2009-09-21
+ dwc:originalNameUsageID-2009-09-21
+ dwc:otherCatalogNumbers-2014-10-23
+ dwc:ownerInstitutionCode-2009-08-24
+ dwc:parentEventID-2014-12-23
+ dwc:parentNameUsage-2009-09-21
+ dwc:parentNameUsageID-2009-09-21
+ dwc:phylum-2009-08-24
+ dwc:pointRadiusSpatialFit-2009-04-24
+ dwc:preparations-2014-10-23
+ dwc:PreservedSpecimen-2014-10-23
+ dwc:previousIdentifications-2014-10-23
+ dwc:recordedBy-2014-10-23
+ dwc:recordNumber-2009-04-24
+ dwc:relatedResourceID-2009-04-24
+ dwc:relationshipAccordingTo-2009-04-24
+ dwc:relationshipEstablishedDate-2009-04-24
+ dwc:relationshipOfResource-2009-04-24
+ dwc:relationshipRemarks-2009-04-24
+ dwc:reproductiveCondition-2009-04-24
+ dwc:resourceID-2009-04-24
+ dwc:ResourceRelationship-2014-10-23
+ dwc:resourceRelationshipID-2009-04-24
+ dwc:sampleSizeUnit-2014-12-23
+ dwc:sampleSizeValue-2014-12-23
+ dwc:samplingEffort-2009-08-24
+ dwc:samplingProtocol-2009-04-24
+ dwc:scientificName-2009-09-21
+ dwc:scientificNameAuthorship-2009-04-24
+ dwc:scientificNameID-2009-08-24
+ dwc:sex-2009-04-24
+ dwc:specificEpithet-2009-04-24
+ dwc:startDayOfYear-2009-04-24
+ dwc:stateProvince-2009-04-24
+ dwc:subgenus-2009-08-24
+ dwc:Taxon-2014-10-23
+ dwc:taxonConceptID-2009-09-21
+ dwc:taxonID-2009-08-24
+ dwc:taxonomicStatus-2009-04-24
+ dwc:taxonRank-2009-09-21
+ dwc:taxonRemarks-2009-08-24
+ dwc:typeStatus-2014-10-23
+ dwc:verbatimCoordinates-2009-04-24
+ dwc:verbatimCoordinateSystem-2009-04-24
+ dwc:verbatimDepth-2009-04-24
+ dwc:verbatimElevation-2009-04-24
+ dwc:verbatimEventDate-2009-04-24
+ dwc:verbatimLatitude-2009-04-24
+ dwc:verbatimLocality-2009-04-24
+ dwc:verbatimLongitude-2009-04-24
+ dwc:verbatimSRS-2009-07-06
+ dwc:verbatimTaxonRank-2009-09-21
+ dwc:vernacularName-2009-07-06
+ dwc:waterBody-2009-04-24
+ dwc:year-2009-04-24
+
+# Find superseded terms
+SELECT DISTINCT ?version WHERE {
+  ?version dcterms:issued ?date.
+  ?version dwcattributes:status "superseded".
+  ?version rdfs:isDefinedBy dwc:.
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+Results (there are 104):
+ dwc:acceptedScientificName-2009-07-06
+ dwc:acceptedScientificNameID-2009-07-06
+ dwc:AcceptedTaxon-2008-11-19
+ dwc:AcceptedTaxonID-2009-01-21
+ dwc:acceptedTaxonID-2009-08-24
+ dwc:acceptedTaxonName-2009-04-24
+ dwc:acceptedTaxonNameID-2009-04-24
+ dwc:AccessConstraints-2008-11-19
+ dwc:associatedMedia-2009-04-24
+ dwc:associatedOccurrences-2009-04-24
+ dwc:associatedReferences-2009-04-24
+ dwc:associatedSequences-2009-04-24
+ dwc:associatedTaxa-2009-04-24
+ dwc:basionym-2009-04-24
+ dwc:basionymID-2009-04-24
+ dwc:basisOfRecord-2009-04-24
+ dwc:basisOfRecord-2009-09-11
+ dwc:basisOfRecord-2009-12-07
+ dwc:class-2009-04-24
+ dwc:collectionCode-2009-04-24
+ dwc:collectionCode-2009-08-24
+ dwc:collectionID-2009-04-24
+ dwc:datasetID-2009-04-24
+ dwc:dateIdentified-2009-04-24
+ dwc:dynamicProperties-2009-04-24
+ dwc:Event-2009-04-29
+ dwc:EventAttribute-2008-11-19
+ dwc:EventAttributeAccuracy-2009-01-18
+ dwc:EventAttributeDeterminedBy-2009-01-23
+ dwc:EventAttributeDeterminedDate-2009-01-23
+ dwc:EventAttributeID-2008-11-19
+ dwc:EventAttributeRemarks-2008-11-19
+ dwc:EventAttributeType-2008-11-19
+ dwc:EventAttributeUnit-2008-11-19
+ dwc:EventAttributeValue-2008-11-19
+ dwc:EventMeasurement-2008-11-19
+ dwc:family-2009-04-24
+ dwc:Generalizations-2008-11-19
+ dwc:genus-2009-04-24
+ dwc:GeologicalContext-2009-07-06
+ dwc:georeferencedBy-2009-04-24
+ dwc:georeferenceSources-2009-04-24
+ dwc:higherClassification-2009-08-24
+ dwc:higherGeography-2009-04-24
+ dwc:HigherTaxon-2009-01-21
+ dwc:HigherTaxonID-2009-01-21
+ dwc:higherTaxonName-2009-04-24
+ dwc:higherTaxonNameID-2009-04-24
+ dwc:Identification-2008-11-19
+ dwc:identificationReferences-2009-04-24
+ dwc:identifiedBy-2009-04-24
+ dwc:identifiedBy-2009-08-24
+ dwc:infraspecificEpithet-2009-04-24
+ dwc:institutionCode-2009-04-24
+ dwc:institutionCode-2009-08-24
+ dwc:kingdom-2009-04-24
+ dwc:MaterialSample-2013-03-28
+ dwc:measurementDeterminedBy-2009-04-24
+ dwc:MeasurementOrFact-2009-04-24
+ dwc:namePublicationID-2009-05-18
+ dwc:namePublishedIn-2009-04-24
+ dwc:nomenclaturalCode-2009-04-24
+ dwc:Occurrence-2009-04-29
+ dwc:OccurrenceMeasurement-2008-11-19
+ dwc:order-2009-04-24
+ dwc:otherCatalogNumbers-2009-04-24
+ dwc:phylum-2009-04-24
+ dwc:preparations-2009-04-24
+ dwc:PreviousIdentifications-2008-11-19
+ dwc:previousIdentifications-2009-04-24
+ dwc:previousIdentifications-2009-05-18
+ dwc:recordedBy-2009-04-24
+ dwc:ResourceRelationship-2009-01-21
+ dwc:Sample-2008-11-19
+ dwc:SampleAttribute-2008-11-19
+ dwc:SampleAttributeAccuracy-2009-01-18
+ dwc:SampleAttributeDeterminedBy-2009-01-23
+ dwc:SampleAttributeDeterminedDate-2009-01-23
+ dwc:SampleAttributeRemarks-2008-11-19
+ dwc:SampleAttributeUnit-2008-11-19
+ dwc:SampleAttributeValue-2008-11-19
+ dwc:SampleRemarks-2009-01-18
+ dwc:SamplingAttributeID-2008-11-19
+ dwc:SamplingAttributeType-2008-11-19
+ dwc:SamplingEvent-2008-11-19
+ dwc:SamplingEventAttributes-2008-11-19
+ dwc:SamplingEventID-2008-11-19
+ dwc:SamplingEventRemarks-2009-01-18
+ dwc:SamplingLocation-2008-11-19
+ dwc:SamplingLocationID-2008-11-19
+ dwc:SamplingLocationRemarks-2009-01-18
+ dwc:scientificName-2009-04-24
+ dwc:scientificNameID-2009-07-06
+ dwc:scientificNameRank-2009-07-06
+ dwc:subgenus-2009-04-24
+ dwc:Taxon-2008-11-19
+ dwc:Taxon-2009-09-21
+ dwc:taxonAccordingTo-2009-04-24
+ dwc:TaxonID-2008-11-19
+ dwc:taxonNameID-2009-04-24
+ dwc:taxonRank-2009-04-24
+ dwc:taxonRemarks-2009-04-24
+ dwc:typeStatus-2009-04-24
+ dwc:verbatimScientificNameRank-2009-07-06
+
+# The total of deprecated(36)+superseded(104)+recommended(192) is 332.
+
+# 53 superseded versions are versions of current terms that have recommended versions:
+ dwc:associatedMedia-2009-04-24	
+ dwc:associatedOccurrences-2009-04-24	
+ dwc:associatedReferences-2009-04-24	
+ dwc:associatedSequences-2009-04-24	
+ dwc:associatedTaxa-2009-04-24	
+ dwc:basisOfRecord-2009-04-24	
+ dwc:basisOfRecord-2009-09-11	
+ dwc:basisOfRecord-2009-12-07	
+ dwc:class-2009-04-24	
+ dwc:collectionCode-2009-04-24	
+ dwc:collectionCode-2009-08-24	
+ dwc:collectionID-2009-04-24	
+ dwc:datasetID-2009-04-24	
+ dwc:dateIdentified-2009-04-24	
+ dwc:dynamicProperties-2009-04-24	
+ dwc:Event-2009-04-29	
+ dwc:family-2009-04-24	
+ dwc:genus-2009-04-24	
+ dwc:GeologicalContext-2009-07-06	
+ dwc:georeferencedBy-2009-04-24	
+ dwc:georeferenceSources-2009-04-24	
+ dwc:higherClassification-2009-08-24	
+ dwc:higherGeography-2009-04-24	
+ dwc:Identification-2008-11-19	
+ dwc:identificationReferences-2009-04-24	
+ dwc:identifiedBy-2009-04-24	
+ dwc:identifiedBy-2009-08-24	
+ dwc:infraspecificEpithet-2009-04-24	
+ dwc:institutionCode-2009-04-24	
+ dwc:institutionCode-2009-08-24	
+ dwc:kingdom-2009-04-24	
+ dwc:MaterialSample-2013-03-28	
+ dwc:measurementDeterminedBy-2009-04-24	
+ dwc:MeasurementOrFact-2009-04-24	
+ dwc:namePublishedIn-2009-04-24	
+ dwc:nomenclaturalCode-2009-04-24	
+ dwc:Occurrence-2009-04-29	
+ dwc:order-2009-04-24	
+ dwc:otherCatalogNumbers-2009-04-24	
+ dwc:phylum-2009-04-24	
+ dwc:preparations-2009-04-24	
+ dwc:previousIdentifications-2009-04-24	
+ dwc:previousIdentifications-2009-05-18	
+ dwc:recordedBy-2009-04-24	
+ dwc:ResourceRelationship-2009-01-21	
+ dwc:scientificName-2009-04-24	
+ dwc:scientificNameID-2009-07-06	
+ dwc:subgenus-2009-04-24	
+ dwc:Taxon-2008-11-19	
+ dwc:Taxon-2009-09-21	
+ dwc:taxonRank-2009-04-24	
+ dwc:taxonRemarks-2009-04-24	
+ dwc:typeStatus-2009-04-24
+
+# Find versions with no current term:
+SELECT DISTINCT ?version ?status WHERE {
+  ?version dcterms:issued ?date. #only versions have an issued property
+  ?version rdfs:isDefinedBy dwc:. #restrict to terms in current DwC namespace
+  ?version dwcattributes:status ?status.
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+  MINUS {?term dcterms:hasVersion ?version.}
+  }
+Order by ?status
+
+Results (there are 86):
+ dwc:acceptedScientificName-2009-07-06
+ dwc:acceptedScientificNameID-2009-07-06
+ dwc:AcceptedTaxon-2008-11-19
+ dwc:AcceptedTaxonID-2009-01-21
+ dwc:acceptedTaxonID-2009-08-24
+ dwc:acceptedTaxonName-2009-04-24
+ dwc:acceptedTaxonNameID-2009-04-24
+ dwc:AccessConstraints-2008-11-19
+ dwc:accuracy-2009-01-21
+ dwc:basionym-2009-04-24
+ dwc:basionymID-2009-04-24
+ dwc:binomial-2008-11-19
+ dwc:CatalogNumberNumeric-2008-11-19
+ dwc:Dataset-2008-11-19
+ dwc:DwCType-2008-11-19
+ dwc:EarliestDateCollected-2008-11-19
+ dwc:EndTimeOfDay-2008-11-19
+ dwc:EventAttribute-2008-11-19
+ dwc:EventAttributeAccuracy-2009-01-18
+ dwc:EventAttributeDeterminedBy-2009-01-23
+ dwc:EventAttributeDeterminedDate-2009-01-23
+ dwc:EventAttributeID-2008-11-19
+ dwc:EventAttributeRemarks-2008-11-19
+ dwc:eventAttributes-2009-04-24
+ dwc:EventAttributeType-2008-11-19
+ dwc:EventAttributeUnit-2008-11-19
+ dwc:EventAttributeValue-2008-11-19
+ dwc:EventMeasurement-2008-11-19
+ dwc:eventMeasurementAccuracy-2009-04-24
+ dwc:eventMeasurementDeterminedBy-2009-04-24
+ dwc:eventMeasurementDeterminedDate-2009-04-24
+ dwc:eventMeasurementID-2009-04-24
+ dwc:eventMeasurementRemarks-2009-04-24
+ dwc:eventMeasurementType-2009-04-24
+ dwc:eventMeasurementUnit-2009-04-24
+ dwc:eventMeasurementValue-2009-04-24
+ dwc:Generalizations-2008-11-19
+ dwc:HigherTaxon-2009-01-21
+ dwc:higherTaxonconceptID-2009-04-24
+ dwc:HigherTaxonID-2009-01-21
+ dwc:higherTaxonName-2009-04-24
+ dwc:higherTaxonNameID-2009-04-24
+ dwc:identificationAttributes-2009-04-24
+ dwc:individualID-2009-04-24
+ dwc:LatestDateCollected-2008-11-19
+ dwc:locationAttributes-2009-04-24
+ dwc:namePublicationID-2009-05-18
+ dwc:occurrenceAttributes-2009-04-24
+ dwc:occurrenceDetails-2009-04-24
+ dwc:OccurrenceMeasurement-2008-11-19
+ dwc:occurrenceMeasurementAccuracy-2009-04-24
+ dwc:occurrenceMeasurementDeterminedBy-2009-04-24
+ dwc:occurrenceMeasurementDeterminedDate-2009-04-24
+ dwc:occurrenceMeasurementID-2009-04-24
+ dwc:occurrenceMeasurementRemarks-2009-04-24
+ dwc:occurrenceMeasurementType-2009-04-24
+ dwc:occurrenceMeasurementUnit-2009-04-24
+ dwc:occurrenceMeasurementValue-2009-04-24
+ dwc:PreviousIdentifications-2008-11-19
+ dwc:RelatedBasisOfRecord-2008-11-19
+ dwc:relatedResourceType-2009-04-24
+ dwc:Sample-2008-11-19
+ dwc:SampleAttribute-2008-11-19
+ dwc:SampleAttributeAccuracy-2009-01-18
+ dwc:SampleAttributeDeterminedBy-2009-01-23
+ dwc:SampleAttributeDeterminedDate-2009-01-23
+ dwc:SampleAttributeRemarks-2008-11-19
+ dwc:SampleAttributeUnit-2008-11-19
+ dwc:SampleAttributeValue-2008-11-19
+ dwc:SampleRemarks-2009-01-18
+ dwc:SamplingAttributeID-2008-11-19
+ dwc:SamplingAttributeType-2008-11-19
+ dwc:SamplingEvent-2008-11-19
+ dwc:SamplingEventAttributes-2008-11-19
+ dwc:SamplingEventID-2008-11-19
+ dwc:SamplingEventRemarks-2009-01-18
+ dwc:SamplingLocation-2008-11-19
+ dwc:SamplingLocationID-2008-11-19
+ dwc:SamplingLocationRemarks-2009-01-18
+ dwc:scientificNameRank-2009-07-06
+ dwc:StartTimeOfDay-2008-11-19
+ dwc:taxonAccordingTo-2009-04-24
+ dwc:taxonAttributes-2009-04-24
+ dwc:TaxonID-2008-11-19
+ dwc:taxonNameID-2009-04-24
+ dwc:verbatimScientificNameRank-2009-07-06
+
+
+# The one deprecated term that has a current term is dwc:taxonConceptID-2009-04-24  
+# I think it's an error and should be superseded by dwc:taxonConceptID-2009-09-21 
+# Here is how I fixed it.  Load only dwctermshistory, then do:
+DELETE DATA {dwc:taxonConceptID-2009-04-24 dwcattributes:status "deprecated".}
+# then:
+INSERT DATA {dwc:taxonConceptID-2009-04-24 dwcattributes:status "superseded".}
+
+# 35 are deprecated and 51 are superseded: 
+# Here are the 35 deprecated ones:
+ dwc:accuracy-2009-01-21
+ dwc:binomial-2008-11-19
+ dwc:CatalogNumberNumeric-2008-11-19
+ dwc:Dataset-2008-11-19
+ dwc:DwCType-2008-11-19
+ dwc:EarliestDateCollected-2008-11-19
+ dwc:EndTimeOfDay-2008-11-19
+ dwc:eventAttributes-2009-04-24
+ dwc:eventMeasurementAccuracy-2009-04-24
+ dwc:eventMeasurementDeterminedBy-2009-04-24
+ dwc:eventMeasurementDeterminedDate-2009-04-24
+ dwc:eventMeasurementID-2009-04-24
+ dwc:eventMeasurementRemarks-2009-04-24
+ dwc:eventMeasurementType-2009-04-24
+ dwc:eventMeasurementUnit-2009-04-24
+ dwc:eventMeasurementValue-2009-04-24
+ dwc:higherTaxonconceptID-2009-04-24
+ dwc:identificationAttributes-2009-04-24
+ dwc:individualID-2009-04-24
+ dwc:LatestDateCollected-2008-11-19
+ dwc:locationAttributes-2009-04-24
+ dwc:occurrenceAttributes-2009-04-24
+ dwc:occurrenceDetails-2009-04-24
+ dwc:occurrenceMeasurementAccuracy-2009-04-24
+ dwc:occurrenceMeasurementDeterminedBy-2009-04-24
+ dwc:occurrenceMeasurementDeterminedDate-2009-04-24
+ dwc:occurrenceMeasurementID-2009-04-24
+ dwc:occurrenceMeasurementRemarks-2009-04-24
+ dwc:occurrenceMeasurementType-2009-04-24
+ dwc:occurrenceMeasurementUnit-2009-04-24
+ dwc:occurrenceMeasurementValue-2009-04-24
+ dwc:RelatedBasisOfRecord-2008-11-19
+ dwc:relatedResourceType-2009-04-24
+ dwc:StartTimeOfDay-2008-11-19
+ dwc:taxonAttributes-2009-04-24
+
+# Here are the 51 superseded ones.  I think that they actually should be deprecated, 
+# because their replacements have different term names.
+ dwc:acceptedScientificName-2009-07-06
+ dwc:acceptedScientificNameID-2009-07-06
+ dwc:AcceptedTaxon-2008-11-19
+ dwc:AcceptedTaxonID-2009-01-21
+ dwc:acceptedTaxonID-2009-08-24
+ dwc:acceptedTaxonName-2009-04-24
+ dwc:acceptedTaxonNameID-2009-04-24
+ dwc:AccessConstraints-2008-11-19
+ dwc:basionym-2009-04-24
+ dwc:basionymID-2009-04-24
+ dwc:EventAttribute-2008-11-19
+ dwc:EventAttributeAccuracy-2009-01-18
+ dwc:EventAttributeDeterminedBy-2009-01-23
+ dwc:EventAttributeDeterminedDate-2009-01-23
+ dwc:EventAttributeID-2008-11-19
+ dwc:EventAttributeRemarks-2008-11-19
+ dwc:EventAttributeType-2008-11-19
+ dwc:EventAttributeUnit-2008-11-19
+ dwc:EventAttributeValue-2008-11-19
+ dwc:EventMeasurement-2008-11-19
+ dwc:Generalizations-2008-11-19
+ dwc:HigherTaxon-2009-01-21
+ dwc:HigherTaxonID-2009-01-21
+ dwc:higherTaxonName-2009-04-24
+ dwc:higherTaxonNameID-2009-04-24
+ dwc:namePublicationID-2009-05-18
+ dwc:OccurrenceMeasurement-2008-11-19
+ dwc:PreviousIdentifications-2008-11-19
+ dwc:Sample-2008-11-19
+ dwc:SampleAttribute-2008-11-19
+ dwc:SampleAttributeAccuracy-2009-01-18
+ dwc:SampleAttributeDeterminedBy-2009-01-23
+ dwc:SampleAttributeDeterminedDate-2009-01-23
+ dwc:SampleAttributeRemarks-2008-11-19
+ dwc:SampleAttributeUnit-2008-11-19
+ dwc:SampleAttributeValue-2008-11-19
+ dwc:SampleRemarks-2009-01-18
+ dwc:SamplingAttributeID-2008-11-19
+ dwc:SamplingAttributeType-2008-11-19
+ dwc:SamplingEvent-2008-11-19
+ dwc:SamplingEventAttributes-2008-11-19
+ dwc:SamplingEventID-2008-11-19
+ dwc:SamplingEventRemarks-2009-01-18
+ dwc:SamplingLocation-2008-11-19
+ dwc:SamplingLocationID-2008-11-19
+ dwc:SamplingLocationRemarks-2009-01-18
+ dwc:scientificNameRank-2009-07-06
+ dwc:taxonAccordingTo-2009-04-24
+ dwc:TaxonID-2008-11-19
+ dwc:taxonNameID-2009-04-24
+ dwc:verbatimScientificNameRank-2009-07-06
+
+# Here is how I fixed those 51:
+DELETE {?version dwcattributes:status "superseded".}
+INSERT {?version dwcattributes:status "deprecated".}
+WHERE {
+  ?version dcterms:issued ?date. #only versions have an issued property
+  ?version rdfs:isDefinedBy dwc:. #restrict to terms in current DwC namespace
+  ?version dwcattributes:status "superseded".
+  MINUS {?version dcterms:isVersionOf ?term.}
+  }
+
+# Save the results in the usual manner:
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+# Test by re-running the previous queries.
+
+# Find deprecated versions:
+SELECT DISTINCT ?version WHERE {
+  ?version dcterms:issued ?issued.
+  ?version dwcattributes:status "deprecated".
+  ?version rdfs:isDefinedBy dwc:.
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# There are 86. Original 36 - one bad + 51 changed from superseded.
+
+# There are still 192 recommended term versions.
+
+# Find superseded terms:
+SELECT DISTINCT ?version WHERE {
+  ?version dcterms:issued ?date.
+  ?version dwcattributes:status "superseded".
+  ?version rdfs:isDefinedBy dwc:.
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# There are 54: the 53 superseded versions that were versions of current terms that have recommended versions
+# plus the one bad deprecated version that was changed to superseded.
+
+# The total term versions are 86+192+54=332, same as the original total.
+# Note: I confirmed that 192 is the total of terms in dwcterms.rdf, same as the number of "recommended" term versions in dwctermshistory
+
+# I confirmed that no terms have dcterms:created properties.
+# There are 27 terms (plus the term list) that have dcterms:modified properties:
+SELECT DISTINCT ?term ?date WHERE {
+  ?term dcterms:modified ?date.
+  BIND(LCASE(REPLACE(str(?term), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+They are:
+ dwc:	2015-03-19
+ dwc:acceptedNameUsage	2009-09-21
+ dwc:acceptedNameUsageID	2009-09-21
+ dwc:collectionCode	2013-10-04
+ dwc:continent	2013-10-04
+ dwc:eventDate	2009-07-01
+ dwc:habitat	2009-05-17
+ dwc:institutionCode	2013-10-04
+ dwc:materialSampleID	2013-09-26
+ dwc:nameAccordingTo	2009-09-21
+ dwc:nameAccordingToID	2009-09-21
+ dwc:namePublishedIn	2009-09-21
+ dwc:namePublishedInID	2009-09-21
+ dwc:nomenclaturalCode	2009-09-21
+ dwc:organismQuantity	2015-03-19
+ dwc:organismQuantityType	2015-03-19
+ dwc:originalNameUsage	2009-09-21
+ dwc:originalNameUsageID	2009-09-21
+ dwc:ownerInstitutionCode	2013-10-04
+ dwc:parentEventID	2015-03-19
+ dwc:parentNameUsage	2009-09-21
+ dwc:parentNameUsageID	2009-09-21
+ dwc:sampleSizeUnit	2015-03-19
+ dwc:sampleSizeValue	2015-03-19
+ dwc:scientificName	2009-09-21
+ dwc:taxonConceptID	2009-09-21
+ dwc:taxonRank	2009-09-21
+ dwc:verbatimTaxonRank	2009-09-21
+
+# To keep from loosing this information (whatever it is), I changed the property from dcterms:modified to dcterms:date.
+DELETE {?term dcterms:modified ?date.}
+INSERT {?term dcterms:date ?date.}
+WHERE {
+  ?term rdfs:isDefinedBy dwc:. #restrict to terms, not the namespace itself
+  ?term dcterms:modified ?date.
+  }
+
+# Now I made the dcterms:modified date for each of the current terms be the date of the version that has the
+# status of "recommended":
+CONSTRUCT {?term dcterms:modified ?issued.} WHERE {
+  ?version dcterms:issued ?issued.
+  ?version dwcattributes:status "recommended".
+  ?version rdfs:isDefinedBy dwc:.
+  ?term dcterms:hasVersion ?version.
+  BIND(STRDT(str(?issued),xsd:date) AS ?date) #actually, didn't need to datatype - it already had it. Duh.
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+# Tried to write a query to find earliest version date, but failed:
+SELECT DISTINCT ?version1 ?laterVersion WHERE {
+  ?term rdfs:isDefinedBy dwc:. 
+  ?term dcterms:hasVersion ?version1.
+  ?term dcterms:hasVersion ?laterVersion.
+  ?version1 dcterms:issued ?issued.
+  ?version1 dwcattributes:status ?status.
+  MINUS {
+        ?version1 dcterms:isReplacedBy+ ?laterVersion.  # one or more isReplacedBy steps
+        }
+  BIND(LCASE(REPLACE(str(?term), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+# I ended up just doing this and deleting the later dates for each term:
+CONSTRUCT {?term dcterms:created ?issued} WHERE {
+  ?term rdfs:isDefinedBy dwc:. 
+  ?term dcterms:hasVersion ?version.
+  ?version dcterms:issued ?issued.
+  BIND(LCASE(REPLACE(str(?term), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+# upload to graph, then check for values:
+SELECT DISTINCT ?term ?created ?modified WHERE {
+  ?term rdfs:isDefinedBy dwc:. 
+  ?term dcterms:created ?created.
+  ?term dcterms:modified ?modified.
+  BIND(LCASE(REPLACE(str(?term), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+# Save the results in the usual manner:
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# Saved as 3a-enhanced-dwcterms.ttl
+
+--------
+# step 4 generate current terms for deprecated versions
+
+# load only dwcterms, then get rid of dwcattributes:status for current terms:
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+MINUS {
+  ?s1 dwcattributes:status ?o.
+      }
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+# construct deprecated current terms.  This query generates everything except for the dcterms:created property:
+CONSTRUCT {
+  ?term dcterms:hasVersion ?version.
+  ?term dcterms:modified ?issued.
+  ?term ?p ?o.
+  ?term owl:deprecated "true"^^xsd:boolean.
+  } 
+WHERE {
+  ?version rdfs:isDefinedBy dwc:. 
+  ?version dwcattributes:status "deprecated".
+  ?version ?p ?o.
+  ?version dcterms:issued ?issued.
+  MINUS {
+    ?version dcterms:issued|dwcattributes:status|dcterms:replaces|dcterms:isReplacedBy ?o.
+    }
+  BIND(uri(SUBSTR(str(?version),1,STRLEN(str(?version))-11)) AS ?term)
+  BIND(LCASE(REPLACE(str(?term), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+# Save the newly created deprecated terms triples from above, load them and dwctermshistory.
+# Then generate the possible dcterms:created properties:
+CONSTRUCT {?term dcterms:created ?issued.} WHERE {
+  ?term owl:deprecated "true"^^xsd:boolean.
+  ?term dcterms:hasVersion ?lastVersion.
+  ?lastVersion dcterms:replaces* ?allVersions.
+  ?allVersions dcterms:issued ?issued.
+  BIND(SUBSTR(str(?allVersions),1,STRLEN(str(?allVersions))-11) AS ?firstPart)
+  FILTER (?firstPart = str(?term))
+  }
+# As it turns out, no deprecated term has more than one version.  All replaced versions were outside the dwc:namespace or had different local names.
+# I verified this visually as well by looking at the chains of dcterms:replaces* versions.  
+# So the output of this query didn't need any editing and could be merged directly with the new deprecated current terms into dwcterms.rdf
+
+# Load previous incarnation of dwcterms.rdf along with new deprecated current terms and the dcterms:created triples from the previous query
+# Then output the whole graph as usual:
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# Saved as 4a-enhanced-dwcterms.ttl
+
+# Generate the dcterms:isPartOf triples, but only for terms that are part of dwc: and not deprecated:
+CONSTRUCT {
+  ?term dcterms:isPartOf dwc:.
+  } 
+WHERE {
+  ?term rdfs:isDefinedBy dwc:.
+  MINUS {?term owl:deprecated "true"^^xsd:boolean.}
+  BIND(LCASE(REPLACE(str(?term), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# Load these 192 triples and merge with the other dwcterms triples
+
+# ********** Question: Is it contradictory that deprecated terms are defined by dwc: but not part of dwc: ? *****
+# How should we handle dcterms:isPart and rdfs:isDefinedBy for term version???  
+# Make them partOf dwc: or partOf a version of dwc: ???
+
+------------------
+Step 5: link current deprecated terms to current recommended terms that they are replaced by
+
+# I developed this query to find new terms that replaced older terms:
+SELECT DISTINCT ?moreRecentTerm ?olderTerm WHERE {
+  ?moreRecentTerm dcterms:created ?created. #any current term (vs. versions or dwc:)
+  ?moreRecentTerm dcterms:hasVersion ?moreRecentVersion.
+  ?moreRecentVersion dcterms:replaces ?olderVersion. # some version of the more recent term must replace some version of the older term
+  ?olderTerm dcterms:hasVersion ?olderVersion.
+  FILTER (!(?olderTerm = ?moreRecentTerm))
+  }
+
+# Here's the modification to construct the links (both ways):
+CONSTRUCT {
+  ?moreRecentTerm dcterms:replaces ?olderTerm.
+  ?olderTerm dcterms:isReplacedBy ?moreRecentTerm.
+  }
+WHERE {
+  ?moreRecentTerm dcterms:created ?created. #any current term (vs. versions or dwc:)
+  ?moreRecentTerm dcterms:hasVersion ?moreRecentVersion.
+  ?moreRecentVersion dcterms:replaces ?olderVersion. # some version of the more recent term must replace some version of the older term
+  ?olderTerm dcterms:hasVersion ?olderVersion.
+  FILTER (!(?olderTerm = ?moreRecentTerm))
+  }
+# *** Note: this only indicates the replacement by one step.  Should old terms two steps back be replaced by the recommended current term???
+# I guess people could construct property path dcterms:isReplacedBy+ and find the non-deprecated version (or version now dcterms:isPartOf dwc:)
+
+# I forgot to generate dcterms:isVersionOf triples to deprecated current terms:
+CONSTRUCT {?version dcterms:isVersionOf ?term.} WHERE {
+  ?term owl:deprecated "true"^^xsd:boolean.
+  ?term dcterms:hasVersion ?version.
+  }
+# This generated 86, which I then merged into dwctermshistory.
+
+# ************* The Documentation Spec shows dwcattributes:status values being datatyped as string.  They are essentially controlled values, so maybe they should not be datatyped???
+# Actually, this is an artifact of conversion by rdfEditor, I think.
+-----------------------------
+Step 6: make term list versions
+
+Here are the dates when dwc: terms were issued:
+2014-12-23
+2014-10-23
+2013-05-25
+2013-03-28
+2011-10-16
+2009-12-07
+2009-09-21
+2009-09-17
+2009-09-11
+2009-08-24
+2009-07-06
+2009-05-18
+2009-04-29
+2009-04-24
+2009-01-23
+2009-01-21
+2009-01-18
+2008-11-19 
+
+# Find all of the versions that were recommended on the date of the term list version
+Select distinct ?version where {
+  {
+  # these are the cases where the version has never been replaced
+  ?version dwcattributes:status "recommended".
+  ?version dcterms:issued ?date.
+  ?version rdfs:isDefinedBy dwc:.
+  filter (?date <= "2013-05-25"^^xsd:date)
+  }
+UNION
+  {
+  # these are the cases where the version has been superseded or deprecated later
+  ?version dwcattributes:status ?status.
+  ?version dcterms:issued ?date.
+  ?version rdfs:isDefinedBy dwc:.
+  ?version dcterms:isReplacedBy ?laterVersion.
+  ?laterVersion dcterms:issued ?laterDate.
+  filter (?date <= "2013-05-25"^^xsd:date)
+  filter (?laterDate > "2013-05-25"^^xsd:date)
+  }
+BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+}
+order by ?localName
+
+# I manually created the term list versions of the form http://rs.tdwg.org/dwc/terms/2008-11-19
+
+# Construct the triples linking the term versions to the term list versions:
+CONSTRUCT {
+  <http://rs.tdwg.org/dwc/terms/2008-11-19> dcterms:hasPart ?version.
+  ?version dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/2008-11-19>.
+          } 
+where {
+  {
+  # these are the cases where the version has never been replaced
+  ?version dwcattributes:status "recommended".
+  ?version dcterms:issued ?date.
+  ?version rdfs:isDefinedBy dwc:.
+  filter (?date <= "2008-11-19"^^xsd:date)
+  }
+UNION
+  {
+  # these are the cases where the version has been superseded or deprecated later
+  ?version dwcattributes:status ?status.
+  ?version dcterms:issued ?date.
+  ?version rdfs:isDefinedBy dwc:.
+  ?version dcterms:isReplacedBy ?laterVersion.
+  ?laterVersion dcterms:issued ?laterDate.
+  filter (?date <= "2008-11-19"^^xsd:date)
+  filter (?laterDate > "2008-11-19"^^xsd:date)
+  }
+BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+}
+order by ?localName
+
+# Load dwctermshistory and all of the constructed links between versions and lists, then output.
+# Note: I encountered a problem with 45 terms that were deprecated, but not replaced by anything.  
+# I don't know how to figure out when they stopped being recommended.  I found them by:
+
+select ?version ?status where {
+  ?version dwcattributes:status ?status.
+  ?version rdfs:isDefinedBy dwc:.
+  MINUS {?version dcterms:isPartOf ?termListVersion.}
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+}
+order by ?localName
+
+# Those terms are:
+ dwc:AccessConstraints-2008-11-19
+ dwc:accuracy-2009-01-21
+ dwc:binomial-2008-11-19
+ dwc:CatalogNumberNumeric-2008-11-19
+ dwc:Dataset-2008-11-19
+ dwc:DwCType-2008-11-19
+ dwc:EarliestDateCollected-2008-11-19
+ dwc:EndTimeOfDay-2008-11-19 modified 2009-04-24
+ dwc:EventAttribute-2008-11-19
+ dwc:EventAttributeRemarks-2008-11-19
+ dwc:eventAttributes-2009-04-24
+ dwc:eventMeasurementAccuracy-2009-04-24
+ dwc:eventMeasurementDeterminedBy-2009-04-24
+ dwc:eventMeasurementDeterminedDate-2009-04-24
+ dwc:eventMeasurementID-2009-04-24
+ dwc:eventMeasurementRemarks-2009-04-24
+ dwc:eventMeasurementType-2009-04-24
+ dwc:eventMeasurementUnit-2009-04-24
+ dwc:eventMeasurementValue-2009-04-24
+ dwc:HigherTaxon-2009-01-21
+ dwc:higherTaxonconceptID-2009-04-24
+ dwc:identificationAttributes-2009-04-24
+ dwc:LatestDateCollected-2008-11-19.
+ dwc:locationAttributes-2009-04-24
+ dwc:occurrenceAttributes-2009-04-24
+ dwc:occurrenceDetails-2009-04-24 modified 2011-10-16
+ dwc:occurrenceMeasurementAccuracy-2009-04-24
+ dwc:occurrenceMeasurementDeterminedBy-2009-04-24
+ dwc:occurrenceMeasurementDeterminedDate-2009-04-24
+ dwc:occurrenceMeasurementID-2009-04-24
+ dwc:occurrenceMeasurementRemarks-2009-04-24
+ dwc:occurrenceMeasurementType-2009-04-24
+ dwc:occurrenceMeasurementUnit-2009-04-24
+ dwc:occurrenceMeasurementValue-2009-04-24
+ dwc:RelatedBasisOfRecord-2008-11-19 modified 2009-01-26
+ dwc:relatedResourceType-2009-04-24
+ dwc:SampleAttribute-2008-11-19
+ dwc:SampleAttributeRemarks-2008-11-19
+ dwc:SamplingAttributeID-2008-11-19
+ dwc:SamplingAttributeType-2008-11-19
+ dwc:SamplingEventAttributes-2008-11-19
+ dwc:SamplingEventRemarks-2009-01-18
+ dwc:SamplingLocation-2008-11-19
+ dwc:StartTimeOfDay-2008-11-19 modified 2009-04-24
+ dwc:taxonAttributes-2009-04-24
+# Most of them didn't have a modified date that differed from their issued date and that was also after 
+# the date appended to their local name.  Those that did are listed above.  
+
+# The issued dates for the terms above and number of terms issued on that date were:
+2008-11-19  18
+2009-01-18  1
+2009-01-21  2
+2009-01-23  0
+2009-04-24  24
+
+# Looked at all terms to see when they seemed to go out of use:
+select distinct ?term ?issued ?status ?replacement where {
+  ?term dcterms:issued ?issued.
+  ?term dwcattributes:status ?status.
+  OPTIONAL {?term dcterms:isReplacedBy ?replacement.}
+}
+ORDER BY ?issued
+
+# The non-camelCase terms prior to 2009-04-24 seemed to have been replaced on 2009-04-24, so I'm going 
+# consider the unreplaced pre-2009-04-24 terms to be dead just prior to that version.  The ones in that
+# group that have dcterms:modified properties have values on or before 2009-04-24
+CONSTRUCT {
+  ?version dcterms:isPartOf dwc:2008-11-19, dwc:2009-01-18, dwc:2009-01-21, dwc:2009-01-23.
+  }
+  where {
+  ?version dwcattributes:status "deprecated".
+  ?version rdfs:isDefinedBy dwc:.
+  ?version dcterms:issued "2008-11-19"^^xsd:date.
+  MINUS {?version dcterms:isPartOf ?termListVersion.}
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+}
+order by ?localName
+# Hack by removing dcterms:isPartOf values for versions on the later dates.
+
+# Here are the 24 terms issued on 2009-04-24:
+ none dwc:eventAttributes-2009-04-24
+ none dwc:eventMeasurementAccuracy-2009-04-24
+ none dwc:eventMeasurementDeterminedBy-2009-04-24
+ none dwc:eventMeasurementDeterminedDate-2009-04-24
+ none dwc:eventMeasurementID-2009-04-24
+ none dwc:eventMeasurementRemarks-2009-04-24
+ none dwc:eventMeasurementType-2009-04-24
+ none dwc:eventMeasurementUnit-2009-04-24
+ none dwc:eventMeasurementValue-2009-04-24
+ 04-29 only dwc:higherTaxonconceptID-2009-04-24
+ none dwc:identificationAttributes-2009-04-24
+ none dwc:locationAttributes-2009-04-24
+ none dwc:occurrenceAttributes-2009-04-24
+ 04-29, 05-25, 07-06, 09-23, 2009-10-08, 2009-12-07, not in the 2011-10-26 release dwc:occurrenceDetails-2009-04-24
+ none dwc:occurrenceMeasurementAccuracy-2009-04-24
+ none dwc:occurrenceMeasurementDeterminedBy-2009-04-24
+ none dwc:occurrenceMeasurementDeterminedDate-2009-04-24
+ none dwc:occurrenceMeasurementID-2009-04-24
+ none dwc:occurrenceMeasurementRemarks-2009-04-24
+ none dwc:occurrenceMeasurementType-2009-04-24
+ none dwc:occurrenceMeasurementUnit-2009-04-24
+ none dwc:occurrenceMeasurementValue-2009-04-24
+ none dwc:relatedResourceType-2009-04-24
+ none dwc:taxonAttributes-2009-04-24
+# For these terms, I searched the DwC tags on GitHub to see when they disappeared from the Quick Reference Guide.
+# Only two made it to the 2009-04-29 release. So I did this query:
+CONSTRUCT {
+  ?version dcterms:isPartOf dwc:2009-04-24.
+  }
+  where {
+  ?version dwcattributes:status "deprecated".
+  ?version rdfs:isDefinedBy dwc:.
+  ?version dcterms:issued "2009-04-24"^^xsd:date.
+  MINUS {?version dcterms:isPartOf ?termListVersion.}
+  BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+}
+order by ?localName
+# to assign all of the terms to the 2009-04-24 term version list and then manually hacked the versions for 
+# the two that had a longer history. 
+
+# There were two terms:
+ dwc:acceptedTaxonNameID-2009-04-24
+ dwc:nomenclaturalCode-2009-04-24
+# that were flagged as "deprecated" or "superseded", but which were not linked to any replacements. 
+# This was apparently caused by capitalization errors, 
+# with the link being made to a URI where the first letter was capitalized.  Based on the capitalization
+# pattern used with terms issued on 2009-04-24, the lower case version is probably correct.
+# I fixed these manually.  Also added link from dwc:acceptedTaxonNameID to dwc:acceptedScientificNameID in dwcterms.rdf (as a deprecated term).
+
+# The term:
+ dwc:collectionID-2009-04-24 
+# is flagged as "superseded" but not linked to another term.  
+# It appears that it should be linked by dcterms:isReplacedBy to dwc:collectionID-2009-09-11 (plus the inverse relationship)
+# I fixed this manually.
+
+# Count how many terms are in each term list version.
+select ?version (COUNT(?term) AS ?count) where {
+  ?version a <http://www.w3.org/ns/dcat#Dataset>.
+  ?version dcterms:hasPart ?term.
+}
+GROUP BY ?version
+
+#Generated dcterms:hasVersion links to the versions:
+CONSTRUCT {dwc: dcterms:hasVersion ?version} WHERE {
+  ?version dcterms:isVersionOf dwc:.
+  }
+
+# Then output the whole graph as usual:
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+-------------
+Step 7: dwctype:
+
+# Load the current dwctype: terms from the most recent DwC release that includes them (2013-10-23)
+
+# Check what dcterms:hasVersion links exist:
+SELECT DISTINCT ?term ?version WHERE {
+  ?term dcterms:hasVersion ?version.
+  ?term a rdfs:Class.
+  }
+
+# Delete existing dcterms:hasVersion, dcterms:issued, dcterms:replaces and dwcattributes:status triples. For now, leave the dcterms:modified triples.
+
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+MINUS {
+  ?s1 dcterms:issued|dcterms:hasVersion|dwcattributes:status|dcterms:replaces ?o.
+      }
+  }
+# Save and reload.
+
+# Load dwctermshistory.
+# Construct every dcterms:hasVersion relationship between current terms and versions:
+CONSTRUCT {?term dcterms:hasVersion ?version} WHERE {
+  ?term dcterms:hasVersion ?someVersion.
+  ?version dwcattributes:status ?status.
+  BIND(SUBSTR(str(?version),1,STRLEN(str(?version))-11) AS ?versionBaseURI)
+  FILTER (str(?term)=?versionBaseURI)
+  }
+# Save, then reload dwctype + these triples.  Fix undatatyped dates, then overwrite dwctype. 
+
+# Reload dwctype. Construct inverse dcterms:isVersionOf triples from dcterms:hasVersion triples:
+CONSTRUCT {?version dcterms:isVersionOf ?term} WHERE {
+  ?term dcterms:hasVersion ?version.
+  }
+# Save those triples. Load dwctermshistory and those triples, then save the merged graph.
+
+# Flag all terms as deprecated:
+INSERT {?term owl:deprecated "true"^^xsd:boolean.}
+WHERE {
+  ?term a rdfs:Class.
+  }
+# also deprecated the entire term list and added comment to that effect.  Changed @en-us to preferred @en-US.
+# Save graph as dwctype
+
+# Check for terms, versions, and issued dates:
+SELECT DISTINCT ?term ?version ?issued WHERE {
+  ?term rdfs:isDefinedBy dwctype:. 
+  ?term dcterms:hasVersion ?version.
+  OPTIONAL {?version dcterms:issued ?issued.}
+}
+ORDER BY ?term
+
+# Generated created dates as I did for the dwc: terms:
+# I ended up just doing this and deleting the later dates for each term:
+CONSTRUCT {?term dcterms:created ?issued} WHERE {
+  ?term rdfs:isDefinedBy dwctype:. 
+  ?term dcterms:hasVersion ?version.
+  ?version dcterms:issued ?issued.
+  BIND(LCASE(REPLACE(str(?term), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# Load these triples + dwctype, then save merge graph
+
+# As with the dcterms terms, I don't really know what the meaning is of dcterms:modified in the context of 
+# dwctype: terms.  So I changed all of the dcterms:modified triples to dcterms:date triples, then added
+# dcterms:modified triples that gave the date of the decision that deprecated them.
+DELETE {?term dcterms:modified ?date.}
+INSERT {?term dcterms:date ?date.}
+WHERE {
+  ?term rdfs:isDefinedBy dwctype:. #restrict to terms, not the namespace itself
+  ?term dcterms:modified ?date.
+  }
+
+INSERT {
+?term dcterms:modified "2014-10-26"^^xsd:date.
+?term dwcattributes:decision <http://rs.tdwg.org/dwc/terms/history/decisions/Decision-2014-10-26_15>
+}
+WHERE {
+  ?term rdfs:isDefinedBy dwctype:. #restrict to terms, not the namespace itself
+  }
+
+# ****************** Note: the decisions URIs do not agree with those on the Decisions web page, which are 
+# ****************** in this form: http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_15
+
+# Output the triples and save.
+
+# Find the dates on which dwctype: terms were issued:
+SELECT DISTINCT ?issued WHERE {
+  ?version dcterms:issued ?issued.
+  ?version rdfs:isDefinedBy dwctype:.
+  }
+ORDER BY ?issued
+
+The dates are:
+2008-11-19
+2009-01-23
+2009-04-24
+2011-10-16
+2013-06-24
+
+# To check what terms were issued on a particular date:
+SELECT ?version
+where 
+  {
+  ?version dcterms:issued "2008-11-19"^^xsd:date.
+  ?version rdfs:isDefinedBy dwctype:.
+  }
+
+# Construct the triples linking the term versions to the term list versions:
+CONSTRUCT {
+  dwctype:2008-11-19 dcterms:hasPart ?version.
+  ?version dcterms:isPartOf dwctype:2008-11-19.
+          } 
+where {
+  {
+  # these are the cases where the version has never been replaced
+  ?version dwcattributes:status "deprecated".
+  ?version dcterms:issued ?date.
+  ?version rdfs:isDefinedBy dwctype:.
+  filter (?date <= "2008-11-19"^^xsd:date)
+  }
+UNION
+  {
+  # these are the cases where the version has been superseded or deprecated later
+  ?version dwcattributes:status ?status.
+  ?version dcterms:issued ?date.
+  ?version rdfs:isDefinedBy dwctype:.
+  ?version dcterms:isReplacedBy ?laterVersion.
+  ?laterVersion dcterms:issued ?laterDate.
+  filter (?date <= "2008-11-19"^^xsd:date)
+  filter (?laterDate > "2008-11-19"^^xsd:date)
+  }
+BIND(LCASE(REPLACE(str(?version), '^.*(/)', "")) AS ?localName)
+}
+order by ?localName
+
+# Load dwctermshistory and the five files containing the hasPart/isPartOf triples for the five issuance dates.
+# Then output the merged graph.
+
+# I manually created the links from dwctype: to its versions via dcterms:hasVersion.  
+
+-------------
+Step 8: dwcattributes
+
+# Acquired dwcattributes.rdf and converted it to Turtle.  The terms aren't in dwctermshistory, 
+# so I copied and pasted from the Turtle file into dwctermshistory and hacked the four terms by hand to 
+# make them conform to the structure of the other terms.  I also switched the rdfs:comment and dcterms:description
+# values because the definition was in the description instead of the comment.
+# ********************* Fixed incorrect rdfs:isDefinedBy value.  
+# ********************* The value was http://rs.tdwg.org/dwc/terms/attribute
+# ********************* but should have been http://rs.tdwg.org/dwc/terms/attributes/
+# ************The dcterms: hasVersion was wrong also - it looks like they were using the hash namespace pattern but switched to slash 
+
+# For consistency, I assigned dwcattributes:abcdEquivalence properties of "not in ABCD".  Somebody should 
+# make sure this is right.
+
+# It looks like I didn't insert dcterms:isPartOf triples in dwctype: .  I pasted them in manually.
+# It looks like I never generated the dcterms:hasPart inverses for the current terms in dcterms: and dctype:
+# So I generated them at the same time as I did for dwcattributes: using this:
+CONSTRUCT {dwctype: dcterms:hasPart ?term.}
+WHERE {?term dcterms:isPartOf dwctype:.}
+# and then saved the merged graph.
+
+--------
+Step 9:  Clean up on term list level and above
+
+************** Should owl:versionInfo apply to the current term list AND the versions?
+
+# Entered metadata for term lists according to Documentation Spec.
+# Created Dublin Core list, then generated inverses:
+CONSTRUCT {?o dcterms:isPartOf ?s.} WHERE
+{?s dcterms:hasPart ?o.}
+
+# Merge, then output as usual:
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+
+# Created DwC Standard RDF and basic and rdf DwC Vocabs based on the Doc Spec (in the document assertions.ttl).
+
+# Create dwciri: analog RDF:
+CONSTRUCT {
+  dwciri: dcterms:hasPart ?dwciriAnalog.
+  ?dwciriAnalog rdfs:label ?label.
+  ?dwciriAnalog rdfs:comment ?comment.
+  ?dwciriAnalog rdfs:isDefinedBy dwciri:.
+  ?dwciriAnalog dcterms:isPartOf dwciri:.
+  ?dwciriAnalog a rdf:Property.
+  ?dwciriAnalog dcterms:modified "2015-03-27"^^xsd:date.
+  ?dwciriAnalog dcterms:created "2015-03-27"^^xsd:date.
+  ?dwciriAnalog dcterms:hasVersion ?dwciriVersion.
+  ?dwciriAnalog	dwcattributes:abcdEquivalence ?abcd.
+  ?dwciriAnalog dwcattributes:organizedInClass ?class.
+  ?dwciriAnalog dcterms:relation ?term.
+  }
+WHERE {
+  dwciri: dcterms:alternative ?term.
+  ?term rdfs:label ?label.
+  ?term rdfs:comment ?comment.
+  ?term dcterms:description ?description.
+  ?term	dwcattributes:abcdEquivalence ?abcd.
+  ?term dwcattributes:organizedInClass ?class.
+  BIND(REPLACE(str(?term), '^.*(/)', "") AS ?localName)
+  BIND(URI(CONCAT("http://rs.tdwg.org/dwc/iri/",?localName)) AS ?dwciriAnalog)
+  BIND(URI(CONCAT("http://rs.tdwg.org/dwc/iri/",?localName,"-2015-03-27")) AS ?dwciriVersion)
+  }
+
+# I did not include dcterms:description because it nearly always described how to provide text values.  
+# Exceptions: dwciri:organismQuantityType and dwciri:sampleSizeUnit for which part of the description needed to be included.
+
+# Removed "A list (concatenated and separated) of names of " from georeferencedBy, georeferenceSources, identifiedBy, measurementDeterminedBy, preparations, recordedBy, typeStatus
+# Modified identificationQualifier, measurementMethod, samplingProtocol
+# Added the notes from Table 3.7 in the description of dwc:fieldNumber, dwc:fieldNotes, dwc:recordNumber
+
+# RDF Guide errata: Table 3.7 refers to dcmitype:Event, but that was deprecated.  Should refer to dwc:Event. 
+
+# What's the class dwc:all ??? Error?
+# Removed dwcattributes:organizedInClass dwc:all property/value pairs from dataGeneralizations, informationWithheld 
+
+# Manually created records for dwciri:inCollection, dwciri:toTaxon, dwciri:inDescribedPlace, dwciri:earliestGeochronologicalEra, dwciri:latestGeochronologicalEra, dwciri:fromLithostratigraphicUnit, dwciri:inDataset
+
+# I used the terms dcterms:relation to link the dwciri: terms to their dwc: literal valu analogs (if they have one).
+# Decided to add " (IRI)" to the end of the term labels so they would be different from their analogs.
+
+# Create versions of the dwciri: terms.  Start by converting dcterms:modified to dcterms:issued
+DELETE {?term dcterms:modified ?date.}
+INSERT {?term dcterms:issued ?date.}
+WHERE {
+  ?term rdfs:isDefinedBy dwciri:. #restrict to terms, not the namespace itself
+  ?term dcterms:modified ?date.
+  }
+
+# Then get rid of dcterms:created 
+DELETE {?term dcterms:created ?date.}
+WHERE {
+  ?term rdfs:isDefinedBy dwciri:. #restrict to terms, not the namespace itself
+  ?term dcterms:created ?date.
+  }
+
+# Write the graph:
+CONSTRUCT {?version ?p ?o} WHERE {
+  ?term ?p ?o.
+  ?term dcterms:hasVersion ?version.
+  }
+
+# drop all and load file.  Construct the status, isVersionOf, and isPartOf triples:
+CONSTRUCT {
+  ?version dwcattributes:status "recommended".
+  ?version dcterms:isVersionOf ?versionBaseURI.
+  ?version dcterms:isPartOf dwciri:2015-03-27.
+  } 
+WHERE {
+  ?version ?p ?o.
+  BIND(uri(SUBSTR(str(?version),1,STRLEN(str(?version))-11)) AS ?versionBaseURI)
+  }
+
+# Delete the bad dcterms:hasVersion triples:
+DELETE {?version dcterms:hasVersion ?version.}
+WHERE {
+  ?version dcterms:hasVersion ?version.
+  }
+
+# Delete bad isPart of triples:
+DELETE {?version dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/>.}
+WHERE {
+  ?version dcterms:isPartOf <http://rs.tdwg.org/dwc/iri/>.
+  }
+
+# Load the constructed missing triples and output.  Paste in and fix up term list metadata.
+# Load and construct the dcterms:hasPart triples. 
+CONSTRUCT {?list dcterms:hasPart ?version.} WHERE {
+  ?version dcterms:isPartOf ?list.
+  } 
+# Export and load hasPart triples with existing triples.
+# Output as normal:
+CONSTRUCT {?s ?p ?o} WHERE {
+  ?s ?p ?o.
+  BIND(LCASE(REPLACE(str(?s), '^.*(/)', "")) AS ?localName)
+  }
+Order by ?localName
+# Add dwciri: dcterms:hasVersion dwciri:2015-03-27. triple.
+# Merge with dwctermshistory
+
+# Created versions of the dcterms term list, but didn't merge with dwctermshistory since I didn't use 
+# dated versions of the dcterms: and dc: terms like I did with all of the Darwin Core terms.  Not sure
+# what to to think about that...  It doesn't fit the pattern and would make querying more complicated.
+# But terms borrowed from other vocabularies won't necessarily have dated versions (although DCMI does) and we aren't really
+# in a position to mint them???
+
+# changed incorrect dcterms:Dataset to dcmitype:Dataset.
+
+
+# Find all of the list versions and the dates on which they were issued:
+SELECT DISTINCT ?listVersion ?issued WHERE {
+  {
+  ?list a dcat:Dataset.
+  ?list dcterms:isPartOf ?vocabulary.
+  ?vocabulary a <http://purl.org/dc/dcmitype/Dataset>.
+  ?list dcterms:hasVersion ?listVersion.
+  }
+UNION
+  {
+  <http://rs.tdwg.org/dwc/dwctype/> dcterms:hasVersion ?listVersion.
+  }
+  OPTIONAL {?listVersion dcterms:issued ?issued.}
+  }
+ORDER BY desc(?issued)
+
+issued		listVersion
+
+pseudo-release 2015-03-27
+2015-03-27	 http://rs.tdwg.org/dwc/dcmi-terms-2015-03-27
+2015-03-27	 dwciri:2015-03-27
+2014-12-23	 dwc:2014-12-23
+
+release 2014-11-08
+2014-11-08	 http://rs.tdwg.org/dwc/dcmi-terms-2014-11-08
+2014-10-23	 dwc:2014-10-23
+
+release 2013-10-23
+2013-06-24	 dwctype:2013-06-24
+2013-05-25	 dwc:2013-05-25
+2013-03-28	 dwc:2013-03-28
+
+release 2011-10-26
+2011-10-26	 http://rs.tdwg.org/dwc/dcmi-terms-2011-10-26
+2011-10-16	 dwctype:2011-10-16
+2011-10-16	 dwc:2011-10-16
+
+release 2009-12-07
+2009-12-07	 dwc:2009-12-07
+
+release 2009-10-08
+2009-10-08	 http://rs.tdwg.org/dwc/dcmi-terms-2009-10-08
+
+pre-standard release 2009-09-23
+2009-09-21	 dwc:2009-09-21
+2009-09-17	 dwc:2009-09-17
+2009-09-11	 dwc:2009-09-11
+2009-08-24	 dwcattributes:2009-08-24
+2009-08-24	 dwc:2009-08-24
+
+pre-standard release 2009-07-06
+2009-07-06	 dwc:2009-07-06
+
+pre-standard release 2009-05-25
+2009-05-18	 dwc:2009-05-18
+
+pre-standard release 2009-04-29
+2009-04-29	 dwc:2009-04-29
+2009-04-24	 dwctype:2009-04-24
+2009-04-24	 dwc:2009-04-24
+
+pre-standard release 2009-02-20
+2009-01-25	 dwcattributes:2009-01-25
+2009-01-23	 dwctype:2009-01-23
+2009-01-23	 dwc:2009-01-23
+2009-01-21	 dwc:2009-01-21
+2009-01-18	 dwc:2009-01-18
+2008-11-19	 dwctype:2008-11-19
+2008-11-19	 dwc:2008-11-19
+
+# Manually construct one Darwin Core RDF Vocabulary Release and many Darwin Core Basic Vocabulary versions
+# (one for each release above).  Link with dcterms:isVersionOf and dcterms:hasVersion.
+
+# Some queries to test the graph:
+
+# (TESTING) Query to check what terms are part of each version of the vocabulary:
+SELECT DISTINCT ?term ?termVersion ?termList WHERE {
+  <http://rs.tdwg.org/dwc/basic> dcterms:hasVersion ?vocabVersion.
+  ?vocabVersion dcterms:issued "2009-12-07"^^xsd:date.
+  ?vocabVersion dcterms:hasPart ?listVersion.
+  ?listVersion dcterms:hasPart ?termVersion.
+  OPTIONAL 
+     {
+     ?termVersion dcterms:isVersionOf ?term.
+     OPTIONAL 
+       {
+       ?term dcterms:isPartOf ?termList.
+       }
+    }
+  }
+ORDER BY ?termList  
+# Notice that the OPTIONAL clause has to be added because of the inconsistent way that the Dublin Core "borrowed"
+# terms are handled in the list versions.  The second OPTIONAL clause is to catch terms that were in the 
+# vocabulary version at that time, but are not dcterms:partOf a current term list.
+
+# In running this query, I noticed that the ?listVersion dcterms:isPartOf ?vocabVersion. 
+# triples were missing, although the inverses were there.  So I generated them with this:
+CONSTRUCT {?listVersion dcterms:isPartOf ?vocabVersion.} WHERE {
+  ?vocab dcterms:hasVersion ?vocabVersion.
+  ?vocab a <http://purl.org/dc/dcmitype/Dataset>.
+  ?vocabVersion dcterms:hasPart ?listVersion.
+  }
+# and pasted them in the end of the assertions file.  They probably belong in the history file, but since
+# I was uncertain about whether this is the right way to model the vocab versions, I didn't put them 
+# there yet.
+
+# (TESTING) Query to show the terms whose versions were not in some other version 
+SELECT DISTINCT ?term ?termVersion  WHERE {
+  # Version2 is the vocabulary version whose terms are shown that are not in Version1
+  <http://rs.tdwg.org/dwc/basic> dcterms:hasVersion ?vocabVersion2.
+  ?vocabVersion2 dcterms:issued "2009-12-07"^^xsd:date.
+  ?vocabVersion2 dcterms:hasPart ?listVersion2.
+  ?listVersion2 dcterms:hasPart ?termVersion.
+  MINUS {
+        <http://rs.tdwg.org/dwc/basic> dcterms:hasVersion ?vocabVersion1.
+        ?vocabVersion1 dcterms:issued "2009-10-08"^^xsd:date.
+        ?vocabVersion1 dcterms:hasPart ?listVersion1.
+        ?listVersion1 dcterms:hasPart ?termVersion.
+        }
+  OPTIONAL 
+     {
+     ?termVersion dcterms:isVersionOf ?term.
+     }
+
+  }
+ORDER BY ?term 
+
+# (TESTING) Query to show the definitions and comments of terms that were replaced between the two versions.
+SELECT DISTINCT ?termVersion2 ?definition2 ?comment2 ?termVersion1 ?definition1 ?comment1 WHERE {
+  <http://rs.tdwg.org/dwc/basic> dcterms:hasVersion ?vocabVersion2.
+  ?vocabVersion2 dcterms:issued "2014-11-08"^^xsd:date.
+  ?vocabVersion2 dcterms:hasPart ?listVersion2.
+  ?listVersion2 dcterms:hasPart ?termVersion2.
+  ?termVersion2 rdfs:comment ?definition2.
+  OPTIONAL {?termVersion2 dcterms:description ?comment2.}
+  
+  <http://rs.tdwg.org/dwc/basic> dcterms:hasVersion ?vocabVersion1.
+  ?vocabVersion1 dcterms:issued "2011-10-26"^^xsd:date.
+  ?vocabVersion1 dcterms:hasPart ?listVersion1.
+  ?listVersion1 dcterms:hasPart ?termVersion1.
+  ?termVersion1 rdfs:comment ?definition1.
+  OPTIONAL {?termVersion1 dcterms:description ?comment1.}
+  
+  ?termVersion2 dcterms:replaces+ ?termVersion1.
+  }
+ORDER BY ?termVersion2
+
+# Quality control: find missing replaces/isReplacedBy inverses:
+SELECT DISTINCT ?resource ?replacement WHERE {
+  ?resource dcterms:isReplacedBy ?replacement.
+  MINUS {?replacement dcterms:replaces ?resource.}
+  }
+
+# found this:
+resource	replacement
+ dwc:acceptedTaxonNameID	 dwc:acceptedScientificNameID
+
+# so I added the missing triple:
+dwc:acceptedScientificNameID dcterms:replaces dwc:acceptedTaxonNameID.
+# to dwcterms.
+
+# Also checked isReplacedBy/replaces, hasVersion/isVersionOf, isVersionOf/hasVersion, hasPart/isPartOf, isPartOf/hasPart
+# the triples of the form:
+http://www.tdwg.org/standards/450/ dcterms:hasPart http://rs.tdwg.org/dwc/rdf#2015-03-27.
+# were missing, so I generated them by:
+CONSTRUCT {<http://www.tdwg.org/standards/450/> dcterms:hasPart ?part.}
+WHERE {?part dcterms:isPartOf <http://www.tdwg.org/standards/450/>.}
+
+# There is probably something wrong here because both the vocabularies and the vocabulary versions are 
+# included, but without also versioning the entire standard, I'm not sure what the solution is here.
+
+# (TESTING) Find all versions earlier than the subject, and show their status and and definition:
+SELECT DISTINCT ?version ?issued ?dfn ?status WHERE {
+#  dwc:organismID-2014-10-23 dcterms:replaces* ?version.
+  dwc:genus-2009-08-24 dcterms:replaces* ?version.
+  ?version dcterms:issued ?issued.
+  ?version rdfs:comment ?dfn.
+  ?version dwcattributes:status ?status.
+  }
+#ORDER BY ?issued
