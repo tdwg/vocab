@@ -1,6 +1,6 @@
-# Use cases for machine-readable metadata as specified by the Documentation Specification #
+# Use cases for machine-readable metadata linked according to the version and hierarchy models in the draft Documentation Specification #
 
-Steve Baskauf - 2016-04-28
+Steve Baskauf - 2016-05-03
 
 This document should be considered neither stable nor citable.
 
@@ -149,3 +149,37 @@ SELECT DISTINCT ?termVersion2 ?definition2 ?comment2 ?termVersion1 ?definition1 
   }
 ORDER BY ?termVersion2
 ```
+
+**7. Show the definitions and comments of properties that have changed between a given date and the present.**  This use case is related to [Issue #3](https://github.com/tdwg/vocab/issues/3), which raised concerns about archived data in the context of terms that no longer exist.
+
+**Query:** The following query actually addresses a broader situation than what was raised in Issue #3 in that it discovers not only terms whose IRI has changed, but also terms whose definition or comments have changed.  In the example, a dataset may have been archived using Darwin Core terms that were current on 2011-01-01.  The query discovers term versions that were replaced by other versions that are currently Recommended (and which may or may not have the same term IRI).  It does not discover terms that were deprecated and not replaced (there's no help for those).  A user could then evaluate whether the changes that have occurred would affect the interpretation of the dataset.  Note that it also shows changes in the recommended form of the values, such as the change from comma separators to pipe separators.  
+
+```
+SELECT DISTINCT ?termVersion ?replaceDate ?oldDfn ?oldComment ?recTerm ?newDfn ?newComment WHERE {
+  ?termVersion a rdf:Property.  # only interested in property terms
+#  ?termVersion dcterms:isVersionOf ?term.
+  ?termVersion dcterms:issued ?issueDate.
+  FILTER (?issueDate < "2011-01-01"^^xsd:date)  # the version must exist before that date
+  ?termVersion dcterms:isReplacedBy ?replacement.
+  ?replacement dcterms:issued ?replaceDate.
+  FILTER (?replaceDate > "2011-01-01"^^xsd:date) # the version must be replaced by something after that date
+  ?termVersion dcterms:isReplacedBy+ ?recVersion.
+  ?recVersion dwcattributes:status "recommended". # find the currently recommended replacement
+  ?recVersion dcterms:isVersionOf ?recTerm.
+  ?termVersion rdfs:comment ?oldDfn.
+  OPTIONAL {?termVersion dcterms:description ?oldComment.}
+  ?recVersion rdfs:comment ?newDfn.
+  OPTIONAL {?recVersion dcterms:description ?newComment.}
+  }
+ORDER BY ?termVersion
+```
+
+The query displays the earlier term version IRI rather than the term IRI itself.  That's because I got lazy when I generated the RDF graph and didn't generate records for the really old DwC terms - I only included the version records of those terms that were found in dwctermshistory.rdf.  For more recent dates, the first three lines of the query could be changed to:
+
+```
+SELECT DISTINCT ?term ?replaceDate ?oldDfn ?oldComment ?recTerm ?newDfn ?newComment WHERE {
+  ?termVersion a rdf:Property.  # only interested in property terms
+  ?termVersion dcterms:isVersionOf ?term.
+```
+
+The revised query would then show the undated term IRIs for the older terms, instead of the versioned IRIs.  With some modification, the revised query could be used to find only terms whose IRIs have changed since the date of the dataset (as in the case of dwc:individualID changing to dwc:organismID).
