@@ -252,11 +252,13 @@ The header section must contain the following parts:
 
 **Part of TDWG Standard:** The IRI of the standard of which this document is part. The IRI should dereference to the standard's landing page.
 
-**Latest version IRI:** The current resource IRI that will always return the latest version of the document.
+**This version:** The IRI of the specific version of the document that is being displayed.
 
-**Previous version:** The IRI of the previous version (if any). [should this be "Supersedes"?]
+**Latest version:** The current resource IRI that will always return the latest version of the document.
 
-**Replaced by:** The IRI of the next version (if any).  [should this be "Superseded by"?]
+**Previous version:** The IRI of the previous version (if any).
+
+**Replaced by:** The IRI of the next version (if any).
 
 **Abstract:** A single paragraph summary of the document.
 
@@ -264,18 +266,9 @@ The header section must contain the following parts:
 document's creation. The first person in the list should be the
 principal contact.
 
-Contributors’ names must be quoted in the following format: "FirstName
-Initials LastName (Affiliation)" where:
+Contributors’ names should be listed in full in the form that they typically use professionally.
 
-Either one or both of FirstName and Initials must be present. [What about names from cultures where names do not typically follow this pattern?]
-
-Affiliation is the organization or group the contributor is working with in relation to this document and is OPTIONAL.
-
-Examples:
-
--   Roger D. Hyam (TDWG)
--   Roger Hyam (TDWG Infrastructure Project)
--   R. Hyam
+A contributor's name may be followed by his or her affiliation in parentheses. Affiliation is the organization or group the contributor is working with in relation to the document.
 
 **Creator:** The Task Group that created the document.
 
@@ -285,7 +278,7 @@ If the document is no longer recommended for use (i.e. deprecated), this should 
 
 **3.2.3.2 Table of Contents Section**
 
-The table of contents section should contain an ordered list of all the headings (along with their numbers) that occur in the body section and nothing else. The items in the list should be hypertext links to the headings in the body. [Do we really need to specify the details of this??? Currently DwC and AC use whatever capabilities are built into the delivery system (e.g. sidebars) to enable hyperlinking to sections.]
+The table of contents section should contain an ordered list of all the headings (along with their numbers) that occur in the body section.
 
 **3.2.3.3 Body Section**
 
@@ -304,7 +297,7 @@ The final number must not be followed by a decimal point. [The practice of not e
 
 **3.2.3.4 Footer section**
 
-The footer should contain a copyright statement and licensing information.  Typically, the copyright is held by Biodiversity Information Standards (TDWG) and the license is [Creative Commons Attribution](http://creativecommons.org/licenses/by/4.0/) (CC BY).
+The footer should contain a copyright statement and licensing information.  Typically, the copyright is held by Biodiversity Information Standards (TDWG) and the license is [Creative Commons Attribution](http://creativecommons.org/licenses/by/4.0/) (CC BY).  It should also include a preferred citation in human-readable form and provide access to one or more standardized machine-readable citation export formats.
 
 [This used to say: "A reference or link to a document containing the Copyright, Licensing and Disclaimer statements that govern this document. This will usually be the standard one supplied by TDWG."  This has been included in some standards documents, but not consistently.]
 
@@ -342,13 +335,13 @@ The state of the term at particular times is recorded via versions of the term. 
 
 **3.3.3 Term list documents**
 
-A term list is a document that contains a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list is identified by the IRI of the namespace used by the terms on that list, and that namespace IRI must dereference to the term list document that contains the terms from that namespace.  For lists of terms borrowed from other vocabularies, any IRI may be used.  Although the lists of borrowed terms will be identified by a different IRI, it is permissible for the borrowed terms to be included in the same human-readable term list document as the terms defined by the standard.  In that case, the borrowed term IRI should be designed so that it will dereference to the page on which the borrowed terms are listed (e.g. through use of a hash appended to the namespace IRI).
+A term list is a document that contains a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list will be identified by an IRI that corresponds to the namespace used with the listed terms, and that IRI will dereference to the term list document that describes the terms from that namespace.  For lists of terms borrowed from other vocabularies, any IRI may be used.  Although the lists of borrowed terms will be identified by a different IRI, it is permissible for the borrowed terms to be included in the same human-readable term list document as the terms defined by the standard.  In that case, the borrowed term list IRI should be designed so that it will dereference to the page on which the borrowed terms are listed (e.g. through use of a hash appended to the namespace IRI).
 
 **3.3.3.1 Term list metadata**
 
 Term lists containing terms defined by TDWG must include the following items in their header in addition to those required for documents in general:
 
-**Namespace URI** - the IRI that identifies the term list. [Do we specify that term URIs should follow the slash URI pattern?  That's been the case for DwC and AC, but not the TDWG ontology. In the case of slash URI, the term list URI would be the same as the namespace vs. a possible discrepancy caused by the trailing # on hash URIs - namespace with, vocabulary IRI without??? see https://www.w3.org/TR/swbp-vocab-pub/#naming; SKOS example]
+**Namespace URI** - the IRI that identifies the term list.
 
 **Preferred namespace abbreviation** - the preferred abbreviation for the term list namespace.
 
@@ -474,7 +467,7 @@ The same metadata that is presented in the header section of the human-readable 
 
 \* Both of these terms are well-known properties used to indicate a human-readable label for a resource.  Including both increases the likelihood that a consuming application will be able to present that label to human users.
 
-The property dcterms:contributor should be used to link the document or vocabulary to an IRI that denotes the contributor.
+The property dcterms:contributor should be used to link the document or vocabulary to an IRI that denotes the contributor. If a well-known IRI for the contributor is not available, dcterms:contributor may be used to link to a blank node that contains parsed components of the contributor's name.
 
 [How do we decide the level at which comtributors are acknowledged? For something like best-practice guides, it's clear.  But what about vocabularies and term lists?  Also, does TDWG have a policy that vocabularies (as opposed to descriptive documents) should be licensed CC0?  If not, it should!]
 
@@ -488,10 +481,12 @@ The property dcterms:contributor should be used to link the document or vocabula
      dc:contributor "Tim Robertson (GBIF)",
                     "John Wieczorek (MVZ)",
                     "Markus Döring (GBIF)",
-                    "Renato De Giovanni (CRIA)",
+                    "Renato de Giovanni (CRIA)",
                     "Dave Vieglais (KUNHM)";
      dcterms:contributor <http://orcid.org/0000-0001-6215-3617>,
+                         [foaf:familyName "Wieczorek"; foaf:givenName "John"],
                          <http://orcid.org/0000-0001-7757-1889>,
+                         [foaf:familyName "de Giovanni"; foaf:givenName "Renato"],
                          <http://orcid.org/0000-0002-6513-4996>;
      dc:creator "TDWG Darwin Core Task Group";
      dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
