@@ -38,7 +38,7 @@ This is the only document associated with the Standards Documentation Specificat
 
 RDF examples in this document are included to clarify the normative text, although they are not themselves normative.  In some cases, IRIs represent actual standards, documents, or terms, but in many cases they are fictitious.  Additionally, in cases where the IRIs represent real resources, the properties and values shown in the examples may not represent real metadata about those resources.  The triples included in the examples do not represent a complete graph containing all of the triples necessary to comply with this standard.  Rather, they show triples that illustrate the relationships described in the sections that precede the example.  
 
-RDF/Turtle is used in all of the examples because it is generally the easiest RDF serialization for humans to comprehend.  Use of Turtle does not imply that it is a preferred serialization for representing the metadata and relationships among resources in machine-readable form.  Other serializations such as RDF/XML, RDFa, and JSON-LD might also be used to represent the same information.  Best-practices with respect to serialization should be established by community consensus in an effort outside of this standard.
+RDF/Turtle is used in all of the examples because it is generally the easiest machine-readable serialization for humans to comprehend.  Use of Turtle does not imply that it is a preferred serialization for representing the metadata and relationships among resources in machine-readable form.  Other serializations such as RDF/XML, RDFa, and JSON-LD might also be used to represent the same information.  Best-practices with respect to serialization should be established by community consensus in an effort outside of this standard.
 
 ### **1.4 Definitions** ###
 
@@ -120,7 +120,7 @@ The IRI for abstract resources should be generic.  That is, the abstract resourc
 
 **2.1.2 Content negotiation**
 
-A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it should be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client (Fig. 1).  A resource may be available as several content types, but all resources should be retrievable in a human-readable form when content-type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation should at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  Although there are a number of possible machine-readable formats, by default each resource should be described using RDF in a serialization recommended by the TDWG Technical Architecture Group (TAG).
+A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it should be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client (Fig. 1).  A resource may be available as several content types, but all resources should be retrievable in a human-readable form when content-type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation should at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  
 
 ![](graphics/std-parts.png)
 
@@ -132,11 +132,11 @@ TDWG standards consist of several IRI-identified components.  This section descr
 
 **2.2.1 Standards landing page**
 
-Each TDWG standard will be identified by an HTTP IRI (formerly known as the "permanent URL" of the standard) that represents the standard as an abstract entity.  When the standard's IRI is dereferenced by a client requesting content-type text/html (e.g. a Web browser), that IRI should redirect to a human-readable landing webpage that describes the status of the standard, contains an abstract of the standard, and contains hyperlinks to the various components that comprise the standard.  When the standard's IRI is dereferenced by a client requesting RDF, the client should be redirected to a document that contains machine-readable RDF metadata about the standard.  That document should link the components of the standard to the standard using the property dcterms:isPartOf (Fig. 2) as described in Section 4.2.  Components can include descriptive documents and vocabularies.
+Each TDWG standard will be identified by an HTTP IRI (formerly known as the "permanent URL" of the standard) that represents the standard as an abstract entity.  When the standard's IRI is dereferenced by a client requesting content-type text/html (e.g. a Web browser), that IRI should redirect to a human-readable landing webpage that describes the status of the standard, contains an abstract of the standard, and contains hyperlinks to the various components that comprise the standard.  When the standard's IRI is dereferenced by a client requesting a machine-readable format such as RDF, the client should be redirected to a document that contains machine-readable metadata about the standard.  That document should link the components of the standard to the standard using the property dcterms:isPartOf (Fig. 2) as described in Section 4.2.  Components can include descriptive documents and vocabularies.
 
 **2.2.2 Descriptive documents**
 
-Each TDWG standard will have at least one human-readable document that describes the purpose of the standard and that contains information about how the standard is to be used.  That document should follow the formatting guidelines of Section 3.  When the IRI of the descriptive document is dereferenced by machine clients, the client should retrieve an RDF description of the document's metadata.  
+Each TDWG standard will have at least one human-readable document that describes the purpose of the standard and that contains information about how the standard is to be used.  That document should follow the formatting guidelines of Section 3.  When the IRI of the descriptive document is dereferenced by machine clients, the client should retrieve a machine-readable description of the document's metadata.  
 
 ![](graphics/vocabulary-documents.png)
 
@@ -144,7 +144,7 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 **2.2.3 Vocabulary documents**
 
-TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document will contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document will contain the minimal RDF metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  
+TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document will contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document will contain the minimal machine-readable metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  
 
 Term lists may include terms that are defined elsewhere, but assert additional properties for those terms that are not included in those terms' definitions.  Such lists can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  
 
@@ -282,10 +282,7 @@ The table of contents section should contain an ordered list of all the headings
 
 **3.2.3.3 Body Section**
 
-[TODO: do we need to specify some features of existing standards documents, such as "Introduction", "Motivation", "Rationale", or do we leave this up to the authors?]
-
-The body text should be divided by a hierarchy of subheadings. The subheadings must be numbered consecutively using simple decimal system.
-The final number must not be followed by a decimal point. [The practice of not ending in a decimal point annoys me.  TDWG has been following it, but others don't. Is there some consensus on this practice?] An example:
+The body text should be divided by a hierarchy of subheadings. The subheadings must be numbered consecutively using simple decimal system. The final number must not be followed by a decimal point. An example:
 
 1 First Main Section
 
@@ -294,6 +291,8 @@ The final number must not be followed by a decimal point. [The practice of not e
 1.12.5 The fifth sub-subsection within the twelfth subsection of the first section.
 
 2 Second Main Section
+
+The first section of the body should be an introduction.  At a minimum, the introduction should explain the purpose of the document.  In the case of a standards landing page, the introduction should describe the general purpose of the entire standard.  The introductory section may include subsections as the authors deem necessary to introduce other information relevant to the entire document.
 
 **3.2.3.4 Footer section**
 
@@ -347,9 +346,9 @@ Term lists containing terms defined by TDWG must include the following items in 
 
 Each term entry on the list should include the following items.
 
-**Term name** (required) - The term name is a controlled value that represents the class, property, or concept described by the term definition.  The term name is composed of the local name part of the term IRI, with a prepended namespace abbreviation (QName) that is defined in the header section of the vocabulary list document. [RECIPES] The term name is often related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.    [Should it be required that the QName be included for terms defined by the standard? AC does, DwC doesn't. Example: "ac:caption" vs. "caption", or "dwc:recordedBy" vs. "recordedBy"]
+**Term name** (required) - The term name is a controlled value that represents the class, property, or concept described by the term definition.  The term name is composed of the local name part of the term IRI, with a prepended namespace abbreviation (QName) that is defined in the header section of the vocabulary list document. [RECIPES] The term name is often related to the meaning of the term, but users must not attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition should be consulted.
 
-**Label** (optional? DwC doesn't list it in the human-readable representation) - The label is a word or short phrase that serves as a human-readable name for the term.
+**Label** (required) - The label is a word or short phrase that serves as a human-readable name for the term.
 
 **Value** (required for controlled vocabularies, not applicable to metadata schemes) - A string that is unique within a controlled vocabulary that identifies the concept in the context of a text-based metadata transfer system.  The value should consist of [unicode characters?].
 
@@ -458,7 +457,7 @@ The same metadata that is presented in the header section of the human-readable 
 |-------------------------|-------------------------------|-------------------|
 | Title                   | dcterms:title, rdfs:label *   | literal           |
 | Part of TDWG Standard   | dcterms:isPartOf              | IRI that denotes the containing standard; omit for the standard itself|
-| Contributors            | dc:contributor                | literal; repeat property for each contributor's name; omit for the stadard itself since the contributors of each part will be listed |
+| Contributors            | dc:contributor                | literal; repeat property for each contributor's name; omit for the standard itself since the contributors of each part will be listed |
 | Creator                 | dc:creator                    | literal providing the name of the Task Group responsible for creating the document |
 | License                 | dcterms:license               | IRI for a license; use CC BY for descriptive documents and CC0 for vocabularies |
 | Legal                   | xmpRights:UsageTerms          | literal containing this text "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG)."|
@@ -498,6 +497,8 @@ The property dcterms:contributor should be used to link the document or vocabula
 **4.2.2 Deprecating resources**
 
 Deprecation of a resource is an indication that the resource is invalid or no longer recommended for use.  This is different from the situation where a resource is replaced by a newer version that is a modification of a previous version (section 4.3).  In all cases, deprecation of a resource is indicated by assigning the property owl:deprecated with a value of "true" datatyped as xsd:boolean.  An rdfs:comment property should provide a human-readable description of the circumstances of the deprecation.  If another resource provides additional information or a possible replacement, a link should be made from the deprecated resource to the other resource using rdfs:seeAlso.
+
+When a resource is deprecated, that action represents a modification of that resource. Therefore, the value of dcterms:modified should be set to the date on which the decision to deprecate was made.  After the resource is deprecated, there should be no additional modifications to the resource.  So the dcterms:modified value of a deprecated resource represents the ending date of that resource's lifespan.
 
 At the standard level, deprecation occurs when a standard is assigned to the [Retired Standard](http://www.tdwg.org/standards/status-and-categories/) category.
 
