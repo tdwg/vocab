@@ -1,6 +1,6 @@
 # TDWG Standards Documentation Specification #
 
-This document is an early draft and should be considered neither stable nor citable.
+This draft was revised following the VOCAB Task Group call of 2015-05-04.  However, it still should be considered neither stable nor citable.
 
 **Title:** TDWG Standards Documentation Specification
 
@@ -60,7 +60,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **IRI** - Internationalized Resource Identifier. A superset of Uniform Resource Identifier (URI) that uniquely identifies a resource using characters from any character set. [IRI]
 
-**metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL). Terms (or "elements") in the scheme may represent classes or properties. Axioms may describe term properties to form an ontology. [NISO] [ISO-25964-2]
+**metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL [OWL]). Terms (or "elements") in the scheme may represent classes or properties. Axioms may describe term properties to form an ontology. [NISO] [ISO-25964-2]
 
 **normative** - the prescriptive part of a standard that specifies that which is necessary to comply with the standard
 
@@ -120,7 +120,7 @@ The IRI for abstract resources should be generic.  That is, the abstract resourc
 
 **2.1.2 Content negotiation**
 
-A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it should be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client (Fig. 1).  A resource may be available as several content types, but all resources should be retrievable in a human-readable form when content-type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation should at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  
+A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it should be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client (Fig. 1) [GUID, Recommendation 7].  A resource may be available as several content types, but all resources should be retrievable in a human-readable form when media type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation should at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  
 
 ![](graphics/std-parts.png)
 
@@ -132,7 +132,7 @@ TDWG standards consist of several IRI-identified components.  This section descr
 
 **2.2.1 Standards landing page**
 
-Each TDWG standard will be identified by an HTTP IRI (formerly known as the "permanent URL" of the standard) that represents the standard as an abstract entity.  When the standard's IRI is dereferenced by a client requesting content-type text/html (e.g. a Web browser), that IRI should redirect to a human-readable landing webpage that describes the status of the standard, contains an abstract of the standard, and contains hyperlinks to the various components that comprise the standard.  When the standard's IRI is dereferenced by a client requesting a machine-readable format such as RDF, the client should be redirected to a document that contains machine-readable metadata about the standard.  That document should link the components of the standard to the standard using the property dcterms:isPartOf (Fig. 2) as described in Section 4.2.  Components can include descriptive documents and vocabularies.
+Each TDWG standard will be identified by an HTTP IRI (formerly known as the "permanent URL" of the standard) that represents the standard as an abstract entity.  When the standard's IRI is dereferenced by a client requesting media type text/html (e.g. a Web browser), that IRI should redirect to a human-readable landing webpage that describes the status of the standard, contains an abstract of the standard, and contains hyperlinks to the various components that comprise the standard.  When the standard's IRI is dereferenced by a client requesting a machine-readable format such as RDF, the client should be redirected to a document that contains machine-readable metadata about the standard.  That document should link the components of the standard to the standard using the property dcterms:isPartOf (Fig. 2) as described in Section 4.2.  Components can include descriptive documents and vocabularies.
 
 **2.2.2 Descriptive documents**
 
@@ -144,7 +144,7 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 **2.2.3 Vocabulary documents**
 
-TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting content-type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document will contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document will contain the minimal machine-readable metadata described in section 3.3.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  
+TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document will contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document will contain the minimal machine-readable metadata described in Sections 4.2 and 4.4.2.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  
 
 Term lists may include terms that are defined elsewhere, but assert additional properties for those terms that are not included in those terms' definitions.  Such lists can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  
 
@@ -154,7 +154,7 @@ Fig. 4. Relationship of a term list document to its distributions.
 
 **2.2.4 Distributions**
 
-Vocabulary term lists as abstract resources also exist as more concrete entities that can be stored and delivered.  A human user or semantic client may discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list may be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting content-type text/html, yet availability of the list in Markdown form may not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), should be made known to both humans and machines.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] should be used to indicate the links from a vocabulary's term list to its available distributions.
+Vocabulary term lists as abstract resources also exist as more concrete entities that can be stored and delivered.  A human user or semantic client may discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list may be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form may not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), should be made known to both humans and machines.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] should be used to indicate the links from a vocabulary's term list to its available distributions.
 
 All distributions of a term list should contain substantively the same information about the terms on the list.  Thus a user retrieving any of the distributions should be able to learn the same properties and their values for all of the terms.
 
@@ -182,8 +182,6 @@ The versioning model is specific to neither humans nor machines, and either shou
 ## **3 Human-readable documents** ##
 
 In order for a standard to achieve its purpose, it must include documents that permit human users to understand what is necessary to comply with the requirements of the standard.  This section describes how human-readable documents should be constructed to make this possible.
-
-Determining what is necessary to comply with a standard is necessarily a human activity.  Therefore, the normative content of the standard should be contained exclusively in human-readable documents.
 
 ### **3.1 Landing page for the standard** ###
 
@@ -302,17 +300,7 @@ The footer should contain a copyright statement and licensing information.  Typi
 
 **3.2.4 Language**
 
-All normative content must be in English. ~~Translations of normative documents may be included in the standard but the translations must be treated as informative documents.~~ [This was copied from the earlier specification.  Do we really want to say that translations may be "included in the standard"?  That would imply that creating additional translations would require amending the standard.  Is that what we really want???  I think not.] Translations of normative documents are encouraged but will be treated as ancillary documents that are not included in the standard.
-
-**3.3 Archiving of documents**
-
-In order for a standard to enable compliance with a consensus community practice, a version of a standards document must be immutable and easily viewable by the public. This has several implications for the way in which documents are archived.
-
-In order to ensure the stability of a human-readable document, it should be archived as a discrete file as opposed to being generated from a potentially changing database.  The archived document file must be in an open format for which parsers are commonly available. For this purpose an open format is defined as being one for which it would be possible to write a parser on the basis of a published specification without having to rely on code libraries for which the source code is not available or to pay a license fee.
-
-In accordance with Section 2.1, the document may exist as files in a variety of formats that can be retrieved through content negotiation.  For example, a document may be available in any of HTML, PDF, and Markdown formats.  However, when rendered by a parser, each differently formatted file must render to a form that is substantively the same to a human reader.  At least one available form must be easily viewable to a human reader in a browser that requests text/html, regardless of whether the source file is actually in HTML format.
-
-Documents should be maintained as part of a publicly accessible version control system that ensures document files will not be lost and that previous document versions can be located and accessed through their immutable IRIs.  
+Standards documents must be written in English. Translations of standards documents are encouraged, but to simplify management of the standard they will be treated as ancillary documents that are not included in the standard.
 
 ### **3.3 Vocabulary descriptions** ###
 
@@ -320,7 +308,7 @@ Documents that describe vocabularies make up a special category of human-readabl
 
 **3.3.1 Landing page for the vocabulary**
 
-Although a standard may define a vocabulary, the standard may also include other documents such as guides that describe how the vocabulary may be used in different contexts.  It is also possible for a standard to define several vocabularies that may share subsets of terms defined by the vocabulary.  Thus it is clear that a vocabulary is an entity that is distinct from the standard that defines it.  As such, the vocabulary will have an IRI that is distinct from the standard's IRI.  The vocabulary's landing page is the page that is presented to a human user when the vocabulary IRI is dereferenced and content-type text/html is requested.
+Although a standard may define a vocabulary, the standard may also include other documents such as guides that describe how the vocabulary may be used in different contexts.  It is also possible for a standard to define several vocabularies that may share subsets of terms defined by the vocabulary.  Thus it is clear that a vocabulary is an entity that is distinct from the standard that defines it.  As such, the vocabulary will have an IRI that is distinct from the standard's IRI.  The vocabulary's landing page is the page that is presented to a human user when the vocabulary IRI is dereferenced and media type text/html is requested.
 
 In its header, the landing page will contain the metadata described in Section 3.2.3.1, with the most recent release date serving as the Date Issued, and the vocabulary IRI serving as the Latest Version IRI.
 
@@ -350,7 +338,7 @@ Each term entry on the list should include the following items.
 
 **Label** (required) - The label is a word or short phrase that serves as a human-readable name for the term.
 
-**Value** (required for controlled vocabularies, not applicable to metadata schemes) - A string that is unique within a controlled vocabulary that identifies the concept in the context of a text-based metadata transfer system.  The value should consist of [unicode characters?].
+**Value** (required for controlled vocabularies, not applicable to metadata schemes) - A string that is unique within a controlled vocabulary that identifies the concept in the context of a text-based metadata transfer system.  The value should consist of Unicode characters.
 
 **Term IRI** (required) - The HTTP IRI that uniquely identifies the current term
 
@@ -366,7 +354,7 @@ The term list may contain other properties of the term that are deemed to be use
 
 **3.3.3.2 Term list distributions**
 
-The term list document should contain a section listing the available distributions for the term list.  Each item on the list should contain a description of the form of the distribution, the IRI of the distribution, and the download or access URL for the distribution.  If the distribution is a file, the format should be described.  If the distribution is an endpoint, the type of endpoint (for example, SPARQL or an API delivering JSON) should be described. If the distribution is viewable in a human-friendly web page, the distribution IRI may be hyperlinked to that page.  The download or access URL should be listed and hyperlinked to the raw file or access URL for the endpoint.  A client should be able to retrieve the raw file in the described format directly from the download URL.  A client should be able to make calls directly to the access URL of the endpoint. [OK, here's a potential problem.  What if the download or endpoint URL changes?  We don't really want to have to make a change to the standard to change that!  Maybe the term list should just contain a link to an ancillary page that's outside the standard and lists the distributions.  In that case, do we have any business specifying here how that page should be structured???]
+The term list document should contain a section listing the available distributions for the term list.  Each item on the list should contain a description of the form of the distribution, the IRI of the distribution, and the download or access URL for the distribution.  If the distribution is a file, the format should be described.  If the distribution is an endpoint, the type of endpoint (for example, SPARQL or an API delivering JSON) should be described. If the distribution is viewable in a human-friendly web page, the distribution IRI may be hyperlinked to that page.  The download or access URL should be listed and hyperlinked to the raw file or access URL for the endpoint.  A client should be able to retrieve the raw file in the described format directly from the download URL.  A client should be able to make calls directly to the access URL of the endpoint.
 
 **3.3.3.2.1 Example distributions record (non-normative)**
 
@@ -385,7 +373,7 @@ The term version list should be identified by an IRI that facilitates discovery 
 
 Each term version entry must include the following items.
 
-**Term name** - The term name will be the same as the name used for the current term when the version was valid [or recommended, or non-superseded???].  Because there may be several versions of the term on the list, the term name will not necessarily be unique on the list.  
+**Term name** - The term name will be the same as the name used for the current term when the version was recommended.  Because there may be several versions of the term on the list, the term name will not necessarily be unique on the list.  
 
 **Term version IRI** - The HTTP IRI that identifies the particular version of the term.
 
@@ -433,7 +421,7 @@ When the resource IRI http://rs.tdwg.org/dwc/terms/guides/text is dereferenced r
 
 ### **4.1.2 Types of resources** ###
 
-Indicate the class of which a resource is an instance by using rdf:type.  The following classes should be used:
+Indicate the class of which a resource is an instance by using rdf:type [GUID, Recommendation 11].  The following classes should be used:
 
 |**Class**                          | **Machine-readable value**|
 |-----------------------------------|---------------------------|
@@ -447,7 +435,7 @@ Indicate the class of which a resource is an instance by using rdf:type.  The fo
 
 \* The semantics of the DCAT Recommendation entail that an instance of dcat:Dataset is also an instance of dcmitype:Dataset.
 
-Documents should be typed according to a well-known vocabulary.  Suggestions of appropriate classes can be found in an ancillary document related to this standard. [put this here since I don't know the future of FOAF, schema.org, bibo, etc.]
+Documents should be typed according to a well-known vocabulary.  
 
 ### **4.2 General metadata** ###
 
@@ -468,7 +456,7 @@ The same metadata that is presented in the header section of the human-readable 
 
 The property dcterms:contributor should be used to link the document or vocabulary to an IRI that denotes the contributor. If a well-known IRI for the contributor is not available, dcterms:contributor may be used to link to a blank node that contains parsed components of the contributor's name.
 
-[How do we decide the level at which comtributors are acknowledged? For something like best-practice guides, it's clear.  But what about vocabularies and term lists?  Also, does TDWG have a policy that vocabularies (as opposed to descriptive documents) should be licensed CC0?  If not, it should!]
+[How do we decide the level at which contributors are acknowledged? For something like best-practice guides, it's clear.  But what about vocabularies and term lists?  Also, does TDWG have a policy that vocabularies (as opposed to descriptive documents) should be licensed CC0?  If not, it should!]
 
 **4.2.1 Example of expressing general metadata (non-normative)**
 
@@ -516,9 +504,9 @@ For information about deprecation of terms within vocabularies, see section 4.5.
 
 ### **4.3 Metadata describing and linking versions** ###
 
-The property owl:versionInfo, which is expected to have a literal value, should be used to provide information about the version of a resource.  This standard does not specify a particular version identifying system; however, it should be understood that version information is intended for a human audience.  Therefore, a system should be used that makes it apparent to a human that a certain version precedes or follows another version.
+The property owl:versionInfo, which is expected to have a literal value, should be used to provide information about the version of a resource [GUID, Recommendation 13].  This standard does not specify a particular version identifying system; however, it should be understood that version information is intended for a human audience.  Therefore, a system should be used that makes it apparent to a human that a certain version precedes or follows another version.
 
-A current resource is related to its versions by dcterms:hasVersion, while a version is related to its current resource by dcterms:hasVersion.  A version is related to a previous version by dcterms:replaces, while a version is related to a subsequent version by dcterms:isReplacedBy.
+A current resource is related to its versions by dcterms:hasVersion, [GUID, Recommendation 13] while a version is related to its current resource by dcterms:isVersionOf.  A version is related to a previous version by dcterms:replaces, while a version is related to a subsequent version by dcterms:isReplacedBy  [GUID, Recommendation 13].
 
 The property dcterms:issued should be used to indicate the date on which a version was published.  The property dcterms:created should be used to indicate the date that the first version of a resource was issued.  The property dcterms:modified should be used to indicate the date that the most recent version was issued.
 
@@ -633,7 +621,11 @@ When a preferred namespace prefix is chosen, care should be taken to ensure that
 
 Term lists for borrowed terms are simply used to group those terms and are not authoritative.  So information about preferred namespace abbreviations and IRIs should not be included in the metadata about that term list.  However, if the defining authority for terms within a namespace fails to provide that information, it can be asserted within the document that contains the metadata about the term list.  
 
-**4.4.2.1 Examples (non-normative)**
+**4.4.2.1 Normative and non-normative content in machine-readable representations of term lists**
+
+Although term lists are a form of descriptive document, they differ from generic descriptive documents in an important way.  The machine-readable representation of a descriptive document that is primarily human-readable will contain metadata about the document, but will not generally include most of the content of the document.  However, the machine-readable representation of a term list will contain substantively the same information as the human-readable document.  For that reason, it is important that any notations explaining the categories of term data that are normative must be preserved in the machine-readable data as well.  Such notations should be included as the value of an rdfs:comment property of the term list. For example, if the human-readable representation of the term list notes that term definitions are normative, but that comments are not, this note should be included as an rdfs:comment.  
+
+**4.4.2.2 Examples (non-normative)**
 
 An example of metadata about an authoritative term list:
 
@@ -682,9 +674,29 @@ An example of metadata about a non-authoritative term list:
 # IPTC terms have URIs that are not dereferenceable, so give some information about their namespace
 <http://iptc.org/std/Iptc4xmpExt/2008-02-29/>
      vann:preferredNamespacePrefix "Iptc4xmpExt";
-     vann:preferredNamespaceUri "http://iptc.org/std/Iptc4xmpExt/2008-02-29/";
+     vann:preferredNamespaceUri "http://iptc.org/std/Iptc4xmpExt/2008-02-29/".
+```
+
+An example showing how normative and non-normative term data are designated:
 
 ```
+<http://rs.tdwg.org/cvterms/disposition/>
+     dcterms:title "Term list for the dwc:disposition controlled vocabulary"@en;
+     rdfs:label "Term list for the dwc:disposition controlled vocabulary"@en;
+     rdfs:comment "For each term in this list, the controlled value (rdf:value), and definition (rdfs:comment) are normative.  Labels (rdfs:label) and comments (dcterms:description) are non-normative.";
+     a dcat:Dataset.
+
+<http://rs.tdwg.org/cvterms/disposition/inCollection>
+     rdfs:label "In Collection"@en;
+     rdfs:comment "The collection item is present in the collection."@en;
+     skos:definition "The collection item is present in the collection."@en;
+     rdf:value "in collection";
+     dcterms:description "It is recommended that collection items that are on temporary loan continue to have a value of \"in collection\".";
+     rdfs:isDefinedBy <http://rs.tdwg.org/cvterms/disposition/>;
+     dcterms:isPartOf <http://rs.tdwg.org/cvterms/disposition/>;
+     a skos:Concept.
+```
+
 **4.4.3 Linking to and describing distributions**
 
 The guidelines expressed in the W3C Data Catalog Vocabulary [DCAT] should be followed for linking to and describing distributions of term lists.  Since term lists are typed as dcat:Dataset, they may be assigned any of the properties that are appropriate for instances of dcat:Dataset.  Term lists are linked to their distributions using the property dcat:distribution. Distributions may be assigned any properties that are appropriate for dcat:Distribution instances; however, at a minimum, they should have the properties dcterms:modified, dcat:accessURL or dcat:downloadURL (whichever is appropriate), and dcat:mediaType or dcterms:format.  If an IANA media type exists for the format of the distribution, dcat:mediaType should be used in preference over dcterms:format. [IANA]
@@ -728,7 +740,7 @@ The following properties are required for current terms and term versions. Note 
 | Definition               | rdfs:comment                  | Literal           |
 | Type                     | rdf:type                      | IRI               |
 
-Values for rdfs:label and rdfs:comment should be English language-tagged plain literals.  Values in other languages may be provided, but should be included in other ancillary documents that are associated with, but not included within the standard (see section 4.5.1).
+Values for rdfs:label and rdfs:comment should be English language-tagged plain literals.  Values in other languages may be provided, but should be included in other ancillary documents that are associated with, but not included within the standard (see section 4.5.2).
 
 Types should be rdf:Property for properties, rdfs:Class for classes, and skos:Concept for controlled values.
 
@@ -960,11 +972,28 @@ The following example illustrates the use of the controlled vocabulary terms fro
 <http://bioimages.vanderbilt.edu/vanderbilt/1-183> dwciri:disposition dwcdisp:destroyed.
 ```
 
-## **5 References** ##
+## **5 Archiving of documents** ##
+
+In order for a standard to enable compliance with a consensus community practice, a version of a standards document must be immutable and easily viewable by the public. This has several implications for the way in which documents are archived.
+
+In order to ensure the stability of a human-readable document, it should be archived as a discrete file as opposed to being generated from a potentially changing database.  The archived document file must be in an open format for which parsers are commonly available. For this purpose an open format is defined as being one for which it would be possible to write a parser on the basis of a published specification without having to rely on code libraries for which the source code is not available or to pay a license fee.
+
+In accordance with Section 2.1, the document may exist as files in a variety of formats that can be retrieved through content negotiation.  For example, a document may be available in any of HTML, PDF, and Markdown formats.  However, when rendered by a parser, each differently formatted file must render to a form that is substantively the same to a human reader.  At least one available form must be easily viewable to a human reader in a browser that requests text/html, regardless of whether the source file is actually in HTML format.
+
+If a human-readable document is available in more than one format, the format that is delivered when that document's IRI is dereferenced requesting media type text/html will be considered to be the authoritative representation of the document.  The document in that format must be included in the archive for the standard. Other formats may be distributed by any mechanism, but in accordance with Section 3.2.3.1, those formats must include the "Latest version" IRI so that a reader can always retrieve the authoritative form of the document.  
+
+If machine-readable documents are available in more than one serialization, they must all contain triples that would be interpreted as identical by a machine.  At least one of these serializations must be included in the archive for the standard.
+
+Documents should be maintained as part of a publicly accessible version control system that ensures document files will not be lost and that previous document versions can be located and accessed through their immutable IRIs.  
+
+
+## **6 References** ##
 
 [COOL-URIS] http://www.w3.org/TR/cooluris/#cooluris Cool URIs for the Semantic Web
 
 [DCAT] https://www.w3.org/TR/vocab-dcat/ Data Catalog Vocabulary (DCAT)
+
+[GUID] http://www.tdwg.org/standards/150 TDWG GUID Applicability Statement
 
 [HTTP-1.1] http://tools.ietf.org/html/rfc7231 Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content
 
@@ -974,7 +1003,9 @@ The following example illustrates the use of the controlled vocabulary terms fro
 
 [ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularis. Part 2: Interoperability with other vocabularies. 2013-03-15.
 
-[NISO] http://www.niso.org/publications/press/UnderstandingMetadata.pdf Understanding Metadata. 2004. NISO Press.  
+[NISO] http://www.niso.org/publications/press/UnderstandingMetadata.pdf Understanding Metadata. 2004. NISO Press.
+
+[OWL] http://www.w3.org/TR/owl-overview OWL Web Ontology Language Document Overview (W3C Recommendation). World Wid Web Consortium.
 
 [RECIPES] https://www.w3.org/TR/swbp-vocab-pub/ Best Practice Recipes for Publishing RDF Vocabularies. 2008.  W3C Working Group Note.
 
@@ -990,137 +1021,3 @@ Reference
 This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).
 
 Copyright 201x - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
------------------
-# Items below this point are from the unratified documentation standard and should probably be discussed by the task group.#
-
-Notes: Rec 10 of the GUID AS says the default response serialization should be RDF/XML.  Should this be changed to "format recommended by TAG"?
-
-GUID AS Rec 13 says that an object should be linked to its revisions.  Review this rec before writing.
-
-
-**4 Contents of Standards**
-
-[evaluate]
-
-A standard should also contain information on:
-
--   the 'Motivation' for the existence of the standard; and
--   the 'Rationale' for why the standard takes the form it does.
-
-The draft standard said that these things should be in the introduction.  Darwin Core has them in the Introduction.  Also, what about "Audience"?  This seems to be included routinely, but I don't think it was in the earlier spec.  Should it be in this one?
-
-**5 Packaging of Standards**
-
-[evaluate this.  How does this concept of the standard as a "bundle" fit in with our experience in trying to "package up" frozen versions of Darwin Core and Audubon Core that actually "live" as web or wiki pages? This probably needs to be re-thought in the context of version control and GitHub repos.  Maybe it makes more sense to consider a packaged standard as a frozen release in some version control system.]
-
-Standards take the form of a logical folder or directory, but may be
-distributed as a zip or tar archive file. The name of the archive must
-be the file name of the standard followed by a period and the
-appropriate suffix if the standard is compressed.
-
-**6 Naming of Standards**
-
-[I think this pretty much has gone out the window.]
-
-~~Every standard must have two names, a full name and a file name.
-
-The **full name** is used in the cover page and as the title of the main
-document if it is human-readable. The full name must be in English and
-must be unique within the scope of TDWG standards, but otherwise is not
-controlled and may contain any combination of characters.~~
-
-[This does not seem to have been followed at all. The OJS system assigns numbers that seem entirely meaningless, so when the archived packages are downloaded there is no relationship between the file names and the standard names.]
-~~The **file name** should be created as a shortened version of the full
-name and is used for the logical folder or directory and any
-distribution archive. Rules for constructing file names are given below.
-The file name must also be unique among TDWG standards.~~
-
-
-**12.2 Key Words Governing Compliance**
-
-[we need to spell out the circumstances under which RFC 2119 keywords are appropriate]
-This policy is specified in RFC 2119 (http://www.ietf.org/rfc/rfc2119.txt).  Examine the use of "must" and "should" in this document and use consistently.
-
-**13 Cover Page Contents**
-
-[Most of this stuff is included in the header section metadata for standards landing pages and other documents.  If we are dumping the whole cover page/packaging thing, then this is obsolete.  We should go through these fields to decide if any of them that are missing should be put into the header section.  In particular: Subject and Access Rights?? Also, what about all of the legal mumbo-jumbo in sections 14 through 14.5?  Is there some standard page of this stuff that could just be hyperlinked from the "Legal" section of the header.]
-
-This section specifies content for the Cover Page documents that must be
-contained in all TDWG standards. The table below shows the components
-that must be contained in the cover page of all TDWG standards. These
-are based on a subset of the Dublin Core metadata initiative elements
-and terms.
-
-Table 2: Fields for Cover Page documents.
-
-
-|**Name**      |           **Notes**|
-|---------------|----------------|
-| Title                   | **Required** The official TDWG title for the standard (see above)|
-| Description      |        **Required** A brief (&lt;=250 words) description of the standard|
-| Subject             |     **Required** Key words, key phrases and classification codes that describe the topic covered by the standard.|
-| Creator           |       **Required** The primary author of the standard following the conventions outlined above. Should only occur once.|
-| Contributor      |        A contributor to the standard following the conventions outlined above. This assertion may be repeated.|
-|  Date Modified    |        The date the standard was last modified. Will be prior to Date Accepted if that is present.|
-|  Date Accepted       |     **Required for accepted standards** The date the standard was officially ratified by TDWG and fixed. If a modified date is present it must be prior to this date.|
-|  Identifier      |         The GUID of the standard.|
-|  Publisher            |    **Required** Should always contain the text "Biodiversity Information Standards TDWG."|
-|  Rights          |         **Required** One or more URLs linking to documents describing the copyright, licensing provisions and disclaimers associated with the standard. Typically this will be contained within another TDWG standard. (see Legal Statements below)|
-|  Access Rights        |    **Required** Should always contain the single word 'public'. All TDWG standards should be freely accessible to all via the Internet.|
-| Bibliographic Citation  | **Required** How this standard should be cited.|
-|  Has Part           |      **Required** The full URL to a file within the standard. This assertion should be repeated for each file within the standard (other than cover.xml itself).|
-| Replaced By             | **Required if this standard has been replaced by another.** If the standard has been replaced then this assertion should be present and contain the full URL to the new standard.|
-| Replaces          |       **Required if this standard replaces another.** If this standard replaces a previous one then this assertion should be present and contain the full URI of the standard replaced.|
-
-
-**14 Legal Statements**
-
-
-TDWG standards must contain explicit statements of copyright (the
-assertion of intellectual property rights), the licensing provisions for
-the standard, and a disclaimer of liability. This section defines the
-texts that should be included in TDWG standards and actions that should
-be taken if these texts are deemed not to be suitable for a particular
-standard.
-
-**14.1 Copyright**
-
-The usual practice will be for participants in TDWG activities to
-contribute their intellectual works to TDWG freely, and to combine them
-with the contributions of others to create a TDWG standard. TDWG
-strongly recommends that TDWG standards be placed under TDWG copyright.
-
-The following copyright notice should be included in all TDWG documents
-
-Copyright © TDWG *(year)*. All Rights Reserved.
-
-**14.2 Licensing Provisions**
-
-TDWG intends its standards to be used as broadly as possible and should
-impose no royalties or licensing fees for their use. TDWG will normally
-publish its standards under the Creative Commons Attribution (CC BY)
-license. Under this license users may copy, completely or in part, or
-create derivative works for any purpose, whether commercial or public
-benefit, subject only to the requirement that the original standard must
-be cited.
-
-
-
-**14.3 Disclaimer**
-
-The following text must be included or referenced in all TDWG standards
-documents:
-
-Disclaimer: This document and the information contained herein are
-provided on an "AS IS" basis. TDWG MAKES NO WARRANTIES REGARDING THE
-INFORMATION PROVIDED, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM
-ITS USE.
-
-
-
-**14.5 Departure from Usual Practice**
-
-If the participants in a TDWG activity intend to depart from the legal
-framework provided above, the alternative statements of intellectual
-property rights and licensing must be described fully in the charter of
-that activity as well as the standard itself. [should this be here?]
