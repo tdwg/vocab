@@ -11,6 +11,7 @@ To initiate discussion on an issue, open a new issue in the tracker. Opening or 
 ## Meeting notes
 
 [2015-07-15 Google Hangout (attended by core members)](meeting-notes/hangout-2015-07-15.md)
+[2016-05-04 Google Hangout](meeting-notes/meeting-agenda-notes-2016-05-04.pdf)
 
 ## Background
 
