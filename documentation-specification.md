@@ -326,7 +326,7 @@ The state of the term at particular times is recorded via versions of the term. 
 
 A term list is a document that contains a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list will be identified by an IRI that corresponds to the namespace used with the listed terms, and that IRI will dereference to the term list document that describes the terms from that namespace.  For lists of terms borrowed from other vocabularies, any IRI may be used.  Although the lists of borrowed terms will be identified by a different IRI, it is permissible for the borrowed terms to be included in the same human-readable term list document as the terms defined by the standard.  In that case, the borrowed term list IRI should be designed so that it will dereference to the page on which the borrowed terms are listed (e.g. through use of a hash appended to the namespace IRI).
 
-Term lists may also be vocabulary extensions.  A vocabulary extension describes additional properties of a term that are not included in the basic human-readable definition.  A vocabulary extension may be described in a separate document from the basic term definitions, or may be a separate section in the same document.  In either case, the vocabulary extension must be identified by a different IRI from the basic term list.
+Term lists may also be vocabulary extensions.  A vocabulary extension describes additional properties of a term that are not included in the basic human-readable definition.  A vocabulary extension must be identified by a different IRI from the basic term list.  Because the mechanism of importing machine-readable representations of vocabulary extension term lists requires that those lists be included in separate documents, achieving content negotiation for both human- and machine-readable representations is simplest if the human-readable representations are also in separate documents from other human-readable term list documents that form parts of vocabulary standards.  
 
 **3.3.3.1 Term list metadata**
 
@@ -354,7 +354,7 @@ Each term entry on the list should include the following items.
 
 **Type** (required) - Values include "Class", "Property", and "Concept".
 
-The term list may contain other properties of the term that are deemed to be useful, including informative comments or notes that provide examples or clarification, but which do not form part of the normative definition of the term.  [Here I'm explicitly saying that part of the metadata, e.g. comments are NOT normative with respect to the terms. Is that a good thing? Or should we specify that the vocabulary writers must indicate what metadata properties they consider normative?]
+The term list may contain other properties of the term that are deemed to be useful, including informative comments or notes that provide examples or clarification.
 
 **3.3.3.2 Term list distributions**
 
