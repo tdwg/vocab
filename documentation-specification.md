@@ -78,7 +78,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **vocabulary** - a collection of standardized terms and their definitions.  Terms may represent classes, properties, or concepts.
 
-**vocabulary extension list** - a specialized type of term list that asserts additional properties for terms beyond their basic human-readable definitions.  For example, a vocabulary extension may assert for a term subclass or subproperty relations, class restrictions, ranges or domains, etc.  
+**vocabulary extension term list** - a specialized type of term list that asserts additional properties for terms beyond their basic human-readable definitions.  For example, a vocabulary extension may assert for a term subclass or subproperty relations, class restrictions, ranges or domains, etc.  
 
 ### **1.5 Namespaces used in this document** ###
 
@@ -630,9 +630,9 @@ Term lists for borrowed terms are simply used to group those terms and are not a
 
 Although term lists are a form of descriptive document, they differ from generic descriptive documents in an important way.  The machine-readable representation of a descriptive document that is primarily human-readable will contain metadata about the document, but will not generally include most of the content of the document.  However, the machine-readable representation of a term list will contain substantively the same information as the human-readable document.  For that reason, it is important that any notations explaining the categories of term data that are normative must be preserved in the machine-readable data as well.  Such notations should be included as the value of an rdfs:comment property of the term list. For example, if the human-readable representation of the term list notes that term definitions are normative, but that comments are not, this note should be included as an rdfs:comment.  
 
-**4.4.2.2 Vocabulary extension lists**
+**4.4.2.2 Vocabulary extension term lists**
 
-If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties should be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list known as a vocabulary extension list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology.  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
+If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties should be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology.  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
 
 The rdf:type of a vocabulary extension list is owl:Ontology. This is entailed by the range of owl:imports; nevertheless, it is desirable to assert this explicitly.  The type of a basic term definition list should not be declared explicitly to be owl:Ontology, since this implies a level of semantics that may not concern all users of the basic term list.  
 
