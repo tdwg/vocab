@@ -60,7 +60,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **IRI** - Internationalized Resource Identifier. A superset of Uniform Resource Identifier (URI) that uniquely identifies a resource using characters from any character set. [IRI]
 
-**metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL [OWL]). Terms (or "elements") in the scheme may represent classes or properties. Axioms may describe term properties to form an ontology. [NISO] [ISO-25964-2]
+**metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL [OWL-OVERVIEW]). Terms (or "elements") in the scheme may represent classes or properties. Axioms may describe term properties to form an ontology. [NISO] [ISO-25964-2]
 
 **normative** - the prescriptive part of a standard that specifies that which is necessary to comply with the standard
 
@@ -70,13 +70,15 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **resource** - Any kind of thing that can be identified. Resources can include documents, people, physical objects, and abstract concepts [RDF-PRIMER].
 
-**term list** - A document that is part of a vocabulary and that lists the terms within the vocabulary that are defined as part of a particular namespace.  
+**term list** - A document that is part of a vocabulary and that lists the terms within the vocabulary that are grouped in a particular way, such as falling within a particular namespace.  
 
 **user** - This standard refers to two categories of users.  A user may be a human user interacting with a server through a user-agent (software such as a Web browser), and referred to in brief as a "human".  A user can also be a semantic client: computer software interacting semi-autonomously with a server, and referred to in brief as a "machine".  Both a user-agent assisting the human, and a semantic client are referred to generically as "clients".
 
 **version** - a “snapshot” of a resource in time.  A version is created at a particular moment in time and documents the state of the resource until that version is replaced by a later version.  
 
 **vocabulary** - a collection of standardized terms and their definitions.  Terms may represent classes, properties, or concepts.
+
+**vocabulary extension list** - a specialized type of term list that asserts additional properties for terms beyond their basic human-readable definitions.  For example, a vocabulary extension may assert for a term subclass or subproperty relations, class restrictions, ranges or domains, etc.  
 
 ### **1.5 Namespaces used in this document** ###
 
@@ -146,7 +148,7 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client should obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document will contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document will contain the minimal machine-readable metadata described in Sections 4.2 and 4.4.2.  There may also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  
 
-Term lists may include terms that are defined elsewhere, but assert additional properties for those terms that are not included in those terms' definitions.  Such lists can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  
+Term lists may include terms that are defined elsewhere, but assert additional properties for those terms that are not included in those terms' definitions.  Such extensions can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  
 
 ![](graphics/distributions.png)
 
@@ -324,6 +326,8 @@ The state of the term at particular times is recorded via versions of the term. 
 
 A term list is a document that contains a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies may also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list will be identified by an IRI that corresponds to the namespace used with the listed terms, and that IRI will dereference to the term list document that describes the terms from that namespace.  For lists of terms borrowed from other vocabularies, any IRI may be used.  Although the lists of borrowed terms will be identified by a different IRI, it is permissible for the borrowed terms to be included in the same human-readable term list document as the terms defined by the standard.  In that case, the borrowed term list IRI should be designed so that it will dereference to the page on which the borrowed terms are listed (e.g. through use of a hash appended to the namespace IRI).
 
+Term lists may also be vocabulary extensions.  A vocabulary extension describes additional properties of a term that are not included in the basic human-readable definition.  A vocabulary extension may be described in a separate document from the basic term definitions, or may be a separate section in the same document.  In either case, the vocabulary extension must be identified by a different IRI from the basic term list.
+
 **3.3.3.1 Term list metadata**
 
 Term lists containing terms defined by TDWG must include the following items in their header in addition to those required for documents in general:
@@ -426,8 +430,9 @@ Indicate the class of which a resource is an instance by using rdf:type [GUID, R
 |**Class**                          | **Machine-readable value**|
 |-----------------------------------|---------------------------|
 | Standard                          | dcterms:Standard          |
-| Vocabulary                        | dcmitype:Dataset           |
+| Vocabulary                        | dcmitype:Dataset          |
 | Term List                         | dcat:Dataset *            |
+| Vocabulary Extension List         | owl:Ontology              |
 | Distribution                      | dcat:Distribution         |
 | Property                          | rdf:Property              |
 | Class                             | rdfs:Class                |
@@ -625,15 +630,23 @@ Term lists for borrowed terms are simply used to group those terms and are not a
 
 Although term lists are a form of descriptive document, they differ from generic descriptive documents in an important way.  The machine-readable representation of a descriptive document that is primarily human-readable will contain metadata about the document, but will not generally include most of the content of the document.  However, the machine-readable representation of a term list will contain substantively the same information as the human-readable document.  For that reason, it is important that any notations explaining the categories of term data that are normative must be preserved in the machine-readable data as well.  Such notations should be included as the value of an rdfs:comment property of the term list. For example, if the human-readable representation of the term list notes that term definitions are normative, but that comments are not, this note should be included as an rdfs:comment.  
 
-**4.4.2.2 Examples (non-normative)**
+**4.4.2.2 Vocabulary extension lists**
+
+If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties should be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list known as a vocabulary extension list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology.  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
+
+The rdf:type of a vocabulary extension list is owl:Ontology. This is entailed by the range of owl:imports; nevertheless, it is desirable to assert this explicitly.  The type of a basic term definition list should not be declared explicitly to be owl:Ontology, since this implies a level of semantics that may not concern all users of the basic term list.  
+
+**4.4.2.3 Examples (non-normative)**
 
 An example of metadata about an authoritative term list:
 
 ```
-<http://rs.tdwg.org/ac/>  # *** made up IRI ***
+<http://rs.tdwg.org/ac/>
      dcterms:title "Basic Audubon Core Vocabulary"@en;
      rdfs:label "Basic Audubon Core Vocabulary"@en;
-     a dcmitype:Dataset.
+     a dcmitype:Dataset;
+     dcterms:hasPart <http://rs.tdwg.org/ac/terms/>,
+                     <http://rs.tdwg.org/ac/borrowed/>.
 
 <http://rs.tdwg.org/ac/terms/>
      dcterms:title "Audubon Core Term List"@en;
@@ -642,8 +655,8 @@ An example of metadata about an authoritative term list:
      vann:preferredNamespaceUri "http://rs.tdwg.org/ac/terms/";
      dcterms:isPartOf <http://rs.tdwg.org/ac/>;
      a dcat:Dataset.
-<http://rs.tdwg.org/ac/terms/subtype>
-     rdfs:label "Subtype";
+<http://rs.tdwg.org/ac/terms/metadataLanguage>
+     rdfs:label "Metadata Language";
      rdfs:isDefinedBy <http://rs.tdwg.org/ac/terms/>;
      dcterms:isPartOf <http://rs.tdwg.org/ac/terms/>;
      a rdf:Property.
@@ -697,6 +710,59 @@ An example showing how normative and non-normative term data are designated:
      a skos:Concept.
 ```
 
+An example showing how basic and extension term lists can be used to create several vocabularies with differing levels of semantics.  Note that the mechanism of ontology import requires that sets of axioms be contained in distinct documents [OWL-SYNTAX].
+
+```
+# Document 1:
+<http://rs.tdwg.org/ac/>
+     dcterms:title "Basic Audubon Core Vocabulary"@en;
+     rdfs:label "Basic Audubon Core Vocabulary"@en;
+     a dcmitype:Dataset;
+     dcterms:hasPart <http://rs.tdwg.org/ac/terms/>,
+                     <http://rs.tdwg.org/ac/borrowed/>.
+# Note that these metadata about the Basic Vocabulary do not entail that it or its component term lists are ontologies.
+
+# Document 2:
+<http://rs.tdwg.org/ac-enhanced/>
+     dcterms:title "Semantically Enhanced Audubon Core Vocabulary"@en;
+     rdfs:label "Semantically Enhanced Audubon Core Vocabulary"@en;
+     a dcmitype:Dataset,
+       owl:Ontology;
+     owl:imports <http://rs.tdwg.org/ac/terms/>,
+                 <http://rs.tdwg.org/ac/borrowed/>,
+                 <http://rs.tdwg.org/ac/enhanced/>;
+     dcterms:hasPart <http://rs.tdwg.org/ac/terms/>,
+                     <http://rs.tdwg.org/ac/borrowed/>,
+                     <http://rs.tdwg.org/ac/enhanced/>.
+# Note that use of owl:imports entails that the basic and borrowed term lists are ontologies, even though that is not asserted in the metadata for those term lists.
+
+# Document 3:
+<http://rs.tdwg.org/ac/enhanced/>
+     dcterms:title "Audubon Core Axioms"@en;
+     rdfs:label "Audubon Core Axioms"@en;
+     a dcat:Dataset,
+       owl:Ontology;
+### Restriction: Metadata Language Required ###
+ac:MediaResource a rdfs:Class;
+                   rdfs:subClassOf
+                            [ a owl:Restriction;
+                              owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty <http://rs.tdwg.org/ac/terms/metadataLanguage> ].
+### Restriction: Metadata Language Not Repeatable ###
+ac:MediaResource a rdfs:Class;
+                   rdfs:subClassOf
+                            [ a owl:Restriction;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty <http://rs.tdwg.org/ac/terms/metadataLanguage> ].
+
+### Restriction: Format Not Repeatable ###
+ac:MediaResource a rdfs:Class;
+                   rdfs:subClassOf
+                           [ a owl:Restriction;
+                             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onProperty <http://purl.org/dc/terms/format> ].
+```
+
 **4.4.3 Linking to and describing distributions**
 
 The guidelines expressed in the W3C Data Catalog Vocabulary [DCAT] should be followed for linking to and describing distributions of term lists.  Since term lists are typed as dcat:Dataset, they may be assigned any of the properties that are appropriate for instances of dcat:Dataset.  Term lists are linked to their distributions using the property dcat:distribution. Distributions may be assigned any properties that are appropriate for dcat:Distribution instances; however, at a minimum, they should have the properties dcterms:modified, dcat:accessURL or dcat:downloadURL (whichever is appropriate), and dcat:mediaType or dcterms:format.  If an IANA media type exists for the format of the distribution, dcat:mediaType should be used in preference over dcterms:format. [IANA]
@@ -744,7 +810,9 @@ Values for rdfs:label and rdfs:comment should be English language-tagged plain l
 
 Types should be rdf:Property for properties, rdfs:Class for classes, and skos:Concept for controlled values.
 
-The property dcterms:description may optionally be used to provide additional information that is not part of the normative definition of the term.
+The property dcterms:description may optionally be used to provide additional information that is not part of the definition of the term.  
+
+Properties that extend the meaning of terms by introducing machine-computable entailments should not be included with the basic properties listed in this section.  Rather they should be included in a vocabulary extension list as described in Section 4.4.2.2.
 
 **4.5.1 Example metadata for terms (non-normative)**
 
@@ -1005,7 +1073,10 @@ Documents should be maintained as part of a publicly accessible version control 
 
 [NISO] http://www.niso.org/publications/press/UnderstandingMetadata.pdf Understanding Metadata. 2004. NISO Press.
 
-[OWL] http://www.w3.org/TR/owl-overview OWL Web Ontology Language Document Overview (W3C Recommendation). World Wid Web Consortium.
+[OWL-OVERVIEW] http://www.w3.org/TR/owl-overview OWL Web Ontology Language Document Overview (W3C Recommendation). World Wide Web Consortium.
+
+[OWL-SYNTAX] http://www.w3.org/TR/owl-syntax OWL 2 Web Ontology Language
+Structural Specification and Functional-Style Syntax (W3C Recommendation). World Wide Web Consortium.
 
 [RECIPES] https://www.w3.org/TR/swbp-vocab-pub/ Best Practice Recipes for Publishing RDF Vocabularies. 2008.  W3C Working Group Note.
 
