@@ -8,7 +8,7 @@ This draft was revised following the VOCAB Task Group call of 2015-05-04.  Howev
 
 **Date Modified:**
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project)
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stan Bloom (TDWG Process Interest Group), Bob Morris (TDWG Imaging Interest Group), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group).
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
@@ -349,6 +349,8 @@ Each term entry on the list should include the following items.
 **Term version IRI** (required if defined by the containing vocabulary) - The HTTP IRI that identifies the version of the term that is currently in force.
 
 **Modified** (required if defined by the containing vocabulary) - The date in ISO 8601 Date format on which the most recent version of the term was issued.
+
+**Decision** (required if the term was created or modified as the result of an Executive Committee decision) - The HTTP IRI representing the record of the decision affecting the term.
 
 **Definition** (required) - The normative definition of the term, written in English.  The definition should include precisely the wording required to describe the class, property, or concept.  Additional informative content should be presented in comments or notes.
 
@@ -812,6 +814,8 @@ Types should be rdf:Property for properties, rdfs:Class for classes, and skos:Co
 
 The property dcterms:description may optionally be used to provide additional information that is not part of the definition of the term.  
 
+If the term was created or modified as the result of an Executive Committee decision, the property dwcattributes:decision should be used to link to the HTTP IRI representing the record of the decision affecting the term.
+
 Properties that extend the meaning of terms by introducing machine-computable entailments should not be included with the basic properties listed in this section.  Rather they should be included in a vocabulary extension list as described in Section 4.4.2.2.
 
 **4.5.1 Example metadata for terms (non-normative)**
@@ -893,6 +897,7 @@ dwc:individualID
      dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>;
      dcterms:created "2009-04-24"^^xsd:date;
      dcterms:modified "2009-04-24"^^xsd:date;
+     dwcattributes:decision "http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_14";
      owl:deprecated "true"^^xsd:boolean;
      dcterms:isReplacedBy dwc:organismID.
 
@@ -903,6 +908,7 @@ dwc:organismID
      dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>;
      dcterms:created "2014-10-23"^^xsd:date;
      dcterms:modified "2014-10-23"^^xsd:date;
+     dwcattributes:decision "http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_14";
      dcterms:replaces dwc:individualID.
 
 <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>
@@ -933,7 +939,8 @@ dwc:MaterialSample
      dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>;
      dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>;
      dcterms:created "2013-03-28"^^xsd:date;
-     dcterms:modified "2014-10-23"^^xsd:date. # date of issue of most recent version
+     dcterms:modified "2014-10-23"^^xsd:date; # date of issue of most recent version
+     dwcattributes:decision "http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_15".
 
 <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>
      a rdfs:Class;
