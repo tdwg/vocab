@@ -176,7 +176,7 @@ The report should describe each independent and interoperable implementation tha
 
  If the implementation tests included performance testing, the report should describe test conditions and any benchmarks used.  The results of interoperability testing should be included, if available.
 
- ### **4.2 Use of the implementation report** ###
+### **4.2 Use of the implementation report** ###
 
 The Interest Group charged with maintaining the standard will examine the implementation report along with other supporting evidence to evaluate the extent to which the proposal is likely to meet the demand, efficacy, and stability requirements as described in Section 3.3.1.  If the evaluation indicates that the proposed enhancement is likely to meet those requirements, the Interest Group will advance the proposal to the public comment stage.  If the Interest Group identifies deficiencies, it may make suggestions to the proposers of additional actions that might be taken to meet the requirements.  
 
@@ -190,9 +190,11 @@ If the proposed enhancement is adopted as part of the vocabulary standard, the i
 
 ## **5 References** ##
 
+```
 [DECISIONS] (will there be a separate decision history for each vocabulary, or will the current Darwin Core decision history morph into a decision history for all TDWG vocabularies?)
 
 [DOC-SPEC] (put the reference to the Standards Documentation Specification here)
+```
 
 [PROCESS] Biodiversity Information Standards. The Standards Development Process. http://www.tdwg.org/about-tdwg/process/
 
