@@ -62,9 +62,9 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL [OWL-OVERVIEW]). Terms (or "elements") in the scheme may represent classes or properties. Axioms may describe term properties to form an ontology. [NISO] [ISO-25964-2]
 
-**normative** - the prescriptive part of a standard that specifies that which is necessary to comply with the standard
+**normative content** - prescriptive parts of a standard that specifies that which is necessary to comply with the standard
 
-**non-normative** - an informative part of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
+**non-normative content** - informative parts of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
 
 **representation** - a view of a resource at a particular time. Representations can differ in language or format. [HTTP-1.1]
 
@@ -99,6 +99,10 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 | skos         | http://www.w3.org/2004/02/skos/core#        |
 | vann         | http://purl.org/vocab/vann/                 |
 | xmpRights    | http://ns.adobe.com/xap/1.0/rights/         |
+
+### **1.6 Key words** ###
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
 
 ## **2 The structure of TDWG standards** ##
 
@@ -303,6 +307,12 @@ The footer should contain a copyright statement and licensing information.  Typi
 **3.2.4 Language**
 
 Standards documents must be written in English. Translations of standards documents are encouraged, but to simplify management of the standard they will be treated as ancillary documents that are not included in the standard.
+
+**3.2.5 Use of RFC 2119 keywords**
+
+Writers of standards documents MAY choose to follow the guidelines of RFC 2119 [RFC-2119].  However, if keywords are used as in RFC 2119, the introduction of the standard MUST include the recommended phrase from the abstract.  If the authors do not choose to implement RFC 2119 keywords, they MUST NOT use all-caps formatting for the words that correspond to RFC 2119 keywords.  If a standard does not implement RFC 2119 (as indicated by a lack of the recommended phrase in the introduction of the standard), users of the standard MUST NOT infer that words that correspond to the RFC 2119 have a specialized meaning beyond the common usage of those words.
+
+The decision of whether to implement RFC 2119 keywords should be informed by the implications of failure of users to conform to the requirements indicated by the keywords.  The guidance provided in Sections 6 and 7 of RFC 2119 should be considered in making this decision.
 
 ### **3.3 Vocabulary descriptions** ###
 
@@ -1074,7 +1084,7 @@ Documents should be maintained as part of a publicly accessible version control 
 
 [IANA] http://www.iana.org/assignments/media-types/media-types.xhtml Internet Assigned Numbers Authority (IANA) Media Types
 
-[IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs)
+[IRI] http://tools.ietf.org/html/rfc3987 Duerst, M. and M. Suignard. Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
 
 [ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularis. Part 2: Interoperability with other vocabularies. 2013-03-15.
 
@@ -1091,6 +1101,8 @@ Structural Specification and Functional-Style Syntax (W3C Recommendation). World
 
 [REST] http://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm Representational State Transfer (REST) from Architectural Styles and
 the Design of Network-based Software Architectures
+
+[RFC-2119] http://tools.ietf.org/html/rfc2119 Bradner, S. Key words for use in RFCs to Indicate Requirement Levels. 1997. The Internet Engineering Task Force.
 
 [SKOS] https://www.w3.org/TR/skos-reference/ SKOS Simple Knowledge Organization System
 Reference

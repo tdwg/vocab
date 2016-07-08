@@ -8,7 +8,7 @@ This draft should be considered neither stable nor citable.
 
 **Date Modified:**
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), John Wieczorek (TDWG Darwin Core Interest Group), Markus Döring (GBIF), Renato De Giovanni (CRIA), Tim Robertson (GBIF), Dave Vieglais (KUNHM)
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), John Wieczorek (TDWG Darwin Core Interest Group), Markus Döring (GBIF), Renato De Giovanni (CRIA), Bob Morris (TDWG Imaging Interest Group), Tim Robertson (GBIF), Dave Vieglais (KUNHM)
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
@@ -38,9 +38,9 @@ This is the only document associated with the Vocabulary Maintenance Specificati
 
 **document** - a unit of information that can be stored or retrieved electronically as a single file.
 
-**normative** - the prescriptive part of a standard that specifies that which is necessary to comply with the standard
+**normative content** - prescriptive parts of a standard that specifies that which is necessary to comply with the standard
 
-**non-normative** - an informative part of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
+**non-normative content** - informative parts of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
 
 **term** - an entity representing a class, property, or concept.  A term is identified by an Internationalized Resource Identifier (IRI), may have one or more human-readable labels, and is defined by a series of properties that include a human-readable definition.
 
@@ -148,7 +148,7 @@ Normative content is the prescriptive part of a standard that specifies that whi
 
 Because non-normative content provides only supplemental information, the Interest Group may use its discretion to decide the extent to which the community should be involved in implementing changes to non-normative content.  For example, relatively cosmetic changes, such as improving figures, changing formatting, minor improvements to examples, etc. can be made without triggering any change process or notification via the TDWG email list [TDWG-CONTENT].  More significant changes or improvements to non-normative content may warrant notification of the community via the TDWG email list [TDWG-CONTENT].  If the Interest Group determines that proposed changes to non-normative content are significant enough, it may chose to invoke the full change process.  Substantive changes to non-normative content will usually trigger a version change for the affected document.
 
-**3.4.3 New documents**
+**3.4.4 New documents**
 
 From time to time, new documents may be added to vocabulary standards.  The managing Interest Group should consider the factors described in section 3.4.3 when determining an appropriate process for ratifying new documents.  Since new documents are likely to contain significant amounts of normative content, it will generally be necessary for them to pass through the full change process of discussion, formal proposal, public comment, and Executive Committee decision.  Given the impracticality of creating and editing technical documents via a public forum, writing, discussing, and revising new documents will usually be carried out by a Task Group ahead of the formal proposal for addition to the standard.  
 
