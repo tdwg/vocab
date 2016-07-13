@@ -1,6 +1,4 @@
-# TDWG Vocabulary Maintenance Specification #
-
-This draft should be considered neither stable nor citable.
+# TDWG Vocabulary Maintenance Specification (draft)
 
 **Title:** TDWG Vocabulary Maintenance Specification
 
@@ -8,7 +6,7 @@ This draft should be considered neither stable nor citable.
 
 **Date Modified:**
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), John Wieczorek (TDWG Darwin Core Interest Group), Markus Döring (GBIF), Renato De Giovanni (CRIA), Bob Morris (TDWG Imaging Interest Group), Tim Robertson (GBIF), Dave Vieglais (KUNHM)
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), John Wieczorek (TDWG Darwin Core Interest Group), Markus Döring (GBIF), Renato De Giovanni (CRIA), Robert A. Morris (TDWG Imaging Interest Group), Tim Robertson (GBIF), Dave Vieglais (KUNHM)
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
@@ -18,23 +16,23 @@ This draft should be considered neither stable nor citable.
 
 **Part of TDWG Standard:**
 
-### Table of Contents ###
+### Table of Contents
 
 [generate when complete]
 
-## **1 Introduction** ##
+## **1 Introduction**
 
 Vocabulary standards differ from other Biodiversity Information Standards (TDWG) standards in that they are likely to change over time as they evolve to meet the changing needs of the biodiversity informatics community.  These changes may be incremental, making it impractical to apply the full TDWG standards process [PROCESS] to every change.  This document details the categories of changes that can be made to a TDWG vocabulary standard, the mechanisms used to achieve those changes, and the entities that are responsible for shepherding those changes through the process.
 
-### **1.1 Audience** ###
+### **1.1 Audience**
 
 This document is intended for those who are involved in making changes to TDWG vocabulary standards.  That includes those who want to submit change proposals and members of Interest Groups that are responsible for vocabulary maintenance.
 
-### **1.2 Content** ###
+### **1.2 Content**
 
 This is the only document associated with the Vocabulary Maintenance Specification.  All parts of it are normative.  
 
-### **1.3 Definitions** ###
+### **1.3 Definitions**
 
 **document** - a unit of information that can be stored or retrieved electronically as a single file.
 
@@ -46,15 +44,15 @@ This is the only document associated with the Vocabulary Maintenance Specificati
 
 **vocabulary** - a collection of standardized terms and their definitions.
 
-## **2 Administration** ##
+## **2 Administration**
 
-### **2.1 Vocabulary Maintenance Interest Groups** ###
+### **2.1 Vocabulary Maintenance Interest Groups**
 At the time of the adoption of a vocabulary standard, an Interest Group charged specifically with the maintenance of that standard will be chartered.  That Interest Group will be subject to the normal expectations described for Interest Groups in the TDWG Standards Development Process document [PROCESS].  Because of its special relationship to an active TDWG vocabulary, a vocabulary maintenance Interest Group cannot be disbanded unless the vocabulary it maintains is deprecated.  Therefore, if the Interest Group's convener is unable to continue in that role, that convener should be succeeded by a core member of the Interest Group.  If there are no core members of the Interest Group that are able take on the role of convener, the Executive committee will appoint a convener who will reorganize the Interest Group.
 
-### **2.2 Mechanisms for managing changes** ###
+### **2.2 Mechanisms for managing changes**
 The Interest Group charged with maintaining a vocabulary standard will maintain an issues tracking system and will assess proposed changes according to the procedures described in this document.  The vocabulary maintenance Interest Group may also establish Task Groups to accomplish broader changes to the standard, such as creating or revising associated documents, or determining how the terms of the vocabulary might be used with a new technology.  
 
-### **2.3 Annual review** ###
+### **2.3 Annual review**
 The vocabulary maintenance Interest Group bears the primary responsibility for managing the processes associated with changes to vocabulary terms and documents related to the vocabulary.  The Interest Group must ensure that justifiable changes occur in a timely fashion and should review proposed changes annually.  In that annual review, each proposal should be subjected to one of the following actions:
 - move the proposal to public comment if there is sufficient support for its adoption.
 - leave the proposal in the issue tracker for another year.
@@ -63,9 +61,9 @@ The vocabulary maintenance Interest Group bears the primary responsibility for m
 At the time of the annual review, the Interest Group will also consider the progress of any Task Groups chartered by the group.  The Task Group's annual status report should be considered as part of this review.  If the Interest Group concludes that there has been insufficient progress or interest in continuing the work of the
 Task Group, they should consult with the convener of the Task Group to determine a course of action, which may include reorganizing the Task Group or recommending to the Executive Committee that the Task Group be disbanded.
 
-## **3 Change Process** ##
+## **3 Change Process**
 
-### **3.1 Justifications for change** ###
+### **3.1 Justifications for change**
 
 There are several important attributes of TDWG vocabularies:
 
@@ -75,7 +73,7 @@ There are several important attributes of TDWG vocabularies:
 
 The benefits of expansion and evolution of TDWG vocabularies must be balanced against the need to maintain the attributes listed above.  It is the responsibility of the managing Interest Group, in consultation with the community and the Executive Committee, to weigh the potential benefits of changes to the vocabulary against the costs.   These considerations influence the term change process as it is described in the remaining subsections of Section 3.
 
-### **3.2 Errata** ###
+### **3.2 Errata**
 
 **3.2.1 Minor editorial errata**
 
@@ -87,7 +85,7 @@ A substantive error is one that compromises the usefulness or accuracy of system
 
 in the case of equivocal substantive errors, the Interest Group will conduct a public comment period and seek an Executive decision to find a solution that minimizes adverse effects on existing applications. Changes of this nature require a version change for the affected term and/or documents.
 
-### **3.3 Changes to vocabulary terms** ###
+### **3.3 Changes to vocabulary terms**
 
 The terms in a vocabulary can be changed by modifying the attributes of an existing term, by adding a new term, or by deprecating an existing term.  Although the nature of the change varies somewhat among these three categories of changes, the process for achieving the change is the same, and is described in Sections 3.3.1 through 3.3.3.
 
@@ -103,14 +101,13 @@ There is no requirement that the official proposal be made either before or afte
 
 If the maintaining Interest Group determines that the proposed term change is likely to meet the demand, efficacy, and stability requirements, it will conduct a minimum 30 day comment period.  The start of the comment period will be announced on the TDWG email list [TDWG-CONTENT].  During the comment period, the proposal can be refined based on discussion in an effort to reach consensus (no dissenting opinion expressed publicly on the mailing list for 30 days from the most recent iteration). As necessary, the term change proposal may be modified by its submitter or the Interest Group in an attempt to shape a proposal that can achieve community consensus.  An official change in the proposal will trigger the start of a new 30 day period.  
 
-If the Interest Group believes that a consensus has reached, the proposal will be presented by the Interest Group to the Executive Committee for a decision [DECISIONS].  If the Interest Group believes that no consensus has been reached, it has two options.  It may leave the proposal open to allow for further discussion and refinement.  It may also close the proposal if it appears that proposal is not likely to achieve the necessary support in the near future.  There is no specific time requirement for action on the part of the Interest Group - it may allow discussion to continue as long as it seems productive.  However, in the interest of providing closure, all open issues should be reviewed annually as described in Section 2.3.
+If the Interest Group believes that a consensus has reached, the proposal will be presented by the Interest Group to the Executive Committee for a decision.  If the Interest Group believes that no consensus has been reached, it has two options.  It may leave the proposal open to allow for further discussion and refinement.  It may also close the proposal if it appears that proposal is not likely to achieve the necessary support in the near future.  There is no specific time requirement for action on the part of the Interest Group - it may allow discussion to continue as long as it seems productive.  However, in the interest of providing closure, all open issues should be reviewed annually as described in Section 2.3.
 
 **3.3.3 Executive Committee decision**
 
 After the maintaining Interest Group has forwarded a proposal to the Executive Committee, the Committee will render a decision within 30 days.  The decision may take three forms:
 
-- accept the proposal.  The decision will be recorded in the decision history
-[DECISIONS] and appropriate changes will be made in the documentation associated with the vocabulary standard.
+- accept the proposal.  The decision will be recorded in the decision history and appropriate changes will be made in the documentation associated with the vocabulary standard.
 - reject the proposal.  The decision will be recorded in the decision history and no changes will be made in the documentation.
 - return the proposal to the public review level.  No decision will be recorded in the decision history.  The Executive committee should provide recommendations for steps to be taken to make the proposal acceptable, e.g. additional discussion, additional work by a Task Group, testing, etc.
 
@@ -132,7 +129,7 @@ If a "borrowed" term is added to a vocabulary, metadata for that term will be ad
 
 If an existing term is deprecated, this action should be noted in the term metadata in accordance with the TDWG Standards Documentation Specification [DOC-SPEC].  Because of importance of maintaining the interoperability of legacy applications, it is desirable that providers and developers be provided with guidance for transitioning to the use of alternative terms in the vocabulary's human-readable documents.  
 
-### **3.4 Changes to documents supporting the vocabulary** ###
+### **3.4 Changes to documents supporting the vocabulary**
 
 **3.4.1 General principles**
 
@@ -152,49 +149,60 @@ Because non-normative content provides only supplemental information, the Intere
 
 From time to time, new documents may be added to vocabulary standards.  The managing Interest Group should consider the factors described in section 3.4.3 when determining an appropriate process for ratifying new documents.  Since new documents are likely to contain significant amounts of normative content, it will generally be necessary for them to pass through the full change process of discussion, formal proposal, public comment, and Executive Committee decision.  Given the impracticality of creating and editing technical documents via a public forum, writing, discussing, and revising new documents will usually be carried out by a Task Group ahead of the formal proposal for addition to the standard.  
 
-## **4 Implementation reports** ##
+## **4 Vocabulary enhancements**
 
-Each TDWG vocabulary term has a definition and commentary that are meant to promote the consistent use of the term across applications and disciplines. The intent is that the basic terms can be adapted to new purposes without disrupting existing applications.  Vocabularies can be enhanced by building upon this basic term layer [GBIF-KOS].  For example, added features may constrain the use of basic terms through data types or may apply additional semantics to term metadata that may result in entailments that are not explicitly expressed. An enhancement may also take the form of a formal application profile.
+### **4.1 General principles**
 
-If a group proposes that vocabulary enhancements be included as part of the vocabulary standard, the proposal will move through the full change process.  However, before the proposal can move to the public comment stage, the proposer must submit an implementation report
+All TDWG vocabularies include a "flat", basic layer of terms that have clear human-readable definitions and commentary that promote the terms' consistent use across applications and disciplines [GBIF-KOS]. To permit maximal reuse and flexibility, the terms have few constraints with regard to datatyping, no formal range and domain declarations, and few additional semantics added to term metadata that could result in entailments that are not explicitly expressed. The intent is that the terms of the basic layer can be adapted to new purposes without disrupting existing applications.  
 
-### **4.1 Content of the implementation report** ###
+Vocabularies can be enhanced by building upon this basic term layer.  Added features may include:
 
-In general, the implementation report should specify the goals of the enhancement, the features that enable the enhancement to meet the goals, and a report of efforts to implement those features.
+- constraining the use of literal-value terms through data types
+- establishing relationships among class terms by applying a domain model
+- introducing additional term properties that generate entailments that can be materialized through machine reasoning
 
-**4.1.1 Goals**
+In aggregate, these enhancements may take the form of an application profile or formal ontology.  Unlike the basic layer, which is broadly applicable, vocabulary enhancements may be used by a subset of the community whose interests are served by the restrictions imposed by the enhancements.  Thus there may be any number of enhancements developed for a particular vocabulary.
 
-The goals of the enhancement should be summarized clearly in a paragraph.  It is also desirable to specify use-cases to be satisfied by the enhancement.  
+### **4.2 Development of vocabulary enhancements**
 
-**4.1.2 Features**
+Because vocabulary enhancements usually involve a coordinated set of additions to the vocabulary, they will generally be developed as a package that will submitted as a single change proposal.  This package will usually be developed by a group representing the community whose interests will be served by the enhancements.  The group may be tasked by the Interest Group maintaining the vocabulary as an official Task Group, or it may arise spontaneously in response to community need.  In either case, the group developing the enhancements will be referred to here as the "working group".  
 
-The features of the enhancement must be listed with an explanation of how each feature contributes to accomplishing the stated goals.
+Because a vocabulary enhancement is special category of vocabulary change, the general change process described in the subsections of Section 3 apply.  That is, the vocabulary enhancement as a package will be proposed formally via the tracking system (Section 3.3.1), be subjected to public comment (Section 3.3.2), and forwarded for an Executive Committee Decision (Section 3.3.3) before it is adopted as an addition to the standard.
 
-**4.1.3 Implementation experience**
+Because of the complexity involved in developing a vocabulary enhancement, it is important that enhancements be fully developed and tested before they are formally submitted as a proposed addition to the vocabulary.  This development and testing will be documented by user feedback reports (Section 4.3).  The working group developing the enhancement is encouraged to solicit feedback from the Interest Group prior to formal submission in order to increase the likelihood of submitting a successful proposal.  Because TDWG is an open community whose standards are based on consensus, working groups should carry out the development of their enhancements in an open and inclusive manner.  
 
-The report should describe each independent and interoperable implementation that was tested.  In the description of each implementation, the features (Section 4.1.2)  that were successfully included in the implementation must be reported. The report for each implementation should include links to code, sample datasets, etc. that were used in the test implementations.  
+After submission of a proposal by the working group, the Interest Group charged with maintaining the standard will examine the Feature Report and Implementation Experience Report to evaluate the extent to which the proposal is likely to meet the demand, efficacy, and stability requirements as described in Section 3.3.1. If the evaluation indicates that the proposed enhancement is likely to meet those requirements, the Interest Group will advance the proposal to the public comment stage.  If the Interest Group identifies deficiencies, it may make suggestions to the working group of additional actions that might be taken to meet the requirements.
 
- If the implementation tests included performance testing, the report should describe test conditions and any benchmarks used.  The results of interoperability testing should be included, if available.
+### **4.3 User feedback reports**
 
-### **4.2 Use of the implementation report** ###
+Proposals to include vocabulary enhancements as part of the vocabulary standard will move through the full change process.  However, because these enhancements also place restrictions on use of the basic vocabulary layer, there should be clear evidence of their necessity and effectiveness relative to community need.  This evidence must be reported by the working group developing the enhancements in the form of user feedback reports.   
 
-The Interest Group charged with maintaining the standard will examine the implementation report along with other supporting evidence to evaluate the extent to which the proposal is likely to meet the demand, efficacy, and stability requirements as described in Section 3.3.1.  If the evaluation indicates that the proposed enhancement is likely to meet those requirements, the Interest Group will advance the proposal to the public comment stage.  If the Interest Group identifies deficiencies, it may make suggestions to the proposers of additional actions that might be taken to meet the requirements.  
+### **4.3.1 Feature Report**
 
-### **4.3 Timing of the implementation report** ###
+The first required user feedback report is a Feature Report.  The purpose of the Feature Report is to identify the features that should be included in the enhancement in order to achieve goals identified by the community.  There is no specific format required for the Feature Report.  However, the report should include a numbered list of features and indicate how the need for each feature was determined from community input.  Accumulating submitted use cases or competency questions is a common mechanism for determining necessary features.  Although there is no specified timeline for the creation of the Feature Report, it should be compiled early in the process so that it can guide the development of the enhancements.  
 
-Test implementations and creation of an implementation report will generally be completed before a formal change proposal is made.  However, if the proposed enhancements have already been partially implemented, a formal proposal may provide an opportunity to solicit additional implementers to participate in testing the enhancements.  The only requirement is that the implementation report must be complete and published before the Interest Group can move the proposal to public comment.
+### **4.3.2 Implementation Experience Report**
 
-### **4.4 Archiving of the implementation report** ###
+The second required user feedback report is an Implementation Experience Report.  The purpose of the Implementation Experience Report is to document the experience of independent implementations with the features listed in the Feature Report.  Although there is no specific format required for the Implementation Experience Report, the report should present clearly aggregated data from test reports submitted by individual implementers.  
+
+The report should provide information about the extent to which each implementer successfully included each of the features detailed in the Feature Report.  If the implementation is an application or service, successful implementation of features may be determined by subjecting the implementation to a test suite provided by the working group developing the vocabulary enhancements.  
+
+Because it is desirable for enhancements to be robust, it is helpful if implementers report behavior when features are tested on a large-scale, with "dirty" data, or in a disruptive environment.  Since promoting interoperability is also a goal, documenting interactions involving data generated from different code bases is also valuable.
+
+### **4.3.3 Use of the user feedback reports**
+
+The overall goal of the user feedback reports is to enable the working group to introduce into the enhancement only features that are necessary and implementable.  If the Implementation Experience Report indicates that a feature has not been successfully included in at least two independent implementations, the working group should consider dropping that feature from the enhancement.  
+
+The user feedback reports are also used by the maintaining Interest Group to assist in the decision of whether to advance the formal proposal to public comment (Section 4.2), and as an organized source of information to the community during the public comment period.
+
+### **4.3.4 Archiving the user feedback report**
 
 If the proposed enhancement is adopted as part of the vocabulary standard, the implementation report should be archived as a non-normative document in the standard and a link should be made from the document describing the enhancement to the implementation report.
 
-## **5 References** ##
+## **5 References**
 
-```
-[DECISIONS] (will there be a separate decision history for each vocabulary, or will the current Darwin Core decision history morph into a decision history for all TDWG vocabularies?)
+[DOC-SPEC] http://www.tdwg.org/standards/x TDWG Standards Documentation Specification (finalize citation when complete)
 
-[DOC-SPEC] (put the reference to the Standards Documentation Specification here)
-```
 [GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Authors: Terry Catapano, Donald Hobern, Hilmar Lapp, Robert A. Morris, Norman Morrison, Natasha Noy, Mark Schildhauer, David Thau. Copenhagen: Global Biodiversity Information Facility, 49 pp.  (Section 1.1)
 
 [PROCESS] Biodiversity Information Standards. The Standards Development Process. http://www.tdwg.org/about-tdwg/process/
