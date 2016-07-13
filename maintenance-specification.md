@@ -220,12 +220,12 @@ If the proposed enhancement is adopted as part of the vocabulary standard, the i
 ---------------------------
 ## The sections below this point will remain a part of Darwin Core, with minor edits. ##
 
-1. Introduction
+  1. Introduction
 
 Audience: This document is targeted toward those who want to make changes to the Darwin Core, either by refining terms that already exist or by adding new terms to increase the capabilities of the standard.
 This document and the policies contained herein are modeled on the Dublin Core Metadata Initiative Namespace Policy [DCMINAMESPACEPOLICY]. All terms in the Darwin Core must be identified with a unique Uniform Resource Identifier (URI). For convenience, the term URIs are grouped into collections known as Darwin Core namespaces. This document describes the policies associated with Darwin Core namespaces and how term URIs are allocated by the Darwin Core Task Group [DWC-TASK].
 
-2. Namespace URIs
+  2. Namespace URIs
 
 The Darwin Core namespace URI for the collection of all Darwin Core properties, classes, and encoding schemes is:
 
@@ -240,6 +240,6 @@ is the Darwin Core term identifier for the MachineObservation class.
 
 All Darwin Core identifiers will dereference to a Darwin Core term declaration for the identified term.
 
-4. Persistence Policy
+  4. Persistence Policy
 
 TDWG recognizes that people and applications depend on the persistence of formal documents and machine processable schemas that have been made publicly available. In particular, the stability of Darwin Core term URIs and Darwin Core namespace URIs is critical to interoperability over time. Thus, the wide promulgation of this set of URIs dictates that they be maintained to support legacy applications that have adopted them.

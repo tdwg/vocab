@@ -1,14 +1,12 @@
-# TDWG Standards Documentation Specification #
-
-This draft was revised following the VOCAB Task Group call of 2015-05-04.  However, it still should be considered neither stable nor citable.
+# TDWG Standards Documentation Specification (draft) #
 
 **Title:** TDWG Standards Documentation Specification
 
 **Date Issued:**
 
-**Date Modified:**
+**Date Modified:** 2016-07-13
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stan Bloom (TDWG Process Interest Group), Bob Morris (TDWG Imaging Interest Group), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group).
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stan Bloom (TDWG Process Interest Group), Robert A. Morris (TDWG Imaging Interest Group), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group).
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
@@ -300,9 +298,9 @@ The first section of the body SHOULD be an introduction.  At a minimum, the intr
 
 **3.2.3.4 Footer section**
 
-The footer SHOULD contain a copyright statement and licensing information.  Typically, the copyright is held by Biodiversity Information Standards (TDWG) and the license is [Creative Commons Attribution](http://creativecommons.org/licenses/by/4.0/) (CC BY).  It SHOULD also include a preferred citation in human-readable form and provide access to one or more standardized machine-readable citation export formats.
+The footer SHOULD contain a copyright statement and licensing information.  Typically, the copyright is held by Biodiversity Information Standards (TDWG). The copyright statement and licensing terms SHOULD be specified according to current TDWG policy for that type of document.  
 
-[This used to say: "A reference or link to a document containing the Copyright, Licensing and Disclaimer statements that govern this document. This will usually be the standard one supplied by TDWG."  This has been included in some standards documents, but not consistently.]
+The footer SHOULD also include a preferred citation in human-readable form and provide access to one or more standardized machine-readable citation export formats.
 
 **3.2.4 Language**
 
@@ -464,7 +462,7 @@ The same metadata that is presented in the header section of the human-readable 
 | Part of TDWG Standard   | dcterms:isPartOf              | IRI that denotes the containing standard; omit for the standard itself|
 | Contributors            | dc:contributor                | literal; repeat property for each contributor's name; omit for the standard itself since the contributors of each part will be listed |
 | Creator                 | dc:creator                    | literal providing the name of the Task Group responsible for creating the document |
-| License                 | dcterms:license               | IRI for a license; use CC BY for descriptive documents and CC0 for vocabularies |
+| License                 | dcterms:license               | IRI for a license; use a license type in accordance with current TDWG policy |
 | Legal                   | xmpRights:UsageTerms          | literal containing this text "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG)."|
 | Abstract                | dcterms:description           | literal containing the human-readable abstract of the document minus any references or hyperlinks |
 | Bibliographic Citation  | dcterms:bibliographicCitation | literal           |
