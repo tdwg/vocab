@@ -152,7 +152,7 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client SHOULD obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document will contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document will contain the minimal machine-readable metadata described in Sections 4.2 and 4.4.2.  There MAY also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  
 
-Term lists MAY include terms that are defined elsewhere, but assert additional properties for those terms that are not included in those terms' definitions.  Such extensions can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  
+Term lists MAY include terms that are defined elsewhere, but that assert additional properties for those terms that are not included in those terms' definitions.  Such extensions can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  Compartmentalizing vocabulary descriptions in this way enables a layered approach to vocabulary development where the development of a semantically richer vocabulary can be pursued independently of the development of "flat" vocabularies (terms and their definitions) [GBIF-KOS].
 
 ![](graphics/distributions.png)
 
@@ -310,7 +310,7 @@ Standards documents MUST be written in English. Translations of standards docume
 
 **3.2.5 Use of RFC 2119 keywords**
 
-Writers of standards documents MAY choose to follow the guidelines of RFC 2119 [RFC-2119].  However, if keywords are used as in RFC 2119, the introduction of the standard MUST include the recommended phrase from the abstract.  If the authors do not choose to implement RFC 2119 keywords, they MUST NOT use all-caps formatting for the words that correspond to RFC 2119 keywords.  If a standard does not implement RFC 2119 (as indicated by a lack of the recommended phrase in the introduction of the standard), users of the standard MUST NOT infer that words that correspond to the RFC 2119 have a specialized meaning beyond the common usage of those words.
+Writers of standards documents MAY choose to follow the guidelines of RFC 2119 [RFC-2119].  However, if keywords are used as in RFC 2119, the introduction of the standard MUST include the recommended explanatory phrase from the RFC2119 abstract.  If the authors do not choose to implement RFC 2119 keywords, they MUST NOT use all-caps formatting for the words that correspond to RFC 2119 keywords.  If a standard does not implement RFC 2119 (as indicated by a lack of the recommended phrase in the introduction of the standard), users of the standard MUST NOT infer that words that correspond to the RFC 2119 have a specialized meaning beyond the common usage of those words.
 
 The decision of whether to implement RFC 2119 keywords should be informed by the implications of failure of users to conform to the requirements indicated by the keywords.  The guidance provided in Sections 6 and 7 of RFC 2119 should be considered in making this decision.
 
@@ -644,7 +644,7 @@ Although term lists are a form of descriptive document, they differ from generic
 
 **4.4.2.2 Vocabulary extension term lists**
 
-If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties SHOULD be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology.  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
+If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties SHOULD be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology through a layered approach [GBIF-KOS].  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
 
 The rdf:type of a vocabulary extension list is owl:Ontology. This is entailed by the range of owl:imports; nevertheless, it is desirable to assert this explicitly.  The type of a basic term definition list SHOULD not be declared explicitly to be owl:Ontology, since this implies a level of semantics that might not concern all users of the basic term list.  
 
@@ -1077,6 +1077,8 @@ Documents SHOULD be maintained as part of a publicly accessible version control 
 [COOL-URIS] http://www.w3.org/TR/cooluris/#cooluris Cool URIs for the Semantic Web
 
 [DCAT] https://www.w3.org/TR/vocab-dcat/ Data Catalog Vocabulary (DCAT)
+
+[GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Authors: Terry Catapano, Donald Hobern, Hilmar Lapp, Robert A. Morris, Norman Morrison, Natasha Noy, Mark Schildhauer, David Thau. Copenhagen: Global Biodiversity Information Facility, 49 pp.  (Section 1.1)
 
 [GUID] http://www.tdwg.org/standards/150 TDWG GUID Applicability Statement
 

@@ -154,7 +154,7 @@ From time to time, new documents may be added to vocabulary standards.  The mana
 
 ## **4 Implementation reports** ##
 
-Each TDWG vocabulary term has a definition and commentary that are meant to promote the consistent use of the term across applications and disciplines. The intention is that the basic terms can be adapted to new purposes without disrupting existing applications.  Vocabularies can be enhanced by building upon this basic term layer.  For example, added features may constrain the use of basic terms through data types or may apply additional semantics to term metadata that may result in entailments that are not explicitly expressed. An enhancement may also take the form of a formal application profile.
+Each TDWG vocabulary term has a definition and commentary that are meant to promote the consistent use of the term across applications and disciplines. The intent is that the basic terms can be adapted to new purposes without disrupting existing applications.  Vocabularies can be enhanced by building upon this basic term layer [GBIF-KOS].  For example, added features may constrain the use of basic terms through data types or may apply additional semantics to term metadata that may result in entailments that are not explicitly expressed. An enhancement may also take the form of a formal application profile.
 
 If a group proposes that vocabulary enhancements be included as part of the vocabulary standard, the proposal will move through the full change process.  However, before the proposal can move to the public comment stage, the proposer must submit an implementation report
 
@@ -195,6 +195,7 @@ If the proposed enhancement is adopted as part of the vocabulary standard, the i
 
 [DOC-SPEC] (put the reference to the Standards Documentation Specification here)
 ```
+[GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Authors: Terry Catapano, Donald Hobern, Hilmar Lapp, Robert A. Morris, Norman Morrison, Natasha Noy, Mark Schildhauer, David Thau. Copenhagen: Global Biodiversity Information Facility, 49 pp.  (Section 1.1)
 
 [PROCESS] Biodiversity Information Standards. The Standards Development Process. http://www.tdwg.org/about-tdwg/process/
 
