@@ -1,28 +1,112 @@
-# TDWG Standards Documentation Specification (draft) #
+# TDWG Standards Documentation Specification (draft of 2016-07-13) #
 
-**Title:** TDWG Standards Documentation Specification
+**Title:** Standards Documentation Specification
 
-**Date Issued:**
+**Date Version Issued:**
 
-**Date Modified:** 2016-07-13
+**Date Created:**
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stan Bloom (TDWG Process Interest Group), Robert A. Morris (TDWG Imaging Interest Group), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group).
+**Part of TDWG Standard:** http://www.tdwg.org/standards/147
 
-**Creator:** TDWG Vocabulary Maintenance Specification Task Group
+**This version:** http://something.tdwg.org/x/2016-x-x
+
+**Latest version:** http://something.tdwg.org/x
 
 **Abstract:** This document defines how TDWG standards are to be presented.  It provides details about the hierarchical structure of standards and versioning of standards components.  It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.
 
-**Legal:** This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG).
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stan Bloom (TDWG Process Interest Group), Robert A. Morris (TDWG Imaging Interest Group), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group). Review editor: _______
 
-**Part of TDWG Standard:**
+**Creator:** TDWG Vocabulary Maintenance Specification Task Group
+
+**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2016. Standards Documentation Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (put link here to provide access to standardized machine-readable citation export format)
 
 ### Table of Contents ###
 
-[generate when complete]
+```
+1.1 Audience
+1.2 Content
+1.3 Examples in this document
+1.4 Definitions
+1.5 Namespaces used in this document
+1.6 Key words
+
+2 The structure of TDWG standards
+2.1 Abstract resources and representations
+2.1.1 IRIs
+2.1.2 Content negotiation
+2.2 Standards components hierarchy
+2.2.1 Standards landing page
+2.2.2 Descriptive documents
+2.2.3 Vocabulary documents
+2.2.4 Distributions
+2.3 Versioning model
+2.3.1 Current resources
+2.3.2 Versions
+
+3 Human-readable documents
+3.1 Landing page for the standard
+3.1.1 Name of the standard
+3.1.2 IRI of the standard
+3.1.3 Link to TDWG
+3.1.4 Abstract
+3.1.5 Status of the standard
+3.1.6 Preferred citation
+3.1.7 Links to parts of the standard
+3.2 Descriptive documents
+3.2.1 Normative and non-normative sections of descriptive documents
+3.2.2 Versioning
+3.2.3 Layout and style
+3.2.3.1 Header Section
+3.2.3.2 Table of Contents Section
+3.2.3.3 Body Section
+3.2.3.4 Footer section
+3.2.4 Language
+3.2.5 Use of RFC 2119 keywords
+3.3 Vocabulary descriptions
+3.3.1 Landing page for the vocabulary
+3.3.2 Terms as versioned resources
+3.3.3 Term list documents
+3.3.3.1 Term list metadata
+3.3.3.2 Term list distributions
+3.3.3.2.1 Example distributions record (non-normative)
+3.3.4 Term version lists
+
+4 Machine-readable documents
+4.1 Identifying a resource and the machine-readable document that describes it
+4.1.1 Example of linking a resource to the machine-readable document that describes it (non-normative)
+4.1.2 Types of resources
+4.2 General metadata
+4.2.1 Example of expressing general metadata (non-normative)
+4.2.2 Deprecating resources
+4.2.2.1 Example of deprecation of a resource (non-normative)
+4.3 Metadata describing and linking versions
+4.3.1 Example of linking a current resource to its versions (non-normative)
+4.4 Vocabularies, term lists, and terms
+4.4.1 Relationships between vocabularies and term lists
+4.4.1.1 Example of relationships between vocabularies and term lists (non-normative)
+4.4.2 Metadata terms describing term lists
+4.4.2.1 Normative and non-normative content in machine-readable representations of term lists
+4.4.2.2 Vocabulary extension term lists
+4.4.2.3 Examples (non-normative)
+4.4.3 Linking to and describing distributions
+4.4.3.1 Example (non-normative)
+4.5 Metadata properties for describing vocabulary terms
+4.5.1 Example metadata for terms (non-normative)
+4.5.2. Labels in other languages
+4.5.3 Status of terms
+4.5.3.1 Example metadata showing the status of terms (non-normative)
+4.5.4 Metadata properties for describing controlled vocabulary terms
+4.5.4.1 Example metadata for controlled vocabulary terms (non-normative)
+
+5 Archiving of documents
+5.1 Documents from incomplete standards
+
+6 References
+```
 
 ## **1 Introduction** ##
 
-Standards adopted by Biodiversity Information Standards (TDWG) cay include a number of components that are expressed in human- and machine-readable documents. It is important that users of a standard be able to locate all of these components. Users must be able to easily determine which parts of the standard are definitive (normative) and which are informative (non-normative). It should also be apparent which components are current and which are maintained for historical reasons or to support legacy applications. Machine-readable documents should be linked and described consistently to facilitate automated discovery and processing. This standard specifies how documents SHOULD be presented to achieve these requirements.
+Standards adopted by Biodiversity Information Standards (TDWG) may include a number of components that are expressed in human- and machine-readable documents. It is important that users of a standard be able to locate all of these components. Users must be able to easily determine which parts of the standard are definitive (normative) and which are informative (non-normative). It should also be apparent which components are current and which are maintained for historical reasons or to support legacy applications. Machine-readable documents should be linked and described consistently to facilitate automated discovery and processing. This standard specifies how documents SHOULD be presented to achieve these requirements.
 
 ### **1.1 Audience** ###
 
@@ -60,9 +144,9 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL [OWL-OVERVIEW]). Terms (or "elements") in the scheme can represent classes or properties. Axioms can describe term properties to form an ontology. [NISO] [ISO-25964-2]
 
-**normative content** - prescriptive parts of a standard that specifies that which is necessary to comply with the standard
+**normative content** - prescriptive parts of a standard that specify that which is necessary to comply with the standard
 
-**non-normative content** - informative parts of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
+**non-normative content** - informative parts of a standard that provide supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
 
 **representation** - a view of a resource at a particular time. Representations can differ in language or format. [HTTP-1.1]
 
@@ -201,25 +285,25 @@ controlled and MAY contain any combination of characters.
 
 The landing page SHOULD include the HTTP IRI that identifies the standard.  The text of the landing page SHOULD indicate that the identifying HTTP IRI is the IRI that should be cited and is the IRI to which hyperlinks SHOULD be made.  Providing this information is important because content negotiation might redirect users to some other IRI that is specific to the delivery mechanism and that might be subject to change at some time in the future.
 
-**3.1.4 Link to TDWG**
+**3.1.3 Link to TDWG**
 
 The landing page MUST make it clear that this is a TDWG standard and SHOULD provide a link to the TDWG home page.  
 
-**3.1.5 Abstract**
+**3.1.4 Abstract**
 
 An abstract MUST provide a brief description of the purpose of the standard.
 
-**3.1.6 Status of the standard:**
+**3.1.5 Status of the standard**
 
-One of the status categories listed at [http://www.tdwg.org/standards/status-and-categories/](http://www.tdwg.org/standards/status-and-categories/).
+The status MUST be one of the status categories listed at [http://www.tdwg.org/standards/status-and-categories/](http://www.tdwg.org/standards/status-and-categories/).
 
-**3.1.7 Preferred citation**
+**3.1.6 Preferred citation**
 
-The landing page SHOULD indicate a preferred citation for the standard that includes at least the name of the standard and the IRI. The exact format and content of the citation is not specified by this standard.
+The landing page SHOULD indicate a preferred citation for the standard that includes at least the name of the standard and the IRI. The exact format and content of the citation is not specified by this specification.
 
-**3.1.8 Links to parts of the standard**
+**3.1.7 Links to parts of the standard**
 
-Each part of the standard SHOULD be listed, with a hyperlink that leads to that part (Section 2.2).  The parts MUST include at least one descriptive document, whose form is described in section 3.2.
+Each part of the standard SHOULD be listed, with a hyperlink that leads to that part (Section 2.2).  The parts MUST include at least one descriptive document, whose form is described in Section 3.2.
 
 ### **3.2 Descriptive documents** ###
 
@@ -250,7 +334,9 @@ The header section SHOULD contain the following parts:
 
 **Title:** The title of the document.
 
-**Date Issued:** The date of publication of this version in ISO 8601 Date format.
+**Date version issued:** The date of publication of this version in ISO 8601 Date format.
+
+**Date created:** The date of publication of the first version in ISO 8601 Date format.
 
 **Part of TDWG Standard:** The IRI of the standard of which this document is part. The IRI SHOULD dereference to the standard's landing page.
 
@@ -274,9 +360,9 @@ A contributor's name MAY be followed by his or her affiliation in parentheses. A
 
 **Creator:** The Task Group that created the document.
 
-**Bibliographic Citation:** How the document should be cited.
+**Bibliographic citation:** The preferred citation in human-readable form. This part SHOULD also provide access to one or more standardized machine-readable citation export formats.
 
-If the document is no longer recommended for use (i.e. deprecated), this SHOULD be noted in a **Status Note**, with a description of the reason, and links to recommended alternatives.  This deprecation is distinct from replacement by a newer version of the same document, which SHOULD be indicated in the "Replaced by" field.  This applies to documents that are vocabulary descriptions (section 3.3), although usually particular vocabulary terms are deprecated rather than the entire vocabulary.  
+If the document is no longer recommended for use (i.e. deprecated), this SHOULD be noted in a **Status note:**, with a description of the reason, and links to recommended alternatives.  This deprecation is distinct from replacement by a newer version of the same document, which SHOULD be indicated in the "Replaced by" field.  This applies to documents that are vocabulary descriptions (section 3.3), although usually particular vocabulary terms are deprecated rather than the entire vocabulary.  
 
 **3.2.3.2 Table of Contents Section**
 
@@ -300,15 +386,13 @@ The first section of the body SHOULD be an introduction.  At a minimum, the intr
 
 The footer SHOULD contain a copyright statement and licensing information.  Typically, the copyright is held by Biodiversity Information Standards (TDWG). The copyright statement and licensing terms SHOULD be specified according to current TDWG policy for that type of document.  
 
-The footer SHOULD also include a preferred citation in human-readable form and provide access to one or more standardized machine-readable citation export formats.
-
 **3.2.4 Language**
 
 Standards documents MUST be written in English. Translations of standards documents are encouraged, but to simplify management of the standard they will be treated as ancillary documents that are not included in the standard.
 
 **3.2.5 Use of RFC 2119 keywords**
 
-Writers of standards documents MAY choose to follow the guidelines of RFC 2119 [RFC-2119].  However, if keywords are used as in RFC 2119, the introduction of the standard MUST include the recommended explanatory phrase from the RFC2119 abstract.  If the authors do not choose to implement RFC 2119 keywords, they MUST NOT use all-caps formatting for the words that correspond to RFC 2119 keywords.  If a standard does not implement RFC 2119 (as indicated by a lack of the recommended phrase in the introduction of the standard), users of the standard MUST NOT infer that words that correspond to the RFC 2119 have a specialized meaning beyond the common usage of those words.
+Writers of standards documents MAY choose to follow the guidelines of RFC 2119 [RFC-2119].  However, if keywords are used as in RFC 2119, the introduction of the standard MUST include the recommended explanatory phrase from the RFC2119 abstract.  (For example, see Section 1.6 of this specification.)  If the authors do not choose to implement RFC 2119 keywords, they MUST NOT use all-caps formatting for the words that correspond to RFC 2119 keywords.  If a standard does not implement RFC 2119 (as indicated by a lack of the recommended phrase in the introduction of the standard), users of the standard MUST NOT infer that words that correspond to the RFC 2119 have a specialized meaning beyond the common usage of those words.
 
 The decision of whether to implement RFC 2119 keywords should be informed by the implications of failure of users to conform to the requirements indicated by the keywords.  The guidance provided in Sections 6 and 7 of RFC 2119 should be considered in making this decision.
 
@@ -318,9 +402,9 @@ Documents that describe vocabularies make up a special category of human-readabl
 
 **3.3.1 Landing page for the vocabulary**
 
-Although a standard might define a vocabulary, the standard MAY also include other documents such as guides that describe how the vocabulary can be used in different contexts.  It is also possible for a standard to define several vocabularies that might share subsets of terms defined by the vocabulary.  Thus it is clear that a vocabulary is an entity that is distinct from the standard that defines it.  As such, the vocabulary will have an IRI that is distinct from the standard's IRI.  The vocabulary's landing page is the page that is presented to a human user when the vocabulary IRI is dereferenced and media type text/html is requested.
+Although a standard might define a vocabulary, the standard MAY also include other documents such as guides that describe how the vocabulary can be used in different contexts.  It is also possible for a standard to define several vocabularies that might share subsets of terms defined by the standard.  Thus it is clear that a vocabulary is an entity that is distinct from the standard that defines it.  As such, the vocabulary will have an IRI that is distinct from the standard's IRI.  The vocabulary's landing page is the page that is presented to a human user when the vocabulary IRI is dereferenced and media type text/html is requested.
 
-In its header, the landing page will contain the metadata described in Section 3.2.3.1, with the most recent release date serving as the Date Issued, and the vocabulary IRI serving as the Latest Version IRI.
+In its header, the landing page will contain the metadata described in Section 3.2.3.1, with the most recent release date serving as the Date Version Issued, and the vocabulary IRI serving as the Latest Version IRI.
 
 As with other descriptive documents, the body of the landing page SHOULD contain an explanation of the purpose of the vocabulary.  However, it SHOULD also contain links to the term lists that indicate the terms that make up the vocabulary (Section 3.3.3).  
 
@@ -381,7 +465,7 @@ Distributions for the term list of core terms that are defined in the Darwin Cor
 
 **3.3.4 Term version lists**
 
-A term version list provides a historical record of all versions of terms that are defined as part of a standard.  It is similar to the term list described in section 3.3.3, except that the entries on the list are versions of terms rather than current terms.  
+A term version list provides a historical record of all versions of terms that are defined as part of a standard.  It is similar to the term list described in Section 3.3.3, except that the entries on the list are versions of terms rather than current terms.  
 
 The term version list SHOULD be identified by an IRI that facilitates discovery of the term versions that it lists when the term version IRIs are dereferenced.  
 
@@ -433,7 +517,7 @@ The following example is expressed in RDF/Turtle:
 
 When the resource IRI http://rs.tdwg.org/dwc/terms/guides/text is dereferenced requesting media type text/turtle, the server should redirect to the document https://github.com/tdwg/dwc/blob/master/terms/guides/text/index.ttl which contains the RDF description of the Darwin Core Text Guide in Turtle serialization.
 
-### **4.1.2 Types of resources** ###
+**4.1.2 Types of resources**
 
 Indicate the class of which a resource is an instance by using rdf:type [GUID, Recommendation 11].  The following classes SHOULD be used:
 
@@ -463,15 +547,12 @@ The same metadata that is presented in the header section of the human-readable 
 | Contributors            | dc:contributor                | literal; repeat property for each contributor's name; omit for the standard itself since the contributors of each part will be listed |
 | Creator                 | dc:creator                    | literal providing the name of the Task Group responsible for creating the document |
 | License                 | dcterms:license               | IRI for a license; use a license type in accordance with current TDWG policy |
-| Legal                   | xmpRights:UsageTerms          | literal containing this text "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG)."|
 | Abstract                | dcterms:description           | literal containing the human-readable abstract of the document minus any references or hyperlinks |
 | Bibliographic Citation  | dcterms:bibliographicCitation | literal           |
 
 \* Both of these terms are well-known properties used to indicate a human-readable label for a resource.  Including both increases the likelihood that a consuming application will be able to present that label to human users.
 
 The property dcterms:contributor SHOULD be used to link the document or vocabulary to an IRI that denotes the contributor. If a well-known IRI for the contributor is not available, dcterms:contributor MAY be used to link to a blank node that contains parsed components of the contributor's name.
-
-[How do we decide the level at which contributors are acknowledged? For something like best-practice guides, it's clear.  But what about vocabularies and term lists?  Also, does TDWG have a policy that vocabularies (as opposed to descriptive documents) should be licensed CC0?  If not, it should!]
 
 **4.2.1 Example of expressing general metadata (non-normative)**
 
@@ -492,20 +573,19 @@ The property dcterms:contributor SHOULD be used to link the document or vocabula
                          <http://orcid.org/0000-0002-6513-4996>;
      dc:creator "TDWG Darwin Core Task Group";
      dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
-     xmpRights:UsageTerms "This document is governed by the standard legal, copyright, licensing provisions and disclaimers issued by Biodiversity Information Standards (TDWG).";
      dcterms:description "Guidelines for implementing Darwin Core in Text files.";
-     dcterms:bibliographicCitation "Darwin Core Task Group, Biodiversity Information Standards (TDWG). 2009. Darwin Core Text Guide. http://rs.tdwg.org/dwc/terms/guides/text/ (accessed on [date]).".
+     dcterms:bibliographicCitation "Darwin Core Task Group. 2009. Darwin Core Text Guide. , Biodiversity Information Standards (TDWG). http://rs.tdwg.org/dwc/terms/guides/text/ (accessed on [date]).".
 ```
 
 **4.2.2 Deprecating resources**
 
-Deprecation of a resource is an indication that the resource is invalid or no longer recommended for use.  This is different from the situation where a resource is replaced by a newer version that is a modification of a previous version (section 4.3).  In all cases, deprecation of a resource is indicated by assigning the property owl:deprecated with a value of "true" datatyped as xsd:boolean.  An rdfs:comment property SHOULD provide a human-readable description of the circumstances of the deprecation.  If another resource provides additional information or a possible replacement, a link SHOULD be made from the deprecated resource to the other resource using rdfs:seeAlso.
+Deprecation of a resource is an indication that the resource is invalid or no longer recommended for use.  This is different from the situation where a resource is replaced by a newer version that is a modification of a previous version (Section 4.3).  In all cases, deprecation of a resource is indicated by assigning the property owl:deprecated with a value of "true" datatyped as xsd:boolean.  An rdfs:comment property SHOULD provide a human-readable description of the circumstances of the deprecation.  If another resource provides additional information or a possible replacement, a link SHOULD be made from the deprecated resource to the other resource using rdfs:seeAlso.
 
 When a resource is deprecated, that action represents a modification of that resource. Therefore, the value of dcterms:modified SHOULD be set to the date on which the decision to deprecate was made.  After the resource is deprecated, there should be no additional modifications to the resource.  So the dcterms:modified value of a deprecated resource represents the ending date of that resource's lifespan.
 
 At the standard level, deprecation occurs when a standard is assigned to the [Retired Standard](http://www.tdwg.org/standards/status-and-categories/) category.
 
-For information about deprecation of terms within vocabularies, see section 4.5.3.  
+For information about deprecation of terms within vocabularies, see Section 4.5.3.  
 
 **4.2.2.1 Example of deprecation of a resource (non-normative)**
 
@@ -555,11 +635,11 @@ The following example is expressed in RDF/Turtle:
      dcterms:isReplacedBy <http://rs.tdwg.org/dwc/2014-11-08/terms/guides/text>.
 ```
 
-See also the example in section 4.5.3, which illustrates versioning of terms.
+See also the example in section 4.5.3.1, which illustrates versioning of terms.
 
 ### **4.4 Vocabularies, term lists, and terms** ###
 
-A vocabulary is a resource that might form part of a standard.  A vocabulary is described by the general metadata specified in section 4.2.  A vocabulary also includes lists of terms that the vocabulary contains.  Term lists are also described by metadata specified in section 4.2 as well as additional properties described in section 4.4.2.  Terms, term lists, and vocabularies have hierarchical relationships that are expressed using the property dcterms:isPartOf:
+A vocabulary is a resource that might form part of a standard.  A vocabulary is described by the general metadata specified in Section 4.2.  A vocabulary also includes lists of terms that the vocabulary contains.  Term lists are also described by metadata specified in Section 4.2 as well as additional properties described in Section 4.4.2.  Terms, term lists, and vocabularies have hierarchical relationships that are expressed using the property dcterms:isPartOf:
 
 ```
 <:term> dcterms:isPartOf <:termList>.
@@ -568,7 +648,7 @@ A vocabulary is a resource that might form part of a standard.  A vocabulary is 
 
 **4.4.1 Relationships between vocabularies and term lists**
 
-Vocabularies consist of at least one term list (section 2.2.3).  In a case where it is likely that a vocabulary will never include terms beyond those defined by that vocabulary, it might be convenient to construct IRIs for the vocabulary and term list that will dereference to the same document.  For example, the vocabulary IRI might be http://rs.tdwg.org/ex, with the term list IRI http://rs.tdwg.org/ex/, or the vocabulary IRI might be http://rs.tdwg.org/ex/#vocab, with the term list IRI http://rs.tdwg.org/ex/.  With suitable server settings, these pairs of IRIs could dereference to the same representation.  This approach is NOT RECOMMENDED when a vocabulary consists of, or is likely in the future to consist of terms from multiple namespaces.  In every case, in the interest of consistency with the hierarchy model, the term list IRI and the vocabulary IRI MUST be distinct and linked by dcterms:isPartOf.
+Vocabularies consist of at least one term list (Section 2.2.3).  In a case where it is likely that a vocabulary will never include terms beyond those defined by that vocabulary, it might be convenient to construct IRIs for the vocabulary and term list that will dereference to the same document.  For example, the vocabulary IRI might be http://rs.tdwg.org/ex, with the term list IRI http://rs.tdwg.org/ex/, or the vocabulary IRI might be http://rs.tdwg.org/ex/#vocab, with the term list IRI http://rs.tdwg.org/ex/.  With suitable server settings, these pairs of IRIs could dereference to the same representation.  This approach is NOT RECOMMENDED when a vocabulary consists of, or is likely in the future to consist of terms from multiple namespaces.  In every case, in the interest of consistency with the hierarchy model, the term list IRI and the vocabulary IRI MUST be distinct and linked by dcterms:isPartOf.
 
 **4.4.1.1 Example of relationships between vocabularies and term lists (non-normative)**
 
@@ -816,7 +896,7 @@ The following properties are RECOMMENDED for current terms and term versions. No
 | Definition               | rdfs:comment                  | Literal           |
 | Type                     | rdf:type                      | IRI               |
 
-Values for rdfs:label and rdfs:comment SHOULD be English language-tagged plain literals.  Values in other languages MAY be provided, but SHOULD be included in other ancillary documents that are associated with, but not included within the standard (see section 4.5.2).
+Values for rdfs:label and rdfs:comment SHOULD be English language-tagged plain literals.  Values in other languages MAY be provided, but SHOULD be included in other ancillary documents that are associated with, but not included within the standard (see Section 4.5.2).
 
 Types SHOULD be rdf:Property for properties, rdfs:Class for classes, and skos:Concept for controlled values.
 
@@ -884,11 +964,11 @@ The following example of terms in a metadata scheme is expressed in RDF/Turtle. 
 
 **4.5.2. Labels in other languages**
 
-In addition to following the generic practice of using rdfs:label to assign a name to the term (section 4.5), it might also desirable to use the specific SKOS properties skos:prefLabel and skos:altLabel to indicate the preferred and alternative labels for vocabulary terms in other languages.  However, assignment of such labels falls outside the TDWG Standards process, so these preferred and alternate labels SHOULD be included in ancillary documents associated with, but not included within the standard itself.
+In addition to following the generic practice of using rdfs:label to assign a name to the term (Section 4.5), it might also desirable to use the specific SKOS properties skos:prefLabel and skos:altLabel to indicate the preferred and alternative labels for vocabulary terms in other languages.  However, assignment of such labels falls outside the TDWG Standards process, so these preferred and alternate labels SHOULD be included in ancillary documents associated with, but not included within the standard itself.
 
 **4.5.3 Status of terms**
 
-Current terms that are no longer valid SHOULD have the property owl:deprecated with a literal value of "true" datatyped as boolean.  Note that in this context, a "current" term does not necessarily mean that it is recommended or valid for use.  Rather, it means that the term IRI can be dereferenced by a client that wants to obtain information about it.  If a deprecated term has been replaced by another term, the property dcterms:isReplacedBy MUST be used to link the deprecated term to its replacement, and the term dcterms:replaces MUST be used to link the replacement to the deprecated term.
+Current terms that are no longer valid SHOULD have the property owl:deprecated with a literal value of "true" datatyped as xsd:boolean.  Note that in this context, a "current" term does not necessarily mean that it is recommended or valid for use.  Rather, it means that the term IRI can be dereferenced by a client that wants to obtain information about it.  If a deprecated term has been replaced by another term, the property dcterms:isReplacedBy MUST be used to link the deprecated term to its replacement, and the term dcterms:replaces MUST be used to link the replacement to the deprecated term.
 
 Term versions SHOULD have the property dwcattributes:status with possible values of "recommended" (for the most recent term version of a term that is currently valid), "superseded" (for term versions having more recent versions), or "deprecated" (for the most recent version of a term that is no longer valid).  As is the case for all described resources, previous and subsequent versions SHOULD be linked using dcterms:replaces and dcterms:isReplacedBy. This includes cases where the replacement for a version of a deprecated current term is a version of a current term with a different URI.
 
@@ -1069,6 +1149,9 @@ If machine-readable documents are available in more than one serialization, they
 
 Documents SHOULD be maintained as part of a publicly accessible version control system that ensures document files will not be lost and that previous document versions can be located and accessed through their immutable IRIs.  
 
+### **5.1 Documents from incomplete standards** ###
+
+If a Task Group chartered to develop a standard fails to meet the requirement of its charter, it may be disbanded by the Executive Committee [PROCESS].  In that case, drafts of documents created by the Task Group should be published as Task Group Notes.  The Header Section of each document should include a Status Note (Section 3.2.3.1) including the following statement: "This document has been published as a Task Group Note and is no longer under development. It has not been endorsed by TDWG and has been made available for reference purposes only." Machine-readable representations of the documents (if any) should include this statement as the value of an rdfs:comment property.
 
 ## **6 References** ##
 
@@ -1095,6 +1178,8 @@ Documents SHOULD be maintained as part of a publicly accessible version control 
 [OWL-SYNTAX] http://www.w3.org/TR/owl-syntax OWL 2 Web Ontology Language
 Structural Specification and Functional-Style Syntax (W3C Recommendation). World Wide Web Consortium.
 
+[PROCESS] http://www.tdwg.org/about-tdwg/process/ Biodiversity Information Standards. The Standards Development Process.
+
 [RECIPES] https://www.w3.org/TR/swbp-vocab-pub/ Best Practice Recipes for Publishing RDF Vocabularies. 2008.  W3C Working Group Note.
 
 [RDF-PRIMER] http://www.w3.org/TR/rdf11-primer/ RDF 1.1 Primer
@@ -1110,4 +1195,4 @@ Reference
 -----------------
 This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).
 
-Copyright 201x - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
+Copyright 2016 - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
