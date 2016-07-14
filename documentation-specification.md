@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2016-07-13) #
+# TDWG Standards Documentation Specification (draft of 2016-07-14) #
 
 **Title:** Standards Documentation Specification
 
@@ -181,6 +181,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 | skos         | http://www.w3.org/2004/02/skos/core#        |
 | vann         | http://purl.org/vocab/vann/                 |
 | xmpRights    | http://ns.adobe.com/xap/1.0/rights/         |
+| xsd          | http://www.w3.org/2001/XMLSchema#           |
 
 ### **1.6 Key words** ###
 
@@ -234,7 +235,7 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client SHOULD obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document will contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document will contain the minimal machine-readable metadata described in Sections 4.2 and 4.4.2.  There MAY also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  
 
-Term lists MAY include terms that are defined elsewhere, but that assert additional properties for those terms that are not included in those terms' definitions.  Such extensions can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  Compartmentalizing vocabulary descriptions in this way enables a layered approach to vocabulary development where the development of a semantically richer vocabulary can be pursued independently of the development of "flat" vocabularies (terms and their definitions) [GBIF-KOS].
+Term lists MAY include terms that are defined elsewhere, but that assert additional properties for those terms that are not included in those terms' definitions.  Such extensions can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  Compartmentalizing vocabulary descriptions in this way enables a layered approach to vocabulary development where the development of a semantically richer vocabulary can be pursued independently of the development of "flat" vocabularies (terms and their definitions) [GBIF-KOS, Section 1.1].
 
 ![](graphics/distributions.png)
 
@@ -722,7 +723,7 @@ Although term lists are a form of descriptive document, they differ from generic
 
 **4.4.2.2 Vocabulary extension term lists**
 
-If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties SHOULD be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology through a layered approach [GBIF-KOS].  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
+If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties SHOULD be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology through a layered approach [GBIF-KOS, Section 1.1].  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
 
 The rdf:type of a vocabulary extension list is owl:Ontology. This is entailed by the range of owl:imports; nevertheless, it is desirable to assert this explicitly.  The type of a basic term definition list SHOULD not be declared explicitly to be owl:Ontology, since this implies a level of semantics that might not concern all users of the basic term list.  
 
@@ -1159,7 +1160,7 @@ If a Task Group chartered to develop a standard fails to meet the requirement of
 
 [DCAT] https://www.w3.org/TR/vocab-dcat/ Data Catalog Vocabulary (DCAT)
 
-[GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Authors: Terry Catapano, Donald Hobern, Hilmar Lapp, Robert A. Morris, Norman Morrison, Natasha Noy, Mark Schildhauer, David Thau. Copenhagen: Global Biodiversity Information Facility, 49 pp.  (Section 1.1)
+[GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility.
 
 [GUID] http://www.tdwg.org/standards/150 TDWG GUID Applicability Statement
 
@@ -1167,7 +1168,7 @@ If a Task Group chartered to develop a standard fails to meet the requirement of
 
 [IANA] http://www.iana.org/assignments/media-types/media-types.xhtml Internet Assigned Numbers Authority (IANA) Media Types
 
-[IRI] http://tools.ietf.org/html/rfc3987 Duerst, M. and M. Suignard. Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
+[IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
 
 [ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularis. Part 2: Interoperability with other vocabularies. 2013-03-15.
 
@@ -1187,7 +1188,7 @@ Structural Specification and Functional-Style Syntax (W3C Recommendation). World
 [REST] http://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm Representational State Transfer (REST) from Architectural Styles and
 the Design of Network-based Software Architectures
 
-[RFC-2119] http://tools.ietf.org/html/rfc2119 Bradner, S. Key words for use in RFCs to Indicate Requirement Levels. 1997. The Internet Engineering Task Force.
+[RFC-2119] http://tools.ietf.org/html/rfc2119 Key words for use in RFCs to Indicate Requirement Levels. 1997. The Internet Engineering Task Force.
 
 [SKOS] https://www.w3.org/TR/skos-reference/ SKOS Simple Knowledge Organization System
 Reference

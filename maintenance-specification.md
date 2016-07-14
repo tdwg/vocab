@@ -1,4 +1,4 @@
-# TDWG Vocabulary Maintenance Specification (draft of 2015-07-13)
+# TDWG Vocabulary Maintenance Specification (draft of 2015-07-14)
 
 **Title:** Vocabulary Maintenance Specification
 
@@ -83,9 +83,9 @@ This is the only document associated with the Vocabulary Maintenance Specificati
 
 **implementation** - a component of the workflow of a user or organization.  In the context of this standard, an implementation plays a role in data transmission and storage. It may be involved in sending, generating, or validating data, or it may be involved in processing, storing, aggregating, indexing, or reasoning upon data that is received.  Implementations can include software and data models.
 
-**normative content** - prescriptive parts of a standard that specifies that which is necessary to comply with the standard
+**normative content** - prescriptive parts of a standard that specify that which is necessary to comply with the standard
 
-**non-normative content** - informative parts of a standard that provides supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
+**non-normative content** - informative parts of a standard that provide supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
 
 **term** - an entity representing a class, property, or concept.  A term is identified by an Internationalized Resource Identifier (IRI), may have one or more human-readable labels, and is defined by a series of properties that include a human-readable definition.  Terms and their values are used to communicate information about a subject resource.
 
@@ -206,7 +206,7 @@ From time to time, new documents may be added to vocabulary standards.  The mana
 
 ### **4.1 General principles**
 
-All TDWG vocabularies include a "flat", basic layer of terms that have clear human-readable definitions and commentary that promote the terms' consistent use across implementations and disciplines [GBIF-KOS]. To permit maximal reuse and flexibility, the terms have few constraints with regard to datatyping, no formal range and domain declarations, and few additional semantics added to term metadata that could result in entailments that are not explicitly expressed. The intent is that the terms of the basic layer can be adapted to new purposes without disrupting existing implementations.  
+All TDWG vocabularies include a "flat", basic layer of terms that have clear human-readable definitions and commentary that promote the terms' consistent use across implementations and disciplines [GBIF-KOS, Section 1.1]. To permit maximal reuse and flexibility, the terms have few constraints with regard to datatyping, no formal range and domain declarations, and few additional semantics added to term metadata that could result in entailments that are not explicitly expressed. The intent is that the terms of the basic layer can be adapted to new purposes without disrupting existing implementations.  
 
 Vocabularies can be enhanced by building upon this basic term layer.  Added features may include:
 
@@ -256,11 +256,11 @@ If the proposed enhancement is adopted as part of the vocabulary standard, the i
 
 [DOC-SPEC] http://www.tdwg.org/standards/x TDWG Standards Documentation Specification (finalize citation when complete)
 
-[GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Authors: Terry Catapano, Donald Hobern, Hilmar Lapp, Robert A. Morris, Norman Morrison, Natasha Noy, Mark Schildhauer, David Thau. Copenhagen: Global Biodiversity Information Facility, 49 pp.  (Section 1.1)
+[GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility, 49 pp.
 
-[PROCESS] Biodiversity Information Standards. The Standards Development Process. http://www.tdwg.org/about-tdwg/process/
+[PROCESS] http://www.tdwg.org/about-tdwg/process/ The Standards Development Process. Biodiversity Information Standards.
 
-[TDWG-CONTENT] TDWG Standards Content Discussions email list. http://lists.tdwg.org/mailman/listinfo/tdwg-content
+[TDWG-CONTENT] http://lists.tdwg.org/mailman/listinfo/tdwg-content TDWG Standards Content Discussions email list. 
 
 -----------------
 This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).
