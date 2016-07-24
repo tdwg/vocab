@@ -44,7 +44,9 @@ Here are some key documents that form crucial background for our discussions:
 
 [Use cases and implementation reports in standards and vocabulary development](implementation-use-cases.md)
 
-[Notes on preliminary hierarchy model including definitions and use cases](hierarchy-model.md)
+[Draft hierarchy model of 2016-07-24](hierarchy-model.md)
+
+[Notes on a preliminary hierarchy model including definitions and use cases](hierarchy-model-2015-07-15.md)
 
 [Notes on preliminary version model including definitions and use cases](version-model.md)
 
