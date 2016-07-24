@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2016-07-14) #
+# TDWG Standards Documentation Specification (draft of 2016-07-24) #
 
 **Title:** Standards Documentation Specification
 
@@ -110,7 +110,7 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 ### **1.1 Audience** ###
 
-This document is intended primarily for those who are writing TDWG standards and vocabularies.  It can also be useful for those who are developing applications that use TDWG vocabularies, since it defines the structure of terms and term lists in those vocabularies, and kinds of available metadata about those terms.
+This document is intended primarily for those who are writing TDWG standards, including vocabularies.  It can also be useful for those who are developing applications that use TDWG vocabularies, since it defines the structure of terms and term lists in those vocabularies, and kinds of available metadata about those terms.
 
 ### **1.2 Content** ###
 
@@ -120,7 +120,7 @@ This is the only document associated with the Standards Documentation Specificat
 
 RDF examples in this document are included to clarify the normative text, although they are not themselves normative.  In some cases, IRIs represent actual standards, documents, or terms, but in many cases they are fictitious.  Additionally, in cases where the IRIs represent real resources, the properties and values shown in the examples might not represent real metadata about those resources.  The triples included in the examples do not represent a complete graph containing all of the triples necessary to comply with this standard.  Rather, they show triples that illustrate the relationships described in the sections that precede the example.  
 
-RDF/Turtle is used in all of the examples because it is generally the easiest machine-readable serialization for humans to comprehend.  Use of Turtle does not imply that it is a preferred serialization for representing the metadata and relationships among resources in machine-readable form.  Other serializations such as RDF/XML, RDFa, and JSON-LD might also be used to represent the same information.  Best-practices with respect to serialization can be established by community consensus in an effort outside of this standard.
+RDF/Turtle is used in all of the examples because it is generally the easiest machine-readable serialization for humans to comprehend.  Use of Turtle does not imply that it is a preferred serialization for representing the metadata and relationships among resources in machine-readable form.  Other serializations such as RDF/XML, RDFa, and JSON-LD, or non-RDF serializations might also be used to represent the same information.  Best-practices with respect to serialization can be established by community consensus in an effort outside of this standard.
 
 ### **1.4 Definitions** ###
 
@@ -134,7 +134,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **dereference** - to use an IRI to obtain a representation of a resource through an Internet protocol such as HTTP
 
-**distribution** - a specific available form of a dataset.  In the context of this standard, distributions are available forms of vocabulary term lists, such as downloadable files in RDF/XML or RDF/Turtle. [DCAT]
+**distribution** - a specific available form of a dataset.  In the context of this standard, distributions are available forms of vocabulary term lists, such as downloadable files in HTML, Markdown, RDF/XML or RDF/Turtle. [DCAT]
 
 **document** - In this context, a document is a unit of information that can be stored or retrieved electronically as a single file.
 
@@ -154,11 +154,11 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **term list** - A document that is part of a vocabulary and that lists the terms within the vocabulary that are grouped in a particular way, such as falling within a particular namespace.  
 
-**user** - This standard refers to two categories of users.  A user can be a human user interacting with a server through a user-agent (software such as a Web browser), and referred to in brief as a "human".  A user can also be a semantic client: computer software interacting semi-autonomously with a server, and referred to in brief as a "machine".  Both a user-agent assisting the human, and a semantic client are referred to generically as "clients".
+**user** - This standard refers to two categories of users.  A user can be a human user interacting with a server through a user-agent (software such as a Web browser), and referred to in brief as a "human".  A user can also be a machine client: computer software interacting semi-autonomously with a server, and referred to in brief as a "machine".  Both a user-agent assisting the human, and a machine client are referred to generically as "clients".
 
 **version** - a “snapshot” of a resource in time.  A version is created at a particular moment in time and documents the state of the resource until that version is replaced by a later version.  
 
-**vocabulary** - a collection of standardized terms and their definitions.  Terms MAY represent classes, properties, or concepts.
+**vocabulary** - a collection of standardized terms and their definitions.  Terms MAY represent classes, properties, or concepts.  TDWG vocabularies can include both metadata schemes and controlled vocabularies.
 
 **vocabulary extension term list** - a specialized type of term list that asserts additional properties for terms beyond their basic human-readable definitions.  For example, a vocabulary extension can assert for a term subclass or subproperty relations, class restrictions, ranges or domains, etc.  
 
@@ -197,7 +197,7 @@ Fig. 1. An abstract resource and its representations.
 
 ### **2.1 Abstract resources and representations** ###
 
-A TDWG standard MAY be composed of several types of components.  For example, the standard can contain an explanatory document that describes how the standard should be applied in certain circumstances.  A standard can also include a vocabulary description that defines the terms included in that vocabulary.  We can consider each of these particular resources as an abstract entity that manifests itself in one or more than concrete representations.  For example, a document can exist in PDF format or as an HTML web page (Fig. 1), or a document can exist as translations in several languages.  
+A TDWG standard MAY be composed of several types of components.  For example, the standard can contain an explanatory document that describes how the standard should be applied in certain circumstances.  A standard can also include a vocabulary description that defines the terms included in that vocabulary.  We can consider each of these particular resources as an abstract entity that manifests itself in one or more concrete representations.  For example, a document can exist in PDF format or as an HTML web page (Fig. 1), or a document can exist as translations in several languages.  
 
 **2.1.1 IRIs**
 
@@ -225,7 +225,7 @@ Each TDWG standard will be identified by an HTTP IRI (formerly known as the "per
 
 **2.2.2 Descriptive documents**
 
-Each TDWG standard will have at least one human-readable document that describes the purpose of the standard and that contains information about how the standard is to be used.  That document SHOULD follow the formatting guidelines of Section 3.  When the IRI of the descriptive document is dereferenced by machine clients, the client SHOULD retrieve a machine-readable description of the document's metadata.  
+Each TDWG standard will have at least one human-readable document that describes the purpose of the standard and that contains information about how the standard is to be used.  That document SHOULD follow the formatting guidelines of Section 3.  When the IRI of the descriptive document is dereferenced by machine clients, the client SHOULD be served a machine-readable description of the document's metadata.  
 
 ![](graphics/vocabulary-documents.png)
 
@@ -243,7 +243,7 @@ Fig. 4. Relationship of a term list document to its distributions.
 
 **2.2.4 Distributions**
 
-Vocabulary term lists as abstract resources also exist as more concrete entities that can be stored and delivered.  A human user or semantic client might discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list might be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form might not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), SHOULD be made known to both humans and machines.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] SHOULD be used to indicate the links from a vocabulary's term list to its available distributions.
+Vocabulary term lists as abstract resources also exist as more concrete entities that can be stored and delivered.  A human user or machine client might discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list might be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form might not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), SHOULD be made known to both humans and machines.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] SHOULD be used to indicate the links from a vocabulary's term list to its available distributions.
 
 All distributions of a term list MUST contain substantively the same information about the terms on the list.  Thus a user retrieving any of the distributions MUST be able to learn the same properties and their values for all of the terms.
 
@@ -490,7 +490,7 @@ The term list MAY contain other properties of the term that are deemed to be use
 
 ## **4 Machine-readable documents** ##
 
-It is desirable for semantic clients (machines) to be able to discover and process metadata associated with standards documents and vocabularies without human intervention. This section describes how machine-readable documents should be constructed to make this possible.
+It is desirable for machine clients to be able to discover and process metadata associated with standards documents and vocabularies without human intervention. This section describes how machine-readable documents should be constructed to make this possible.
 
 The relationships described in this section MAY be expressed as Resource Description Framework (RDF), but that is not to the exclusion of other methods that might be available for expressing the same relationships in a manner that also facilitates machine processing.
 
@@ -666,7 +666,7 @@ The following example is expressed in RDF/Turtle:
      dcterms:title "Darwin Core Semantically Enhanced Vocabulary"@en;
      rdfs:label "Darwin Core Semantically Enhanced Vocabulary"@en;
      dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
-     a dcmitype:Dataset.
+     a dcmitype:Dataset, owl:Ontology.
 
 <http://rs.tdwg.org/dwc/terms/>
      dcterms:title "Core terms defined by Darwin Core"@en;
@@ -697,7 +697,7 @@ The following example is expressed in RDF/Turtle:
      rdfs:label "Darwin Core Semantic Relationships"@en;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced-vocabulary>;
      dcterms:modified "2015-03-19"^^xsd:date;
-     a dcat:Dataset.
+     a dcat:Dataset, owl:Ontology.
 ```
 
 **4.4.2 Metadata terms describing term lists**
@@ -1170,7 +1170,7 @@ If a Task Group chartered to develop a standard fails to meet the requirement of
 
 [IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
 
-[ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularis. Part 2: Interoperability with other vocabularies. 2013-03-15.
+[ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularies. Part 2: Interoperability with other vocabularies. 2013-03-15.
 
 [NISO] http://www.niso.org/publications/press/UnderstandingMetadata.pdf Understanding Metadata. 2004. NISO Press.
 
