@@ -14,7 +14,7 @@
 
 **Abstract:** This document defines how TDWG standards are to be presented.  It provides details about the hierarchical structure of standards and versioning of standards components.  It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stan Bloom (TDWG Process Interest Group), Robert A. Morris (TDWG Imaging Interest Group), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group). Review editor: _______
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stan Blum (TDWG Process Interest Group), Robert A. Morris (TDWG Imaging Interest Group), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group). Review editor: _______
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
