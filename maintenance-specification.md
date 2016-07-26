@@ -1,4 +1,4 @@
-# TDWG Vocabulary Maintenance Specification (draft of 2015-07-14)
+# TDWG Vocabulary Maintenance Specification (draft of 2015-07-25)
 
 **Title:** Vocabulary Maintenance Specification
 

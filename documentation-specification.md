@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2016-07-24) #
+# TDWG Standards Documentation Specification (draft of 2016-07-25) #
 
 **Title:** Standards Documentation Specification
 
