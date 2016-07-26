@@ -71,7 +71,7 @@ Vocabulary standards differ from other Biodiversity Information Standards (TDWG)
 
 ### **1.1 Audience**
 
-This document is intended for those who are involved in making changes to TDWG vocabulary standards.  That includes those who want to submit change proposals and members of Interest Groups that are responsible for vocabulary maintenance.
+This document is intended for those who are involved in making changes to TDWG vocabulary standards.  That includes those who want to submit change proposals and members of Interest Groups who are responsible for vocabulary maintenance.
 
 ### **1.2 Content**
 
@@ -83,24 +83,24 @@ This is the only document associated with the Vocabulary Maintenance Specificati
 
 **implementation** - a component of the workflow of a user or organization.  In the context of this standard, an implementation plays a role in data transmission and storage. It may be involved in sending, generating, or validating data, or it may be involved in processing, storing, aggregating, indexing, or reasoning upon data that is received.  Implementations can include software and data models.
 
-**normative content** - prescriptive parts of a standard that specify that which is necessary to comply with the standard
+**normative content** - prescriptive parts of a standard that specify what must be done to comply with the standard
 
 **non-normative content** - informative parts of a standard that provide supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
 
-**term** - an entity representing a class, property, or concept.  A term is identified by an Internationalized Resource Identifier (IRI), may have one or more human-readable labels, and is defined by a series of properties that include a human-readable definition.  Terms and their values are used to communicate information about a subject resource.
+**term** - an entity representing a class, property, or concept.  A term is identified by an Internationalized Resource Identifier [IRI], may have one or more human-readable labels, and is defined by a series of properties that include a human-readable definition.  Terms and their values are used to communicate information about a subject resource.
 
 **vocabulary** - a collection of standardized terms and their definitions.
 
 ## **2 Administration**
 
 ### **2.1 Vocabulary Maintenance Interest Groups**
-At the time of the adoption of a vocabulary standard, an Interest Group charged specifically with the maintenance of that standard will be chartered.  That Interest Group will be subject to the normal expectations described for Interest Groups in the TDWG Standards Development Process document [PROCESS].  Because of its special relationship to an active TDWG vocabulary, a vocabulary maintenance Interest Group cannot be disbanded unless the vocabulary it maintains is deprecated.  Therefore, if the Interest Group's convener is unable to continue in that role, that convener should be succeeded by a core member of the Interest Group.  If there are no core members of the Interest Group that are able take on the role of convener, the Executive committee will appoint a convener who will reorganize the Interest Group.
+At the time of the adoption of a vocabulary standard, an Interest Group charged specifically with the maintenance of that standard will be chartered.  That Interest Group will be subject to the normal expectations described for Interest Groups in the TDWG Standards Development Process document [PROCESS].  If a TDWG vocabulary continues to be actively developed, a vocabulary maintenance Interest Group will not normally be disbanded.  Therefore, if the Interest Group's convener is unable to continue in that role, that convener should be succeeded by a core member of the Interest Group.  If there are no core members of the Interest Group that are able take on the role of convener, the Executive Committee will appoint a convener who will reorganize the Interest Group.  If a TDWG vocabulary achieves a level of stability that makes its maintenance unnecessary, or if the status of the standard defining the vocabulary is changed to Retired Standard [STATUS], the Executive Committee may choose to disband the maintaining Interest Group.
 
 ### **2.2 Mechanisms for managing changes**
 The Interest Group charged with maintaining a vocabulary standard will maintain an issues tracking system and will assess proposed changes according to the procedures described in this document.  The vocabulary maintenance Interest Group may also establish Task Groups to accomplish broader changes to the standard, such as creating or revising associated documents, or determining how the terms of the vocabulary might be used with a new technology.  
 
 ### **2.3 Annual review**
-The vocabulary maintenance Interest Group bears the primary responsibility for managing the processes associated with changes to vocabulary terms and documents related to the vocabulary.  The Interest Group must ensure that justifiable changes occur in a timely fashion and should review proposed changes annually.  In that annual review, each proposal should be subjected to one of the following actions:
+The vocabulary maintenance Interest Group bears the primary responsibility for managing the processes associated with changes to vocabulary terms and documents related to the vocabulary.  The Interest Group should review proposed changes annually.  In that annual review, each proposal should be subjected to one of the following actions:
 - move the proposal to public comment if there is sufficient support for its adoption.
 - leave the proposal in the issue tracker for another year.
 - remove the proposal from active consideration if it is clear that it lacks sufficient support.  
@@ -136,7 +136,7 @@ Errors in spelling, punctuation, grammar, or other clerical mistakes discovered 
 
 A substantive error is one that compromises the usefulness or accuracy of systems based on the vocabulary. Those that are unequivocal (for example, an incorrect URI or reference) may be treated as minor editorial errata (Section 3.2.1) and be corrected accordingly.  If, in the opinion of the Interest Group, the correction is likely to impact existing implementations, the Interest Group should inform the community via the TDWG mailing list [TDWG-CONTENT].
 
-in the case of equivocal substantive errors, the Interest Group will conduct a public comment period and seek an Executive decision to find a solution that minimizes adverse effects on existing implementations. Changes of this nature require a version change for the affected term and/or documents.
+In the case of equivocal substantive errors, the Interest Group will conduct a public comment period and seek an Executive decision to find a solution that minimizes adverse effects on existing implementations. Changes of this nature require a version change for the affected term and/or documents.
 
 ### **3.3 Changes to vocabulary terms**
 
@@ -152,9 +152,9 @@ There is no requirement that the official proposal be made either before or afte
 
 **3.3.2 Public comment**
 
-If the maintaining Interest Group determines that the proposed term change is likely to meet the demand, efficacy, and stability requirements, it will conduct a minimum 30 day comment period.  The start of the comment period will be announced on the TDWG email list [TDWG-CONTENT].  During the comment period, the proposal can be refined based on discussion in an effort to reach consensus (no dissenting opinion expressed publicly on the mailing list for 30 days from the most recent iteration). As necessary, the term change proposal may be modified by its submitter or the Interest Group in an attempt to shape a proposal that can achieve community consensus.  An official change in the proposal will trigger the start of a new 30 day period.  
+If the maintaining Interest Group determines that the proposed term change is likely to meet the demand, efficacy, and stability requirements, it will conduct a minimum 30 day comment period.  The start of the comment period will be announced on the TDWG email list [TDWG-CONTENT].  In an effort to reach consensus, the proposal may be modified based on discussion during the comment period. Consensus is indicated by no dissenting opinion expressed publicly on the mailing list for 30 days from the most recent modification of the proposal. The term change proposal may be modified by its submitter or the Interest Group in an attempt to shape a proposal that can achieve community consensus.  An change in the official proposal will trigger the start of a new 30 day period.  
 
-If the Interest Group believes that a consensus has reached, the proposal will be presented by the Interest Group to the Executive Committee for a decision.  If the Interest Group believes that no consensus has been reached, it has two options.  It may leave the proposal open to allow for further discussion and refinement.  It may also close the proposal if it appears that proposal is not likely to achieve the necessary support in the near future.  There is no specific time requirement for action on the part of the Interest Group - it may allow discussion to continue as long as it seems productive.  However, in the interest of providing closure, all open issues should be reviewed annually as described in Section 2.3.
+If the Interest Group believes that a consensus has reached, the proposal will be presented by the Interest Group to the Executive Committee for a decision.  If the Interest Group believes that no consensus has been reached, it has two options.  It may leave the proposal open to allow for further discussion and refinement.  It may also close the proposal if it appears that proposal is not likely to achieve the necessary support in the near future.  There is no specific time requirement for action on the part of the Interest Group - it may allow discussion to continue as long as it seems productive.  However, in the interest of obtaining closure, all open issues should be reviewed annually as described in Section 2.3.
 
 **3.3.3 Executive Committee decision**
 
@@ -162,7 +162,7 @@ After the maintaining Interest Group has forwarded a proposal to the Executive C
 
 - accept the proposal.  The decision will be recorded in the decision history and appropriate changes will be made in the documentation associated with the vocabulary standard.
 - reject the proposal.  The decision will be recorded in the decision history and no changes will be made in the documentation.
-- return the proposal to the public review level.  No decision will be recorded in the decision history.  The Executive committee should provide recommendations for steps to be taken to make the proposal acceptable, e.g. additional discussion, additional work by a Task Group, testing, etc.
+- return the proposal to the public review level.  The decision will not be recorded in the decision history.  The Executive committee should provide recommendations for steps to be taken to make the proposal acceptable, e.g. additional discussion, additional work by a Task Group, testing, etc.
 
 In all three of these cases, the decision should be reported to the community via the TDWG email list [TDWG-CONTENT].  
 
@@ -194,7 +194,7 @@ In cases where term changes have been approved by the Executive Committee, the I
 
 **3.4.3 Normative and non-normative content**
 
-Normative content is the prescriptive part of a standard that specifies that which is necessary to comply with the standard.  As such, changes to normative content is likely to have a significant impact on interoperability.  For that reason, proposed changes to normative content that are not errata (Section 3.2) or that do not result automatically from approved term changes (Section 3.4.2) will generally require the full change process of discussion and formal proposal on the issue tracker (analogous to Section 3.3.1, but without aspects specifically related to terms), public comment (Section 3.3.2), and Executive Committee decision (Section 3.3.3).  Changes to normative content will nearly always trigger a version change for the affected document.
+Normative content is the prescriptive part of a standard that specifies that which is necessary to comply with the standard.  As such, changes to normative content are likely to have a significant impact on interoperability.  For that reason, proposed changes to normative content that are not errata (Section 3.2) or that do not result automatically from approved term changes (Section 3.4.2) will generally require the full change process of discussion and formal proposal on the issue tracker (analogous to Section 3.3.1, but without aspects specifically related to terms), public comment (Section 3.3.2), and Executive Committee decision (Section 3.3.3).  Changes to normative content will nearly always trigger a version change for the affected document.
 
 Because non-normative content provides only supplemental information, the Interest Group may use its discretion to decide the extent to which the community should be involved in implementing changes to non-normative content.  For example, relatively cosmetic changes, such as improving figures, changing formatting, minor improvements to examples, etc. can be made without triggering any change process or notification via the TDWG email list [TDWG-CONTENT].  More significant changes or improvements to non-normative content may warrant notification of the community via the TDWG email list [TDWG-CONTENT].  If the Interest Group determines that proposed changes to non-normative content are significant enough, it may chose to invoke the full change process.  Substantive changes to non-normative content will usually trigger a version change for the affected document.
 
@@ -214,11 +214,11 @@ Vocabularies can be enhanced by building upon this basic term layer.  Added feat
 - establishing relationships among class terms by applying a domain model
 - introducing additional term properties that generate entailments that can be materialized through machine reasoning
 
-In aggregate, these enhancements may take the form of an application profile or formal ontology.  Unlike the basic layer, which is broadly applicable, vocabulary enhancements may be used by a subset of the community whose interests are served by the restrictions imposed by the enhancements.  Thus there may be any number of enhancements developed for a particular vocabulary.
+In aggregate, these enhancements may take the form of an application profile or formal ontology.  Unlike the basic layer, which is broadly applicable, vocabulary enhancements may be used by a subset of the community whose interests are served by the constraints imposed by the enhancements.  Thus there may be any number of enhancements developed for a particular vocabulary.
 
 ### **4.2 Development of vocabulary enhancements**
 
-Because vocabulary enhancements usually involve a coordinated set of additions to the vocabulary, they will generally be developed as a package that will submitted as a single change proposal.  This package will usually be developed by a group representing the community whose interests will be served by the enhancements.  The group may be tasked by the Interest Group maintaining the vocabulary as an official Task Group, or it may arise spontaneously in response to community need.  In either case, the group developing the enhancements will be referred to here as the "working group".  
+Because vocabulary enhancements usually involve a coordinated set of additions to the vocabulary, they will generally be developed as a package that will submitted as a single proposal in the tracking system.  This package will usually be developed by a group representing the community whose interests will be served by the enhancements.  The group may be tasked by the Interest Group maintaining the vocabulary as an official Task Group, or it may arise spontaneously in response to community need.  In either case, the group developing the enhancements will be referred to here as the "working group".  
 
 Because a vocabulary enhancement is special category of vocabulary change, the general change process described in the subsections of Section 3 apply.  That is, the vocabulary enhancement as a package will be proposed formally via the tracking system (Section 3.3.1), be subjected to public comment (Section 3.3.2), and forwarded for an Executive Committee Decision (Section 3.3.3) before it is adopted as an addition to the standard.
 
@@ -228,7 +228,7 @@ After submission of a proposal by the working group, the Interest Group charged 
 
 ### **4.3 User feedback reports**
 
-Proposals to include vocabulary enhancements as part of the vocabulary standard will move through the full change process.  However, because these enhancements also place restrictions on use of the basic vocabulary layer, there should be clear evidence of their necessity and effectiveness relative to community need.  This evidence must be reported by the working group developing the enhancements in the form of user feedback reports.   
+Proposals to include vocabulary enhancements as part of the vocabulary standard will move through the full change process.  However, because these enhancements also place constraints on use of the basic vocabulary layer, there should be clear evidence of their necessity and effectiveness relative to community need.  This evidence must be reported by the working group developing the enhancements in the form of user feedback reports.   
 
 ### **4.3.1 Feature Report**
 
@@ -258,9 +258,13 @@ If the proposed enhancement is adopted as part of the vocabulary standard, the i
 
 [GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility, 49 pp.
 
+[IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
+
 [PROCESS] http://www.tdwg.org/about-tdwg/process/ The Standards Development Process. Biodiversity Information Standards.
 
-[TDWG-CONTENT] http://lists.tdwg.org/mailman/listinfo/tdwg-content TDWG Standards Content Discussions email list. 
+[STATUS] http://www.tdwg.org/standards/status-and-categories/ Key to TDWG Standards Status. Biodiversity Information Standards.
+
+[TDWG-CONTENT] http://lists.tdwg.org/mailman/listinfo/tdwg-content TDWG Standards Content Discussions email list.
 
 -----------------
 This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).

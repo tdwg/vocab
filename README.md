@@ -20,6 +20,8 @@ To initiate discussion on an issue, open a new issue in the tracker. Opening or 
 
 [2016-05-04 Google Hangout](meeting-notes/meeting-agenda-notes-2016-05-04.pdf)
 
+[2016-07-25 Google Hangout](meeting-notes/task-group-meeting-notes-2016-07-25.pdf)
+
 ## Background
 
 Here are some key documents that form crucial background for our discussions:
