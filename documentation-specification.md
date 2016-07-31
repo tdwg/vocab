@@ -138,7 +138,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **document** - In this context, a document is a unit of information that can be stored or retrieved electronically as a single file.
 
-**HTTP IRI** - A subset of IRIs that enable retrieval of a representation using Hypertext Transfer Protocol (HTTP).  HTTP IRIs begin with "http://".
+**HTTP IRI** - A subset of IRIs that enable retrieval of a representation using Hypertext Transfer Protocol (HTTP).  HTTP IRIs begin with "http://" or "https://".
 
 **IRI** - Internationalized Resource Identifier. A superset of Uniform Resource Identifier (URI) that uniquely identifies a resource using characters from any character set. [IRI]
 
@@ -191,17 +191,17 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 If a standard were composed of a single, human-readable document, then identifying and retrieving that document via the Internet would be relatively simple.  But TDWG standards can be composed of multiple documents that might change over time and that might be delivered in a variety of formats.  This section describes the structure of TDWG standards and the relationships among the structured components of a standard.
 
-![](graphics/representations.png)
-
-Fig. 1. An abstract resource and its representations.
-
 ### **2.1 Abstract resources and representations** ###
 
 A TDWG standard MAY be composed of several types of components.  For example, the standard can contain an explanatory document that describes how the standard should be applied in certain circumstances.  A standard can also include a vocabulary description that defines the terms included in that vocabulary.  We can consider each of these particular resources as an abstract entity that manifests itself in one or more concrete representations.  For example, a document can exist in PDF format or as an HTML web page (Fig. 1), or a document can exist as translations in several languages.  
 
+![](graphics/representations.png)
+
+Fig. 1. An abstract resource and its representations.
+
 **2.1.1 IRIs**
 
-Particular resources are assigned globally unique identifiers (GUIDs) to distinguish them from all other resources.  TDWG identifies resources using HTTP IRIs, a type of GUID which makes it possible to retrieve a representation of a resource using HTTP (hypertext transfer protocol).  
+Particular resources are assigned globally unique identifiers (GUIDs) to distinguish them from all other resources.  In standards documents, TDWG identifies resources using HTTP IRIs, a type of GUID which makes it possible to retrieve a representation of a resource using HTTP (hypertext transfer protocol).  
 
 Both the abstract resource and specific representations of that resource are identified with HTTP IRIs.  
 
@@ -211,13 +211,13 @@ The IRI for abstract resources should be generic.  That is, the abstract resourc
 
 A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it SHOULD be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client (Fig. 1) [GUID, Recommendation 7].  A resource MAY be available as several content types, but all resources SHOULD be retrievable in a human-readable form when media type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation SHOULD at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  
 
-![](graphics/std-parts.png)
-
-Fig. 2. A standard and its components.
-
 ### **2.2 Standards components hierarchy** ###
 
 TDWG standards consist of several IRI-identified components.  This section describes these components and how they are related to each other.
+
+![](graphics/std-parts.png)
+
+Fig. 2. A standard and its components.
 
 **2.2.1 Standards landing page**
 
@@ -227,33 +227,35 @@ Each TDWG standard will be identified by an HTTP IRI (formerly known as the "per
 
 Each TDWG standard will have at least one human-readable document that describes the purpose of the standard and that contains information about how the standard is to be used.  That document SHOULD follow the formatting guidelines of Section 3.  When the IRI of the descriptive document is dereferenced by machine clients, the client SHOULD be served a machine-readable description of the document's metadata.  
 
+**2.2.3 Vocabulary documents**
+
+TDWG vocabularies MUST be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For that reason, the vocabulary IRI MUST NOT be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client SHOULD obtain a web page that links to term list documents (Fig. 3).  
+
 ![](graphics/vocabulary-documents.png)
 
 Fig. 3. Relationship of a vocabulary to its component term list documents.
 
-**2.2.3 Vocabulary documents**
-
-TDWG vocabularies will be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For this reason, the vocabulary IRI will not be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client SHOULD obtain a web page that links to term list documents (Fig. 3).  Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document will contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document will contain the minimal machine-readable metadata described in Sections 4.2 and 4.4.2.  There MAY also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents will contain links to the websites that define those terms.  
+Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document MUST contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document MUST contain the minimal machine-readable metadata described in Sections 4.2 and 4.4.2.  There MAY also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents SHOULD contain links to the websites that define those terms.  
 
 Term lists MAY include terms that are defined elsewhere, but that assert additional properties for those terms that are not included in those terms' definitions.  Such extensions can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  Compartmentalizing vocabulary descriptions in this way enables a layered approach to vocabulary development where the development of a semantically richer vocabulary can be pursued independently of the development of "flat" vocabularies (terms and their definitions) [GBIF-KOS, Section 1.1].
-
-![](graphics/distributions.png)
-
-Fig. 4. Relationship of a term list document to its distributions.
 
 **2.2.4 Distributions**
 
 Vocabulary term lists as abstract resources also exist as more concrete entities that can be stored and delivered.  A human user or machine client might discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list might be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form might not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), SHOULD be made known to both humans and machines.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] SHOULD be used to indicate the links from a vocabulary's term list to its available distributions.
 
+![](graphics/distributions.png)
+
+Fig. 4. Relationship of a term list document to its distributions.
+
 All distributions of a term list MUST contain substantively the same information about the terms on the list.  Thus a user retrieving any of the distributions MUST be able to learn the same properties and their values for all of the terms.
+
+### **2.3 Versioning model** ###
+
+Resources associated with TDWG standards MAY change over time.  TDWG uses a versioning model that relates the current resource and versions of the resource that have changed over time.  The purpose of the versioning model is to enable a user to start with the current resource or any version of the resource and trace the changes that have occurred to that resource over time (Fig. 5).
 
 ![](graphics/version-model.png)
 
 Fig. 5. Relationship of a resource to its versions over time.
-
-### **2.3 Versioning model** ###
-
-Resources associated with TDWG standards MAY change over time.  TDWG uses a versioning model that relates the current resource and versions of the resource that have changed over time.  The purpose of the versioning model is to enable a user to start with the current resource or any version of the resource and trace the changes that have occurred to that resource over time.
 
 **2.3.1 Current resources**
 
