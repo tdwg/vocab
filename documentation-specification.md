@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2016-07-25) #
+# TDWG Standards Documentation Specification (draft of 2016-07-31) #
 
 **Title:** Standards Documentation Specification
 
@@ -24,11 +24,11 @@
 
 ```
 1.1 Audience
-1.2 Content
-1.3 Examples in this document
-1.4 Definitions
-1.5 Namespaces used in this document
-1.6 Key words
+1.2 Key words
+1.3 Content
+1.4 Examples in this document
+1.5 Definitions
+1.6 Namespaces used in this document
 
 2 The structure of TDWG standards
 2.1 Abstract resources and representations
@@ -112,17 +112,21 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 This document is intended primarily for those who are writing TDWG standards, including vocabularies.  It can also be useful for those who are developing applications that use TDWG vocabularies, since it defines the structure of terms and term lists in those vocabularies, and kinds of available metadata about those terms.
 
-### **1.2 Content** ###
+### **1.2 Key words** ###
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+
+### **1.3 Content** ###
 
 This is the only document associated with the Standards Documentation Specification.  Unless otherwise designated, all sections of it are normative.  It first describes the overall structure of a TDWG standard, then details how standards documents should be written so that they contain the necessary information to be understood by humans and by machines.
 
-### **1.3 Examples in this document** ###
+### **1.4 Examples in this document** ###
 
 RDF examples in this document are included to clarify the normative text, although they are not themselves normative.  In some cases, IRIs represent actual standards, documents, or terms, but in many cases they are fictitious.  Additionally, in cases where the IRIs represent real resources, the properties and values shown in the examples might not represent real metadata about those resources.  The triples included in the examples do not represent a complete graph containing all of the triples necessary to comply with this standard.  Rather, they show triples that illustrate the relationships described in the sections that precede the example.  
 
 RDF/Turtle is used in all of the examples because it is generally the easiest machine-readable serialization for humans to comprehend.  Use of Turtle does not imply that it is a preferred serialization for representing the metadata and relationships among resources in machine-readable form.  Other serializations such as RDF/XML, RDFa, and JSON-LD, or non-RDF serializations might also be used to represent the same information.  Best-practices with respect to serialization can be established by community consensus in an effort outside of this standard.
 
-### **1.4 Definitions** ###
+### **1.5 Definitions** ###
 
 **content negotiation** - a mechanism by which a client and server determine the best representation to send to the client based on the client's expressed preferences [HTTP-1.1]
 
@@ -144,7 +148,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **metadata scheme** - a vocabulary used to make assertions about individuals (sensu OWL [OWL-OVERVIEW]). Terms (or "elements") in the scheme can represent classes or properties. Axioms can describe term properties to form an ontology. [NISO] [ISO-25964-2]
 
-**normative content** - prescriptive parts of a standard that specify that which is necessary to comply with the standard
+**normative content** - prescriptive parts of a standard that specify features, characteristics, or behaviors that are necessary to comply with the standard
 
 **non-normative content** - informative parts of a standard that provide supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
 
@@ -152,7 +156,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **resource** - Any kind of thing that can be identified. Resources can include documents, people, physical objects, and abstract concepts [RDF-PRIMER].
 
-**term list** - A document that is part of a vocabulary and that lists the terms within the vocabulary that are grouped in a particular way, such as falling within a particular namespace.  
+**term list** - A named set of terms that is part of a vocabulary and that includes the terms within the vocabulary that are grouped in a particular way, such as falling within a particular namespace.  Each term list has a corresponding document that contains the metadata for the term list and that is served when the term list IRI is dereferenced.
 
 **user** - This standard refers to two categories of users.  A user can be a human user interacting with a server through a user-agent (software such as a Web browser), and referred to in brief as a "human".  A user can also be a machine client: computer software interacting semi-autonomously with a server, and referred to in brief as a "machine".  Both a user-agent assisting the human, and a machine client are referred to generically as "clients".
 
@@ -162,7 +166,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **vocabulary extension term list** - a specialized type of term list that asserts additional properties for terms beyond their basic human-readable definitions.  For example, a vocabulary extension can assert for a term subclass or subproperty relations, class restrictions, ranges or domains, etc.  
 
-### **1.5 Namespaces used in this document** ###
+### **1.6 Namespaces used in this document** ###
 
  In the text and examples, IRIs are frequently abbreviated using namespace abbreviations.  The abbreviations used in this document are shown in the following table.
 
@@ -183,10 +187,6 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 | xmpRights    | http://ns.adobe.com/xap/1.0/rights/         |
 | xsd          | http://www.w3.org/2001/XMLSchema#           |
 
-### **1.6 Key words** ###
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
-
 ## **2 The structure of TDWG standards** ##
 
 If a standard were composed of a single, human-readable document, then identifying and retrieving that document via the Internet would be relatively simple.  But TDWG standards can be composed of multiple documents that might change over time and that might be delivered in a variety of formats.  This section describes the structure of TDWG standards and the relationships among the structured components of a standard.
@@ -205,11 +205,11 @@ Particular resources are assigned globally unique identifiers (GUIDs) to disting
 
 Both the abstract resource and specific representations of that resource are identified with HTTP IRIs.  
 
-The IRI for abstract resources should be generic.  That is, the abstract resource IRI SHOULD NOT specify a file extension and SHOULD NOT be structured in a way that is dependent on a particular technology or query format [COOL-URIS].  In contrast, IRIs of particular resource representations MAY use an IRI structure or file extension that is useful for retrieving a copy of that resource. The IRIs of abstract resources MUST be stable, allowing them to be used in citations of the resource.
+The IRI for abstract resources should be generic.  That is, the abstract resource IRI SHOULD NOT specify a file extension and SHOULD NOT be structured in a way that is dependent on a particular technology or query format [COOL-URIS].  In contrast, IRIs of particular resource representations MAY use an IRI structure or file extension that is useful for retrieving a particular format or translation of that resource. The IRIs of abstract resources MUST be stable, allowing them to be used in citations of the resource.
 
 **2.1.2 Content negotiation**
 
-A resource will normally be permanently identified by its abstract resource IRI.  When client that attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it SHOULD be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client (Fig. 1) [GUID, Recommendation 7].  A resource MAY be available as several content types, but all resources SHOULD be retrievable in a human-readable form when media type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation SHOULD at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  
+A resource will normally be permanently identified by its abstract resource IRI.  When a client attempts to retrieve a representation of that resource by dereferencing its abstract IRI, it SHOULD be redirected through content negotiation to a URL that can be used to retrieve a representation of the content type or language requested by the client (Fig. 1) [GUID, Recommendation 7].  A resource MAY be available as several content types, but all resources SHOULD be retrievable in a human-readable form when media type text/html is requested.  It is also best practice to make a machine-readable representation available.  If the resource is a document that is primarily intended for human consumption, then the machine-readable representation SHOULD at a minimum contain descriptive metadata about the document. In some cases (such as vocabularies), the machine-readable representation of the resource will contain a complete description of the resource.  
 
 ### **2.2 Standards components hierarchy** ###
 
@@ -221,7 +221,7 @@ Fig. 2. A standard and its components.
 
 **2.2.1 Standards landing page**
 
-Each TDWG standard will be identified by an HTTP IRI (formerly known as the "permanent URL" of the standard) that represents the standard as an abstract entity.  When the standard's IRI is dereferenced by a client requesting media type text/html (e.g. a Web browser), that IRI SHOULD redirect to a human-readable landing webpage that describes the status of the standard, contains an abstract of the standard, and contains hyperlinks to the various components that comprise the standard.  When the standard's IRI is dereferenced by a client requesting a machine-readable format such as RDF, the client SHOULD be redirected to a document that contains machine-readable metadata about the standard.  That document SHOULD link the components of the standard to the standard using the property dcterms:isPartOf (Fig. 2) as described in Section 4.2.  Components can include descriptive documents and vocabularies.
+Each TDWG standard will be identified by an HTTP IRI (formerly known as the "permanent URL" of the standard) that represents the standard as an abstract entity.  When the standard's IRI is dereferenced by a client requesting media type text/html (e.g. a Web browser), that IRI SHOULD redirect to a human-readable landing webpage that describes the status of the standard, contains an abstract of the standard, and hyperlinks to all components that comprise the standard.  When the standard's IRI is dereferenced by a client requesting a machine-readable format such as RDF, the client SHOULD be redirected to a document that contains machine-readable metadata about the standard.  That document SHOULD link the components of the standard to the standard using the property dcterms:isPartOf (Fig. 2) as described in Section 4.2.  Components can include descriptive documents and vocabularies.
 
 **2.2.2 Descriptive documents**
 
@@ -229,7 +229,7 @@ Each TDWG standard will have at least one human-readable document that describes
 
 **2.2.3 Vocabulary documents**
 
-TDWG vocabularies MUST be associated with an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For that reason, the vocabulary IRI MUST NOT be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client SHOULD obtain a web page that links to term list documents (Fig. 3).  
+TDWG vocabularies MUST have an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For that reason, the vocabulary IRI MUST NOT be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client SHOULD obtain a web page that links to term list documents (Fig. 3).  
 
 ![](graphics/vocabulary-documents.png)
 
@@ -237,11 +237,11 @@ Fig. 3. Relationship of a vocabulary to its component term list documents.
 
 Each term list document corresponds to one or more namespaces that include sets of terms.  Usually, there will be at least one document that lists and describes terms defined in a namespace controlled by TDWG.  The human-readable representation of that document MUST contain the normative definition of each TDWG-defined term.  The machine-readable representation of that document MUST contain the minimal machine-readable metadata described in Sections 4.2 and 4.4.2.  There MAY also be documents that list terms in namespaces outside of the standard or terms that are not defined by TDWG.  Human-readable representations of these documents SHOULD contain links to the websites that define those terms.  
 
-Term lists MAY include terms that are defined elsewhere, but that assert additional properties for those terms that are not included in those terms' definitions.  Such extensions can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  Compartmentalizing vocabulary descriptions in this way enables a layered approach to vocabulary development where the development of a semantically richer vocabulary can be pursued independently of the development of "flat" vocabularies (terms and their definitions) [GBIF-KOS, Section 1.1].
+Term lists MAY include terms that are defined elsewhere, but that assert additional properties for those terms that are not included in those terms' basic definitions; for example: subclass relationships, ranges, or cardinality restrictions. Such extensions can add semantic layers that are desired by some users, but that are not desired by other users who need only the basic term definitions.  Compartmentalizing vocabulary descriptions in this way enables a layered approach to vocabulary development where the development of a semantically richer vocabulary can be pursued independently of the development of "flat" vocabularies (terms and their definitions) [GBIF-KOS, Section 1.1].
 
 **2.2.4 Distributions**
 
-Vocabulary term lists as abstract resources also exist as more concrete entities that can be stored and delivered.  A human user or machine client might discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list might be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form might not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), SHOULD be made known to both humans and machines.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] SHOULD be used to indicate the links from a vocabulary's term list to its available distributions.
+Vocabulary term lists are abstract resources, but also exist in the form of information resources that can be stored and delivered.  A human user or machine client might discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list might be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form might not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), SHOULD be made known to both humans and machines.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] SHOULD be used to indicate the links from a vocabulary's term list to its available distributions.
 
 ![](graphics/distributions.png)
 
@@ -251,7 +251,7 @@ All distributions of a term list MUST contain substantively the same information
 
 ### **2.3 Versioning model** ###
 
-Resources associated with TDWG standards MAY change over time.  TDWG uses a versioning model that relates the current resource and versions of the resource that have changed over time.  The purpose of the versioning model is to enable a user to start with the current resource or any version of the resource and trace the changes that have occurred to that resource over time (Fig. 5).
+TDWG standards and their components (Section 2.2) are resources that MAY change over time.  TDWG uses a versioning model that relates the current resource and versions of the resource that have changed over time.  The purpose of the versioning model is to enable a user to start with the current resource or any version of the resource and trace the changes that have occurred to that resource over time (Fig. 5).
 
 ![](graphics/version-model.png)
 
@@ -259,13 +259,13 @@ Fig. 5. Relationship of a resource to its versions over time.
 
 **2.3.1 Current resources**
 
-Each resource (document, vocabulary, term, etc.) exists in a current state.  That current state reflects the most recent version of that resource.  The current resource is identified by an IRI that does not change over time.  The current resource IRI can be used by humans or machines to retrieve a representation of the resource as it exists at the present time.  Because the current resource IRI does not change, it is stable and SHOULD be the IRI that is cited and is linked to whenever one wishes to refer to the resource in general.  
+Each resource (document, vocabulary, term, etc.) exists in a current state.  That current state reflects the most recent ratified version of that resource.  The current resource is identified by an IRI that does not change over time.  The current resource IRI can be used by humans or machines to retrieve a representation of the resource as it exists at the present time.  Because the current resource IRI does not change, it is stable and SHOULD be the IRI that is cited and is linked to whenever one wishes to refer to the resource in general.  
 
 **2.3.2 Versions**
 
 Each resource also exists as versions that document “snapshots” of the resource over time (Fig. 5).  A version is issued at a particular moment in time and documents the state of the resource until the version is replaced by a later version.  Each version of a resource is identified by an IRI that is distinct from the IRI of the current resource and from all other versions of that resource.  Typically, the IRI of a version is formed by appending the ISO 8601 creation date of the resource to the IRI of the abstract resource.  
 
-A current resource is related to one of its versions by the property dcterms:hasVersion.  A version is related to its current resource by the property dcterms:isVersionOf, to a version that it supersedes by dcterms:replaces, and to a version that supersedes it by dcterms:isReplacedBy.  The metadata for a current resource SHOULD specify the IRI of the current resource, the IRI of the most recent version, and the IRI of any previous version that was superseded.  Metadata of a past version SHOULD specify that version's IRI, specify the IRI of the current resource, and link to any previous or subsequent versions.  
+A current resource is related to one of its versions by the property dcterms:hasVersion.  A version is related to its current resource by the property dcterms:isVersionOf, to a version that it supersedes by dcterms:replaces, and to a version that supersedes it by dcterms:isReplacedBy.  The metadata for a current resource SHOULD specify the IRI of the current resource, the IRI of the most recent version, and the IRI of any previous version that was superseded.  Metadata of a version SHOULD specify that version's IRI, specify the IRI of the current resource, and link to any previous or subsequent versions.  
 
 The versioning model is specific to neither humans nor machines, and either should be able to use the resource IRIs and properties to traverse the links from one version to another.  
 
@@ -302,7 +302,7 @@ The status MUST be one of the status categories listed at [http://www.tdwg.org/s
 
 **3.1.6 Preferred citation**
 
-The landing page SHOULD indicate a preferred citation for the standard that includes at least the name of the standard and the IRI. The exact format and content of the citation is not specified by this specification.
+The landing page SHOULD indicate a preferred citation for the standard that includes at least the name of the standard and the IRI. The exact format and content of the citation is not specified here.
 
 **3.1.7 Links to parts of the standard**
 
@@ -395,7 +395,7 @@ Standards documents MUST be written in English. Translations of standards docume
 
 **3.2.5 Use of RFC 2119 keywords**
 
-Writers of standards documents MAY choose to follow the guidelines of RFC 2119 [RFC-2119].  However, if keywords are used as in RFC 2119, the introduction of the standard MUST include the recommended explanatory phrase from the RFC2119 abstract.  (For example, see Section 1.6 of this specification.)  If the authors do not choose to implement RFC 2119 keywords, they MUST NOT use all-caps formatting for the words that correspond to RFC 2119 keywords.  If a standard does not implement RFC 2119 (as indicated by a lack of the recommended phrase in the introduction of the standard), users of the standard MUST NOT infer that words that correspond to the RFC 2119 have a specialized meaning beyond the common usage of those words.
+Writers of standards documents MAY choose to follow the guidelines of RFC 2119 [RFC-2119].  However, if keywords are used as in RFC 2119, the introduction of the standard MUST include the recommended explanatory phrase from the RFC2119 abstract.  (For example, see Section 1.2 of this specification.)  If the authors do not choose to implement RFC 2119 keywords, they MUST NOT use all-caps formatting for the words that correspond to RFC 2119 keywords.  If a standard does not implement RFC 2119 (as indicated by a lack of the recommended phrase in the introduction of the standard), users of the standard MUST NOT infer that words that correspond to the RFC 2119 have a specialized meaning beyond the common usage of those words.
 
 The decision of whether to implement RFC 2119 keywords should be informed by the implications of failure of users to conform to the requirements indicated by the keywords.  The guidance provided in Sections 6 and 7 of RFC 2119 should be considered in making this decision.
 
@@ -419,7 +419,7 @@ The state of the term at particular times is recorded via versions of the term. 
 
 **3.3.3 Term list documents**
 
-A term list is a document that contains a series of term entries that can be easily read and understood by humans.  Each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies MAY also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list will be identified by an IRI that corresponds to the namespace used with the listed terms, and that IRI will dereference to the term list document that describes the terms from that namespace.  For lists of terms borrowed from other vocabularies, any IRI MAY be used.  Although the lists of borrowed terms will be identified by a different IRI, it is permissible for the borrowed terms to be included in the same human-readable term list document as the terms defined by the standard.  In that case, the borrowed term list IRI SHOULD be designed so that it will dereference to the page on which the borrowed terms are listed (e.g. through use of a hash appended to the namespace IRI).
+A human-readable term list document contains a series of term entries that can be easily read and understood by humans.  Usually, each vocabulary will have at least one term list that contains terms that are defined by the standard that contains it.  Vocabularies MAY also have term lists that contain terms that are borrowed from other vocabularies that define those terms.  For lists of terms that are defined by the standard, the term list will be identified by an IRI that corresponds to the namespace used with the listed terms, and that IRI will dereference to the term list document that describes the terms from that namespace.  For lists of terms borrowed from other vocabularies, any IRI MAY be used.  Although the lists of borrowed terms will be identified by a different IRI, it is permissible for the borrowed terms to be included in the same human-readable term list document as the terms defined by the standard.  In that case, the borrowed term list IRI SHOULD be designed so that it will dereference to the page on which the borrowed terms are listed (e.g. through use of a hash appended to the namespace IRI).
 
 Term lists MAY also be vocabulary extensions.  A vocabulary extension describes additional properties of a term that are not included in the basic human-readable definition.  A vocabulary extension MUST be identified by a different IRI from the basic term list.  Because the mechanism of importing machine-readable representations of vocabulary extension term lists requires that those lists be included in separate documents, achieving content negotiation for both human- and machine-readable representations is simplest if the human-readable representations are also in separate documents from other human-readable term list documents that form parts of vocabulary standards.  
 
@@ -437,7 +437,7 @@ Each term entry on the list SHOULD include the following items.
 
 **Label** (RECOMMENDED) - The label is a word or short phrase that serves as a human-readable name for the term.
 
-**Value** (REQUIRED for controlled vocabularies, not applicable to metadata schemes) - A string that is unique within a controlled vocabulary that identifies the concept in the context of a text-based metadata transfer system.  The value MUST consist of Unicode characters.
+**Controlled value** (REQUIRED for controlled vocabularies, not applicable to metadata schemes) - A string that is unique within a controlled vocabulary that identifies the concept in the context of a text-based metadata transfer system.  The value MUST consist of Unicode characters.
 
 **Term IRI** (REQUIRED) - The HTTP IRI that uniquely identifies the current term
 
@@ -492,7 +492,7 @@ The term list MAY contain other properties of the term that are deemed to be use
 
 ## **4 Machine-readable documents** ##
 
-It is desirable for machine clients to be able to discover and process metadata associated with standards documents and vocabularies without human intervention. This section describes how machine-readable documents should be constructed to make this possible.
+It is desirable for machine clients to be able to discover and process metadata associated with standards documents and vocabularies without human intervention. This section describes how to construct machine-readable documents to make this possible.
 
 The relationships described in this section MAY be expressed as Resource Description Framework (RDF), but that is not to the exclusion of other methods that might be available for expressing the same relationships in a manner that also facilitates machine processing.
 
@@ -509,10 +509,12 @@ When a client dereferences the resource IRI, it is desirable that content negoti
 The following example is expressed in RDF/Turtle:
 
 ```
+# This IRI identifies the text guide as an abstract resource
 <http://rs.tdwg.org/dwc/terms/guides/text>
      dcterms:title "Darwin Core Text Guide";
      dcterms:isReferencedBy <https://github.com/tdwg/dwc/blob/master/terms/guides/text/index.ttl>.
 
+# This IRI identifies the particular RDF Turtle document that describes the text guide
 <https://github.com/tdwg/dwc/blob/master/terms/guides/text/index.ttl>
      dcterms:references <http://rs.tdwg.org/dwc/terms/guides/text>;
      dc:format "text/turtle".
@@ -704,7 +706,7 @@ The following example is expressed in RDF/Turtle:
 
 **4.4.2 Metadata terms describing term lists**
 
-Each set of terms defined by a TDWG standard that share a namespace will be included in a term list that corresponds to that namespace.  Thus, when the IRI of a term that is defined by the standard is dereferenced with a request for machine-readable metadata, a document MAY be returned through content negotiation that contains the metadata for those terms.  Other terms that are borrowed from other vocabularies will be grouped in one or more additional term lists.  
+Each set of terms defined by a TDWG standard and that share a namespace will be included in a term list that corresponds to that namespace.  Thus, when the IRI of a term that is defined by the standard is dereferenced with a request for machine-readable metadata, a document MAY be returned through content negotiation that contains the metadata for those terms.  Other terms that are borrowed from other vocabularies will be grouped in one or more additional term lists.  
 
 All terms are related to the term list that contains them by the property dcterms:isPartOf.    
 
@@ -721,11 +723,11 @@ Term lists for borrowed terms are simply used to group those terms and are not a
 
 **4.4.2.1 Normative and non-normative content in machine-readable representations of term lists**
 
-Although term lists are a form of descriptive document, they differ from generic descriptive documents in an important way.  The machine-readable representation of a descriptive document that is primarily human-readable will contain metadata about the document, but will not generally include most of the content of the document.  However, the machine-readable representation of a term list will contain substantively the same information as the human-readable document.  For that reason, it is important that any notations explaining the categories of term data that are normative SHOULD be preserved in the machine-readable data as well.  Such notations SHOULD be included as the value of an rdfs:comment property of the term list. For example, if the human-readable representation of the term list notes that term definitions are normative, but that comments are not, that note SHOULD be included as an rdfs:comment.  
+Although term lists are described by descriptive documents, term list documents differ from generic descriptive documents in an important way.  The machine-readable representation of a descriptive document that is primarily human-readable will contain metadata about the document, but will not generally include most of the content of the document.  However, the machine-readable representation of a term list will contain substantively the same information as the human-readable document.  For that reason, it is important that any notations explaining the categories of term data that are normative SHOULD be preserved in the machine-readable data as well.  Such notations SHOULD be included as the value of an rdfs:comment property of the term list. For example, if the human-readable representation of the term list notes that term definitions are normative, but that comments are not, that note SHOULD be included as an rdfs:comment.  
 
 **4.4.2.2 Vocabulary extension term lists**
 
-If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties SHOULD be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology through a layered approach [GBIF-KOS, Section 1.1].  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
+If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties SHOULD be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list document known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology through a layered approach [GBIF-KOS, Section 1.1].  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
 
 The rdf:type of a vocabulary extension list is owl:Ontology. This is entailed by the range of owl:imports; nevertheless, it is desirable to assert this explicitly.  The type of a basic term definition list SHOULD not be declared explicitly to be owl:Ontology, since this implies a level of semantics that might not concern all users of the basic term list.  
 
