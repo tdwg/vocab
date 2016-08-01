@@ -13,7 +13,7 @@
      dcterms:created "2016-12-04"^^xsd:date; #change this to ratification date
      dcterms:modified "2016-12-04"^^xsd:date ; #change this to ratification date
      dcterms:title "Standards Documentation Standard"@en;
-     rdf:label "Standards Documentation Standard"@en;
+     rdfs:label "Standards Documentation Standard"@en;
      a dcterms:Standard;
      dc:publisher "Biodiversity Information Standards (TDWG)";
      dcterms:description "The TDWG Standards Documentation Standard consists of a single document: the Standards Documentation Specification."@en;
@@ -25,7 +25,7 @@
      dcterms:isVersionOf <http://www.tdwg.org/standards/147>;
      dcterms:issued "2016-12-04"^^xsd:date; #change this to ratification date
      dcterms:title "Standards Documentation Standard (2016-12-04 release)"@en;
-     rdf:label "Standards Documentation Standard (2016-12-04 release)"@en;
+     rdfs:label "Standards Documentation Standard (2016-12-04 release)"@en;
      a dcterms:Standard;
      dc:publisher "Biodiversity Information Standards (TDWG)";
      dcterms:description "The TDWG Standards Documentation Standard consists of a single document: the Standards Documentation Specification."@en;
@@ -39,7 +39,7 @@
      dcterms:created "2007-06-06"^^xsd:date;
      dcterms:modified "2016-08-01"^^xsd:date ; #change this to date of the last version before ratification
      dcterms:title "Standards Documentation Specification"@en;
-     rdf:label "Standards Documentation Specification"@en;
+     rdfs:label "Standards Documentation Specification"@en;
      a foaf:Document;
      dc:contributor "Steven J. Baskauf (TDWG Vocabulary Maintenance Specification Task Group)",
                     "Roger Hyam (TDWG Infrastructure Project)",
