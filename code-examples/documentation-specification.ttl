@@ -1,18 +1,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
-@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
-@prefix dcam: <http://purl.org/dc/dcam/>.
-@prefix dcat: <http://www.w3.org/ns/dcat#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix emv: <http://rs.gbif.org/vocabulary/gbif/establishment_means/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix schema: <http://schema.org/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
       
 <http://www.tdwg.org/standards/147> 
@@ -32,7 +23,7 @@
      owl:versionInfo "2016-12-04";
      dcterms:hasPart <http://something.tdwg.org/sds/2016-07-31>;
      dcterms:isVersionOf <http://www.tdwg.org/standards/147>;
-     dcterms:issued "2016-07-31"^^xsd:date; #change this to ratification date
+     dcterms:issued "2016-12-04"^^xsd:date; #change this to ratification date
      dcterms:title "Standards Documentation Standard (2016-12-04 release)"@en;
      rdf:label "Standards Documentation Standard (2016-12-04 release)"@en;
      a dcterms:Standard;
@@ -42,10 +33,11 @@
 
 <http://something.tdwg.org/sds> 
      dcterms:isPartOf <http://www.tdwg.org/standards/147>;
-     dcterms:hasVersion <http://something.tdwg.org/sds/2016-07-31>;
+     dcterms:hasVersion <http://something.tdwg.org/sds/2016-08-01>;
+     dcterms:hasVersion <http://something.tdwg.org/sds/2007-11-05>;
      dcterms:isReferencedBy <http://something.tdwg.org/sds.ttl>;
-     dcterms:created "2016-07-31"^^xsd:date;
-     dcterms:modified "2016-07-31"^^xsd:date ; #change this to date of the last version before ratification
+     dcterms:created "2007-06-06"^^xsd:date;
+     dcterms:modified "2016-08-01"^^xsd:date ; #change this to date of the last version before ratification
      dcterms:title "Standards Documentation Specification"@en;
      rdf:label "Standards Documentation Specification"@en;
      a foaf:Document;
@@ -57,11 +49,11 @@
                     "Joel Sachs (TDWG RDF Task Group)",
                     "Greg Whitbread (TDWG Technical Architecture Group)",
                     "John Wieczorek (TDWG Darwin Core Task Group)",
-                    "(review editor)";
+                    "(review editor)"; #add review editor's name
      dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
                          <http://orcid.org/0000-0003-4581-1379>,
                          [foaf:familyName "Blum"; foaf:givenName "Stanley";rdfs:label "Stanley Blum"],
-                         [schema:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
+                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
                          <http://orcid.org/0000-0001-7694-8250>,
                          [foaf:familyName "Sachs"; foaf:givenName "Joel";rdfs:label "Joel Sachs"],
                          [foaf:familyName "Whitbread"; foaf:givenName "Greg";rdfs:label "Greg Whitbread"],
@@ -73,13 +65,14 @@
      rdfs:comment "This document defines how TDWG standards are to be presented. It provides details about the hierarchical structure of standards and versioning of standards components. It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.";
      dcterms:bibliographicCitation "Vocabulary Maintenance Specification Task Group. 2016. Standards Documentation Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (accessed on [date]).".
 
-<http://something.tdwg.org/sds/2016-07-31> 
-     owl:versionInfo "2016-07-31";
+<http://something.tdwg.org/sds/2016-08-01> 
+     owl:versionInfo "2016-08-01";
      dcterms:isPartOf <http://www.tdwg.org/standards/147#2016-12-04>;
+     dcterms:replaces <http://something.tdwg.org/sds/2007-11-05>;
      dcterms:isVersionOf <http://something.tdwg.org/sds>;
-     dcterms:issued "2016-07-31"^^xsd:date;
-     dcterms:title "Standards Documentation Specification (2016-07-31 release)"@en;
-     rdfs:label "Standards Documentation Specification (2016-07-31 release)"@en;
+     dcterms:issued "2016-08-01"^^xsd:date;
+     dcterms:title "Standards Documentation Specification (2016-08-01 version)"@en;
+     rdfs:label "Standards Documentation Specification (2016-08-01 version)"@en;
      a foaf:Document;
      dc:contributor "Steven J. Baskauf (TDWG Vocabulary Maintenance Specification Task Group)",
                     "Roger Hyam (TDWG Infrastructure Project)",
@@ -93,7 +86,7 @@
      dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
                          <http://orcid.org/0000-0003-4581-1379>,
                          [foaf:familyName "Blum"; foaf:givenName "Stanley";rdfs:label "Stanley Blum"],
-                         [schema:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
+                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
                          <http://orcid.org/0000-0001-7694-8250>,
                          [foaf:familyName "Sachs"; foaf:givenName "Joel";rdfs:label "Joel Sachs"],
                          [foaf:familyName "Whitbread"; foaf:givenName "Greg";rdfs:label "Greg Whitbread"],
@@ -104,6 +97,21 @@
      dcterms:description "This document defines how TDWG standards are to be presented. It provides details about the hierarchical structure of standards and versioning of standards components. It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.";
      rdfs:comment "This document defines how TDWG standards are to be presented. It provides details about the hierarchical structure of standards and versioning of standards components. It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.";
      dcterms:bibliographicCitation "Vocabulary Maintenance Specification Task Group. 2016. Standards Documentation Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (accessed on [date]).".
+
+<http://something.tdwg.org/sds/2007-11-05> 
+     owl:versionInfo "2007-11-05";
+     dcterms:isReplacedBy <http://something.tdwg.org/sds/2016-08-01>;
+     dcterms:isVersionOf <http://something.tdwg.org/sds>;
+     dcterms:issued "2007-11-05"^^xsd:date;
+     dcterms:title "TDWG Standards Documentation Specification"@en;
+     rdfs:label "TDWG Standards Documentation Specification"@en;
+     a foaf:Document;
+     dc:contributor "Roger Hyam (TDWG Infrastructure Project)";
+     dcterms:contributor <http://orcid.org/0000-0003-4581-1379>;
+     dc:creator "TDWG Infrastructure Project";
+     dcterms:license <https://creativecommons.org/licenses/by/3.0/>;
+     dcterms:description "This document defines how TDWG standards should be presented. Each standard is a logical directory or folder containing two or more files - a cover page outlining basic metadata for the standard and one or more normative files specifying the standard itself. Rules are specified for the naming of standards and files. Human readable files should be in English, follow basic layout principles and be marked up in XHTML. The legal statements that all documents must contain are defined.";
+     rdfs:comment "This document defines how TDWG standards should be presented. Each standard is a logical directory or folder containing two or more files - a cover page outlining basic metadata for the standard and one or more normative files specifying the standard itself. Rules are specified for the naming of standards and files. Human readable files should be in English, follow basic layout principles and be marked up in XHTML. The legal statements that all documents must contain are defined.".
 
 <http://something.tdwg.org/sds.ttl> a foaf:Document;
      dcterms:references <http://www.tdwg.org/standards/147>;

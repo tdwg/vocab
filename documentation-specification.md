@@ -14,7 +14,7 @@
 
 **Abstract:** This document defines how TDWG standards are to be presented.  It provides details about the hierarchical structure of standards and versioning of standards components.  It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stan Blum (TDWG Process Interest Group), Robert A. Morris (TDWG Imaging Interest Group), Jonathan Rees, Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group). Review editor: _______
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stanley Blum (TDWG Process Interest Group), Robert A. Morris (TDWG Imaging Interest Group), Jonathan Rees, Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group). Review editor: _______
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
@@ -582,13 +582,13 @@ The property dcterms:contributor SHOULD be used to link the document or vocabula
 <http://www.tdwg.org/standards/450>
      dcterms:hasPart <http://rs.tdwg.org/dwc/terms/guides/text>;
      dcterms:title "Darwin Core Standard"@en;
-     rdf:label "Darwin Core Standard"@en;
+     rdfs:label "Darwin Core Standard"@en;
      a dcterms:Standard;
      dc:publisher "Biodiversity Information Standards (TDWG)".
 
 <http://rs.tdwg.org/dwc/terms/guides/text>
      dcterms:title "Darwin Core Text Guide"@en;
-     rdf:label "Darwin Core Text Guide"@en;
+     rdfs:label "Darwin Core Text Guide"@en;
      dcterms:isPartOf <http://www.tdwg.org/standards/450>;
      dc:contributor "Tim Robertson (GBIF)",
                     "John Wieczorek (MVZ)",
