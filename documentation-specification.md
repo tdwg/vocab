@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2016-07-31) #
+# TDWG Standards Documentation Specification (draft of 2016-08-01) #
 
 **Title:** Standards Documentation Specification
 
@@ -47,7 +47,7 @@
 3.1 Landing page for the standard
 3.1.1 Name of the standard
 3.1.2 IRI of the standard
-3.1.3 Link to TDWG
+3.1.3 Publisher and link to TDWG
 3.1.4 Abstract
 3.1.5 Status of the standard
 3.1.6 Preferred citation
@@ -76,9 +76,11 @@
 4.1.1 Example of linking a resource to the machine-readable document that describes it (non-normative)
 4.1.2 Types of resources
 4.2 General metadata
-4.2.1 Example of expressing general metadata (non-normative)
-4.2.2 Deprecating resources
-4.2.2.1 Example of deprecation of a resource (non-normative)
+4.2.1 Metadata for standards
+4.2.2 Metadata for documents and vocabularies
+4.2.3 Example of expressing general metadata (non-normative)
+4.2.4 Deprecating resources
+4.2.4.1 Example of deprecation of a resource (non-normative)
 4.3 Metadata describing and linking versions
 4.3.1 Example of linking a current resource to its versions (non-normative)
 4.4 Vocabularies, term lists, and terms
@@ -288,9 +290,9 @@ controlled and MAY contain any combination of characters.
 
 The landing page SHOULD include the HTTP IRI that identifies the standard.  The text of the landing page SHOULD indicate that the identifying HTTP IRI is the IRI that should be cited and is the IRI to which hyperlinks SHOULD be made.  Providing this information is important because content negotiation might redirect users to some other IRI that is specific to the delivery mechanism and that might be subject to change at some time in the future.
 
-**3.1.3 Link to TDWG**
+**3.1.3 Publisher and link to TDWG**
 
-The landing page MUST make it clear that this is a TDWG standard and SHOULD provide a link to the TDWG home page.  
+The landing page MUST make it clear that this is a standard published by TDWG and SHOULD provide a link to the TDWG home page.  
 
 **3.1.4 Abstract**
 
@@ -543,29 +545,51 @@ Documents SHOULD be typed according to a well-known vocabulary.
 
 ### **4.2 General metadata** ###
 
-The same metadata that is presented in the header section of the human-readable representations of descriptive documents and vocabulary landing pages (Section 3.2.3.1) SHOULD be provided in corresponding machine-readable documents.  The following properties with appropriate values SHOULD be used to describe the document or vocabulary:
+The same metadata that is presented in the header section of the human-readable representations of descriptive documents and vocabulary landing pages (Section 3.2.3.1) SHOULD be provided in corresponding machine-readable documents.  
+
+**4.2.1 Metadata for standards**
+
+The following properties with appropriate values SHOULD be used to describe a standard:
 
 |**Human-readable label** | **Machine-readable property** | **Type of value** |
 |-------------------------|-------------------------------|-------------------|
 | Title                   | dcterms:title, rdfs:label *   | literal           |
+| Publisher               | dc:publisher             | literal containing "Biodiversity Information Standards (TDWG)"|
+
+\* Both of these terms are well-known properties used to indicate a human-readable label for a resource.  Including both increases the likelihood that a consuming application will be able to present that label to human users.  
+
+A description of the standard MAY be provided as a value of the property dcterms:description.
+
+**4.2.2 Metadata for documents and vocabularies**
+
+The following properties with appropriate values SHOULD be used to describe a document or vocabulary:
+
+|**Human-readable label** | **Machine-readable property** | **Type of value** |
+|-------------------------|-------------------------------|-------------------|
+| Title                   | dcterms:title, rdfs:label     | literal           |
 | Part of TDWG Standard   | dcterms:isPartOf              | IRI that denotes the containing standard; omit for the standard itself|
-| Contributors            | dc:contributor                | literal; repeat property for each contributor's name; omit for the standard itself since the contributors of each part will be listed |
+| Contributors            | dc:contributor                | literal; repeat property for each contributor's name |
 | Creator                 | dc:creator                    | literal providing the name of the Task Group responsible for creating the document |
 | License                 | dcterms:license               | IRI for a license; use a license type in accordance with current TDWG policy |
 | Abstract                | dcterms:description           | literal containing the human-readable abstract of the document minus any references or hyperlinks |
 | Bibliographic Citation  | dcterms:bibliographicCitation | literal           |
 
-\* Both of these terms are well-known properties used to indicate a human-readable label for a resource.  Including both increases the likelihood that a consuming application will be able to present that label to human users.
-
 The property dcterms:contributor SHOULD be used to link the document or vocabulary to an IRI that denotes the contributor. If a well-known IRI for the contributor is not available, dcterms:contributor MAY be used to link to a blank node that contains parsed components of the contributor's name.
 
-**4.2.1 Example of expressing general metadata (non-normative)**
+**4.2.3 Example of expressing general metadata (non-normative)**
 
 ```
+<http://www.tdwg.org/standards/450>
+     dcterms:hasPart <http://rs.tdwg.org/dwc/terms/guides/text>;
+     dcterms:title "Darwin Core Standard"@en;
+     rdf:label "Darwin Core Standard"@en;
+     a dcterms:Standard;
+     dc:publisher "Biodiversity Information Standards (TDWG)".
+
 <http://rs.tdwg.org/dwc/terms/guides/text>
      dcterms:title "Darwin Core Text Guide"@en;
      rdf:label "Darwin Core Text Guide"@en;
-     dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
+     dcterms:isPartOf <http://www.tdwg.org/standards/450>;
      dc:contributor "Tim Robertson (GBIF)",
                     "John Wieczorek (MVZ)",
                     "Markus Döring (GBIF)",
@@ -582,7 +606,7 @@ The property dcterms:contributor SHOULD be used to link the document or vocabula
      dcterms:bibliographicCitation "Darwin Core Task Group. 2009. Darwin Core Text Guide. , Biodiversity Information Standards (TDWG). http://rs.tdwg.org/dwc/terms/guides/text/ (accessed on [date]).".
 ```
 
-**4.2.2 Deprecating resources**
+**4.2.4 Deprecating resources**
 
 Deprecation of a resource is an indication that the resource is invalid or no longer recommended for use.  This is different from the situation where a resource is replaced by a newer version that is a modification of a previous version (Section 4.3).  In all cases, deprecation of a resource is indicated by assigning the property owl:deprecated with a value of "true" datatyped as xsd:boolean.  An rdfs:comment property SHOULD provide a human-readable description of the circumstances of the deprecation.  If another resource provides additional information or a possible replacement, a link SHOULD be made from the deprecated resource to the other resource using rdfs:seeAlso.
 
@@ -592,7 +616,7 @@ At the standard level, deprecation occurs when a standard is assigned to the [Re
 
 For information about deprecation of terms within vocabularies, see Section 4.5.3.  
 
-**4.2.2.1 Example of deprecation of a resource (non-normative)**
+**4.2.4.1 Example of deprecation of a resource (non-normative)**
 
 ```
 <http://rs.tdwg.org/ontology/Core>

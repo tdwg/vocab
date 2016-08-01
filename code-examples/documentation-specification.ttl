@@ -1,0 +1,112 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
+@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dcam: <http://purl.org/dc/dcam/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix emv: <http://rs.gbif.org/vocabulary/gbif/establishment_means/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix schema: <http://schema.org/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+      
+<http://www.tdwg.org/standards/147> 
+     dcterms:hasPart <http://something.tdwg.org/sds>;
+     dcterms:hasVersion <http://www.tdwg.org/standards/147#2016-12-04>;
+     dcterms:isReferencedBy <http://something.tdwg.org/sds.ttl>;
+     dcterms:created "2016-12-04"^^xsd:date; #change this to ratification date
+     dcterms:modified "2016-12-04"^^xsd:date ; #change this to ratification date
+     dcterms:title "Standards Documentation Standard"@en;
+     rdf:label "Standards Documentation Standard"@en;
+     a dcterms:Standard;
+     dc:publisher "Biodiversity Information Standards (TDWG)";
+     dcterms:description "The TDWG Standards Documentation Standard consists of a single document: the Standards Documentation Specification."@en;
+     rdfs:comment "The TDWG Standards Documentation Standard consists of a single document: the Standards Documentation Specification."@en.
+
+<http://www.tdwg.org/standards/147#2016-12-04> 
+     owl:versionInfo "2016-12-04";
+     dcterms:hasPart <http://something.tdwg.org/sds/2016-07-31>;
+     dcterms:isVersionOf <http://www.tdwg.org/standards/147>;
+     dcterms:issued "2016-07-31"^^xsd:date; #change this to ratification date
+     dcterms:title "Standards Documentation Standard (2016-12-04 release)"@en;
+     rdf:label "Standards Documentation Standard (2016-12-04 release)"@en;
+     a dcterms:Standard;
+     dc:publisher "Biodiversity Information Standards (TDWG)";
+     dcterms:description "The TDWG Standards Documentation Standard consists of a single document: the Standards Documentation Specification."@en;
+     rdfs:comment "The TDWG Standards Documentation Standard consists of a single document: the Standards Documentation Specification."@en.
+
+<http://something.tdwg.org/sds> 
+     dcterms:isPartOf <http://www.tdwg.org/standards/147>;
+     dcterms:hasVersion <http://something.tdwg.org/sds/2016-07-31>;
+     dcterms:isReferencedBy <http://something.tdwg.org/sds.ttl>;
+     dcterms:created "2016-07-31"^^xsd:date;
+     dcterms:modified "2016-07-31"^^xsd:date ; #change this to date of the last version before ratification
+     dcterms:title "Standards Documentation Specification"@en;
+     rdf:label "Standards Documentation Specification"@en;
+     a foaf:Document;
+     dc:contributor "Steven J. Baskauf (TDWG Vocabulary Maintenance Specification Task Group)",
+                    "Roger Hyam (TDWG Infrastructure Project)",
+                    "Stanley Blum (TDWG Process Interest Group)",
+                    "Robert A. Morris (TDWG Imaging Interest Group)",
+                    "Jonathan A. Rees",
+                    "Joel Sachs (TDWG RDF Task Group)",
+                    "Greg Whitbread (TDWG Technical Architecture Group)",
+                    "John Wieczorek (TDWG Darwin Core Task Group)",
+                    "(review editor)";
+     dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
+                         <http://orcid.org/0000-0003-4581-1379>,
+                         [foaf:familyName "Blum"; foaf:givenName "Stanley";rdfs:label "Stanley Blum"],
+                         [schema:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
+                         <http://orcid.org/0000-0001-7694-8250>,
+                         [foaf:familyName "Sachs"; foaf:givenName "Joel";rdfs:label "Joel Sachs"],
+                         [foaf:familyName "Whitbread"; foaf:givenName "Greg";rdfs:label "Greg Whitbread"],
+                         [foaf:familyName "Wieczorek"; foaf:givenName "John";rdfs:label "John Wieczorek"],
+                         <http://orcid.org/x>; #add review editor's ORCID ID
+     dc:creator "TDWG Vocabulary Maintenance Specification Task Group";
+     dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
+     dcterms:description "This document defines how TDWG standards are to be presented. It provides details about the hierarchical structure of standards and versioning of standards components. It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.";
+     rdfs:comment "This document defines how TDWG standards are to be presented. It provides details about the hierarchical structure of standards and versioning of standards components. It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.";
+     dcterms:bibliographicCitation "Vocabulary Maintenance Specification Task Group. 2016. Standards Documentation Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (accessed on [date]).".
+
+<http://something.tdwg.org/sds/2016-07-31> 
+     owl:versionInfo "2016-07-31";
+     dcterms:isPartOf <http://www.tdwg.org/standards/147#2016-12-04>;
+     dcterms:isVersionOf <http://something.tdwg.org/sds>;
+     dcterms:issued "2016-07-31"^^xsd:date;
+     dcterms:title "Standards Documentation Specification (2016-07-31 release)"@en;
+     rdfs:label "Standards Documentation Specification (2016-07-31 release)"@en;
+     a foaf:Document;
+     dc:contributor "Steven J. Baskauf (TDWG Vocabulary Maintenance Specification Task Group)",
+                    "Roger Hyam (TDWG Infrastructure Project)",
+                    "Stanley Blum (TDWG Process Interest Group)",
+                    "Robert A. Morris (TDWG Imaging Interest Group)",
+                    "Jonathan A. Rees",
+                    "Joel Sachs (TDWG RDF Task Group)",
+                    "Greg Whitbread (TDWG Technical Architecture Group)",
+                    "John Wieczorek (TDWG Darwin Core Task Group)",
+                    "(review editor)";
+     dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
+                         <http://orcid.org/0000-0003-4581-1379>,
+                         [foaf:familyName "Blum"; foaf:givenName "Stanley";rdfs:label "Stanley Blum"],
+                         [schema:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
+                         <http://orcid.org/0000-0001-7694-8250>,
+                         [foaf:familyName "Sachs"; foaf:givenName "Joel";rdfs:label "Joel Sachs"],
+                         [foaf:familyName "Whitbread"; foaf:givenName "Greg";rdfs:label "Greg Whitbread"],
+                         [foaf:familyName "Wieczorek"; foaf:givenName "John";rdfs:label "John Wieczorek"],
+                         <http://orcid.org/x>; #add review editor's ORCID ID
+     dc:creator "TDWG Vocabulary Maintenance Specification Task Group";
+     dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
+     dcterms:description "This document defines how TDWG standards are to be presented. It provides details about the hierarchical structure of standards and versioning of standards components. It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.";
+     rdfs:comment "This document defines how TDWG standards are to be presented. It provides details about the hierarchical structure of standards and versioning of standards components. It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.";
+     dcterms:bibliographicCitation "Vocabulary Maintenance Specification Task Group. 2016. Standards Documentation Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (accessed on [date]).".
+
+<http://something.tdwg.org/sds.ttl> a foaf:Document;
+     dcterms:references <http://www.tdwg.org/standards/147>;
+     dcterms:references <http://something.tdwg.org/sds>;
+     dc:format "text/turtle";
+     dcterms:modified "2016-08-01T07:33:00-05:00"^^xsd:dateTime.
