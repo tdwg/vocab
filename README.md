@@ -2,6 +2,7 @@
 
 The VOCAB charter was approved on 2015-05-11, establishing it as a Task Group under the Process Interest Group of [Biodiversity Information Standards (TDWG)](http://www.tdwg.org/). The charter can be viewed [here](vmg-charter.pdf).
 
+## Draft Specifications for submission for appointment of review manager 2016-08-02
 
 [Human-readable TDWG Standards Documentation Specification submission](documentation-specification.md)
 
