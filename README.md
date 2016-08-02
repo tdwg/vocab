@@ -2,11 +2,14 @@
 
 The VOCAB charter was approved on 2015-05-11, establishing it as a Task Group under the Process Interest Group of [Biodiversity Information Standards (TDWG)](http://www.tdwg.org/). The charter can be viewed [here](vmg-charter.pdf).
 
-## Draft Specifications
 
-[TDWG Standards Documentation Specification](documentation-specification.md)
+[Human-readable TDWG Standards Documentation Specification submission](documentation-specification.md)
 
-[TDWG Vocabulary Maintenance Specification](maintenance-specification.md)
+[Human-readable TDWG Vocabulary Maintenance Specification submission](maintenance-specification.md)
+
+[TDWG Standards Documentation Specification metadata as RDF/Turtle](documentation-specification.ttl)
+
+[TDWG Vocabulary Maintenance Specification metadata as RDF/Turtle](maintenance-specification.ttl)
 
 ## Participating in the Task Group
 
