@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2016-08-01) #
+# TDWG Standards Documentation Specification (draft of 2016-08-02 as submitted for review) #
 
 **Title:** Standards Documentation Specification
 
@@ -14,7 +14,7 @@
 
 **Abstract:** This document defines how TDWG standards are to be presented.  It provides details about the hierarchical structure of standards and versioning of standards components.  It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stanley Blum (TDWG Process Interest Group), Robert A. Morris (TDWG Imaging Interest Group), Jonathan Rees, Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group). Review editor: _______
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stanley Blum (TDWG Process Interest Group), Robert A. Morris (UMASS-Boston, TDWG Imaging Interest Group), Jonathan Rees (Duke University), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group). Review editor: _______
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
@@ -554,7 +554,7 @@ The following properties with appropriate values SHOULD be used to describe a st
 |**Human-readable label** | **Machine-readable property** | **Type of value** |
 |-------------------------|-------------------------------|-------------------|
 | Title                   | dcterms:title, rdfs:label *   | literal           |
-| Publisher               | dc:publisher             | literal containing "Biodiversity Information Standards (TDWG)"|
+| Publisher               | dc:publisher             | literal consisting of "Biodiversity Information Standards (TDWG)"|
 
 \* Both of these terms are well-known properties used to indicate a human-readable label for a resource.  Including both increases the likelihood that a consuming application will be able to present that label to human users.  
 
@@ -596,7 +596,7 @@ The property dcterms:contributor SHOULD be used to link the document or vocabula
                     "Renato de Giovanni (CRIA)",
                     "Dave Vieglais (KUNHM)";
      dcterms:contributor <http://orcid.org/0000-0001-6215-3617>,
-                         [foaf:familyName "Wieczorek"; foaf:givenName "John"],
+                         <http://orcid.org/0000-0003-1144-0290>,
                          <http://orcid.org/0000-0001-7757-1889>,
                          [foaf:familyName "de Giovanni"; foaf:givenName "Renato"],
                          <http://orcid.org/0000-0002-6513-4996>;

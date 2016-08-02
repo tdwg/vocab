@@ -6,6 +6,11 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
       
+# This file is part of the main submission for review of the Vocabulary Maintenance Specification on 2016-08-02.
+# These metadata are provisional.  Some adjustments to this information may need to be made as IRIs are settled, 
+# as dates are determined, review managers chosen, and
+# if substantive changes are made in the documentation specifications for machine-readable metadata.
+
 <http://www.tdwg.org/standards/x> 
      dcterms:hasPart <http://something.tdwg.org/vms>;
      dcterms:hasVersion <http://www.tdwg.org/standards/x#2016-12-04>;
@@ -21,7 +26,7 @@
 
 <http://www.tdwg.org/standards/x#2016-12-04> 
      owl:versionInfo "2016-12-04";
-     dcterms:hasPart <http://something.tdwg.org/vms/2016-07-31>;
+     dcterms:hasPart <http://something.tdwg.org/vms/2016-08-02>;
      dcterms:isVersionOf <http://www.tdwg.org/standards/x>;
      dcterms:issued "2016-12-04"^^xsd:date; #change this to ratification date
      dcterms:title "Vocabulary Maintenance Standard (2016-12-04 release)"@en;
@@ -33,25 +38,25 @@
 
 <http://something.tdwg.org/vms> 
      dcterms:isPartOf <http://www.tdwg.org/standards/x>;
-     dcterms:hasVersion <http://something.tdwg.org/vms/2016-07-31>;
+     dcterms:hasVersion <http://something.tdwg.org/vms/2016-08-02>;
      dcterms:isReferencedBy <http://something.tdwg.org/vms.ttl>;
-     dcterms:created "2007-07-31"^^xsd:date;
-     dcterms:modified "2016-07-31"^^xsd:date ; #change this to date of the last version before ratification
+     dcterms:created "2007-08-02"^^xsd:date;
+     dcterms:modified "2016-08-02"^^xsd:date ; #change this to date of the last version before ratification
      dcterms:title "Vocabulary Maintenance Specification"@en;
      rdfs:label "Vocabulary Maintenance Specification"@en;
      a foaf:Document;
      dc:contributor "Steven J. Baskauf (TDWG Vocabulary Maintenance Specification Task Group)",
                     "John Wieczorek (TDWG Darwin Core Task Group)",
                     "Stanley Blum (TDWG Process Interest Group)",
-                    "Robert A. Morris (TDWG Imaging Interest Group)",
+                    "Robert A. Morris (UMASS-Boston, TDWG Imaging Interest Group)",
                     "Jonathan A. Rees",
                     "Joel Sachs (TDWG RDF Task Group)",
                     "Greg Whitbread (TDWG Technical Architecture Group)",
                     "(review editor)"; #add review editor's name
      dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
-                         [foaf:familyName "Wieczorek"; foaf:givenName "John";rdfs:label "John Wieczorek"],
+                         <http://orcid.org/0000-0003-1144-0290>,
                          [foaf:familyName "Blum"; foaf:givenName "Stanley";rdfs:label "Stanley Blum"],
-                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
+                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Robert A. Morris"],
                          <http://orcid.org/0000-0001-7694-8250>,
                          [foaf:familyName "Sachs"; foaf:givenName "Joel";rdfs:label "Joel Sachs"],
                          [foaf:familyName "Whitbread"; foaf:givenName "Greg";rdfs:label "Greg Whitbread"],
@@ -62,26 +67,26 @@
      rdfs:comment "This document describes the processes used to modify TDWG vocabularies and their associated documents.";
      dcterms:bibliographicCitation "Vocabulary Maintenance Specification Task Group. 2016. Vocabulary Maintenance Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/x (accessed on [date]).".
 
-<http://something.tdwg.org/vms/2016-07-31> 
-     owl:versionInfo "2016-07-31";
+<http://something.tdwg.org/vms/2016-08-02> 
+     owl:versionInfo "2016-08-02";
      dcterms:isPartOf <http://www.tdwg.org/standards/x#2016-12-04>;
      dcterms:isVersionOf <http://something.tdwg.org/vms>;
-     dcterms:issued "2016-07-31"^^xsd:date;
-     dcterms:title "Vocabulary Maintenance Specification (2016-07-31 version)"@en;
-     rdfs:label "Vocabulary Maintenance Specification (2016-07-31 version)"@en;
+     dcterms:issued "2016-08-02"^^xsd:date;
+     dcterms:title "Vocabulary Maintenance Specification (2016-08-02 version)"@en;
+     rdfs:label "Vocabulary Maintenance Specification (2016-08-02 version)"@en;
      a foaf:Document;
      dc:contributor "Steven J. Baskauf (TDWG Vocabulary Maintenance Specification Task Group)",
                     "John Wieczorek (TDWG Darwin Core Task Group)",
                     "Stanley Blum (TDWG Process Interest Group)",
-                    "Robert A. Morris (TDWG Imaging Interest Group)",
+                    "Robert A. Morris (UMASS-Boston, TDWG Imaging Interest Group)",
                     "Jonathan A. Rees",
                     "Joel Sachs (TDWG RDF Task Group)",
                     "Greg Whitbread (TDWG Technical Architecture Group)",
                     "(review editor)"; #add review editor's name
      dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
-                         [foaf:familyName "Wieczorek"; foaf:givenName "John";rdfs:label "John Wieczorek"],
+                         <http://orcid.org/0000-0003-1144-0290>,
                          [foaf:familyName "Blum"; foaf:givenName "Stanley";rdfs:label "Stanley Blum"],
-                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
+                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Robert A. Morris"],
                          <http://orcid.org/0000-0001-7694-8250>,
                          [foaf:familyName "Sachs"; foaf:givenName "Joel";rdfs:label "Joel Sachs"],
                          [foaf:familyName "Whitbread"; foaf:givenName "Greg";rdfs:label "Greg Whitbread"],
@@ -96,4 +101,4 @@
      dcterms:references <http://www.tdwg.org/standards/x>;
      dcterms:references <http://something.tdwg.org/vms>;
      dc:format "text/turtle";
-     dcterms:modified "2016-08-01T07:33:00-05:00"^^xsd:dateTime.
+     dcterms:modified "2016-08-02T16:00:00-05:00"^^xsd:dateTime.

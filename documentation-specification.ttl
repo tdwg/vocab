@@ -5,7 +5,12 @@
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
-      
+
+# This file is part of the main submission for review of the Standards Documentation Specification on 2016-08-02.
+# These metadata are provisional.  Some adjustments to this information may need to be made as IRIs are settled, 
+# as dates are determined, review managers chosen, and
+# if substantive changes are made in the documentation specifications for machine-readable metadata.
+
 <http://www.tdwg.org/standards/147> 
      dcterms:hasPart <http://something.tdwg.org/sds>;
      dcterms:hasVersion <http://www.tdwg.org/standards/147#2016-12-04>;
@@ -21,7 +26,7 @@
 
 <http://www.tdwg.org/standards/147#2016-12-04> 
      owl:versionInfo "2016-12-04";
-     dcterms:hasPart <http://something.tdwg.org/sds/2016-07-31>;
+     dcterms:hasPart <http://something.tdwg.org/sds/2016-08-02>;
      dcterms:isVersionOf <http://www.tdwg.org/standards/147>;
      dcterms:issued "2016-12-04"^^xsd:date; #change this to ratification date
      dcterms:title "Standards Documentation Standard (2016-12-04 release)"@en;
@@ -33,18 +38,18 @@
 
 <http://something.tdwg.org/sds> 
      dcterms:isPartOf <http://www.tdwg.org/standards/147>;
-     dcterms:hasVersion <http://something.tdwg.org/sds/2016-08-01>;
+     dcterms:hasVersion <http://something.tdwg.org/sds/2016-08-02>;
      dcterms:hasVersion <http://something.tdwg.org/sds/2007-11-05>;
      dcterms:isReferencedBy <http://something.tdwg.org/sds.ttl>;
      dcterms:created "2007-06-06"^^xsd:date;
-     dcterms:modified "2016-08-01"^^xsd:date ; #change this to date of the last version before ratification
+     dcterms:modified "2016-08-02"^^xsd:date ; #change this to date of the last version before ratification
      dcterms:title "Standards Documentation Specification"@en;
      rdfs:label "Standards Documentation Specification"@en;
      a foaf:Document;
      dc:contributor "Steven J. Baskauf (TDWG Vocabulary Maintenance Specification Task Group)",
                     "Roger Hyam (TDWG Infrastructure Project)",
                     "Stanley Blum (TDWG Process Interest Group)",
-                    "Robert A. Morris (TDWG Imaging Interest Group)",
+                    "Robert A. Morris (UMASS-Boston, TDWG Imaging Interest Group)",
                     "Jonathan A. Rees",
                     "Joel Sachs (TDWG RDF Task Group)",
                     "Greg Whitbread (TDWG Technical Architecture Group)",
@@ -53,11 +58,11 @@
      dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
                          <http://orcid.org/0000-0003-4581-1379>,
                          [foaf:familyName "Blum"; foaf:givenName "Stanley";rdfs:label "Stanley Blum"],
-                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
+                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Robert A. Morris"],
                          <http://orcid.org/0000-0001-7694-8250>,
                          [foaf:familyName "Sachs"; foaf:givenName "Joel";rdfs:label "Joel Sachs"],
                          [foaf:familyName "Whitbread"; foaf:givenName "Greg";rdfs:label "Greg Whitbread"],
-                         [foaf:familyName "Wieczorek"; foaf:givenName "John";rdfs:label "John Wieczorek"],
+                         <http://orcid.org/0000-0003-1144-0290>,
                          <http://orcid.org/x>; #add review editor's ORCID ID
      dc:creator "TDWG Vocabulary Maintenance Specification Task Group";
      dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
@@ -65,14 +70,14 @@
      rdfs:comment "This document defines how TDWG standards are to be presented. It provides details about the hierarchical structure of standards and versioning of standards components. It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.";
      dcterms:bibliographicCitation "Vocabulary Maintenance Specification Task Group. 2016. Standards Documentation Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (accessed on [date]).".
 
-<http://something.tdwg.org/sds/2016-08-01> 
-     owl:versionInfo "2016-08-01";
+<http://something.tdwg.org/sds/2016-08-02> 
+     owl:versionInfo "2016-08-02";
      dcterms:isPartOf <http://www.tdwg.org/standards/147#2016-12-04>;
      dcterms:replaces <http://something.tdwg.org/sds/2007-11-05>;
      dcterms:isVersionOf <http://something.tdwg.org/sds>;
-     dcterms:issued "2016-08-01"^^xsd:date;
-     dcterms:title "Standards Documentation Specification (2016-08-01 version)"@en;
-     rdfs:label "Standards Documentation Specification (2016-08-01 version)"@en;
+     dcterms:issued "2016-08-02"^^xsd:date;
+     dcterms:title "Standards Documentation Specification (2016-08-02 version)"@en;
+     rdfs:label "Standards Documentation Specification (2016-08-02 version)"@en;
      a foaf:Document;
      dc:contributor "Steven J. Baskauf (TDWG Vocabulary Maintenance Specification Task Group)",
                     "Roger Hyam (TDWG Infrastructure Project)",
@@ -86,11 +91,11 @@
      dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
                          <http://orcid.org/0000-0003-4581-1379>,
                          [foaf:familyName "Blum"; foaf:givenName "Stanley";rdfs:label "Stanley Blum"],
-                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Stanley Blum"],
+                         [foaf:familyName "Morris"; foaf:givenName "Robert A.";rdfs:label "Robert A. Morris"],
                          <http://orcid.org/0000-0001-7694-8250>,
                          [foaf:familyName "Sachs"; foaf:givenName "Joel";rdfs:label "Joel Sachs"],
                          [foaf:familyName "Whitbread"; foaf:givenName "Greg";rdfs:label "Greg Whitbread"],
-                         [foaf:familyName "Wieczorek"; foaf:givenName "John";rdfs:label "John Wieczorek"],
+                         <http://orcid.org/0000-0003-1144-0290>,
                          <http://orcid.org/x>; #add review editor's ORCID ID
      dc:creator "TDWG Vocabulary Maintenance Specification Task Group";
      dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
@@ -100,7 +105,7 @@
 
 <http://something.tdwg.org/sds/2007-11-05> 
      owl:versionInfo "2007-11-05";
-     dcterms:isReplacedBy <http://something.tdwg.org/sds/2016-08-01>;
+     dcterms:isReplacedBy <http://something.tdwg.org/sds/2016-08-02>;
      dcterms:isVersionOf <http://something.tdwg.org/sds>;
      dcterms:issued "2007-11-05"^^xsd:date;
      dcterms:title "TDWG Standards Documentation Specification"@en;
@@ -117,4 +122,4 @@
      dcterms:references <http://www.tdwg.org/standards/147>;
      dcterms:references <http://something.tdwg.org/sds>;
      dc:format "text/turtle";
-     dcterms:modified "2016-08-01T07:33:00-05:00"^^xsd:dateTime.
+     dcterms:modified "2016-08-02T16:00:00-05:00"^^xsd:dateTime.

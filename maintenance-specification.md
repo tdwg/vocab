@@ -1,4 +1,4 @@
-# TDWG Vocabulary Maintenance Specification (draft of 2015-07-31)
+# TDWG Vocabulary Maintenance Specification (draft of 2016-08-02 as submitted for review)
 
 **Title:** Vocabulary Maintenance Specification
 
@@ -14,7 +14,7 @@
 
 **Abstract:** This document describes the processes used to modify TDWG vocabularies and their associated documents.
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), John Wieczorek (TDWG Darwin Core Interest Group), Stan Blum (TDWG Process Interest Group), Robert A. Morris (TDWG Imaging Interest Group), Jonathan Rees, Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group).  Review editor: _______
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), John Wieczorek (TDWG Darwin Core Interest Group), Stan Blum (TDWG Process Interest Group), Robert A. Morris (UMASS-Boston, TDWG Imaging Interest Group), Jonathan Rees (Duke University), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group).  Review editor: _______
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
@@ -274,30 +274,3 @@ If the proposed enhancement is adopted as part of the vocabulary standard, the i
 This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).
 
 Copyright 2016 - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
-
----------------------------
-## The sections below this point will remain a part of the Darwin Core Namespace Policy, with minor edits. ##
-
-1\. Introduction
-
-Audience: This document is targeted toward those who want to make changes to the Darwin Core, either by refining terms that already exist or by adding new terms to increase the capabilities of the standard.
-This document and the policies contained herein are modeled on the Dublin Core Metadata Initiative Namespace Policy [DCMINAMESPACEPOLICY]. All terms in the Darwin Core must be identified with a unique Uniform Resource Identifier (URI). For convenience, the term URIs are grouped into collections known as Darwin Core namespaces. This document describes the policies associated with Darwin Core namespaces and how term URIs are allocated by the Darwin Core Task Group [DWC-TASK].
-
-2\. Namespace URIs
-
-The Darwin Core namespace URI for the collection of all Darwin Core properties, classes, and encoding schemes is:
-
-http://rs.tdwg.org/dwc/terms/
-The term identifier for the current (recommended) version of a term is a URI based on the namespace and the term name without version information. Some example Darwin Core term identifiers follow:
-
-http://rs.tdwg.org/dwc/terms/scientificName
-is the Darwin Core term identifier for the scientificName property, while
-
-http://rs.tdwg.org/dwc/terms/MachineObservation
-is the Darwin Core term identifier for the MachineObservation class.
-
-All Darwin Core identifiers will dereference to a Darwin Core term declaration for the identified term.
-
-3\. Persistence Policy
-
-TDWG recognizes that people and applications depend on the persistence of formal documents and machine processable schemas that have been made publicly available. In particular, the stability of Darwin Core term URIs and Darwin Core namespace URIs is critical to interoperability over time. Thus, the wide promulgation of this set of URIs dictates that they be maintained to support legacy applications that have adopted them.
