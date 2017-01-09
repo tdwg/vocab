@@ -547,6 +547,8 @@ Documents SHOULD be typed according to a well-known vocabulary.
 
 The same metadata that is presented in the header section of the human-readable representations of descriptive documents and vocabulary landing pages (Section 3.2.3.1) SHOULD be provided in corresponding machine-readable documents.  
 
+In accordance with the distinction made in the Dublin Core FAQ on DC and DCTERMS Namespaces [NAMESPACES] and following the precedent of Sections 1.4 and 3.3 of the Darwin Core RDF Guide [DWC-RDF], when a Dublin Core term has analogs in both the dc: (http://purl.org/dc/elements/1.1/) and dcterms: (http://purl.org/dc/terms/) namespaces, the dc: analog should be used with literal values (i.e. name strings), while the dcterms: analog should be used with an IRI or blank node denoting the object resource.  When an IRI is available to denote an object resource, it is desirable include the dcterms: analog in the metadata describing a resource.
+
 **4.2.1 Metadata for standards**
 
 The following properties with appropriate values SHOULD be used to describe a standard:
@@ -1188,6 +1190,8 @@ If a Task Group chartered to develop a standard fails to meet the requirement of
 
 [DCAT] https://www.w3.org/TR/vocab-dcat/ Data Catalog Vocabulary (DCAT)
 
+[DWC-RDF] http://rs.tdwg.org/dwc/terms/guides/rdf/ TDWG Darwin Core RDF Guide.
+
 [GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility.
 
 [GUID] http://www.tdwg.org/standards/150 TDWG GUID Applicability Statement
@@ -1199,6 +1203,8 @@ If a Task Group chartered to develop a standard fails to meet the requirement of
 [IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
 
 [ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularies. Part 2: Interoperability with other vocabularies. 2013-03-15.
+
+[NAMESPACES] http://wiki.dublincore.org/index.php/FAQ/DC_and_DCTERMS_Namespaces FAQ/DC and DCTERMS Namespaces. Dublin Core Metadata Initiative.
 
 [NISO] http://www.niso.org/publications/press/UnderstandingMetadata.pdf Understanding Metadata. 2004. NISO Press.
 
