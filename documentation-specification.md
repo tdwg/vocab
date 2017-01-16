@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2016-08-02 as submitted for review) #
+# TDWG Standards Documentation Specification (draft of 2017-01-15 revised based on reviewer comments) #
 
 **Title:** Standards Documentation Specification
 
@@ -14,7 +14,7 @@
 
 **Abstract:** This document defines how TDWG standards are to be presented.  It provides details about the hierarchical structure of standards and versioning of standards components.  It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stanley Blum (TDWG Process Interest Group), Robert A. Morris (UMASS-Boston, TDWG Imaging Interest Group), Jonathan Rees (Duke University), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group). Review editor: _______
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), Roger Hyam (TDWG Infrastructure Project), Stanley Blum (TDWG Process Interest Group), Robert A. Morris (UMASS-Boston, TDWG Imaging Interest Group), Jonathan Rees (Duke University), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group), John Wieczorek (TDWG Darwin Core Task Group). Review editor: Dag Endresen (GBIF Norway/NHM University of Oslo)
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
@@ -140,7 +140,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **dereference** - to use an IRI to obtain a representation of a resource through an Internet protocol such as HTTP
 
-**distribution** - a specific available form of a dataset.  In the context of this standard, distributions are available forms of vocabulary term lists, such as downloadable files in HTML, Markdown, RDF/XML or RDF/Turtle. [DCAT]
+**distribution** - a specific available form of a resource.  Distributions include available formats of vocabulary term lists, such as HTML, Markdown, RDF/XML or RDF/Turtle. They can also include accessible services such as an API or SPARQL endpoint.
 
 **document** - In this context, a document is a unit of information that can be stored or retrieved electronically as a single file.
 
@@ -158,7 +158,7 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
 **resource** - Any kind of thing that can be identified. Resources can include documents, people, physical objects, and abstract concepts [RDF-PRIMER].
 
-**term list** - A named set of terms that is part of a vocabulary and that includes the terms within the vocabulary that are grouped in a particular way, such as falling within a particular namespace.  Each term list has a corresponding document that contains the metadata for the term list and that is served when the term list IRI is dereferenced.
+**term list** - An IRI-identified set of terms that is part of a vocabulary and that includes terms within the vocabulary that are grouped in a particular way, such as falling within a particular namespace.  Each term list has a corresponding document that contains the metadata for the term list and that is served when the term list IRI is dereferenced.
 
 **user** - This standard refers to two categories of users.  A user can be a human user interacting with a server through a user-agent (software such as a Web browser), and referred to in brief as a "human".  A user can also be a machine client: computer software interacting semi-autonomously with a server, and referred to in brief as a "machine".  Both a user-agent assisting the human, and a machine client are referred to generically as "clients".
 
@@ -172,22 +172,23 @@ RDF/Turtle is used in all of the examples because it is generally the easiest ma
 
  In the text and examples, IRIs are frequently abbreviated using namespace abbreviations.  The abbreviations used in this document are shown in the following table.
 
-| **Prefix**   | **Namespace**                               |
-|--------------|---------------------------------------------|
-| dc           | http://purl.org/dc/elements/1.1/            |
-| dcat         | http://www.w3.org/ns/dcat#                  |
-| dcterms      | http://purl.org/dc/terms/                   |
-| dcmitype     | http://purl.org/dc/dcmitype/                |
-| dwc          | http://rs.tdwg.org/dwc/terms/               |
-| dwcattributes| http://rs.tdwg.org/dwc/terms/attributes/    |
-| dwciri       | http://rs.tdwg.org/dwc/iri/                 |
-| owl          | http://www.w3.org/2002/07/owl#              |
-| rdf          | http://www.w3.org/1999/02/22-rdf-syntax-ns# |
-| rdfs         | http://www.w3.org/2000/01/rdf-schema#       |
-| skos         | http://www.w3.org/2004/02/skos/core#        |
-| vann         | http://purl.org/vocab/vann/                 |
-| xmpRights    | http://ns.adobe.com/xap/1.0/rights/         |
-| xsd          | http://www.w3.org/2001/XMLSchema#           |
+| **Prefix**   | **Namespace**                                    |
+|--------------|--------------------------------------------------|
+| ac           | http://rs.tdwg.org/ac/terms/                     |
+| dc           | http://purl.org/dc/elements/1.1/                 |
+| dcterms      | http://purl.org/dc/terms/                        |
+| dcmitype     | http://purl.org/dc/dcmitype/                     |
+| dwc          | http://rs.tdwg.org/dwc/terms/                    |
+| dwciri       | http://rs.tdwg.org/dwc/iri/                      |
+| owl          | http://www.w3.org/2002/07/owl#                   |
+| rdf          | http://www.w3.org/1999/02/22-rdf-syntax-ns#      |
+| rdfs         | http://www.w3.org/2000/01/rdf-schema#            |
+| sd           | http://www.w3.org/ns/sparql-service-description# |
+| skos         | http://www.w3.org/2004/02/skos/core#             |
+| tdwgutility  | http://rs.tdwg.org/dwc/terms/attributes/         |
+| vann         | http://purl.org/vocab/vann/                      |
+| xmpRights    | http://ns.adobe.com/xap/1.0/rights/              |
+| xsd          | http://www.w3.org/2001/XMLSchema#                |
 
 ## **2 The structure of TDWG standards** ##
 
@@ -243,7 +244,7 @@ Term lists MAY include terms that are defined elsewhere, but that assert additio
 
 **2.2.4 Distributions**
 
-Vocabulary term lists are abstract resources, but also exist in the form of information resources that can be stored and delivered.  A human user or machine client might discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list might be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form might not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), SHOULD be made known to both humans and machines.  To accomplish that discovery, the Data Catalog Vocabulary [DCAT] SHOULD be used to indicate the links from a vocabulary's term list to its available distributions.
+Vocabulary term lists are abstract resources, but also exist in the form of information resources that can be stored and delivered.  A human user or machine client might discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list might be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form might not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), SHOULD be made known to both humans and machines.  To accomplish that discovery, the Dublin Core term dcterms:hasFormat SHOULD be used to indicate the link from a vocabulary's term list to its available distributions.
 
 ![](graphics/distributions.png)
 
@@ -531,17 +532,14 @@ Indicate the class of which a resource is an instance by using rdf:type [GUID, R
 |**Class**                          | **Machine-readable value**|
 |-----------------------------------|---------------------------|
 | Standard                          | dcterms:Standard          |
-| Vocabulary                        | dcmitype:Dataset          |
-| Term List                         | dcat:Dataset *            |
+| Vocabulary                        | tdwgutility:Vocabulary    |
+| Term List                         | tdwgutility:TermList      |
 | Vocabulary Extension List         | owl:Ontology              |
-| Distribution                      | dcat:Distribution         |
 | Property                          | rdf:Property              |
 | Class                             | rdfs:Class                |
 | Term from a controlled vocabulary | skos:Concept              |         
 
-\* The semantics of the DCAT Recommendation entail that an instance of dcat:Dataset is also an instance of dcmitype:Dataset.
-
-Documents SHOULD be typed according to a well-known vocabulary.  
+Distributions and Documents SHOULD be typed according to a well-known vocabulary.  
 
 ### **4.2 General metadata** ###
 
@@ -670,12 +668,29 @@ See also the example in section 4.5.3.1, which illustrates versioning of terms.
 
 ### **4.4 Vocabularies, term lists, and terms** ###
 
-A vocabulary is a resource that might form part of a standard.  A vocabulary is described by the general metadata specified in Section 4.2.  A vocabulary also includes lists of terms that the vocabulary contains.  Term lists are also described by metadata specified in Section 4.2 as well as additional properties described in Section 4.4.2.  Terms, term lists, and vocabularies have hierarchical relationships that are expressed using the property dcterms:isPartOf:
+A vocabulary is a resource that might form part of a standard.  A vocabulary is described by the general metadata specified in Section 4.2.  A vocabulary also includes lists of terms that the vocabulary contains.  Term lists are also described by metadata specified in Section 4.2 as well as additional properties described in Section 4.4.2.  
+
+Vocabularies are instances of the class tdwgutility:Vocabulary, which is defined thus:
 
 ```
-<:term> dcterms:isPartOf <:termList>.
-<:termList> dcterms:isPartOf <:vocabulary>.
+tdwgutility:Vocabulary rdfs:label "Vocabulary"@en;
+                       rdfs:comment "A collection of standardized terms."@en;
+                       rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/attributes/>;
+                       dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/attributes/>;
+                       a rdfs:Class.
 ```
+
+Term lists are instances of the class tdwgutility:TermList, which is defined thus:
+
+```
+tdwgutility:TermList rdfs:label "Term List"@en;
+                    rdfs:comment "An IRI-identified set of terms that is part of a vocabulary and that includes terms within the vocabulary that are grouped in a particular way, such as falling within a particular namespace."@en;
+                    rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/attributes/>;
+                    dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/attributes/>;
+                    a rdfs:Class.
+```
+
+Terms, term lists, and vocabularies have hierarchical relationships that are expressed using the property dcterms:isPartOf, such that a term is part of a term list and a term list is part of a vocabulary.
 
 **4.4.1 Relationships between vocabularies and term lists**
 
@@ -690,13 +705,13 @@ The following example is expressed in RDF/Turtle:
      dcterms:title "Darwin Core Basic Vocabulary"@en;
      rdfs:label "Darwin Core Basic Vocabulary"@en;
      dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
-     a dcmitype:Dataset.
+     a tdwgutility:Vocabulary.
 
 <http://rs.tdwg.org/dwc/enhanced-vocabulary>
      dcterms:title "Darwin Core Semantically Enhanced Vocabulary"@en;
      rdfs:label "Darwin Core Semantically Enhanced Vocabulary"@en;
      dcterms:isPartOf <http://www.tdwg.org/standards/450/>;
-     a dcmitype:Dataset, owl:Ontology.
+     a tdwgutility:Vocabulary, owl:Ontology.
 
 <http://rs.tdwg.org/dwc/terms/>
      dcterms:title "Core terms defined by Darwin Core"@en;
@@ -704,15 +719,15 @@ The following example is expressed in RDF/Turtle:
      dcterms:isPartOf <http://rs.tdwg.org/dwc/basic>;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced-vocabulary>;
      dcterms:modified "2014-11-08"^^xsd:date;
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 
 <http://rs.tdwg.org/dwc/dwcattributes/>
-     dcterms:title "Attributes defined by Darwin Core"@en;
-     rdfs:label "Attributes defined by Darwin Core"@en;
+     dcterms:title "Utility terms defined by Biodiversity Information Standards (TDWG)"@en;
+     rdfs:label "Utility terms defined by Biodiversity Information Standards (TDWG)"@en;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/basic>;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced-vocabulary>;
      dcterms:modified "2009-12-07"^^xsd:date;
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 
 <http://rs.tdwg.org/dwc/dcmi-terms>
      dcterms:title "Dublin Core terms borrowed by Darwin Core"@en;
@@ -720,14 +735,14 @@ The following example is expressed in RDF/Turtle:
      dcterms:isPartOf <http://rs.tdwg.org/dwc/basic>;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced-vocabulary>;
      dcterms:modified "2009-12-07"^^xsd:date;
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 
 <http://rs.tdwg.org/dwc/semantics/>
      dcterms:title "Darwin Core Semantic Relationships"@en;
      rdfs:label "Darwin Core Semantic Relationships"@en;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/enhanced-vocabulary>;
      dcterms:modified "2015-03-19"^^xsd:date;
-     a dcat:Dataset, owl:Ontology.
+     a tdwgutility:TermList, owl:Ontology.
 ```
 
 **4.4.2 Metadata terms describing term lists**
@@ -765,7 +780,7 @@ An example of metadata about an authoritative term list:
 <http://rs.tdwg.org/ac/>
      dcterms:title "Basic Audubon Core Vocabulary"@en;
      rdfs:label "Basic Audubon Core Vocabulary"@en;
-     a dcmitype:Dataset;
+     a tdwgutility:Vocabulary;
      dcterms:hasPart <http://rs.tdwg.org/ac/terms/>,
                      <http://rs.tdwg.org/ac/borrowed/>.
 
@@ -775,7 +790,7 @@ An example of metadata about an authoritative term list:
      vann:preferredNamespacePrefix "ac";
      vann:preferredNamespaceUri "http://rs.tdwg.org/ac/terms/";
      dcterms:isPartOf <http://rs.tdwg.org/ac/>;
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 <http://rs.tdwg.org/ac/terms/metadataLanguage>
      rdfs:label "Metadata Language";
      rdfs:isDefinedBy <http://rs.tdwg.org/ac/terms/>;
@@ -795,7 +810,7 @@ An example of metadata about a non-authoritative term list:
      dcterms:title "Audubon Core Borrowed Terms"@en;
      rdfs:label "Audubon Core Borrowed Terms"@en;
      dcterms:isPartOf <http://rs.tdwg.org/ac/>;
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 <http://iptc.org/std/Iptc4xmpExt/2008-02-29/WorldRegion>
      rdfs:label "World Region";
      dcterms:isPartOf <http://rs.tdwg.org/ac/borrowed/>;
@@ -818,7 +833,7 @@ An example showing how normative and non-normative term data are designated:
      dcterms:title "Term list for the dwc:disposition controlled vocabulary"@en;
      rdfs:label "Term list for the dwc:disposition controlled vocabulary"@en;
      rdfs:comment "For each term in this list, the controlled value (rdf:value), and definition (rdfs:comment) are normative.  Labels (rdfs:label) and comments (dcterms:description) are non-normative.";
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 
 <http://rs.tdwg.org/cvterms/disposition/inCollection>
      rdfs:label "In Collection"@en;
@@ -838,7 +853,7 @@ An example showing how basic and extension term lists can be used to create seve
 <http://rs.tdwg.org/ac/>
      dcterms:title "Basic Audubon Core Vocabulary"@en;
      rdfs:label "Basic Audubon Core Vocabulary"@en;
-     a dcmitype:Dataset;
+     a tdwgutility:Vocabulary;
      dcterms:hasPart <http://rs.tdwg.org/ac/terms/>,
                      <http://rs.tdwg.org/ac/borrowed/>.
 # Note that these metadata about the Basic Vocabulary do not entail that it or its component term lists are ontologies.
@@ -847,7 +862,7 @@ An example showing how basic and extension term lists can be used to create seve
 <http://rs.tdwg.org/ac-enhanced/>
      dcterms:title "Semantically Enhanced Audubon Core Vocabulary"@en;
      rdfs:label "Semantically Enhanced Audubon Core Vocabulary"@en;
-     a dcmitype:Dataset,
+     a tdwgutility:Vocabulary,
        owl:Ontology;
      owl:imports <http://rs.tdwg.org/ac/terms/>,
                  <http://rs.tdwg.org/ac/borrowed/>,
@@ -861,7 +876,7 @@ An example showing how basic and extension term lists can be used to create seve
 <http://rs.tdwg.org/ac/enhanced/>
      dcterms:title "Audubon Core Axioms"@en;
      rdfs:label "Audubon Core Axioms"@en;
-     a dcat:Dataset,
+     a tdwgutility:TermList,
        owl:Ontology;
 ### Restriction: Metadata Language Required ###
 ac:MediaResource a rdfs:Class;
@@ -886,7 +901,7 @@ ac:MediaResource a rdfs:Class;
 
 **4.4.3 Linking to and describing distributions**
 
-The guidelines expressed in the W3C Data Catalog Vocabulary [DCAT] SHOULD be followed for linking to and describing distributions of term lists.  Since term lists are typed as dcat:Dataset, they MAY be assigned any of the properties that are appropriate for instances of dcat:Dataset.  Term lists are linked to their distributions using the property dcat:distribution. Distributions MAY be assigned any properties that are appropriate for dcat:Distribution instances; however, at a minimum, they SHOULD have the properties dcterms:modified, dcat:accessURL or dcat:downloadURL (whichever is appropriate), and dcat:mediaType or dcterms:format.  If an IANA media type exists for the format of the distribution, dcat:mediaType SHOULD be used in preference over dcterms:format. [IANA]
+Term lists are linked to their distributions using the property dcterms:hasFormat. Distributions MAY be assigned any properties that are appropriate for its type. However, at a minimum, they SHOULD have the properties dcterms:modified and ac:accessURI.  If the distribution is a file having a particular format, the value of ac:accessURI should be a URL that will directly retrieve a copy of that file.  If the distribution is a representation in the form of a queriable service, communities of practice MAY establish best practices for describing the capabilities and features available via the URL specified by ac:accessURI.  If an IANA media type exists for the format of the distribution, dc:format SHOULD be used to provide the media type as a literal. [IANA]
 
 **4.4.3.1 Example (non-normative)**
 
@@ -895,24 +910,30 @@ The guidelines expressed in the W3C Data Catalog Vocabulary [DCAT] SHOULD be fol
      dcterms:title "Core terms defined by Darwin Core"@en;
      rdfs:label "Core terms defined by Darwin Core"@en;
      dcterms:modified "2014-11-08"^^xsd:date;
-     dcat:landingPage <http://rs.tdwg.org/dwc/terms/index.htm>;
-     dcat:distribution <http://rs.tdwg.org/dwc/terms/index.htm>,
-                       <http://tdwg.github.io/dwc/rdf/dwcterms.rdf>;
-     a dcat:Dataset.
+     dcterms:hasFormat <http://rs.tdwg.org/dwc/terms/index.htm>,
+                       <http://tdwg.github.io/dwc/rdf/dwcterms.rdf>,
+                       _:sparqlEndpoint;
+     a tdwgutility:TermList.
 <http://rs.tdwg.org/dwc/terms/index.htm>
      dcterms:title "HTML distribution of the term list of core terms defined by Darwin Core"@en;
      rdfs:label "HTML distribution of the term list of core terms defined by Darwin Core"@en;
      dcterms:modified "2016-01-12"^^xsd:date;
-     dcat:mediaType "text/html";
-     dcat:downloadURL <https://raw.githubusercontent.com/tdwg/dwc/master/terms/index.htm>;
-     a dcat:Distribution.
+     dc:format "text/html";
+     ac:accessURI <https://raw.githubusercontent.com/tdwg/dwc/master/terms/index.htm>;
+     a foaf:Document.
 <http://tdwg.github.io/dwc/rdf/dwcterms.rdf>
      dcterms:title "RDF/XML distribution of the term list of core terms defined by Darwin Core"@en;
      rdfs:label "RDF/XML distribution of the term list of core terms defined by Darwin Core"@en;
      dcterms:modified "2015-07-03"^^xsd:date;
-     dcat:mediaType "application/rdf+xml";
-     dcat:downloadURL <https://raw.githubusercontent.com/tdwg/dwc/master/rdf/dwcterms.rdf>;
-     a dcat:Distribution.
+     dc:format "application/rdf+xml";
+     ac:accessURI <https://raw.githubusercontent.com/tdwg/dwc/master/rdf/dwcterms.rdf>;
+     a foaf:Document.
+_:sparqlEndpoint
+     dcterms:title "SPARQL endpoint from which core terms defined by Darwin Core may be accessed"@en;
+     rdfs:label "SPARQL endpoint from which core terms defined by Darwin Core may be accessed"@en;
+     dcterms:modified "2016-01-12"^^xsd:date;
+     ac:accessURI <http://rdf.library.vanderbilt.edu/sparql>;
+     a sd:Service.
 ```
 
 ### **4.5 Metadata properties for describing vocabulary terms** ###
@@ -933,7 +954,7 @@ Types SHOULD be rdf:Property for properties, rdfs:Class for classes, and skos:Co
 
 The property dcterms:description MAY optionally be used to provide additional information that is not part of the definition of the term.  
 
-If the term was created or modified as the result of an Executive Committee decision, the property dwcattributes:decision SHOULD be used to link to the HTTP IRI representing the record of the decision affecting the term.
+If the term was created or modified as the result of an Executive Committee decision, the property tdwgutility:decision SHOULD be used to link to the HTTP IRI representing the record of the decision affecting the term.
 
 Properties that extend the meaning of terms by introducing machine-computable entailments SHOULD NOT be included with the basic properties listed in this section.  Rather they SHOULD be included in a vocabulary extension list as described in Section 4.4.2.2.
 
@@ -945,7 +966,7 @@ The following example of terms in a metadata scheme is expressed in RDF/Turtle. 
 <http://rs.tdwg.org/dwc/>
      dcterms:title "Basic Darwin Core Vocabulary"@en;
      rdfs:label "Basic Darwin Core Vocabulary"@en;
-     a dcmitype:Dataset.
+     a tdwgutility:Vocabulary.
 
 <http://rs.tdwg.org/dwc/terms/>
      dcterms:title "Core terms defined by Darwin Core"@en;
@@ -953,7 +974,7 @@ The following example of terms in a metadata scheme is expressed in RDF/Turtle. 
      vann:preferredNamespacePrefix "dwc";
      vann:preferredNamespaceUri "http://rs.tdwg.org/dwc/terms/";
      dcterms:isPartOf <http://rs.tdwg.org/dwc/>;
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 
 <http://rs.tdwg.org/dwc/terms/recordedBy>
      rdfs:label "Recorded By"@en;
@@ -968,7 +989,7 @@ The following example of terms in a metadata scheme is expressed in RDF/Turtle. 
 
 <http://rs.tdwg.org/dwc/terms/history/>
      dcterms:title "Darwin Core Terms Complete History"@en;
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 
 <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>
      rdfs:label "Recorded By"@en;
@@ -1001,7 +1022,7 @@ In addition to following the generic practice of using rdfs:label to assign a na
 
 Current terms that are no longer valid SHOULD have the property owl:deprecated with a literal value of "true" datatyped as xsd:boolean.  Note that in this context, a "current" term does not necessarily mean that it is recommended or valid for use.  Rather, it means that the term IRI can be dereferenced by a client that wants to obtain information about it.  If a deprecated term has been replaced by another term, the property dcterms:isReplacedBy MUST be used to link the deprecated term to its replacement, and the term dcterms:replaces MUST be used to link the replacement to the deprecated term.
 
-Term versions SHOULD have the property dwcattributes:status with possible values of "recommended" (for the most recent term version of a term that is currently valid), "superseded" (for term versions having more recent versions), or "deprecated" (for the most recent version of a term that is no longer valid).  As is the case for all described resources, previous and subsequent versions SHOULD be linked using dcterms:replaces and dcterms:isReplacedBy. This includes cases where the replacement for a version of a deprecated current term is a version of a current term with a different URI.
+Term versions SHOULD have the property tdwgutility:status with possible values of "recommended" (for the most recent term version of a term that is currently valid), "superseded" (for term versions having more recent versions), or "deprecated" (for the most recent version of a term that is no longer valid).  As is the case for all described resources, previous and subsequent versions SHOULD be linked using dcterms:replaces and dcterms:isReplacedBy. This includes cases where the replacement for a version of a deprecated current term is a version of a current term with a different URI.
 
 **4.5.3.1 Example metadata showing the status of terms (non-normative)**
 
@@ -1016,7 +1037,7 @@ dwc:individualID
      dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>;
      dcterms:created "2009-04-24"^^xsd:date;
      dcterms:modified "2009-04-24"^^xsd:date;
-     dwcattributes:decision "http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_14";
+     tdwgutility:decision "http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_14";
      owl:deprecated "true"^^xsd:boolean;
      dcterms:isReplacedBy dwc:organismID.
 
@@ -1027,13 +1048,13 @@ dwc:organismID
      dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>;
      dcterms:created "2014-10-23"^^xsd:date;
      dcterms:modified "2014-10-23"^^xsd:date;
-     dwcattributes:decision "http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_14";
+     tdwgutility:decision "http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_14";
      dcterms:replaces dwc:individualID.
 
 <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>
      a rdf:Property;
      dcterms:isVersionOf dwc:individualID;
-     dwcattributes:status "deprecated"^^xsd:string;
+     tdwgutility:status "deprecated"^^xsd:string;
      dcterms:issued "2009-04-24"^^xsd:date;
      dcterms:description """Examples: \"U.amer. 44\", \"Smedley\", \"Orca J 23\""""@en;
      rdfs:comment "An identifier for an individual or named group of individual organisms represented in the Occurrence. Meant to accommodate resampling of the same individual or group for monitoring purposes. May be a global unique identifier or an identifier specific to a data set."@en;
@@ -1041,7 +1062,7 @@ dwc:organismID
 <http://rs.tdwg.org/dwc/terms/organismID-2014-10-23>
      a rdf:Property;
      dcterms:isVersionOf dwc:organismID;
-     dwcattributes:status "recommended"^^xsd:string;
+     tdwgutility:status "recommended"^^xsd:string;
      dcterms:issued "2014-10-23"^^xsd:date;
      rdfs:comment "An identifier for the Organism instance (as opposed to a particular digital record of the Organism). May be a globally unique identifier or an identifier specific to the data set."@en;
      dcterms:replaces <http://rs.tdwg.org/dwc/terms/individualID-2009-04-24>.
@@ -1059,19 +1080,19 @@ dwc:MaterialSample
      dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>;
      dcterms:created "2013-03-28"^^xsd:date;
      dcterms:modified "2014-10-23"^^xsd:date; # date of issue of most recent version
-     dwcattributes:decision "http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_15".
+     tdwgutility:decision "http://rs.tdwg.org/dwc/terms/history/decisions/#Decision-2014-10-26_15".
 
 <http://rs.tdwg.org/dwc/terms/MaterialSample-2013-03-28>
      a rdfs:Class;
      dcterms:isVersionOf dwc:MaterialSample;
-     dwcattributes:status "superseded"^^xsd:string;
+     tdwgutility:status "superseded"^^xsd:string;
      dcterms:issued "2013-03-28"^^xsd:date;
      rdfs:comment "The category of information pertaining to the physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en;
      dcterms:isReplacedBy <http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>.
 <http://rs.tdwg.org/dwc/terms/MaterialSample-2014-10-23>
      a rdfs:Class;
      dcterms:isVersionOf dwc:MaterialSample;
-     dwcattributes:status "recommended"^^xsd:string;
+     tdwgutility:status "recommended"^^xsd:string;
      dcterms:issued "2014-10-23"^^xsd:date;
      rdfs:comment "A physical results of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed."@en;
      dcterms:description "Examples: A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample."@en;
@@ -1094,7 +1115,7 @@ The following example of terms in a controlled vocabulary is expressed in RDF/Tu
 <http://rs.tdwg.org/cvterms/disposition>
      dcterms:title "Controlled vocabulary for dwc:disposition"@en;
      rdfs:label "Controlled vocabulary for dwc:disposition"@en;
-     a dcmitype:Dataset,
+     a tdwgutility:Vocabulary,
        skos:ConceptScheme.
 
 <http://rs.tdwg.org/cvterms/disposition/>
@@ -1103,7 +1124,7 @@ The following example of terms in a controlled vocabulary is expressed in RDF/Tu
      vann:preferredNamespacePrefix "dwcdisp";
      vann:preferredNamespaceUri "http://rs.tdwg.org/cvterms/disposition/";
      dcterms:isPartOf <http://rs.tdwg.org/cvterms/disposition>;
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 
 <http://rs.tdwg.org/cvterms/disposition/inCollection>
      rdfs:label "In Collection"@en;
@@ -1134,7 +1155,7 @@ The following example of terms in a controlled vocabulary is expressed in RDF/Tu
 <http://rs.tdwg.org/cvterms/disposition/history/>
      dcterms:title "Version history for the dwc:disposition controlled vocabulary"@en;
      rdfs:label "Version history for the dwc:disposition controlled vocabulary"@en;
-     a dcat:Dataset.
+     a tdwgutility:TermList.
 
 <http://rs.tdwg.org/cvterms/disposition/inCollection-2016-04-09>
      rdfs:label "In Collection"@en;
@@ -1187,8 +1208,6 @@ If a Task Group chartered to develop a standard fails to meet the requirement of
 ## **6 References** ##
 
 [COOL-URIS] http://www.w3.org/TR/cooluris/#cooluris Cool URIs for the Semantic Web
-
-[DCAT] https://www.w3.org/TR/vocab-dcat/ Data Catalog Vocabulary (DCAT)
 
 [DWC-RDF] http://rs.tdwg.org/dwc/terms/guides/rdf/ TDWG Darwin Core RDF Guide.
 

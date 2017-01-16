@@ -14,7 +14,7 @@
 
 **Abstract:** This document describes the processes used to modify TDWG vocabularies and their associated documents.
 
-**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), John Wieczorek (TDWG Darwin Core Interest Group), Stan Blum (TDWG Process Interest Group), Robert A. Morris (UMASS-Boston, TDWG Imaging Interest Group), Jonathan Rees (Duke University), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group).  Review editor: _______
+**Contributors:** Steve Baskauf (TDWG Vocabulary Maintenance Specification Task Group), John Wieczorek (TDWG Darwin Core Interest Group), Stan Blum (TDWG Process Interest Group), Robert A. Morris (UMASS-Boston, TDWG Imaging Interest Group), Jonathan Rees (Duke University), Joel Sachs (TDWG RDF Task Group), Greg Whitbread (TDWG Technical Architecture Group).  Review editor: Review editor: Dag Endresen (GBIF Norway/NHM University of Oslo)
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 

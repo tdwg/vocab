@@ -5,13 +5,13 @@
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
-      
+
 # This file is part of the main submission for review of the Vocabulary Maintenance Specification on 2016-08-02.
-# These metadata are provisional.  Some adjustments to this information may need to be made as IRIs are settled, 
+# These metadata are provisional.  Some adjustments to this information may need to be made as IRIs are settled,
 # as dates are determined, review managers chosen, and
 # if substantive changes are made in the documentation specifications for machine-readable metadata.
 
-<http://www.tdwg.org/standards/x> 
+<http://www.tdwg.org/standards/x>
      dcterms:hasPart <http://something.tdwg.org/vms>;
      dcterms:hasVersion <http://www.tdwg.org/standards/x#2016-12-04>;
      dcterms:isReferencedBy <http://something.tdwg.org/vms.ttl>;
@@ -24,7 +24,7 @@
      dcterms:description "The TDWG Vocabulary Maintenance Standard consists of a single document: the Vocabulary Maintenance Specification."@en;
      rdfs:comment "The TDWG Vocabulary Maintenance Standard consists of a single document: the Vocabulary Maintenance Specification."@en.
 
-<http://www.tdwg.org/standards/x#2016-12-04> 
+<http://www.tdwg.org/standards/x#2016-12-04>
      owl:versionInfo "2016-12-04";
      dcterms:hasPart <http://something.tdwg.org/vms/2016-08-02>;
      dcterms:isVersionOf <http://www.tdwg.org/standards/x>;
@@ -36,7 +36,7 @@
      dcterms:description "The TDWG Vocabulary Maintenance Standard consists of a single document: the Vocabulary Maintenance Specification."@en;
      rdfs:comment "The TDWG Vocabulary Maintenance Standard consists of a single document: the Vocabulary Maintenance Specification."@en.
 
-<http://something.tdwg.org/vms> 
+<http://something.tdwg.org/vms>
      dcterms:isPartOf <http://www.tdwg.org/standards/x>;
      dcterms:hasVersion <http://something.tdwg.org/vms/2016-08-02>;
      dcterms:isReferencedBy <http://something.tdwg.org/vms.ttl>;
@@ -52,7 +52,7 @@
                     "Jonathan A. Rees",
                     "Joel Sachs (TDWG RDF Task Group)",
                     "Greg Whitbread (TDWG Technical Architecture Group)",
-                    "(review editor)"; #add review editor's name
+                    "Dag Endresen (GBIF Norway/NHM University of Oslo; review editor)";
      dcterms:contributor <http://orcid.org/0000-0003-4365-3135>,
                          <http://orcid.org/0000-0003-1144-0290>,
                          [foaf:familyName "Blum"; foaf:givenName "Stanley";rdfs:label "Stanley Blum"],
@@ -60,14 +60,14 @@
                          <http://orcid.org/0000-0001-7694-8250>,
                          [foaf:familyName "Sachs"; foaf:givenName "Joel";rdfs:label "Joel Sachs"],
                          [foaf:familyName "Whitbread"; foaf:givenName "Greg";rdfs:label "Greg Whitbread"],
-                         <http://orcid.org/x>; #add review editor's ORCID ID
+                         <http://orcid.org/0000-0002-2352-5497>;
      dc:creator "TDWG Vocabulary Maintenance Specification Task Group";
      dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
      dcterms:description "This document describes the processes used to modify TDWG vocabularies and their associated documents.";
      rdfs:comment "This document describes the processes used to modify TDWG vocabularies and their associated documents.";
      dcterms:bibliographicCitation "Vocabulary Maintenance Specification Task Group. 2016. Vocabulary Maintenance Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/x (accessed on [date]).".
 
-<http://something.tdwg.org/vms/2016-08-02> 
+<http://something.tdwg.org/vms/2016-08-02>
      owl:versionInfo "2016-08-02";
      dcterms:isPartOf <http://www.tdwg.org/standards/x#2016-12-04>;
      dcterms:isVersionOf <http://something.tdwg.org/vms>;
