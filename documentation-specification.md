@@ -368,7 +368,7 @@ A contributor's name MAY be followed by his or her affiliation in parentheses. A
 
 **Bibliographic citation:** The preferred citation in human-readable form. This part SHOULD also provide access to one or more standardized machine-readable citation export formats.
 
-If the document is no longer recommended for use (i.e. deprecated), this SHOULD be noted in a **Status note:**, with a description of the reason, and links to recommended alternatives.  This deprecation is distinct from replacement by a newer version of the same document, which SHOULD be indicated in the "Replaced by" field.  This applies to documents that are vocabulary descriptions (section 3.3), although usually particular vocabulary terms are deprecated rather than the entire vocabulary.  
+If the document is no longer recommended for use (i.e. deprecated), this SHOULD be noted in a **Status note:** with a description of the reason and links to recommended alternatives.  This deprecation is distinct from replacement by a newer version of the same document, which SHOULD be indicated in the "Replaced by" field.  This applies to documents that are vocabulary descriptions (section 3.3), although usually particular vocabulary terms are deprecated rather than the entire vocabulary.  
 
 **3.2.3.2 Table of Contents Section**
 
@@ -729,7 +729,7 @@ The following example is expressed in RDF/Turtle:
      dcterms:modified "2009-12-07"^^xsd:date;
      a tdwgutility:TermList.
 
-<http://rs.tdwg.org/dwc/dcmi-terms>
+<http://rs.tdwg.org/dwc/dcmi-terms/>
      dcterms:title "Dublin Core terms borrowed by Darwin Core"@en;
      rdfs:label "Dublin Core terms borrowed by Darwin Core"@en;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/basic>;
@@ -758,7 +758,7 @@ Each term list containing terms defined by a particular standard will be the def
 | Preferred namespace prefix  | vann:preferredNamespacePrefix              |
 | Namespace IRI               | vann:preferredNamespaceUri                 |
 
-When a preferred namespace prefix is chosen, care should be taken to ensure that there is no collision with other commonly used prefix abbreviations. The namespace IRI will often be the same as the IRI that identifies the term list, although this is not always the case, particularly when hash URIs are used.  For example, the SKOS ontology is identified by http://www.w3.org/2004/02/skos/core, but the SKOS namespace (usually abbreviated skos:) is http://www.w3.org/2004/02/skos/core#.
+When a preferred namespace prefix is suggested as a value for vann:preferredNamespacePrefix, it is desirable to ensure that there is no collision with other commonly used prefix abbreviations. Commonly used namepace abbreviations have been cataloged at prefix.cc  [PREFIX.CC].
 
 Term lists for borrowed terms are simply used to group those terms and are not authoritative.  So information about preferred namespace abbreviations and IRIs will not be included in the metadata about that term list.  However, if the defining authority for terms within a namespace fails to provide that information, it can be asserted within the document that contains the metadata about the term list.  
 
@@ -768,7 +768,7 @@ Although term lists are described by descriptive documents, term list documents 
 
 **4.4.2.2 Vocabulary extension term lists**
 
-If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties SHOULD be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list document known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create an semantically enhanced ontology through a layered approach [GBIF-KOS, Section 1.1].  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
+If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties SHOULD be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list document known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create a semantically enhanced ontology through a layered approach [GBIF-KOS, Section 1.1].  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
 
 The rdf:type of a vocabulary extension list is owl:Ontology. This is entailed by the range of owl:imports; nevertheless, it is desirable to assert this explicitly.  The type of a basic term definition list SHOULD not be declared explicitly to be owl:Ontology, since this implies a level of semantics that might not concern all users of the basic term list.  
 
@@ -878,17 +878,11 @@ An example showing how basic and extension term lists can be used to create seve
      rdfs:label "Audubon Core Axioms"@en;
      a tdwgutility:TermList,
        owl:Ontology;
-### Restriction: Metadata Language Required ###
+### Restriction: Metadata Language Required and Not Repeatable ###
 ac:MediaResource a rdfs:Class;
                    rdfs:subClassOf
                             [ a owl:Restriction;
-                              owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onProperty <http://rs.tdwg.org/ac/terms/metadataLanguage> ].
-### Restriction: Metadata Language Not Repeatable ###
-ac:MediaResource a rdfs:Class;
-                   rdfs:subClassOf
-                            [ a owl:Restriction;
-                              owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:cardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onProperty <http://rs.tdwg.org/ac/terms/metadataLanguage> ].
 
 ### Restriction: Format Not Repeatable ###
@@ -1187,6 +1181,8 @@ The following example illustrates the use of the controlled vocabulary terms fro
 <http://bioimages.vanderbilt.edu/vanderbilt/1-183> dwciri:disposition dwcdisp:destroyed.
 ```
 
+See section 2.5 of the Darwin Core RDF Guide [DWC-RDF] for the distinction in the use of dwc: and dwciri: namespace terms.
+
 ## **5 Archiving of documents** ##
 
 In order for a standard to enable compliance with a consensus community practice, a version of a standards document SHOULD be immutable and easily viewable by the public. This has several implications for the way in which documents are archived.
@@ -1231,6 +1227,8 @@ If a Task Group chartered to develop a standard fails to meet the requirement of
 
 [OWL-SYNTAX] http://www.w3.org/TR/owl-syntax OWL 2 Web Ontology Language
 Structural Specification and Functional-Style Syntax (W3C Recommendation). World Wide Web Consortium.
+
+[PREFIX.CC] http://prefix.cc Namespace lookup for RDF developers
 
 [PROCESS] http://www.tdwg.org/about-tdwg/process/ Biodiversity Information Standards. The Standards Development Process.
 
