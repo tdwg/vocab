@@ -2,7 +2,9 @@
 
 The VOCAB charter was approved on 2015-05-11, establishing it as a Task Group under the Process Interest Group of [Biodiversity Information Standards (TDWG)](http://www.tdwg.org/). The charter can be viewed [here](vmg-charter.pdf).
 
-## Draft Specifications for submission for appointment of review manager 2016-08-02
+## Current versions of draft specifications
+
+These documents are mutable and represent the most recent commits.  
 
 [Human-readable TDWG Standards Documentation Specification submission](documentation-specification.md)
 
@@ -11,6 +13,24 @@ The VOCAB charter was approved on 2015-05-11, establishing it as a Task Group un
 [TDWG Standards Documentation Specification metadata as RDF/Turtle](documentation-specification.ttl)
 
 [TDWG Vocabulary Maintenance Specification metadata as RDF/Turtle](maintenance-specification.ttl)
+
+## Draft Specifications for submission for appointment of review manager 2016-08-02
+
+[This release](https://github.com/tdwg/vocab/releases/tag/2016-08-02-review-submission) contains the versions of the Standards Documentation Specification and Vocabulary Maintenance Specifications as submitted to the TDWG Executive Committee upon request for the appointment of a review manager.  The request was approved and Dag Endresen was appointed review manager. These versions were the ones reviewed by the expert reviewers solicited by the review manager.
+
+## Expert reviews
+
+The following materials are related to the expert review conducted from September through November 2016.  The Review Manager summary was considered by the Executive Committee and released to the Task Group in December 2016.
+
+[Review Manager summary of the expert reviews (pdf)](expert-review-materials/TDWG-VOCAB-expert-review-report-v20161113.pdf) [(Microsoft Word format)](expert-review-materials/TDWG-VOCAB-expert-review-report-v20161113.docx)
+
+[Copy of Standards Documentation Specification with inserted review comments (Word format)](expert-review-materials/TDWG-Standards-Documentation-Specification-with-comments-from-the-expert-review-v20161113.docx)
+
+[Copy of Vocabulary Maintenance Specification with inserted review comments (Word format)](expert-review-materials/TDWG-Vocabulary-Maintenance-Specification-with-comments-from-the-expert-review-v20161113.docx)
+
+[Response to reviewers from Task Group](expert-review-materials/response.md)
+
+[List of major changes made by Task Group](expert-review-materials/change-log.md)
 
 ## Participating in the Task Group
 
