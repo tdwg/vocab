@@ -6,13 +6,11 @@
 
 Added [NAMESPACES] and [DWC-RDF] references at the end.
 
-2. Assumed broadening the scope of the existing http://rs.tdwg.org/dwc/dwcattributes/ namespace to serve as a TDWG-wide utility namespace.  In recognition of that, changed the CURIE (namespace) abbreviation from "dwcattributes:" to "tdwgutility:".  
-
-Changed example 4.4.1.1, which uses the definition of http://rs.tdwg.org/dwc/dwcattributes/ as part of the example.  Changed the human-readable definition from "Attributes defined by Darwin Core" to "Utility terms defined by Biodiversity Information Standards (TDWG)". [Note: there are a number of deficiencies of the current RDF defining http://rs.tdwg.org/dwc/dwcattributes/ that should be fixed in concert with the adoption of these standards.]
+2. Assumed broadening the scope of the existing http://rs.tdwg.org/dwc/dwcattributes/ namespace to serve as a TDWG-wide utility namespace.  In recognition of that, changed the CURIE (namespace) abbreviation from "dwcattributes:" to "tdwgutility:".  Changed example 4.4.1.1, which uses the definition of http://rs.tdwg.org/dwc/dwcattributes/ as part of the example.  Changed the human-readable definition from "Attributes defined by Darwin Core" to "Utility terms defined by Biodiversity Information Standards (TDWG)". [Note: there are a number of deficiencies of the current RDF defining http://rs.tdwg.org/dwc/dwcattributes/ that should be fixed in concert with the adoption of these standards.]
 
 3. Minted the terms tdwgutility:Vocabulary and tdwgutility:TermList to denote vocabularies and term lists respectively.  Replaced references of dcmitype:Dataset with tdwgutility:Vocabulary, and references of dcat:Dataset with tdwgutility:TermList.
 
-4. Removed references to the DCAT standard and to "datasets".  Changed the definition of "distribution" and rewrote section 4.4.3 and the example in 4.4.3.1 to reflect the discussion on the RDF Task Group mailing list.  **TODO: I am uncertain about whether the SPARQL endpoint part of the example is right.  I could just leave it out.**
+4. Removed references to the DCAT standard and to "datasets".  Changed the definition of "distribution" and rewrote section 4.4.3 and the example in 4.4.3.1 to reflect the discussion on the RDF Task Group mailing list. 
 
 5. Revised part of section 4.4.2 (about preferred namespaces) based on Reviewer 1 and Review Manager suggestions.  
 

@@ -60,7 +60,7 @@
 4.2.1 Feature Report
 4.2.2 Implementation Experience Report
 4.2.3 Use of the user feedback reports
-4.2.4 Archiving the user feedback report
+4.2.4 Archiving the user feedback reports
 
 5 References
 ```
@@ -160,7 +160,7 @@ Errors in spelling, punctuation, grammar, or other clerical mistakes discovered 
 
 **3.2.2 Substantive editorial errata**
 
-A substantive error is one that compromises the usefulness or accuracy of systems based on the vocabulary. Those that are unequivocal (for example, an incorrect URI or reference) may be treated as minor editorial errata (Section 3.2.1) and be corrected accordingly.  If, in the opinion of the Interest Group, the correction is likely to impact existing implementations, the Interest Group should inform the community via the TDWG mailing list [TDWG-CONTENT].
+A substantive error is one that compromises the usefulness or accuracy of systems based on the vocabulary. Those that are unequivocal (for example, an incorrect reference or incorrect URL in a hyperlink) may be treated as minor editorial errata (Section 3.2.1) and be corrected accordingly.  If, in the opinion of the Interest Group, the correction is likely to impact existing implementations, the Interest Group should inform the community via the TDWG mailing list [TDWG-CONTENT].
 
 In the case of equivocal substantive errors, the Interest Group will conduct a public comment period and seek an Executive decision to find a solution that minimizes adverse effects on existing implementations. Changes of this nature require a version change for the affected term and/or documents.
 
@@ -291,4 +291,4 @@ If the proposed enhancement is adopted as part of the vocabulary standard, the u
 -----------------
 This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).
 
-Copyright 2016 - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
+Copyright 2017 - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)

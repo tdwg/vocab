@@ -573,7 +573,7 @@ The following properties with appropriate values SHOULD be used to describe a do
 |**Human-readable label** | **Machine-readable property** | **Type of value** |
 |-------------------------|-------------------------------|-------------------|
 | Title                   | dcterms:title, rdfs:label     | literal           |
-| Part of TDWG Standard   | dcterms:isPartOf              | IRI that denotes the containing standard; omit for the standard itself|
+| Part of TDWG Standard   | dcterms:isPartOf              | IRI that denotes the containing standard|
 | Contributors            | dc:contributor                | literal; repeat property for each contributor's name |
 | Creator                 | dc:creator                    | literal providing the name of the Task Group responsible for creating the document |
 | License                 | dcterms:license               | IRI for a license; use a license type in accordance with current TDWG policy |
@@ -776,7 +776,7 @@ Although term lists are described by descriptive documents, term list documents 
 
 If a vocabulary is extended by asserting properties of terms that generate machine-computable entailments (that is, axioms), those properties SHOULD be asserted in a machine-readable document that is separate from the machine-readable document that asserts the basic properties described in Section 4.5.  This separate document is a specialized kind of term list document known as a vocabulary extension term list.   The axioms contained in the extension list can be combined with the metadata about terms contained in a basic term definition list to create a semantically enhanced ontology through a layered approach [GBIF-KOS, Section 1.1].  The annotation owl:imports is used by an ontology vocabulary to gain access to the entities and axioms contained in the basic and extension term lists [OWL-SYNTAX].  
 
-The rdf:type of a vocabulary extension list is owl:Ontology. This is entailed by the range of owl:imports; nevertheless, it is desirable to assert this explicitly.  The type of a basic term definition list SHOULD not be declared explicitly to be owl:Ontology, since this implies a level of semantics that might not concern all users of the basic term list.  
+The rdf:type of a vocabulary extension list is owl:Ontology. This is entailed by the range of owl:imports; nevertheless, it is desirable to assert this explicitly.  The type of a basic term definition list SHOULD NOT be declared explicitly to be owl:Ontology, since this implies a level of semantics that might not concern all users of the basic term list.  
 
 **4.4.2.3 Examples (non-normative)**
 
@@ -901,7 +901,7 @@ ac:MediaResource a rdfs:Class;
 
 **4.4.3 Linking to and describing distributions**
 
-Term lists are linked to their distributions using the property dcterms:hasFormat. Distributions MAY be assigned any properties that are appropriate for its type. However, at a minimum, they SHOULD have the properties dcterms:modified and ac:accessURI.  If the distribution is a file having a particular format, the value of ac:accessURI should be a URL that will directly retrieve a copy of that file.  If the distribution is a representation in the form of a queriable service, communities of practice MAY establish best practices for describing the capabilities and features available via the URL specified by ac:accessURI.  If an IANA media type exists for the format of the distribution, dc:format SHOULD be used to provide the media type as a literal. [IANA]
+Term lists are linked to their distributions using the property dcterms:hasFormat. Distributions MAY be assigned any properties that are appropriate for their types. However, at a minimum, they SHOULD have the properties dcterms:modified and ac:accessURI.  If the distribution is a file having a particular format, the value of ac:accessURI should be a URL that will directly retrieve a copy of that file.  If the distribution is a representation in the form of a queriable service, communities of practice MAY establish best practices for describing the capabilities and features available via the URL specified by ac:accessURI.  If an IANA media type exists for the format of the distribution, dc:format SHOULD be used to provide the media type as a literal. [IANA]
 
 **4.4.3.1 Example (non-normative)**
 
@@ -1088,7 +1088,7 @@ As with all other TDWG vocabulary terms, controlled value terms will be assigned
 
 **4.5.4.1 Example metadata for controlled a vocabulary term (non-normative)**
 
-The following example of a current controlled vocabulary term is expressed in RDF/Turtle. Note that although the containing vocabulary (http://rs.tdwg.org/cvterms/disposition) is considered an skos:ConceptScheme, this specification does not dictate best practices for grouping controlled value terms into concept schemes.  
+The following example of a current controlled vocabulary term is expressed in RDF/Turtle. Note that although in this example the containing vocabulary (http://rs.tdwg.org/cvterms/disposition) is considered an skos:ConceptScheme, this specification does not dictate best practices for grouping controlled value terms into concept schemes.  
 
 ```
 <http://rs.tdwg.org/cvterms/disposition/inCollection>
@@ -1136,7 +1136,7 @@ If a Task Group chartered to develop a standard fails to meet the requirement of
 
 ## **6 Appendix**
 
-The following examples provide a more extensive illustration of the use of metadata to describe and link components of a vocabulary.
+The following examples provide more extensive illustrations of the use of metadata to describe and link components of a vocabulary.
 
 ### **6.1 Extended example illustrating metadata for and relationships among a vocabulary, a term list, a term, and versions of that term (non-normative)**
 
@@ -1316,4 +1316,4 @@ Reference
 -----------------
 This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).
 
-Copyright 2016 - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
+Copyright 2017 - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
