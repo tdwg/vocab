@@ -1,4 +1,4 @@
-# TDWG Vocabulary Maintenance Specification (draft of 2016-08-02 as submitted for review)
+# TDWG Vocabulary Maintenance Specification (draft of 2017-01-20 revised based on reviewer comments)
 
 **Title:** Vocabulary Maintenance Specification
 
@@ -18,7 +18,7 @@
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
-**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2016. Vocabulary Maintenance Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/x (put link here to provide access to standardized machine-readable citation export format)
+**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2017. Vocabulary Maintenance Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/x (put link here to provide access to standardized machine-readable citation export format)
 
 ### Table of Contents
 
@@ -67,7 +67,7 @@
 
 ## **1 Introduction**
 
-Vocabulary standards differ from other Biodiversity Information Standards (TDWG) standards in that they are likely to change over time as they evolve to meet the changing needs of the biodiversity informatics community.  These changes may be incremental, making it impractical to apply the full TDWG standards process [PROCESS] to every change.  This document details the categories of changes that can be made to a TDWG vocabulary standard, the mechanisms used to achieve those changes, and the entities that are responsible for shepherding those changes through the process.
+TDWG vocabularies are a collection of standardized terms and their definitions.  Vocabulary standards differ from other Biodiversity Information Standards (TDWG) standards in that they are likely to change more often over time as they evolve to meet the changing needs of the biodiversity informatics community.  These changes may be incremental, making it impractical to apply the full TDWG standards process [PROCESS] to every change.  The TDWG Vocabulary Maintenance Specification details the categories of changes that can be made to a TDWG vocabulary standard, the mechanisms used to achieve those changes, and the entities that are responsible for shepherding those changes through the process.
 
 ### **1.1 Audience**
 
@@ -83,11 +83,15 @@ This is the only document associated with the Vocabulary Maintenance Specificati
 
 **implementation** - a component of the workflow of a user or organization.  In the context of this standard, an implementation plays a role in data transmission and storage. It may be involved in sending, generating, or validating data, or it may be involved in processing, storing, aggregating, indexing, or reasoning upon data that is received.  Implementations can include software and data models.
 
+**interest group** - an organizational entity described in the TDWG Standards Development Process [PROCESS] whose responsibilities include maintaining and updating products created by Task Groups
+
 **issue tracker** - a publicly accessible online system managed by a maintaining interest group (Section 2.1) that allows users to officially suggest vocabulary changes.  The issue tracker allows the public to know the current status of proposed changes.  
 
 **normative content** - prescriptive parts of a standard that specify what must be done to comply with the standard
 
 **non-normative content** - informative parts of a standard that provide supplemental information such as history, examples, and additional explanation beyond the information necessary to comply with the standard.
+
+**task group** - an organizational entity described in the TDWG Standards Development Process [PROCESS] that is created within an Interest Group to develop a particular product within a given time frame.
 
 **term** - an entity representing a class, property, or concept.  A term is identified by an Internationalized Resource Identifier [IRI], may have one or more human-readable labels, and is defined by a series of properties that include a human-readable definition.  Terms and their values are used to communicate information about a subject resource.
 
@@ -108,7 +112,11 @@ In aggregate, these enhancements may take the form of an application profile or 
 ## **2 Administration**
 
 ### **2.1 Vocabulary Maintenance Interest Groups**
-At the time of the adoption of a vocabulary standard, an Interest Group charged specifically with the maintenance of that standard will be chartered.  That Interest Group will be subject to the normal expectations described for Interest Groups in the TDWG Standards Development Process document [PROCESS].  If a TDWG vocabulary continues to be actively developed, a vocabulary maintenance Interest Group will not normally be disbanded.  Therefore, if the Interest Group's convener is unable to continue in that role, that convener should be succeeded by a core member of the Interest Group.  If there are no core members of the Interest Group that are able take on the role of convener, the Executive Committee will appoint a convener who will reorganize the Interest Group.  If a TDWG vocabulary achieves a level of stability that makes its maintenance unnecessary, or if the status of the standard defining the vocabulary is changed to Retired Standard [STATUS], the Executive Committee may choose to disband the maintaining Interest Group.
+At the time of the adoption of a vocabulary standard, an Interest Group charged specifically with the maintenance of that standard will be designated.  In the case of a major vocabulary that is likely to be subject to frequent changes, an Interest Group may be chartered specifically to maintain that vocabulary.  In the case where a new vocabulary is related to an existing vocabulary having an existing maintaining Interest Group, maintenance of the new vocabulary may be assigned to the existing Interest Group.  Several minor vocabularies may be maintained as a group by a single Maintenance Interest Group.  The decision of maintenance responsibility for each vocabulary standard rests with the Executive Committee.
+
+The maintaining Interest Group will be subject to the normal expectations described for Interest Groups in the TDWG Standards Development Process document [PROCESS].  If a TDWG vocabulary continues to be actively developed, a vocabulary maintenance Interest Group will not normally be disbanded.  Therefore, if the Interest Group's convener is unable to continue in that role, that convener should be succeeded by a core member of the Interest Group.  If there are no core members of the Interest Group that are able take on the role of convener, the Executive Committee will appoint a convener who will reorganize the Interest Group.  
+
+If a TDWG vocabulary achieves a level of stability that makes its maintenance unnecessary, or if the status of the standard defining the vocabulary is changed to Retired Standard [STATUS], the Executive Committee may choose to disband the maintaining Interest Group.  If necessary, the Executive Committee may reorganize the maintenance of existing vocabularies among Interest Groups in order to continue effective maintenance of those vocabularies.  In any case, it should be made clear on the landing page of each vocabulary standard which Interest Group is responsible for the maintenance of that standard.  See Section 3.1 of the TDWG Standards Documentation Specification [DOC-SPEC] for more information about standards landing pages.   
 
 ### **2.2 Mechanisms for managing changes**
 The Interest Group charged with maintaining a vocabulary standard will maintain an issue tracking system and will assess proposed changes according to the procedures described in this document.  The vocabulary maintenance Interest Group may also establish Task Groups to accomplish broader changes to the standard, such as creating or revising associated documents, or determining how the terms of the vocabulary might be used with a new technology.  
@@ -182,9 +190,9 @@ If the Interest Group believes that a consensus has been reached, the proposal w
 
 After the maintaining Interest Group has forwarded a proposal to the Executive Committee, the Committee will render a decision within 30 days.  The decision may take three forms:
 
-- accept the proposal.  The decision will be recorded in the decision history and appropriate changes will be made in the documentation associated with the vocabulary standard.
-- reject the proposal.  The decision will be recorded in the decision history and no changes will be made in the documentation.
-- return the proposal to the public review level.  The decision will not be recorded in the decision history.  The Executive committee should provide recommendations for steps to be taken to make the proposal acceptable, e.g. additional discussion, additional work by a Task Group, testing, etc.
+- Accept the proposal.  The decision will be recorded in the decision history and appropriate changes will be made in the documentation associated with the vocabulary standard.
+- Reject the proposal.  The decision will be recorded in the decision history and no changes will be made in the documentation.
+- Return the proposal to the public review level.  The decision will not be recorded in the decision history.  The Executive committee should provide recommendations for steps to be taken to make the proposal acceptable, e.g. additional discussion, additional work by a Task Group, testing, etc.
 
 In all three of these cases, the decision should be reported to the community via the TDWG email list [TDWG-CONTENT].  
 
@@ -232,7 +240,7 @@ From time to time, new documents may be added to vocabulary standards.  The mana
 
 ### **4.1 Development**
 
-Because vocabulary enhancements (Section 1.4) usually involve a coordinated set of additions to the vocabulary, they will generally be developed as a package that will submitted as a single proposal in the tracking system.  This package will usually be developed by a group representing the community whose interests will be served by the enhancements.  The group may be tasked by the Interest Group maintaining the vocabulary as an official Task Group, or it may arise spontaneously in response to community need.  In either case, the group developing the enhancements will be referred to here as the "working group".  
+Because vocabulary enhancements (Section 1.4) usually involve a coordinated set of additions to the vocabulary, they will generally be developed as a package that will be submitted as a single proposal in the tracking system.  This package will usually be developed by a group representing the community whose interests will be served by the enhancements.  The group may be tasked by the Interest Group maintaining the vocabulary as an official Task Group, or it may arise spontaneously in response to community need.  In either case, the group developing the enhancements will be referred to here as the "working group".  
 
 Because a vocabulary enhancement is special category of vocabulary change, the general change process described in the subsections of Section 3 apply.  That is, the vocabulary enhancement as a package will be proposed formally via the tracking system (Section 3.3.1), be subjected to public comment (Section 3.3.2), and forwarded for an Executive Committee Decision (Section 3.3.3) before it is adopted as an addition to the standard.
 

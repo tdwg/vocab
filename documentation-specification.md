@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2017-01-15 revised based on reviewer comments) #
+# TDWG Standards Documentation Specification (draft of 2017-01-20 revised based on reviewer comments) #
 
 **Title:** Standards Documentation Specification
 
@@ -18,7 +18,7 @@
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
-**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2016. Standards Documentation Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (put link here to provide access to standardized machine-readable citation export format)
+**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2017. Standards Documentation Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (put link here to provide access to standardized machine-readable citation export format)
 
 ### Table of Contents ###
 
@@ -103,7 +103,11 @@
 5 Archiving of documents
 5.1 Documents from incomplete standards
 
-6 References
+6 Appendix
+6.1 Extended example illustrating metadata for and relationships among a vocabulary, a term list, a term, and versions of that term
+6.2 Extended example illustrating metadata for controlled vocabulary terms
+
+7 References
 ```
 
 ## **1 Introduction** ##
@@ -281,6 +285,8 @@ In order for a standard to achieve its purpose, it will include documents that p
 
 When the HTTP IRI of a standard is dereferenced by a client requesting text/html (for example, when a human uses a Web browser), the client SHOULD receive a human-readable document that describes basic information about the standard as described in the subparts of this section.  
 
+The landing page of a vocabulary standard MUST include information identifying its maintaining Interest Group and SHOULD contain a link to information explaining how changes to the vocabulary can be introduced. See Section 2.1 of the TDWG Vocabulary Maintenance Specification [MAINTENANCE] for more information about the role of Maintenance Interest Groups.
+
 **3.1.1 Name of the standard**
 
 The full name MUST be in English and
@@ -368,7 +374,7 @@ A contributor's name MAY be followed by his or her affiliation in parentheses. A
 
 **Bibliographic citation:** The preferred citation in human-readable form. This part SHOULD also provide access to one or more standardized machine-readable citation export formats.
 
-If the document is no longer recommended for use (i.e. deprecated), this SHOULD be noted in a **Status note:** with a description of the reason and links to recommended alternatives.  This deprecation is distinct from replacement by a newer version of the same document, which SHOULD be indicated in the "Replaced by" field.  This applies to documents that are vocabulary descriptions (section 3.3), although usually particular vocabulary terms are deprecated rather than the entire vocabulary.  
+If the document is no longer recommended for use (i.e. deprecated), this SHOULD be noted in a **Status note** with a description of the reason and links to recommended alternatives.  This deprecation is distinct from replacement by a newer version of the same document, which SHOULD be indicated in the "Replaced by" field.  This applies to documents that are vocabulary descriptions (section 3.3), although usually particular vocabulary terms are deprecated rather than the entire vocabulary.  
 
 **3.2.3.2 Table of Contents Section**
 
@@ -954,22 +960,9 @@ Properties that extend the meaning of terms by introducing machine-computable en
 
 **4.5.1 Example metadata for terms (non-normative)**
 
-The following example of terms in a metadata scheme is expressed in RDF/Turtle.  Note that it follows the pattern where the term list URI would dereference to a different document than the vocabulary URI.
+The following example of a current term is expressed in RDF/Turtle.  In addition to the general metadata properties described in Section 4.5, the current term is also linked to its versions as described in Section 4.3 and to its defining term list as described in section 4.4.2.
 
 ```
-<http://rs.tdwg.org/dwc/>
-     dcterms:title "Basic Darwin Core Vocabulary"@en;
-     rdfs:label "Basic Darwin Core Vocabulary"@en;
-     a tdwgutility:Vocabulary.
-
-<http://rs.tdwg.org/dwc/terms/>
-     dcterms:title "Core terms defined by Darwin Core"@en;
-     rdfs:label "Core terms defined by Darwin Core"@en;
-     vann:preferredNamespacePrefix "dwc";
-     vann:preferredNamespaceUri "http://rs.tdwg.org/dwc/terms/";
-     dcterms:isPartOf <http://rs.tdwg.org/dwc/>;
-     a tdwgutility:TermList.
-
 <http://rs.tdwg.org/dwc/terms/recordedBy>
      rdfs:label "Recorded By"@en;
      rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
@@ -980,11 +973,12 @@ The following example of terms in a metadata scheme is expressed in RDF/Turtle. 
      dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
      rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>.
+```
 
-<http://rs.tdwg.org/dwc/terms/history/>
-     dcterms:title "Darwin Core Terms Complete History"@en;
-     a tdwgutility:TermList.
+The following example of a term version is expressed in RDF/Turtle.  In addition to the general metadata properties described in Section 4.5, the term version is also linked to its current term and previous version as described in Section 4.3 and to its defining term list as described in section 4.4.2.
 
+
+```
 <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>
      rdfs:label "Recorded By"@en;
      rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
@@ -995,18 +989,9 @@ The following example of terms in a metadata scheme is expressed in RDF/Turtle. 
      dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
      rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/history/>;
      dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/history/>.
-
-<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>
-     rdfs:label "Recorded By"@en;
-     rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
-     dcterms:description "Example: "Oliver P. Pearson; Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
-     a rdfs:Property;
-     dcterms:issued "2009-04-24"^^xsd:date;
-     dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/recordedBy>;
-     dcterms:isReplacedBy <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>;
-     rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/history/>;
-     dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/history/>.
 ```
+
+For a more extensive example, see Section 6.1.
 
 **4.5.2. Labels in other languages**
 
@@ -1101,9 +1086,117 @@ To facilitate use by applications programmed to make use of SKOS properties, it 
 
 As with all other TDWG vocabulary terms, controlled value terms will be assigned a term IRI.  That IRI MAY be used as the subject or object when expressing relationships with other resources.  However, in the context of information transfer, there might be cases where it is more desirable to represent the controlled vocabulary term by means of a unique text string.  To facilitate such use, each controlled vocabulary term MUST be assigned a string that is unique within that controlled vocabulary.  That string SHOULD be designated by making it a plan literal value (without language tag) of an rdf:value property of the term.  
 
-**4.5.4.1 Example metadata for controlled vocabulary terms (non-normative)**
+**4.5.4.1 Example metadata for controlled a vocabulary term (non-normative)**
 
-The following example of terms in a controlled vocabulary is expressed in RDF/Turtle.  Note that it follows the pattern where the term list URI dereferences to the same document as the vocabulary URI.  Also note that this example models the vocabulary as a skos:ConceptScheme.
+The following example of a current controlled vocabulary term is expressed in RDF/Turtle. Note that although the containing vocabulary (http://rs.tdwg.org/cvterms/disposition) is considered an skos:ConceptScheme, this specification does not dictate best practices for grouping controlled value terms into concept schemes.  
+
+```
+<http://rs.tdwg.org/cvterms/disposition/inCollection>
+     rdfs:label "In Collection"@en;
+     rdfs:comment "The collection item is present in the collection."@en;
+     skos:definition "The collection item is present in the collection."@en;
+     rdf:value "in collection";
+     a skos:Concept;
+     dcterms:created "2016-04-09"^^xsd:date;
+     dcterms:modified "2016-04-09"^^xsd:date;
+     skos:inScheme <http://rs.tdwg.org/cvterms/disposition>;
+     dcterms:hasVersion <http://rs.tdwg.org/cvterms/disposition/inCollection-2016-04-09>;
+     rdfs:isDefinedBy <http://rs.tdwg.org/cvterms/disposition/>;
+     dcterms:isPartOf <http://rs.tdwg.org/cvterms/disposition/>.
+```
+
+See Section 6.2 for a more extensive example.
+
+The following example illustrates the use of the controlled vocabulary term from the previous example:
+
+```
+<http://arctos.database.museum/guid/MVZ:Mamm:115956#specimen> dwc:disposition "in collection".
+<http://bioimages.vanderbilt.edu/vanderbilt/3-108> dwciri:disposition dwcdisp:inCollection.
+```
+
+See section 2.5 of the Darwin Core RDF Guide [DWC-RDF] for the distinction in the use of dwc: and dwciri: namespace terms.
+
+## **5 Archiving of documents** ##
+
+In order for a standard to enable compliance with a consensus community practice, a version of a standards document SHOULD be immutable and easily viewable by the public. This has several implications for the way in which documents are archived.
+
+In order to ensure the stability of a human-readable document, it SHOULD be archived as a discrete file as opposed to being generated from a potentially changing database.  The archived document file SHOULD be in an open format for which parsers are commonly available. For this purpose an open format is defined as being one for which it would be possible to write a parser on the basis of a published specification without having to rely on code libraries for which the source code is not available or to pay a license fee.
+
+In accordance with Section 2.1, the document MAY exist as files in a variety of formats that can be retrieved through content negotiation.  For example, a document MAY be available in any of HTML, PDF, and Markdown formats.  However, when rendered by a parser, each differently formatted file SHOULD render to a form that is substantively the same to a human reader.  At least one available form SHOULD be easily viewable to a human reader in a browser that requests text/html, regardless of whether the source file is actually in HTML format.
+
+If a human-readable document is available in more than one format, the format that is delivered when that document's IRI is dereferenced requesting media type text/html will be considered to be the authoritative representation of the document.  The document in that format MUST be included in the archive for the standard. Other formats MAY be distributed by any mechanism, but in accordance with Section 3.2.3.1, those formats SHOULD include the "Latest version" IRI so that a reader can always retrieve the authoritative form of the document.  
+
+If machine-readable documents are available in more than one serialization, they MUST all contain triples that would be interpreted as identical by a machine.  At least one of these serializations SHOULD be included in the archive for the standard.
+
+Documents SHOULD be maintained as part of a publicly accessible version control system that ensures document files will not be lost and that previous document versions can be located and accessed through their immutable IRIs.  
+
+### **5.1 Documents from incomplete standards** ###
+
+If a Task Group chartered to develop a standard fails to meet the requirement of its charter, it may be disbanded by the Executive Committee [PROCESS].  In that case, drafts of documents created by the Task Group should be published as Task Group Notes.  The Header Section of each document should include a Status Note (Section 3.2.3.1) including the following statement: "This document has been published as a Task Group Note and is no longer under development. It has not been endorsed by TDWG and has been made available for reference purposes only." Machine-readable representations of the documents (if any) should include this statement as the value of an rdfs:comment property.
+
+## **6 Appendix**
+
+The following examples provide a more extensive illustration of the use of metadata to describe and link components of a vocabulary.
+
+### **6.1 Extended example illustrating metadata for and relationships among a vocabulary, a term list, a term, and versions of that term (non-normative)**
+
+The following example of terms in a metadata scheme is an elaboration of the example in Section 4.5.1 and is expressed in RDF/Turtle.  Note that it follows the pattern where the term list URI would dereference to a different document than the vocabulary URI.
+
+```
+<http://rs.tdwg.org/dwc/>
+     dcterms:title "Basic Darwin Core Vocabulary"@en;
+     rdfs:label "Basic Darwin Core Vocabulary"@en;
+     a tdwgutility:Vocabulary.
+
+<http://rs.tdwg.org/dwc/terms/>
+     dcterms:title "Core terms defined by Darwin Core"@en;
+     rdfs:label "Core terms defined by Darwin Core"@en;
+     vann:preferredNamespacePrefix "dwc";
+     vann:preferredNamespaceUri "http://rs.tdwg.org/dwc/terms/";
+     dcterms:isPartOf <http://rs.tdwg.org/dwc/>;
+     a tdwgutility:TermList.
+
+<http://rs.tdwg.org/dwc/terms/recordedBy>
+     rdfs:label "Recorded By"@en;
+     rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
+     dcterms:description "The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: "José E. Crespo", "Oliver P. Pearson | Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
+     a rdfs:Property;
+     dcterms:modified "2014-10-23"^^xsd:date;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>;
+     dcterms:hasVersion <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
+     rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/>;
+     dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/>.
+
+<http://rs.tdwg.org/dwc/terms/history/>
+     dcterms:title "Darwin Core Terms Complete History"@en;
+     a tdwgutility:TermList.
+
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>
+     rdfs:label "Recorded By"@en;
+     rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
+     dcterms:description "The recommended best practice is to separate the values with a vertical bar (' | '). The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first. Examples: "José E. Crespo", "Oliver P. Pearson | Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
+     a rdfs:Property;
+     dcterms:issued "2014-10-23"^^xsd:date;
+     dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/recordedBy>;
+     dcterms:replaces <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>;
+     rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/history/>;
+     dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/history/>.
+
+<http://rs.tdwg.org/dwc/terms/history/#recordedBy-2009-04-24>
+     rdfs:label "Recorded By"@en;
+     rdfs:comment "A list (concatenated and separated) of names of people, groups, or organizations responsible for recording the original Occurrence. The primary collector or observer, especially one who applies a personal identifier (recordNumber), should be listed first."@en;
+     dcterms:description "Example: "Oliver P. Pearson; Anita K. Pearson" where the value in recordNumber "OPP 7101" corresponds to the number for the specimen in the field catalog (collector number) of Oliver P. Pearson."@en;
+     a rdfs:Property;
+     dcterms:issued "2009-04-24"^^xsd:date;
+     dcterms:isVersionOf <http://rs.tdwg.org/dwc/terms/recordedBy>;
+     dcterms:isReplacedBy <http://rs.tdwg.org/dwc/terms/history/#recordedBy-2014-10-23>;
+     rdfs:isDefinedBy <http://rs.tdwg.org/dwc/terms/history/>;
+     dcterms:isPartOf <http://rs.tdwg.org/dwc/terms/history/>.
+```
+
+## **6.2 Extended example illustrating metadata for controlled vocabulary terms (non-normative)**
+
+The following example of terms in a controlled vocabulary is an elaboration of the example in Section 4.5.4.1 and is expressed in RDF/Turtle.  Note that it follows the pattern where the term list URI dereferences to the same document as the vocabulary URI.  Also note that this example models the vocabulary as a skos:ConceptScheme.
 
 ```
 <http://rs.tdwg.org/cvterms/disposition>
@@ -1174,34 +1267,8 @@ The following example of terms in a controlled vocabulary is expressed in RDF/Tu
      dcterms:isPartOf <http://rs.tdwg.org/cvterms/disposition/history/>.
 ```
 
-The following example illustrates the use of the controlled vocabulary terms from the previous example:
 
-```
-<http://arctos.database.museum/guid/MVZ:Mamm:115956#specimen> dwc:disposition "in collection".
-<http://bioimages.vanderbilt.edu/vanderbilt/1-183> dwciri:disposition dwcdisp:destroyed.
-```
-
-See section 2.5 of the Darwin Core RDF Guide [DWC-RDF] for the distinction in the use of dwc: and dwciri: namespace terms.
-
-## **5 Archiving of documents** ##
-
-In order for a standard to enable compliance with a consensus community practice, a version of a standards document SHOULD be immutable and easily viewable by the public. This has several implications for the way in which documents are archived.
-
-In order to ensure the stability of a human-readable document, it SHOULD be archived as a discrete file as opposed to being generated from a potentially changing database.  The archived document file SHOULD be in an open format for which parsers are commonly available. For this purpose an open format is defined as being one for which it would be possible to write a parser on the basis of a published specification without having to rely on code libraries for which the source code is not available or to pay a license fee.
-
-In accordance with Section 2.1, the document MAY exist as files in a variety of formats that can be retrieved through content negotiation.  For example, a document MAY be available in any of HTML, PDF, and Markdown formats.  However, when rendered by a parser, each differently formatted file SHOULD render to a form that is substantively the same to a human reader.  At least one available form SHOULD be easily viewable to a human reader in a browser that requests text/html, regardless of whether the source file is actually in HTML format.
-
-If a human-readable document is available in more than one format, the format that is delivered when that document's IRI is dereferenced requesting media type text/html will be considered to be the authoritative representation of the document.  The document in that format MUST be included in the archive for the standard. Other formats MAY be distributed by any mechanism, but in accordance with Section 3.2.3.1, those formats SHOULD include the "Latest version" IRI so that a reader can always retrieve the authoritative form of the document.  
-
-If machine-readable documents are available in more than one serialization, they MUST all contain triples that would be interpreted as identical by a machine.  At least one of these serializations SHOULD be included in the archive for the standard.
-
-Documents SHOULD be maintained as part of a publicly accessible version control system that ensures document files will not be lost and that previous document versions can be located and accessed through their immutable IRIs.  
-
-### **5.1 Documents from incomplete standards** ###
-
-If a Task Group chartered to develop a standard fails to meet the requirement of its charter, it may be disbanded by the Executive Committee [PROCESS].  In that case, drafts of documents created by the Task Group should be published as Task Group Notes.  The Header Section of each document should include a Status Note (Section 3.2.3.1) including the following statement: "This document has been published as a Task Group Note and is no longer under development. It has not been endorsed by TDWG and has been made available for reference purposes only." Machine-readable representations of the documents (if any) should include this statement as the value of an rdfs:comment property.
-
-## **6 References** ##
+## **7 References** ##
 
 [COOL-URIS] http://www.w3.org/TR/cooluris/#cooluris Cool URIs for the Semantic Web
 
@@ -1218,6 +1285,8 @@ If a Task Group chartered to develop a standard fails to meet the requirement of
 [IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
 
 [ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularies. Part 2: Interoperability with other vocabularies. 2013-03-15.
+
+[MAINTENANCE] http://[fill this in with the correct IRI] TDWG Vocabulary Maintenance Specification.
 
 [NAMESPACES] http://wiki.dublincore.org/index.php/FAQ/DC_and_DCTERMS_Namespaces FAQ/DC and DCTERMS Namespaces. Dublin Core Metadata Initiative.
 

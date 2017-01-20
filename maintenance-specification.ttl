@@ -6,9 +6,9 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 
-# This file is part of the main submission for review of the Vocabulary Maintenance Specification on 2016-08-02.
+# This file is part of the submission for public comment of the Vocabulary Maintenance Specification on 2017-01-xx.
 # These metadata are provisional.  Some adjustments to this information may need to be made as IRIs are settled,
-# as dates are determined, review managers chosen, and
+# as dates are determined, and
 # if substantive changes are made in the documentation specifications for machine-readable metadata.
 
 <http://www.tdwg.org/standards/x>
