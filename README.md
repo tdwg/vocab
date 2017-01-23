@@ -14,9 +14,9 @@ These documents are mutable and represent the most recent commits.
 
 [TDWG Vocabulary Maintenance Specification metadata as RDF/Turtle](maintenance-specification.ttl)
 
-## Draft Specifications for submission for appointment of review manager 2016-08-02
+## Draft Specifications for submission for public comment 2017-01-23
 
-[This release](https://github.com/tdwg/vocab/releases/tag/2016-08-02-review-submission) contains the versions of the Standards Documentation Specification and Vocabulary Maintenance Specifications as submitted to the TDWG Executive Committee upon request for the appointment of a review manager.  The request was approved and Dag Endresen was appointed review manager. These versions were the ones reviewed by the expert reviewers solicited by the review manager.
+[This release](https://github.com/tdwg/vocab/releases/tag/2017-01-23-public-comment-submission) contains the versions of the Standards Documentation Specification and Vocabulary Maintenance Specifications as submitted to the Review manager at the time of the request for initiation of public review.  
 
 ## Expert reviews
 
@@ -31,6 +31,10 @@ The following materials are related to the expert review conducted from Septembe
 [Response to reviewers from Task Group](expert-review-materials/response.md)
 
 [List of major changes made by Task Group](expert-review-materials/change-log.md)
+
+## Draft Specifications for submission for appointment of review manager 2016-08-02
+
+[This release](https://github.com/tdwg/vocab/releases/tag/2016-08-02-review-submission) contains the versions of the Standards Documentation Specification and Vocabulary Maintenance Specifications as submitted to the TDWG Executive Committee upon request for the appointment of a review manager.  The request was approved and Dag Endresen was appointed review manager. These versions were the ones reviewed by the expert reviewers solicited by the review manager.
 
 ## Participating in the Task Group
 
