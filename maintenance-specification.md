@@ -1,4 +1,4 @@
-# TDWG Vocabulary Maintenance Specification (draft of 2017-01-20 revised based on reviewer comments)
+# TDWG Vocabulary Maintenance Specification (draft of 2017-01-23 for submission for public comment)
 
 **Title:** Vocabulary Maintenance Specification
 
@@ -8,7 +8,7 @@
 
 **Part of TDWG Standard:** http://www.tdwg.org/standards/x
 
-**This version:** http://something.tdwg.org/x/2016-x-x
+**This version:** http://something.tdwg.org/x/2017-x-x
 
 **Latest version:** http://something.tdwg.org/x
 

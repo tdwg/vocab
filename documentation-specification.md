@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2017-01-20 revised based on reviewer comments) #
+# TDWG Standards Documentation Specification (draft of 2017-01-23 for submission for public comment) #
 
 **Title:** Standards Documentation Specification
 
@@ -8,7 +8,7 @@
 
 **Part of TDWG Standard:** http://www.tdwg.org/standards/147
 
-**This version:** http://something.tdwg.org/x/2016-x-x
+**This version:** http://something.tdwg.org/x/2017-x-x
 
 **Latest version:** http://something.tdwg.org/x
 
@@ -442,7 +442,7 @@ Term lists containing terms defined by TDWG SHOULD include the following items i
 
 Each term entry on the list SHOULD include the following items.
 
-**Term name** (REQUIRED) - The term name is a controlled value that represents the class, property, or concept described by the term definition.  The term name is composed of the local name part of the term IRI, with a prepended namespace abbreviation (QName) that is defined in the header section of the vocabulary list document. [RECIPES] The term name is often related to the meaning of the term, but users MUST NOT attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition MUST be consulted.
+**Term name** (REQUIRED) - The term name is a controlled value that represents the class, property, or concept described by the term definition.  The term name is composed of the local name part of the term IRI, with a prepended namespace abbreviation (QName) that is defined in the header section of the vocabulary list document [RECIPES]. The term name is often related to the meaning of the term, but users MUST NOT attempt to understand the meaning of the term by interpreting its name.  Rather, the term definition MUST be consulted.
 
 **Label** (RECOMMENDED) - The label is a word or short phrase that serves as a human-readable name for the term.
 

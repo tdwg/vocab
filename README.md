@@ -70,7 +70,7 @@ Here are some key documents that form crucial background for our discussions:
 
 [Use cases and implementation reports in standards and vocabulary development](implementation-use-cases.md)
 
-[Draft hierarchy model of 2016-07-24](hierarchy-model.md)
+[Draft hierarchy model of 2017-01-23](hierarchy-model.md)
 
 [Notes on a preliminary hierarchy model including definitions and use cases](hierarchy-model-2015-07-15.md)
 
@@ -81,4 +81,4 @@ Here are some key documents that form crucial background for our discussions:
 
 ## Preferred citation
 
-> Vocabulary Maintenance Specification task group. 2015. Vocabulary Maintenance Specification (VOCAB), Version 0.1. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147
+> Vocabulary Maintenance Specification task group. 2017. Vocabulary Maintenance Specification (VOCAB), Version 2017-01-23. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147
