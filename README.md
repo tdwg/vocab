@@ -20,7 +20,7 @@ These documents are mutable and represent the most recent commits.
 
 ## Expert reviews
 
-The following materials are related to the expert review conducted from September through November 2016.  The Review Manager summary was considered by the Executive Committee and released to the Task Group in December 2016.
+The following materials are related to the expert review conducted from September through November 2016.  The Review Manager summary was considered by the Executive Committee and released to the Task Group in December 2016.  The response of the Task Group to reviews and list of changes made to create the draft submitted for public comment are linked.
 
 [Review Manager summary of the expert reviews (pdf)](expert-review-materials/TDWG-VOCAB-expert-review-report-v20161113.pdf) [(Microsoft Word format)](expert-review-materials/TDWG-VOCAB-expert-review-report-v20161113.docx)
 
