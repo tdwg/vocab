@@ -24,7 +24,7 @@
 
 ```
 1.1 Audience
-1.2 Key words
+1.2 RFC 2119 key words
 1.3 Content
 1.4 Examples in this document
 1.5 Definitions
@@ -61,7 +61,7 @@
 3.2.3.3 Body Section
 3.2.3.4 Footer section
 3.2.4 Language
-3.2.5 Use of RFC 2119 keywords
+3.2.5 Use of RFC 2119 key words
 3.3 Vocabulary descriptions
 3.3.1 Landing page for the vocabulary
 3.3.2 Terms as versioned resources
@@ -118,9 +118,9 @@ Standards adopted by Biodiversity Information Standards (TDWG) may include a num
 
 This document is intended primarily for those who are writing TDWG standards, including vocabularies.  It can also be useful for those who are developing applications that use TDWG vocabularies, since it defines the structure of terms and term lists in those vocabularies, and kinds of available metadata about those terms.
 
-### **1.2 Key words** ###
+### **1.2 RFC 2119 key words** ###
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119). [RFC-2119] 
 
 ### **1.3 Content** ###
 
@@ -402,11 +402,11 @@ The footer SHOULD contain a copyright statement and licensing information.  Typi
 
 Standards documents MUST be written in English. Translations of standards documents are encouraged, but to simplify management of the standard they will be treated as ancillary documents that are not included in the standard.
 
-**3.2.5 Use of RFC 2119 keywords**
+**3.2.5 Use of RFC 2119 key words**
 
-Writers of standards documents MAY choose to follow the guidelines of RFC 2119 [RFC-2119].  However, if keywords are used as in RFC 2119, the introduction of the standard MUST include the recommended explanatory phrase from the RFC2119 abstract.  (For example, see Section 1.2 of this specification.)  If the authors do not choose to implement RFC 2119 keywords, they MUST NOT use all-caps formatting for the words that correspond to RFC 2119 keywords.  If a standard does not implement RFC 2119 (as indicated by a lack of the recommended phrase in the introduction of the standard), users of the standard MUST NOT infer that words that correspond to the RFC 2119 have a specialized meaning beyond the common usage of those words.
+Writers of standards documents MAY choose to follow the guidelines of RFC 2119 [RFC-2119].  However, if key words are used as in RFC 2119, the introduction of the standard MUST include the recommended explanatory phrase from the RFC 2119 abstract.  (For example, see Section 1.2 of this specification.)  If the authors do not choose to implement RFC 2119 key words, they MUST NOT use all-caps formatting for the words that correspond to RFC 2119 key words.  If a standard does not implement RFC 2119 (as indicated by a lack of the recommended phrase in the introduction of the standard), users of the standard MUST NOT infer that words that correspond to the RFC 2119 have a specialized meaning beyond the common usage of those words.
 
-The decision of whether to implement RFC 2119 keywords should be informed by the implications of failure of users to conform to the requirements indicated by the keywords.  The guidance provided in Sections 6 and 7 of RFC 2119 should be considered in making this decision.
+The decision of whether to implement RFC 2119 key words should be informed by the implications of failure of users to conform to the requirements indicated by the key words.  The guidance provided in Sections 6 and 7 of RFC 2119 should be considered in making this decision.
 
 ### **3.3 Vocabulary descriptions** ###
 
@@ -1084,7 +1084,7 @@ Controlled vocabulary terms are instances of the class skos:Concept.  As such, i
 
 To facilitate use by applications programmed to make use of SKOS properties, it is RECOMMENDED that controlled vocabulary term descriptions include a skos:definition property that has the same value as the rdfs:comment property routinely used to indicate the human-readable definition for every TDWG vocabulary term.
 
-As with all other TDWG vocabulary terms, controlled value terms will be assigned a term IRI.  That IRI MAY be used as the subject or object when expressing relationships with other resources.  However, in the context of information transfer, there might be cases where it is more desirable to represent the controlled vocabulary term by means of a unique text string.  To facilitate such use, each controlled vocabulary term MUST be assigned a string that is unique within that controlled vocabulary.  That string SHOULD be designated by making it a plan literal value (without language tag) of an rdf:value property of the term.  
+As with all other TDWG vocabulary terms, controlled value terms will be assigned a term IRI.  That IRI MAY be used as the subject or object when expressing relationships with other resources.  However, in the context of information transfer, there might be cases where it is more desirable to represent the controlled vocabulary term by means of a unique text string.  To facilitate such use, each controlled vocabulary term MUST be assigned a string that is unique within that controlled vocabulary.  That string SHOULD be designated by making it a plain literal value (without language tag) of an rdf:value property of the term.  
 
 **4.5.4.1 Example metadata for controlled a vocabulary term (non-normative)**
 
