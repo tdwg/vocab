@@ -14,6 +14,10 @@ These documents are mutable and represent the most recent commits.
 
 [TDWG Vocabulary Maintenance Specification metadata as RDF/Turtle](maintenance-specification.ttl)
 
+## Specifications for Submission for Adoption by the Executive Committee 2017-04-10
+
+[This release](https://github.com/tdwg/vocab/releases/tag/2017-04-10-submission-for-adoption) contains the versions of the Standards Documentation Specification and Vocabulary Maintenance Specifications as submitted for adoption by the Executive Committee.  They are unchanged from the submission for public comment except for the correction of some typographical errors in the Documentation Specification. 
+
 ## Draft Specifications for submission for public comment 2017-01-23
 
 [This release](https://github.com/tdwg/vocab/releases/tag/2017-01-23-public-comment-submission) contains the versions of the Standards Documentation Specification and Vocabulary Maintenance Specifications as submitted to the Review manager at the time of the request for initiation of public review.  

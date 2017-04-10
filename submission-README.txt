@@ -1,4 +1,4 @@
-Documents associated with the submissions for public comment:
+Documents associated with the submissions for consideration for adoption by the Executive Committee:
 
 Vocabulary Maintenance Specification - main submission:
 maintenance-specification.md (human-readable as Markdown)

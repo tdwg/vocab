@@ -1,4 +1,4 @@
-# TDWG Vocabulary Maintenance Specification (draft of 2017-01-23 for submission for public comment)
+# TDWG Vocabulary Maintenance Specification (draft of 2017-04-10 for consideration for adoption by the Executive Committee; unchanged from public comment submission)
 
 **Title:** Vocabulary Maintenance Specification
 

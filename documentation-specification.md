@@ -1,4 +1,4 @@
-# TDWG Standards Documentation Specification (draft of 2017-01-23 for submission for public comment) #
+# TDWG Standards Documentation Specification (draft of 2017-04-10 for consideration for adoption by the Executive Committee) #
 
 **Title:** Standards Documentation Specification
 
@@ -120,7 +120,7 @@ This document is intended primarily for those who are writing TDWG standards, in
 
 ### **1.2 RFC 2119 key words** ###
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119). [RFC-2119] 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119). [RFC-2119]
 
 ### **1.3 Content** ###
 
