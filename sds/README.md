@@ -20,7 +20,7 @@ Vocabulary Maintenance Specification Task Group. 2017. Standards Documentation S
 The TDWG Standards Documentation Standard is described by a single document, the Standards Documentation Specification.
 
 It is viewable in human-readable form at:
-https://github.com/tdwg/vocab/blob/master/sds/documentation-specification.md
+[https://github.com/tdwg/vocab/blob/master/sds/documentation-specification.md](documentation-specification.md)
 
 It is available in Markdown format at: https://raw.githubusercontent.com/tdwg/vocab/master/sds/documentation-specification.md
 

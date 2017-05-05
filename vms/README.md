@@ -20,7 +20,7 @@ Vocabulary Maintenance Specification Task Group. 2017. Vocabulary Maintenance St
 The TDWG Vocabulary Maintenance Standard is described by a single document, the Vocabulary Maintenance Specification.
 
 It is viewable in human-readable form at:
-https://github.com/tdwg/vocab/blob/master/sds/maintenance-specification.md
+[https://github.com/tdwg/vocab/blob/master/vms/maintenance-specification.md](maintenance-specification.md)
 
 It is available in Markdown format at: https://raw.githubusercontent.com/tdwg/vocab/master/vms/maintenance-specification.md
 
