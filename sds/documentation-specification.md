@@ -204,7 +204,7 @@ If a standard were composed of a single, human-readable document, then identifyi
 
 A TDWG standard MAY be composed of several types of components.  For example, the standard can contain an explanatory document that describes how the standard should be applied in certain circumstances.  A standard can also include a vocabulary description that defines the terms included in that vocabulary.  We can consider each of these particular resources as an abstract entity that manifests itself in one or more concrete representations.  For example, a document can exist in PDF format or as an HTML web page (Fig. 1), or a document can exist as translations in several languages.  
 
-![](graphics/representations.png)
+![](../graphics/representations.png)
 
 Fig. 1. An abstract resource and its representations.
 
@@ -224,7 +224,7 @@ A resource will normally be permanently identified by its abstract resource IRI.
 
 TDWG standards consist of several IRI-identified components.  This section describes these components and how they are related to each other.
 
-![](graphics/std-parts.png)
+![](../graphics/std-parts.png)
 
 Fig. 2. A standard and its components.
 
@@ -240,7 +240,7 @@ Each TDWG standard will have at least one human-readable document that describes
 
 TDWG vocabularies MUST have an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For that reason, the vocabulary IRI MUST NOT be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client SHOULD obtain a web page that links to term list documents (Fig. 3).  
 
-![](graphics/vocabulary-documents.png)
+![](../graphics/vocabulary-documents.png)
 
 Fig. 3. Relationship of a vocabulary to its component term list documents.
 
@@ -252,7 +252,7 @@ Term lists MAY include terms that are defined elsewhere, but that assert additio
 
 Vocabulary term lists are abstract resources, but also exist in the form of information resources that can be stored and delivered.  A human user or machine client might discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list might be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form might not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), SHOULD be made known to both humans and machines.  To accomplish that discovery, the Dublin Core term dcterms:hasFormat SHOULD be used to indicate the link from a vocabulary's term list to its available distributions.
 
-![](graphics/distributions.png)
+![](../graphics/distributions.png)
 
 Fig. 4. Relationship of a term list document to its distributions.
 
@@ -262,7 +262,7 @@ All distributions of a term list MUST contain substantively the same information
 
 TDWG standards and their components (Section 2.2) are resources that MAY change over time.  TDWG uses a versioning model that relates the current resource and versions of the resource that have changed over time.  The purpose of the versioning model is to enable a user to start with the current resource or any version of the resource and trace the changes that have occurred to that resource over time (Fig. 5).
 
-![](graphics/version-model.png)
+![](../graphics/version-model.png)
 
 Fig. 5. Relationship of a resource to its versions over time.
 

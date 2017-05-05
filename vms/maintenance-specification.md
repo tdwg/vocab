@@ -168,7 +168,7 @@ In the case of equivocal substantive errors, the Interest Group will conduct a p
 
 The terms in a vocabulary can be changed by modifying the attributes of an existing term, by adding a new term, or by deprecating an existing term.  Although the nature of the change varies somewhat among these three categories of changes, the process for achieving the change is the same, and is described in Sections 3.3.1 through 3.3.3.
 
-![](graphics/change-process.png)
+![](../graphics/change-process.png)
 
 Fig. 1. Generalized change process.
 
@@ -218,7 +218,7 @@ If an existing term is deprecated, this action should be noted in the term metad
 
 The documents included within a vocabulary standard support the vocabulary in various ways.  It is therefore difficult to specify a single change process that is appropriate for all possible changes to documents associated with the vocabulary.  However, the general principles expressed in Section 3.1 apply to changes in associated documents as well as to term changes.  The greater the likelihood that changes to the documents will affect the stability of the vocabulary, the more care must be taken by the Interest Group to inform and consult with the community and the Executive Committee.  In cases that are not specifically described in the subsections of Section 3.4, the Interest Group should weigh the impact of the proposed changes and use its discretion to choose a form of intervention that is appropriate for the level of potential impact on the vocabulary.
 
-![](graphics/document-decision.png)
+![](../graphics/document-decision.png)
 
 Fig. 2. Decision process for document changes.
 

@@ -12,7 +12,7 @@
 <http://www.tdwg.org/standards/147>
      dcterms:hasPart <http://something.tdwg.org/sds>;
      dcterms:hasVersion <http://www.tdwg.org/standards/147#2017-04-25>;
-     dcterms:isReferencedBy <http://something.tdwg.org/documentation-specification.ttl>;
+     dcterms:isReferencedBy <https://raw.githubusercontent.com/tdwg/vocab/master/sds/documentation-specification.ttl>;
      dcterms:created "2017-04-25"^^xsd:date;
      dcterms:modified "2017-04-25"^^xsd:date ;
      dcterms:title "Standards Documentation Standard"@en;
@@ -38,7 +38,7 @@
      dcterms:isPartOf <http://www.tdwg.org/standards/147>;
      dcterms:hasVersion <http://something.tdwg.org/sds/2017-04-25>;
      dcterms:hasVersion <http://something.tdwg.org/sds/2007-11-05>;
-     dcterms:isReferencedBy <http://something.tdwg.org/documentation-specification.ttl>;
+     dcterms:isReferencedBy <https://raw.githubusercontent.com/tdwg/vocab/master/sds/documentation-specification.ttl>;
      dcterms:created "2007-06-06"^^xsd:date;
      dcterms:modified "2017-04-25"^^xsd:date;
      dcterms:title "Standards Documentation Specification"@en;
@@ -116,7 +116,7 @@
      dcterms:description "This document defines how TDWG standards should be presented. Each standard is a logical directory or folder containing two or more files - a cover page outlining basic metadata for the standard and one or more normative files specifying the standard itself. Rules are specified for the naming of standards and files. Human readable files should be in English, follow basic layout principles and be marked up in XHTML. The legal statements that all documents must contain are defined.";
      rdfs:comment "This document defines how TDWG standards should be presented. Each standard is a logical directory or folder containing two or more files - a cover page outlining basic metadata for the standard and one or more normative files specifying the standard itself. Rules are specified for the naming of standards and files. Human readable files should be in English, follow basic layout principles and be marked up in XHTML. The legal statements that all documents must contain are defined.".
 
-<http://something.tdwg.org/documentation-specification.ttl> a foaf:Document;
+<https://raw.githubusercontent.com/tdwg/vocab/master/sds/documentation-specification.ttl> a foaf:Document;
      dcterms:references <http://www.tdwg.org/standards/147>;
      dcterms:references <http://something.tdwg.org/sds>;
      dc:format "text/turtle";

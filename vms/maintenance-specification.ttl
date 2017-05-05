@@ -12,7 +12,7 @@
 <http://www.tdwg.org/standards/642>
      dcterms:hasPart <http://something.tdwg.org/vms>;
      dcterms:hasVersion <http://www.tdwg.org/standards/642#2017-04-25>;
-     dcterms:isReferencedBy <http://something.tdwg.org/maintenance-specification.ttl>;
+     dcterms:isReferencedBy <https://raw.githubusercontent.com/tdwg/vocab/master/vms/maintenance-specification.ttl>;
      dcterms:created "2017-04-25"^^xsd:date;
      dcterms:modified "2017-04-25"^^xsd:date ;
      dcterms:title "Vocabulary Maintenance Standard"@en;
@@ -37,7 +37,7 @@
 <http://something.tdwg.org/vms>
      dcterms:isPartOf <http://www.tdwg.org/standards/642>;
      dcterms:hasVersion <http://something.tdwg.org/vms/2017-04-25>;
-     dcterms:isReferencedBy <http://something.tdwg.org/maintenance-specification.ttl>;
+     dcterms:isReferencedBy <https://raw.githubusercontent.com/tdwg/vocab/master/vms/maintenance-specification.ttl>;
      dcterms:created "2017-04-25"^^xsd:date;
      dcterms:modified "2017-04-25"^^xsd:date ;
      dcterms:title "Vocabulary Maintenance Specification"@en;
@@ -95,7 +95,7 @@
      rdfs:comment "This document describes the processes used to modify TDWG vocabularies and their associated documents.";
      dcterms:bibliographicCitation "Vocabulary Maintenance Specification Task Group. 2017. Vocabulary Maintenance Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/642 (accessed on [date]).".
 
-<http://something.tdwg.org/maintenance-specification.ttl> a foaf:Document;
+<https://raw.githubusercontent.com/tdwg/vocab/master/vms/maintenance-specification.ttl> a foaf:Document;
      dcterms:references <http://www.tdwg.org/standards/642>;
      dcterms:references <http://something.tdwg.org/vms>;
      dc:format "text/turtle";
