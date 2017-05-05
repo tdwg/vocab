@@ -2,21 +2,17 @@
 
 The VOCAB charter was approved on 2015-05-11, establishing it as a Task Group under the Process Interest Group of [Biodiversity Information Standards (TDWG)](http://www.tdwg.org/). The charter can be viewed [here](vmg-charter.pdf).
 
-## Current versions of draft specifications
+The Task Group completed its work on 2017-04-25 upon the ratification of its two deliverables: the [Standards Documentation Standard](https://github.com/tdwg/vocab/tree/master/sds) and the [Vocabulary Maintenance Standard](https://github.com/tdwg/vocab/tree/master/vms).
 
-These documents are mutable and represent the most recent commits.  
+In order to cite the standards, do not link to this page.  Rather, use the permanent standard IRIs listed on the landing pages accessible from the links above.
 
-[Human-readable TDWG Standards Documentation Specification submission](documentation-specification.md)
+# Historical documents
 
-[Human-readable TDWG Vocabulary Maintenance Specification submission](maintenance-specification.md)
-
-[TDWG Standards Documentation Specification metadata as RDF/Turtle](documentation-specification.ttl)
-
-[TDWG Vocabulary Maintenance Specification metadata as RDF/Turtle](maintenance-specification.ttl)
+The final standards documents were not substantively changed from the submission for adoption, although metadata-related text in the documents was edited after adoption.  
 
 ## Specifications for Submission for Adoption by the Executive Committee 2017-04-10
 
-[This release](https://github.com/tdwg/vocab/releases/tag/2017-04-10-submission-for-adoption) contains the versions of the Standards Documentation Specification and Vocabulary Maintenance Specifications as submitted for adoption by the Executive Committee.  They are unchanged from the submission for public comment except for the correction of some typographical errors in the Documentation Specification. 
+[This release](https://github.com/tdwg/vocab/releases/tag/2017-04-10-submission-for-adoption) contains the versions of the Standards Documentation Specification and Vocabulary Maintenance Specifications as submitted for adoption by the Executive Committee.  They are unchanged from the submission for public comment except for the correction of some typographical errors in the Documentation Specification.
 
 ## Draft Specifications for submission for public comment 2017-01-23
 
@@ -40,11 +36,9 @@ The following materials are related to the expert review conducted from Septembe
 
 [This release](https://github.com/tdwg/vocab/releases/tag/2016-08-02-review-submission) contains the versions of the Standards Documentation Specification and Vocabulary Maintenance Specifications as submitted to the TDWG Executive Committee upon request for the appointment of a review manager.  The request was approved and Dag Endresen was appointed review manager. These versions were the ones reviewed by the expert reviewers solicited by the review manager.
 
-## Participating in the Task Group
+## Issues of the Task Group
 
-To participate in the task group, go to the [Issues Tracker](https://github.com/tdwg/vocab/issues) and click on "Watch". You may need to sign up for a GitHub account and log in before "watching".  
-
-To initiate discussion on an issue, open a new issue in the tracker. Opening or commenting on an existing issue will generate emails to others who are watching the tracker.
+Issues of the task group were documented by the [Issues Tracker](https://github.com/tdwg/vocab/issues).  
 
 ## Meeting notes
 
@@ -56,7 +50,7 @@ To initiate discussion on an issue, open a new issue in the tracker. Opening or 
 
 ## Background
 
-Here are some key documents that form crucial background for our discussions:
+Here are some key documents that formed crucial background the discussions:
 
 * [Report of the TDWG Vocabulary Management Task Group](gbif_TDWG_Vocabulary_Management_Task_Group_en_v1.0.pdf) (2013-09-20). Permanent URL: [http://www.gbif.org/resource/80862](http://www.gbif.org/resource/80862). This document contains a summary of the Darwin Core (DwC) Namespace Policy in section 2.5, discusses how the Policy has worked in practice in section 2.5.3, and lists disadvantages of the Policy as it is currently implemented in section 2.5.4. It provides recommendations regarding adoption of the DwC Namespace Policy as a general practice in section 2.6.2.
 
@@ -85,8 +79,3 @@ Here are some key documents that form crucial background for our discussions:
 [Notes on preliminary version model including definitions and use cases](version-model.md)
 
 [Use cases for linking metadata according to version and hierarchy models](documentation-use-cases.md)
-
-
-## Preferred citation
-
-> Vocabulary Maintenance Specification task group. 2017. Vocabulary Maintenance Specification (VOCAB), Version 2017-01-23. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147

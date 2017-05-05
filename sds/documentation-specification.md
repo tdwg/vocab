@@ -20,7 +20,7 @@
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
-**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2017. Standards Documentation Specification. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (put link here to provide access to standardized machine-readable citation export format)
+**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2017. Standards Documentation Standard. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (put link here to provide access to standardized machine-readable citation export format)
 
 ### Table of Contents ###
 
