@@ -8,9 +8,9 @@
 
 **Part of TDWG Standard:** http://www.tdwg.org/standards/642
 
-**This version:** http://something.tdwg.org/x/2017-04-25
+**This version:** http://rs.tdwg.org/vms/doc/specification/2017-04-25
 
-**Latest version:** http://something.tdwg.org/x
+**Latest version:** http://rs.tdwg.org/vms/doc/specification/
 
 **Abstract:** This document describes the processes used to modify TDWG vocabularies and their associated documents.
 

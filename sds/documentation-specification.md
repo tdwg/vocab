@@ -8,11 +8,11 @@
 
 **Part of TDWG Standard:** http://www.tdwg.org/standards/147
 
-**This version:** http://something.tdwg.org/x/2017-04-25
+**This version:** http://rs.tdwg.org/sds/doc/specification/2017-04-25
 
-**Latest version:** http://something.tdwg.org/x
+**Latest version:** http://rs.tdwg.org/sds/doc/specification/
 
-**Previous version:** [http://something.tdwg.org/x/2007-06-06](https://github.com/tdwg/vocab/blob/master/tdwg-stds-spec.pdf)
+**Previous version:** [http://rs.tdwg.org/sds/doc/specification/2007-11-05](https://github.com/tdwg/vocab/blob/master/tdwg-stds-spec.pdf)
 
 **Abstract:** This document defines how TDWG standards are to be presented.  It provides details about the hierarchical structure of standards and versioning of standards components.  It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.
 
