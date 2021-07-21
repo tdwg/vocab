@@ -1276,7 +1276,7 @@ The following example of terms in a controlled vocabulary is an elaboration of t
 
 [DWC-RDF] http://rs.tdwg.org/dwc/terms/guides/rdf/ TDWG Darwin Core RDF Guide.
 
-[GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility.
+[GBIF-KOS] [link](gbif_kos_whitepaper_v1.pdf) Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility.
 
 [GUID] http://www.tdwg.org/standards/150 TDWG GUID Applicability Statement
 
@@ -1301,7 +1301,7 @@ Structural Specification and Functional-Style Syntax (W3C Recommendation). World
 
 [PREFIX.CC] http://prefix.cc Namespace lookup for RDF developers
 
-[PROCESS] http://www.tdwg.org/about-tdwg/process/ Biodiversity Information Standards. The Standards Development Process.
+[PROCESS] https://www.tdwg.org/about/process/ Biodiversity Information Standards. The Standards Development Process.
 
 [RECIPES] https://www.w3.org/TR/swbp-vocab-pub/ Best Practice Recipes for Publishing RDF Vocabularies. 2008.  W3C Working Group Note.
 
