@@ -278,11 +278,11 @@ If the proposed enhancement is adopted as part of the vocabulary standard, the u
 
 [DOC-SPEC] http://www.tdwg.org/standards/147 TDWG Standards Documentation Specification (finalize citation when complete)
 
-[GBIF-KOS] http://www.gbif.org/resource/80656 Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility, 49 pp.
+[GBIF-KOS] [view](gbif_kos_whitepaper_v1.pdf) Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility, 49 pp.
 
 [IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
 
-[PROCESS] http://www.tdwg.org/about-tdwg/process/ The Standards Development Process. Biodiversity Information Standards.
+[PROCESS] https://www.tdwg.org/about/process/ The Standards Development Process. Biodiversity Information Standards.
 
 [STATUS] http://www.tdwg.org/standards/status-and-categories/ Key to TDWG Standards Status. Biodiversity Information Standards.
 
