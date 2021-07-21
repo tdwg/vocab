@@ -1276,7 +1276,7 @@ The following example of terms in a controlled vocabulary is an elaboration of t
 
 [DWC-RDF] http://rs.tdwg.org/dwc/terms/guides/rdf/ TDWG Darwin Core RDF Guide.
 
-[GBIF-KOS] [link](gbif_kos_whitepaper_v1.pdf) Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility.
+[GBIF-KOS] [link](https://github.com/tdwg/vocab/blob/master/vms/gbif_kos_whitepaper_v1.pdf) Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility.
 
 [GUID] http://www.tdwg.org/standards/150 TDWG GUID Applicability Statement
 
