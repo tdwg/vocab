@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+gem "jekyll", "~> 4.2"
+gem "minima", "~> 2.5"
+gem "jekyll-remote-theme", "~> 0.4.3"
+gem "jekyll-theme-petridish", "~> 3.1.0"
+gem "jekyll-sitemap", "~>1.4.0"
