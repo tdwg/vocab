@@ -1,3 +1,8 @@
+---
+title: TDWG Standards Documentation Specification
+permalink: /specification
+---
+
 # TDWG Standards Documentation Specification
 
 **Title:** Standards Documentation Specification
@@ -6,13 +11,13 @@
 
 **Date Created:** 2007-06-06
 
-**Part of TDWG Standard:** http://www.tdwg.org/standards/147
+**Part of TDWG Standard:** <http://www.tdwg.org/standards/147>
 
-**This version:** http://rs.tdwg.org/sds/doc/specification/2017-04-25
+**This version:** <http://rs.tdwg.org/sds/doc/specification/2017-04-25>
 
-**Latest version:** http://rs.tdwg.org/sds/doc/specification/
+**Latest version:** <http://rs.tdwg.org/sds/doc/specification/>
 
-**Previous version:** [http://rs.tdwg.org/sds/doc/specification/2007-11-05](https://github.com/tdwg/vocab/blob/master/tdwg-stds-spec.pdf)
+**Previous version:** <http://rs.tdwg.org/sds/doc/specification/2007-11-05>
 
 **Abstract:** This document defines how TDWG standards are to be presented.  It provides details about the hierarchical structure of standards and versioning of standards components.  It specifies how the properties of standards and their components are to be described in human-readable and machine-readable terms.
 
@@ -20,8 +25,9 @@
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
-**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2017. Standards Documentation Standard. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/147 (put link here to provide access to standardized machine-readable citation export format)
+**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2017. Standards Documentation Standard. Biodiversity Information Standards (TDWG) <http://www.tdwg.org/standards/147> (put link here to provide access to standardized machine-readable citation export format)
 
+<div style="display: none">
 ### Table of Contents ###
 
 ```
@@ -111,6 +117,7 @@
 
 7 References
 ```
+</div>
 
 ## **1 Introduction** ##
 
@@ -204,7 +211,7 @@ If a standard were composed of a single, human-readable document, then identifyi
 
 A TDWG standard MAY be composed of several types of components.  For example, the standard can contain an explanatory document that describes how the standard should be applied in certain circumstances.  A standard can also include a vocabulary description that defines the terms included in that vocabulary.  We can consider each of these particular resources as an abstract entity that manifests itself in one or more concrete representations.  For example, a document can exist in PDF format or as an HTML web page (Fig. 1), or a document can exist as translations in several languages.  
 
-![](../graphics/representations.png)
+![](representations.png)
 
 Fig. 1. An abstract resource and its representations.
 
@@ -224,7 +231,7 @@ A resource will normally be permanently identified by its abstract resource IRI.
 
 TDWG standards consist of several IRI-identified components.  This section describes these components and how they are related to each other.
 
-![](../graphics/std-parts.png)
+![](std-parts.png)
 
 Fig. 2. A standard and its components.
 
@@ -240,7 +247,7 @@ Each TDWG standard will have at least one human-readable document that describes
 
 TDWG vocabularies MUST have an HTTP IRI that represents the vocabulary itself.  The vocabulary is distinct from the standard, since the vocabulary is just one part of the standard.  For that reason, the vocabulary IRI MUST NOT be the same as the IRI that identifies the standard.  When the vocabulary IRI is dereferenced by a client requesting media type text/html, the client SHOULD obtain a web page that links to term list documents (Fig. 3).  
 
-![](../graphics/vocabulary-documents.png)
+![](vocabulary-documents.png)
 
 Fig. 3. Relationship of a vocabulary to its component term list documents.
 
@@ -252,7 +259,7 @@ Term lists MAY include terms that are defined elsewhere, but that assert additio
 
 Vocabulary term lists are abstract resources, but also exist in the form of information resources that can be stored and delivered.  A human user or machine client might discover these entities through the content negotiation process (Section 2.1.2) when dereferencing the term list IRI.  However, that process is somewhat akin to trial and error, since a user would not know that the abstract resource was available in forms that were not requested.  In addition, the term list might be available for download in a form such as Markdown that is rendered as HTML when the term list URI is dereferenced requesting media type text/html, yet availability of the list in Markdown form might not be apparent to users that see the content rendered in a browser.  To enable discovery of the all forms by users or catalogers, the available forms of a resource, known as "distributions" (Fig. 4), SHOULD be made known to both humans and machines.  To accomplish that discovery, the Dublin Core term dcterms:hasFormat SHOULD be used to indicate the link from a vocabulary's term list to its available distributions.
 
-![](../graphics/distributions.png)
+![](distributions.png)
 
 Fig. 4. Relationship of a term list document to its distributions.
 
@@ -262,7 +269,7 @@ All distributions of a term list MUST contain substantively the same information
 
 TDWG standards and their components (Section 2.2) are resources that MAY change over time.  TDWG uses a versioning model that relates the current resource and versions of the resource that have changed over time.  The purpose of the versioning model is to enable a user to start with the current resource or any version of the resource and trace the changes that have occurred to that resource over time (Fig. 5).
 
-![](../graphics/version-model.png)
+![](version-model.png)
 
 Fig. 5. Relationship of a resource to its versions over time.
 
@@ -472,10 +479,10 @@ The term list document SHOULD contain a section listing the available distributi
 
 Distributions for the term list of core terms that are defined in the Darwin Core dwc: namespace
 
-| Description | IRI | Download URL |
-|-------------|-----|--------------|
-| HTML file   | [http://rs.tdwg.org/dwc/terms/index.htm](https://github.com/tdwg/dwc/blob/master/terms/index.htm) | https://raw.githubusercontent.com/tdwg/dwc/master/terms/index.htm |
-| RDF/XML file | [http://tdwg.github.io/dwc/rdf/dwcterms.rdf](https://github.com/tdwg/dwc/blob/master/rdf/dwcterms.rdf) | https://raw.githubusercontent.com/tdwg/dwc/master/rdf/dwcterms.rdf |
+| Description  | IRI | Download URL |
+|--------------|-----|--------------|
+| HTML file    | <http://rs.tdwg.org/dwc/terms/index.htm> | <http://rs.tdwg.org/dwc/terms/index.htm> |
+| RDF/XML file | <http://rs.tdwg.org/dwc/terms.rdf> | <https://rs.tdwg.org/dwc/terms.rdf> |
 
 **3.3.4 Term version lists**
 
@@ -531,7 +538,7 @@ The following example is expressed in RDF/Turtle:
      dc:format "text/turtle".
 ```
 
-When the resource IRI http://rs.tdwg.org/dwc/terms/guides/text is dereferenced requesting media type text/turtle, the server should redirect to the document https://github.com/tdwg/dwc/blob/master/terms/guides/text/index.ttl which contains the RDF description of the Darwin Core Text Guide in Turtle serialization.
+When the resource IRI <http://rs.tdwg.org/dwc/terms/guides/text> is dereferenced requesting media type text/turtle, the server should redirect to the document <http://rs.tdwg.org/dwc/terms/guides/text.ttl> which contains the RDF description of the Darwin Core Text Guide in Turtle serialization.
 
 **4.1.2 Types of resources**
 
@@ -1272,50 +1279,45 @@ The following example of terms in a controlled vocabulary is an elaboration of t
 
 ## **7 References** ##
 
-[COOL-URIS] http://www.w3.org/TR/cooluris/#cooluris Cool URIs for the Semantic Web
+[COOL-URIS] <http://www.w3.org/TR/cooluris/#cooluris> Cool URIs for the Semantic Web
 
-[DWC-RDF] http://rs.tdwg.org/dwc/terms/guides/rdf/ TDWG Darwin Core RDF Guide.
+[DWC-RDF] <http://rs.tdwg.org/dwc/terms/guides/rdf/> TDWG Darwin Core RDF Guide.
 
-[GBIF-KOS] [link](https://github.com/tdwg/vocab/blob/master/vms/gbif_kos_whitepaper_v1.pdf) Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility.
+[GBIF-KOS] <https://gbif.link/gbif_kos_whitepaper_v1.pdf> Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility.
 
-[GUID] http://www.tdwg.org/standards/150 TDWG GUID Applicability Statement
+[GUID] <http://www.tdwg.org/standards/150> TDWG GUID Applicability Statement
 
-[HTTP-1.1] http://tools.ietf.org/html/rfc7231 Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content
+[HTTP-1.1] <http://tools.ietf.org/html/rfc7231> Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content
 
-[IANA] http://www.iana.org/assignments/media-types/media-types.xhtml Internet Assigned Numbers Authority (IANA) Media Types
+[IANA] <http://www.iana.org/assignments/media-types/media-types.xhtml> Internet Assigned Numbers Authority (IANA) Media Types
 
-[IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
+[IRI] <http://tools.ietf.org/html/rfc3987> Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
 
 [ISO-25964-2] ISO 25964-2. Information and documentation: Thesauri and interoperability with other vocabularies. Part 2: Interoperability with other vocabularies. 2013-03-15.
 
-[MAINTENANCE] http://www.tdwg.org/standards/642 TDWG Vocabulary Maintenance Specification.
+[MAINTENANCE] <http://www.tdwg.org/standards/642> TDWG Vocabulary Maintenance Specification.
 
-[NAMESPACES] http://wiki.dublincore.org/index.php/FAQ/DC_and_DCTERMS_Namespaces FAQ/DC and DCTERMS Namespaces. Dublin Core Metadata Initiative.
+[NAMESPACES] <http://wiki.dublincore.org/index.php/FAQ/DC_and_DCTERMS_Namespaces> FAQ/DC and DCTERMS Namespaces. Dublin Core Metadata Initiative.
 
-[NISO] http://www.niso.org/publications/press/UnderstandingMetadata.pdf Understanding Metadata. 2004. NISO Press.
+[NISO] <http://www.niso.org/publications/press/UnderstandingMetadata.pdf> Understanding Metadata. 2004. NISO Press.
 
-[OWL-OVERVIEW] http://www.w3.org/TR/owl-overview OWL Web Ontology Language Document Overview (W3C Recommendation). World Wide Web Consortium.
+[OWL-OVERVIEW] <http://www.w3.org/TR/owl-overview> OWL Web Ontology Language Document Overview (W3C Recommendation). World Wide Web Consortium.
 
-[OWL-SYNTAX] http://www.w3.org/TR/owl-syntax OWL 2 Web Ontology Language
+[OWL-SYNTAX] <http://www.w3.org/TR/owl-syntax> OWL 2 Web Ontology Language
 Structural Specification and Functional-Style Syntax (W3C Recommendation). World Wide Web Consortium.
 
-[PREFIX.CC] http://prefix.cc Namespace lookup for RDF developers
+[PREFIX.CC] <http://prefix.cc> Namespace lookup for RDF developers
 
-[PROCESS] https://www.tdwg.org/about/process/ Biodiversity Information Standards. The Standards Development Process.
+[PROCESS] <https://www.tdwg.org/about/process/> Biodiversity Information Standards. The Standards Development Process.
 
-[RECIPES] https://www.w3.org/TR/swbp-vocab-pub/ Best Practice Recipes for Publishing RDF Vocabularies. 2008.  W3C Working Group Note.
+[RECIPES] <https://www.w3.org/TR/swbp-vocab-pub/> Best Practice Recipes for Publishing RDF Vocabularies. 2008.  W3C Working Group Note.
 
-[RDF-PRIMER] http://www.w3.org/TR/rdf11-primer/ RDF 1.1 Primer
+[RDF-PRIMER] <http://www.w3.org/TR/rdf11-primer/> RDF 1.1 Primer
 
-[REST] http://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm Representational State Transfer (REST) from Architectural Styles and
+[REST] <http://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm> Representational State Transfer (REST) from Architectural Styles and
 the Design of Network-based Software Architectures
 
-[RFC-2119] http://tools.ietf.org/html/rfc2119 Key words for use in RFCs to Indicate Requirement Levels. 1997. The Internet Engineering Task Force.
+[RFC-2119] <http://tools.ietf.org/html/rfc2119> Key words for use in RFCs to Indicate Requirement Levels. 1997. The Internet Engineering Task Force.
 
-[SKOS] https://www.w3.org/TR/skos-reference/ SKOS Simple Knowledge Organization System
+[SKOS] <https://www.w3.org/TR/skos-reference/> SKOS Simple Knowledge Organization System
 Reference
-
------------------
-This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).
-
-Copyright 2017 - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)

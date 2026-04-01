@@ -1,3 +1,8 @@
+---
+title: TDWG Vocabulary Maintenance Specification
+permalink: /specification
+---
+
 # TDWG Vocabulary Maintenance Specification
 
 **Title:** Vocabulary Maintenance Specification
@@ -6,11 +11,11 @@
 
 **Date created:** 2017-04-25
 
-**Part of TDWG Standard:** http://www.tdwg.org/standards/642
+**Part of TDWG Standard:** <http://www.tdwg.org/standards/642>
 
-**This version:** http://rs.tdwg.org/vms/doc/specification/2017-04-25
+**This version:** <http://rs.tdwg.org/vms/doc/specification/2017-04-25>
 
-**Latest version:** http://rs.tdwg.org/vms/doc/specification/
+**Latest version:** <http://rs.tdwg.org/vms/doc/specification/>
 
 **Abstract:** This document describes the processes used to modify TDWG vocabularies and their associated documents.
 
@@ -18,8 +23,9 @@
 
 **Creator:** TDWG Vocabulary Maintenance Specification Task Group
 
-**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2017. Vocabulary Maintenance Standard. Biodiversity Information Standards (TDWG) http://www.tdwg.org/standards/642 (put link here to provide access to standardized machine-readable citation export format)
+**Bibliographic citation:** Vocabulary Maintenance Specification Task Group. 2017. Vocabulary Maintenance Standard. Biodiversity Information Standards (TDWG) <http://www.tdwg.org/standards/642> (put link here to provide access to standardized machine-readable citation export format)
 
+<div style="display: none">
 ### Table of Contents
 
 ```
@@ -64,6 +70,7 @@
 
 5 References
 ```
+</div>
 
 ## **1 Introduction**
 
@@ -168,7 +175,7 @@ In the case of equivocal substantive errors, the Interest Group will conduct a p
 
 The terms in a vocabulary can be changed by modifying the attributes of an existing term, by adding a new term, or by deprecating an existing term.  Although the nature of the change varies somewhat among these three categories of changes, the process for achieving the change is the same, and is described in Sections 3.3.1 through 3.3.3.
 
-![](../graphics/change-process.png)
+![](change-process.png)
 
 Fig. 1. Generalized change process.
 
@@ -218,7 +225,7 @@ If an existing term is deprecated, this action should be noted in the term metad
 
 The documents included within a vocabulary standard support the vocabulary in various ways.  It is therefore difficult to specify a single change process that is appropriate for all possible changes to documents associated with the vocabulary.  However, the general principles expressed in Section 3.1 apply to changes in associated documents as well as to term changes.  The greater the likelihood that changes to the documents will affect the stability of the vocabulary, the more care must be taken by the Interest Group to inform and consult with the community and the Executive Committee.  In cases that are not specifically described in the subsections of Section 3.4, the Interest Group should weigh the impact of the proposed changes and use its discretion to choose a form of intervention that is appropriate for the level of potential impact on the vocabulary.
 
-![](../graphics/document-decision.png)
+![](document-decision.png)
 
 Fig. 2. Decision process for document changes.
 
@@ -276,19 +283,14 @@ If the proposed enhancement is adopted as part of the vocabulary standard, the u
 
 ## **5 References**
 
-[DOC-SPEC] http://www.tdwg.org/standards/147 TDWG Standards Documentation Specification (finalize citation when complete)
+[DOC-SPEC] <http://www.tdwg.org/standards/147> TDWG Standards Documentation Specification (finalize citation when complete)
 
-[GBIF-KOS] [link](gbif_kos_whitepaper_v1.pdf) Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility, 49 pp.
+[GBIF-KOS] <https://gbif.link/gbif_kos_whitepaper_v1.pdf> Recommendations for the Use of Knowledge Organisation Systems by GBIF. 04 Feb 2011. Global Biodiversity Information Facility, 49 pp.
 
-[IRI] http://tools.ietf.org/html/rfc3987 Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
+[IRI] <http://tools.ietf.org/html/rfc3987> Internationalized Resource Identifiers (IRIs). 2005. The Internet Engineering Task Force.
 
-[PROCESS] https://www.tdwg.org/about/process/ The Standards Development Process. Biodiversity Information Standards.
+[PROCESS] <https://www.tdwg.org/about/process/> The Standards Development Process. Biodiversity Information Standards.
 
-[STATUS] http://www.tdwg.org/standards/status-and-categories/ Key to TDWG Standards Status. Biodiversity Information Standards.
+[STATUS] <http://www.tdwg.org/standards/status-and-categories/> Key to TDWG Standards Status. Biodiversity Information Standards.
 
-[TDWG-CONTENT] http://lists.tdwg.org/mailman/listinfo/tdwg-content TDWG Standards Content Discussions email list.
-
------------------
-This document is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). ![http://creativecommons.org/licenses/by/4.0/](https://licensebuttons.net/l/by/4.0/88x31.png).
-
-Copyright 2017 - Biodiversity Information Standards - TDWG - [Contact Us](http://www.tdwg.org/about-tdwg/contact-us/)
+[TDWG-CONTENT] <http://lists.tdwg.org/mailman/listinfo/tdwg-content> TDWG Standards Content Discussions email list.
